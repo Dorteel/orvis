@@ -1,0 +1,14 @@
+models:
+  depth_estimation:
+    name: Intel/dpt-hybrid-midas
+    processor_class: DPTImageProcessor
+    model_class: DPTForDepthEstimation
+    task: depth_estimation
+    threshold: 0.0
+
+  object_detection:
+    name: facebook/detr-resnet-50
+    processor_class: DetrImageProcessor
+    model_class: DetrForObjectDetection
+    task: object_detection
+    threshold: 0.9

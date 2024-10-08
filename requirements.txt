@@ -1,0 +1,7 @@
+pillow
+torch
+numpy
+transformers
+opencv-python
+timm
+accelerate>=0.26.0
