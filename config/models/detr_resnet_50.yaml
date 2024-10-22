@@ -1,0 +1,113 @@
+# detr_resnet_50.yaml
+
+# Annotator-specific settings
+annotator:
+  name: detr_resnet_50
+  type: DETR  # Type of model/algorithm used for this annotator
+  task_type: StandardDetectionTask  # Type of task performed by this annotator
+  detected_property: class  # The property that is being detected (in this case, object)
+
+# Model-specific imports and configurations
+imports:
+  model_class: transformers.DetrForObjectDetection  # Class to import for the model
+  processor_class: transformers.DetrImageProcessor  # Class to import for the processor
+  result_msg_class: vit_inference.msg.ObjectDetected  # ROS message class for detection results
+
+model:
+  model_name: facebook/detr-resnet-50  # Pretrained model name or path for object detection
+  revision: no_timm  # Optional: specify revision to avoid the timm dependency
+
+processor:
+  processor_name: facebook/detr-resnet-50  # Processor name or path (same as model)
+  revision: no_timm  # Optional: specify revision for processor
+
+# ROS topics specific to this annotator
+ros:
+  result_topic: annotators/detr_resnet_50/result  # Topic for publishing detection results
+  image_topic: annotators/detr_resnet_50/image  # Topic for publishing annotated images
+
+# Detection-related settings
+detection:
+  labels:  # MS COCO labels for object detection
+    - person
+    - bicycle
+    - car
+    - motorcycle
+    - airplane
+    - bus
+    - train
+    - truck
+    - boat
+    - traffic light
+    - fire hydrant
+    - stop sign
+    - parking meter
+    - bench
+    - bird
+    - cat
+    - dog
+    - horse
+    - sheep
+    - cow
+    - elephant
+    - bear
+    - zebra
+    - giraffe
+    - backpack
+    - umbrella
+    - handbag
+    - tie
+    - suitcase
+    - frisbee
+    - skis
+    - snowboard
+    - sports ball
+    - kite
+    - baseball bat
+    - baseball glove
+    - skateboard
+    - surfboard
+    - tennis racket
+    - bottle
+    - wine glass
+    - cup
+    - fork
+    - knife
+    - spoon
+    - bowl
+    - banana
+    - apple
+    - sandwich
+    - orange
+    - broccoli
+    - carrot
+    - hot dog
+    - pizza
+    - donut
+    - cake
+    - chair
+    - couch
+    - potted plant
+    - bed
+    - dining table
+    - toilet
+    - TV
+    - laptop
+    - mouse
+    - remote
+    - keyboard
+    - cell phone
+    - microwave
+    - oven
+    - toaster
+    - sink
+    - refrigerator
+    - book
+    - clock
+    - vase
+    - scissors
+    - teddy bear
+    - hair drier
+    - toothbrush
+  confidence_threshold: 0.9  # Confidence threshold for detections
+  iou_threshold: 0.45  # Intersection over Union threshold for bounding boxes

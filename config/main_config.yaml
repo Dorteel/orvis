@@ -1,0 +1,25 @@
+# main_config.yaml
+
+# General settings
+system:
+  logging_level: DEBUG
+  max_timing_records: 100
+  model_directory: /home/user/pel_ws/models/  # Common model storage location
+  image_topic: /locobot/camera/color/image_raw  # Default image topic
+
+# Annotators
+annotators:
+  - detr_resnet_50
+  # - fruit_detector
+  # - segmentation_model
+
+# ROS parameters
+ros:
+  node_name: orvis_annotators_node
+  queue_size: 1
+
+# Shared thresholds
+confidence_threshold: 0.5
+iou_threshold: 0.45
+
+# Add any other system-wide shared settings here

@@ -1,0 +1,55 @@
+# material_detector.yaml
+
+# Annotator-specific settings
+annotator:
+  name: material_detector
+  type: YOLO_ViT  # Type of model/algorithm used for this annotator
+  task_type: object_detection  # Type of task performed by this annotator
+  detected_property: material  # The property that is being detected (in this case, material)
+
+# Model-specific imports and configurations
+imports:
+  model_class: transformers.AutoModelForImageClassification  # Class to import for the model
+  processor_class: transformers.AutoImageProcessor  # Class to import for the processor
+  result_msg_class: vit_inference.msg.MaterialDetected  # ROS message class for detection results
+
+model:
+  model_name: ioanasong/vit-MINC-2500  # Pretrained model name or path for material classification
+  yolo_model: yolov10s.pt  # YOLO model for object detection (can be replaced as needed)
+
+processor:
+  processor_name: ioanasong/vit-MINC-2500  # Processor name or path (same as model)
+
+# ROS topics specific to this annotator
+ros:
+  result_topic: annotators/material_detector/result  # Topic for publishing detection results
+  image_topic: annotators/material_detector/image  # Topic for publishing annotated images
+
+# Detection-related settings
+detection:
+  labels:  # Material detection labels; can be replaced with task-specific ones
+    - brick
+    - carpet
+    - ceramic
+    - fabric
+    - foliage
+    - food
+    - glass
+    - hair
+    - leather
+    - metal
+    - mirror
+    - other
+    - painted
+    - paper
+    - plastic
+    - polishedstone
+    - skin
+    - sky
+    - stone
+    - tile
+    - wallpaper
+    - water
+    - wood
+  confidence_threshold: 0.5  # Confidence threshold for detections
+  iou_threshold: 0.45  # Intersection over Union threshold for bounding boxes
