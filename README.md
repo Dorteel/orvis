@@ -1,4 +1,4 @@
-# Annotator Manager for Perceived-Entity Linking
+# Ontology-Based Robotic Vision System (ORVIS)
 
 ## Description
 
