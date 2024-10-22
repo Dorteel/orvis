@@ -20,7 +20,7 @@ class MainAnnotatorClient:
 
 
         # Define the service we want to test
-        service_to_test = '/detr_resnet_50/detect'
+        service_to_test = '/yolos_tiny/detect'
         service_type = ImageDetection
 
         # Initialize the CvBridge

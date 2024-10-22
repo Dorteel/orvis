@@ -10,6 +10,7 @@ system:
 # Annotators
 annotators:
   - detr_resnet_50
+  - yolos_tiny
   # - fruit_detector
   # - segmentation_model
 

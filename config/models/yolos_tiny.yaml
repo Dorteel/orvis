@@ -1,30 +1,28 @@
-# detr_resnet_50.yaml
+# yolos_tiny.yaml
 
 # Annotator-specific settings
 annotator:
-  name: detr_resnet_50
-  type: DETR  # Type of model/algorithm used for this annotator
+  name: yolos_tiny
+  type: YOLOS  # Type of model/algorithm used for this annotator
   task_type: StandardDetectionTask  # Type of task performed by this annotator
-  detected_property: class  # The property that is being detected (in this case, object)
+  detected_property: class  # The property that is being detected (in this case, object class)
 
 # Model-specific imports and configurations
 imports:
-  model_class: transformers.DetrForObjectDetection  # Class to import for the model
-  processor_class: transformers.DetrImageProcessor  # Class to import for the processor
+  model_class: transformers.YolosForObjectDetection  # Class to import for the model
+  processor_class: transformers.YolosImageProcessor  # Class to import for the processor
   # result_msg_class: vit_inference.msg.ObjectDetected  # ROS message class for detection results
 
 model:
-  model_name: facebook/detr-resnet-50  # Pretrained model name or path for object detection
-  revision: no_timm  # Optional: specify revision to avoid the timm dependency
+  model_name: hustvl/yolos-tiny  # Pretrained model name or path for object detection
 
 processor:
-  processor_name: facebook/detr-resnet-50  # Processor name or path (same as model)
-  revision: no_timm  # Optional: specify revision for processor
+  processor_name: hustvl/yolos-tiny  # Processor name or path (same as model)
 
 # ROS topics specific to this annotator
 ros:
-  result_topic: annotators/detr_resnet_50/result  # Topic for publishing detection results
-  image_topic: annotators/detr_resnet_50/image  # Topic for publishing annotated images
+  result_topic: annotators/yolos_tiny/result  # Topic for publishing detection results
+  image_topic: annotators/yolos_tiny/image  # Topic for publishing annotated images
 
 # Detection-related settings
 detection:
