@@ -8,6 +8,9 @@ import numpy as np
 import cv2
 import importlib
 from cv_bridge import CvBridge
+from transformers.models.detr.feature_extraction_detr import rgb_to_id
+import io
+
 
 class ImageSegmenter:
     def __init__(self, config):
@@ -24,6 +27,8 @@ class ImageSegmenter:
         # Load the model and processor
         self.model = self.model_class.from_pretrained(config['model']['model_name'])
         self.processor = self.processor_class.from_pretrained(config['processor']['processor_name'])
+
+        self.annotator_type = config['annotator']['type']
 
         self.bridge = CvBridge()  # Initialize CvBridge here
         # Additional configurations
@@ -46,10 +51,11 @@ class ImageSegmenter:
             outputs = self.model(**inputs)
 
         # Check if it's Segformer or DETR and process accordingly
-        if hasattr(outputs, 'logits'):
+        if self.annotator_type == 'Segformer':
             return self.process_segformer(outputs, pil_image)
-        elif hasattr(outputs, 'png_string'):
-            return self.process_detr_panoptic(outputs, inputs)
+        elif self.annotator_type == 'DETR_Panoptic':
+            # Pass the correct arguments here
+            return self.process_detr_panoptic(outputs, inputs, pil_image)
 
     def process_segformer(self, outputs, pil_image):
         logits = outputs.logits
@@ -70,9 +76,48 @@ class ImageSegmenter:
         response.objects = image_masks
         return response
 
-    def process_detr_panoptic(self, outputs, inputs):
-        # Similar to Segformer, but handling DETR-specific output
-        pass  # You can fill in the DETR-specific logic here
+    def process_detr_panoptic(self, outputs, inputs, pil_image):
+        """Process the outputs from the DETR panoptic model."""
+        
+        # Post-process the outputs to get the panoptic segmentation in COCO format
+        processed_sizes = torch.as_tensor(inputs["pixel_values"].shape[-2:]).unsqueeze(0)
+        
+        # DETR-specific post-processing using self.processor
+        panoptic_result = self.processor.post_process_panoptic(outputs, processed_sizes)[0]
+
+        # The segmentation result is stored in a special-format PNG
+        panoptic_seg = Image.open(io.BytesIO(panoptic_result["png_string"]))
+        panoptic_seg = np.array(panoptic_seg, dtype=np.uint8)
+        
+        # Retrieve the IDs corresponding to each mask
+        panoptic_seg_id = rgb_to_id(panoptic_seg)
+
+        # Prepare the response message
+        image_masks = ImageMasks()
+
+        # Loop through each segment and process the masks
+        for seg_info in panoptic_result["segments_info"]:
+            seg_id = seg_info["id"]  # ID for this particular segment
+            category_id = seg_info["category_id"]
+            
+            # Create a binary mask for this segment
+            mask = (panoptic_seg_id == seg_id).astype(np.uint8) * 255  # Mask of 0s and 255s
+
+            # Resize the mask to match the original image size if needed
+            mask_resized = cv2.resize(mask, (pil_image.width, pil_image.height), interpolation=cv2.INTER_NEAREST)
+            
+            # Create an ImageMask message
+            mask_msg = ImageMask()
+            mask_msg.Class = self.model.config.id2label[category_id]
+            mask_msg.mask = self.bridge.cv2_to_imgmsg(mask_resized, encoding="mono8")
+
+            # Add the mask message to the ImageMasks
+            image_masks.masks.append(mask_msg)
+
+        # Return the response
+        response = ImageMaskDetectionResponse()
+        response.objects = image_masks  # Assign the ImageMasks object to the `objects` attribute
+        return response
 
     def dynamic_import(self, import_path):
         """

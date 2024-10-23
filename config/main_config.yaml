@@ -6,10 +6,8 @@ system:
   max_timing_records: 100
   model_directory: /home/user/pel_ws/models/  # Common model storage location
   camera_topic: webcam/image_raw
-  # service_to_test: /detr_resnet_50_panoptic/detect  # Service to test
-  # task_type: SegmentationTask
-  service_to_test: /yolos_tiny/detect
-  task_type: StandardDetectionTask
+  service_to_test: /detr_resnet_50_panoptic/detect  # Service to test
+  task_type: SegmentationTask
   request_interval: 3
 # Annotators
 annotators:
