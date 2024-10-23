@@ -1,3 +1,4 @@
+#!/home/user/pel_ws/pel_venv/bin/python
 import cv2
 import torch
 from transformers import DetrImageProcessor, DetrForObjectDetection

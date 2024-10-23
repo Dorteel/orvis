@@ -1,0 +1,40 @@
+# segformer_b1.yaml
+
+# Annotator-specific settings
+annotator:
+  name: segformer_b1
+  type: Segformer  # Type of model/algorithm used for this annotator
+  task_type: SegmentationTask  # Type of task performed by this annotator
+  detected_property: semantic_mask  # The property that is being detected (in this case, segmentation masks)
+
+# Model-specific imports and configurations
+imports:
+  model_class: transformers.SegformerForSemanticSegmentation  # Class to import for the model
+  processor_class: transformers.SegformerFeatureExtractor  # Class to import for the processor
+
+model:
+  model_name: nvidia/segformer-b1-finetuned-ade-512-512  # Pretrained model name or path for segmentation
+
+processor:
+  processor_name: nvidia/segformer-b1-finetuned-ade-512-512  # Processor name or path (same as model)
+
+# ROS topics specific to this annotator
+ros:
+  result_topic: annotators/segformer_b1/result  # Topic for publishing detection results
+  image_topic: annotators/segformer_b1/image  # Topic for publishing annotated images
+
+# Segmentation-related settings
+detection:
+  labels: 
+    - wall
+    - building
+    - sky
+    - floor
+    - tree
+    - ceiling
+    - road
+    - bed
+    - windowpane
+    - grass
+  confidence_threshold: 0.9  # Confidence threshold for segmentation
+  iou_threshold: 0.45  # Intersection over Union threshold for segmentation masks

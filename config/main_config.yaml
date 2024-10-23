@@ -5,12 +5,17 @@ system:
   logging_level: DEBUG
   max_timing_records: 100
   model_directory: /home/user/pel_ws/models/  # Common model storage location
-  image_topic: /locobot/camera/color/image_raw  # Default image topic
-
+  camera_topic: webcam/image_raw
+  # service_to_test: /detr_resnet_50_panoptic/detect  # Service to test
+  # task_type: SegmentationTask
+  service_to_test: /yolos_tiny/detect
+  task_type: StandardDetectionTask
+  request_interval: 3
 # Annotators
 annotators:
   - detr_resnet_50
   - yolos_tiny
+  - detr_resnet_50_panoptic
   # - fruit_detector
   # - segmentation_model
 
