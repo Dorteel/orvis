@@ -7,6 +7,8 @@ from cv_bridge import CvBridge
 from sensor_msgs.msg import Image
 import rospkg
 from orvis.srv import ImageDetection, ImageDetectionRequest, ImageDetectionResponse  # Updated service and message types
+from orvis.srv import ImageMaskDetection, ImageMaskDetectionRequest, ImageMaskDetectionResponse  # Updated service and message types
+
 from orvis.msg import BoundingBoxes, BoundingBox  # Import the message types
 
 class MainAnnotatorClient:
@@ -39,8 +41,10 @@ class MainAnnotatorClient:
         self.logging_level = self.config['system']['logging_level']
 
         # Create a subscriber for the camera topic
-        self.image_sub = rospy.Subscriber('/webcam/image_raw', Image, self.image_callback)
-
+        if service_type == ImageDetection:
+            self.image_sub = rospy.Subscriber('/webcam/image_raw', Image, self.detector_image_callback)
+        elif service_type == ImageMaskDetection:
+            self.image_sub = rospy.Subscriber('/webcam/image_raw', Image, self.segmentation_image_callback)
         # Set up the annotator service client
         rospy.wait_for_service(service_to_test)  # Change to your actual service name
         self.annotator_service = rospy.ServiceProxy(service_to_test, service_type)
@@ -48,7 +52,7 @@ class MainAnnotatorClient:
 
         rospy.loginfo("MainAnnotatorClient initialized.")
 
-    def image_callback(self, img_msg):
+    def detector_image_callback(self, img_msg):
         """Callback function for the image topic."""
 
         # Check if enough time has passed since the last request
@@ -91,6 +95,10 @@ class MainAnnotatorClient:
         # Display the image with bounding boxes
         cv2.imshow('Annotated Image', image)
         cv2.waitKey(1)
+
+    def segmentation_image_callback(self, img_msg):
+        pass
+
 
 if __name__ == "__main__":
     try:

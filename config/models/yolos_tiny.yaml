@@ -27,6 +27,7 @@ ros:
 # Detection-related settings
 detection:
   labels:  # MS COCO labels for object detection
+    - N/A
     - person
     - bicycle
     - car
@@ -38,6 +39,7 @@ detection:
     - boat
     - traffic light
     - fire hydrant
+    - N/A
     - stop sign
     - parking meter
     - bench
@@ -51,8 +53,11 @@ detection:
     - bear
     - zebra
     - giraffe
+    - N/A
     - backpack
     - umbrella
+    - N/A
+    - N/A
     - handbag
     - tie
     - suitcase
@@ -67,6 +72,7 @@ detection:
     - surfboard
     - tennis racket
     - bottle
+    - N/A
     - wine glass
     - cup
     - fork
@@ -87,8 +93,12 @@ detection:
     - couch
     - potted plant
     - bed
+    - N/A
     - dining table
+    - N/A
+    - N/A
     - toilet
+    - N/A
     - TV
     - laptop
     - mouse
@@ -100,6 +110,7 @@ detection:
     - toaster
     - sink
     - refrigerator
+    - N/A
     - book
     - clock
     - vase

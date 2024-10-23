@@ -30,6 +30,7 @@ class ServiceManager:
         with open(main_config_path, 'r') as file:
             self.main_config = yaml.safe_load(file)
 
+        self.conf_threshold = self.main_config['confidence_threshold']
         # Iterate over the annotators in the main config and load their corresponding configs
         for annotator_name in self.main_config['annotators']:
             model_config_path = f"{model_config_dir}/{annotator_name}.yaml"
@@ -51,12 +52,15 @@ class ServiceManager:
         service_name = f"/{config['annotator']['name']}/detect"
         task_type = config['annotator']['task_type']  # Get the task type from config
 
+        # Get labels from config
+        labels = config['detection']['labels']
+
         # Dynamically create the service and bind the correct callback based on the task type
-        service = rospy.Service(service_name, ImageDetection, self.generate_callback(task_type, model, processor))
+        service = rospy.Service(service_name, ImageDetection, self.generate_callback(task_type, model, processor, labels))
         self.services.append(service)
         rospy.loginfo(f"Created service: {service_name} for task: {task_type}")
 
-    def generate_callback(self, task_type, model, processor):
+    def generate_callback(self, task_type, model, processor, labels):
         """
         Generate the appropriate callback based on the task type.
         The task types can be:
@@ -70,7 +74,7 @@ class ServiceManager:
             rospy.loginfo(f"Service requested for task: {task_type}")
 
             if task_type == 'StandardDetectionTask':
-                return self.handle_standard_detection(model, processor, req.image)
+                return self.handle_standard_detection(model, processor, req.image, labels)
             elif task_type == 'SegmentationTask':
                 return self.handle_segmentation_task(model, processor)
             elif task_type == 'DepthEstimationTask':
@@ -85,7 +89,7 @@ class ServiceManager:
 
         return callback
 
-    def handle_standard_detection(self, model, processor, img_msg: ROSImage):
+    def handle_standard_detection(self, model, processor, img_msg: ROSImage, labels):
         """Handle standard object detection"""
 
         rospy.loginfo("Handling Standard Detection Task (bounding boxes)")
@@ -109,7 +113,7 @@ class ServiceManager:
 
         # Post-process the outputs to get the bounding boxes and labels
         target_sizes = torch.tensor([pil_image.size[::-1]])  # width, height
-        results = processor.post_process_object_detection(outputs, target_sizes=target_sizes, threshold=0.9)[0]
+        results = processor.post_process_object_detection(outputs, target_sizes=target_sizes, threshold=self.conf_threshold)[0]
 
         # Prepare the response
         bounding_boxes = BoundingBoxes()
@@ -119,7 +123,9 @@ class ServiceManager:
 
             # Create a BoundingBox message
             bbox = BoundingBox()
-            bbox.Class = model.config.id2label[label.item()]
+            #bbox.Class = model.config.id2label[label.item()]
+            bbox.Class = labels[label.item()]
+            
             bbox.probability = score.item()
             bbox.xmin = int(box[0])
             bbox.ymin = int(box[1])

@@ -28,7 +28,8 @@ ros:
 
 # Detection-related settings
 detection:
-  labels:  # MS COCO labels for object detection
+  labels:
+    - N/A
     - person
     - bicycle
     - car
@@ -40,6 +41,7 @@ detection:
     - boat
     - traffic light
     - fire hydrant
+    - street sign
     - stop sign
     - parking meter
     - bench
@@ -53,8 +55,11 @@ detection:
     - bear
     - zebra
     - giraffe
+    - hat
     - backpack
     - umbrella
+    - shoe
+    - eye glasses
     - handbag
     - tie
     - suitcase
@@ -69,6 +74,7 @@ detection:
     - surfboard
     - tennis racket
     - bottle
+    - plate
     - wine glass
     - cup
     - fork
@@ -89,9 +95,13 @@ detection:
     - couch
     - potted plant
     - bed
+    - mirror
     - dining table
+    - window
+    - desk
     - toilet
-    - TV
+    - door
+    - tv
     - laptop
     - mouse
     - remote
@@ -102,6 +112,7 @@ detection:
     - toaster
     - sink
     - refrigerator
+    - blender
     - book
     - clock
     - vase
@@ -109,5 +120,6 @@ detection:
     - teddy bear
     - hair drier
     - toothbrush
+
   confidence_threshold: 0.9  # Confidence threshold for detections
   iou_threshold: 0.45  # Intersection over Union threshold for bounding boxes
