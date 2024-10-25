@@ -15,8 +15,9 @@ from annotators.object_detector import ObjectDetector
 from annotators.image_segmenter import ImageSegmenter
 from annotators.depth_estimator import DepthEstimator
 from annotators.pose_detector import PoseDetector
+from annotators.prompted_object_detector import PromptedObjectDetector
 from cv_bridge import CvBridge
-from orvis.srv import ImageDetection, ImageMaskDetection  # Import the necessary service types
+from orvis.srv import ImageDetection, ImageMaskDetection, PromptedImageDetection  # Import the necessary service types
 
 
 
@@ -65,6 +66,10 @@ class ServiceManager:
             annotator = PoseDetector(config)
             service_name = f"/{config['annotator']['name']}/detect"
             service = rospy.Service(service_name, ImageDetection, annotator.handle_request)
+        elif task_type == 'PromptedDetectionTask':
+            annotator = PromptedObjectDetector(config)
+            service_name = f"/{config['annotator']['name']}/detect"
+            service = rospy.Service(service_name, PromptedImageDetection, annotator.handle_request)
         else:
             rospy.logwarn(f"Unknown task type: {task_type}")
             return

@@ -1,0 +1,28 @@
+# owl_v2.yaml
+
+# Annotator-specific settings
+annotator:
+  name: owl_v2  # The name of the annotator
+  type: owl
+  task_type: PromptedDetectionTask  # Indicating that this is a zero-shot prompted detection task
+  detected_property: class  # The property detected by the annotator
+
+# Model-specific imports and configurations
+imports:
+  model_class: transformers.Owlv2ForObjectDetection  # The model class to import
+  processor_class: transformers.AutoProcessor  # The processor class to import
+
+model:
+  model_name: google/owlv2-base-patch16-ensemble  # Pretrained model for zero-shot object detection
+
+processor:
+  processor_name: google/owlv2-base-patch16-ensemble  # Processor for the same model
+
+# ROS topics specific to this annotator
+ros:
+  result_topic: annotators/owl_v2/result  # Topic for publishing detection results
+  image_topic: annotators/owl_v2/image  # Topic for publishing images
+
+# Detection-related settings
+detection:
+  confidence_threshold: 0.2  # Confidence threshold for detections

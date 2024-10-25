@@ -9,7 +9,8 @@ import rospkg
 from orvis.srv import ImageDetection, ImageDetectionRequest, ImageDetectionResponse  # Detection service
 from orvis.srv import ImageMaskDetection, ImageMaskDetectionRequest, ImageMaskDetectionResponse  # Segmentation service
 from orvis.msg import ImageMasks, ImageMask  # Import the segmentation message types
-
+from orvis.srv import PromptedImageDetection, PromptedImageDetectionRequest, PromptedImageDetectionResponse  # Detection service
+from std_msgs.msg import String
 
 class MainAnnotatorClient:
     def __init__(self):
@@ -19,6 +20,8 @@ class MainAnnotatorClient:
         # Load configuration and determine service type
         self.bridge = CvBridge()
         self.load_config()
+        self.prompt = String()
+        self.prompt.data = "hair"
 
         # Define the rate for service requests (e.g., every 2 seconds)
         self.request_interval = rospy.Duration(self.config['system']['request_interval'])
@@ -52,7 +55,8 @@ class MainAnnotatorClient:
             self.service_type = ImageMaskDetection 
         elif self.task_type == 'StandardDetectionTask':
             self.service_type = ImageDetection
-
+        elif self.task_type == 'PromptedDetectionTask':
+            self.service_type = PromptedImageDetection
         # Determine the camera topic
         self.camera_topic = self.config['system']['camera_topic']
 
@@ -71,8 +75,24 @@ class MainAnnotatorClient:
         # Send the image to the appropriate service
         if self.service_type == ImageDetection:
             self.process_detection(img_msg)
+        elif self.service_type == PromptedImageDetection:
+            self.process_prompteddetection(img_msg)
         elif self.service_type == ImageMaskDetection:
             self.process_segmentation(img_msg)
+
+    def process_prompteddetection(self, img_msg):
+        """Process image detection service requests."""
+        try:
+            # Convert the ROS Image message to OpenCV format
+            cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+            request = PromptedImageDetectionRequest(image=img_msg, prompt=self.prompt)
+            response = self.annotator_service(request)
+
+            # If logging level is DEBUG, display the bounding boxes
+            if self.logging_level == 'DEBUG':
+                self.display_bounding_boxes(cv_image, response)
+        except Exception as e:
+            rospy.logerr(f"Error processing detection image: {e}")
 
     def process_detection(self, img_msg):
         """Process image detection service requests."""

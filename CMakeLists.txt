@@ -68,6 +68,7 @@ add_service_files(
   ImageDetection.srv
   PointCloudDetection.srv
   ImageMaskDetection.srv
+  PromptedImageDetection.srv
 )
 
 ## Generate actions in the 'action' folder

@@ -5,7 +5,7 @@ annotator:
   name: segformer_b1
   type: Segformer  # Type of model/algorithm used for this annotator
   task_type: SegmentationTask  # Type of task performed by this annotator
-  detected_property: semantic_mask  # The property that is being detected (in this case, segmentation masks)
+  detected_property: class  # The property that is being detected (in this case, segmentation masks)
 
 # Model-specific imports and configurations
 imports:
