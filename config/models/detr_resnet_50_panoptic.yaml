@@ -4,7 +4,7 @@
 annotator:
   name: detr_resnet_50_panoptic
   type: DETR_Panoptic  # Type of model/algorithm used for this annotator
-  task_type: SegmentationTask  # Type of task performed by this annotator
+  task_type: ImageSegmentation  # Type of task performed by this annotator
   detected_property: mask  # The property that is being detected (in this case, segmentation masks)
 
 # Model-specific imports and configurations

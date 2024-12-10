@@ -4,7 +4,7 @@
 annotator:
   name: owl_v2  # The name of the annotator
   type: owl
-  task_type: PromptedDetectionTask  # Indicating that this is a zero-shot prompted detection task
+  task_type: PromptedObjectDetection  # Indicating that this is a zero-shot prompted detection task
   detected_property: class  # The property detected by the annotator
 
 # Model-specific imports and configurations

@@ -1,7 +1,7 @@
-# pose_detector.py
-from orvis.srv import ObjectDetectionResponse
+# video_classifier.py
+#from orvis.srv import VideoClassifierResponse
 
-class PoseDetector:
+class VideoClassifier:
     def __init__(self, config):
         # Load model, processor, and config settings for depth estimation
         pass

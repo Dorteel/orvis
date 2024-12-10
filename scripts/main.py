@@ -6,10 +6,10 @@ import cv2
 from cv_bridge import CvBridge
 from sensor_msgs.msg import Image
 import rospkg
-from orvis.srv import ImageDetection, ImageDetectionRequest, ImageDetectionResponse  # Detection service
-from orvis.srv import ImageMaskDetection, ImageMaskDetectionRequest, ImageMaskDetectionResponse  # Segmentation service
+from orvis.srv import ObjectDetection, ObjectDetectionRequest, ObjectDetectionResponse  # Detection service
+from orvis.srv import ImageSegmentation, ImageSegmentationRequest, ImageSegmentationResponse  # Segmentation service
 from orvis.msg import ImageMasks, ImageMask  # Import the segmentation message types
-from orvis.srv import PromptedImageDetection, PromptedImageDetectionRequest, PromptedImageDetectionResponse  # Detection service
+from orvis.srv import PromptedObjectDetection, PromptedObjectDetectionRequest, PromptedObjectDetectionResponse  # Detection service
 from std_msgs.msg import String
 
 class MainAnnotatorClient:
@@ -21,7 +21,7 @@ class MainAnnotatorClient:
         self.bridge = CvBridge()
         self.load_config()
         self.prompt = String()
-        self.prompt.data = "hair"
+        self.prompt.data = "pineapple"
 
         # Define the rate for service requests (e.g., every 2 seconds)
         self.request_interval = rospy.Duration(self.config['system']['request_interval'])
@@ -42,7 +42,7 @@ class MainAnnotatorClient:
         # Use rospkg to get the path of the "orvis" package
         rospack = rospkg.RosPack()
         package_path = rospack.get_path('orvis')
-        main_config_path = f"{package_path}/config/main_config.yaml"
+        main_config_path = f"{package_path}/config/orvis_config.yaml"
 
         # Load the main config file
         with open(main_config_path, 'r') as file:
@@ -51,12 +51,13 @@ class MainAnnotatorClient:
         # Determine service to test (can be adjusted to allow dynamic selection)
         self.service_name = self.config['system']['service_to_test']
         self.task_type = self.config['system']['task_type']
-        if self.task_type == 'SegmentationTask':
-            self.service_type = ImageMaskDetection 
-        elif self.task_type == 'StandardDetectionTask':
-            self.service_type = ImageDetection
-        elif self.task_type == 'PromptedDetectionTask':
-            self.service_type = PromptedImageDetection
+        if self.task_type == 'ImageSegmentation':
+            self.service_type = ImageSegmentation 
+        elif self.task_type == 'ObjectDetection':
+            self.service_type = ObjectDetection
+        elif self.task_type == 'PromptedObjectDetection':
+            self.service_type = PromptedObjectDetection
+        
         # Determine the camera topic
         self.camera_topic = self.config['system']['camera_topic']
 
@@ -73,11 +74,11 @@ class MainAnnotatorClient:
         self.last_request_time = current_time
 
         # Send the image to the appropriate service
-        if self.service_type == ImageDetection:
+        if self.service_type == ObjectDetection:
             self.process_detection(img_msg)
-        elif self.service_type == PromptedImageDetection:
+        elif self.service_type == PromptedObjectDetection:
             self.process_prompteddetection(img_msg)
-        elif self.service_type == ImageMaskDetection:
+        elif self.service_type == ImageSegmentation:
             self.process_segmentation(img_msg)
 
     def process_prompteddetection(self, img_msg):
@@ -85,7 +86,7 @@ class MainAnnotatorClient:
         try:
             # Convert the ROS Image message to OpenCV format
             cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
-            request = PromptedImageDetectionRequest(image=img_msg, prompt=self.prompt)
+            request = PromptedObjectDetectionRequest(image=img_msg, prompt=self.prompt)
             response = self.annotator_service(request)
 
             # If logging level is DEBUG, display the bounding boxes
@@ -99,7 +100,7 @@ class MainAnnotatorClient:
         try:
             # Convert the ROS Image message to OpenCV format
             cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
-            request = ImageDetectionRequest(image=img_msg)
+            request = ObjectDetectionRequest(image=img_msg)
             response = self.annotator_service(request)
 
             # If logging level is DEBUG, display the bounding boxes
@@ -113,7 +114,7 @@ class MainAnnotatorClient:
         try:
             # Convert the ROS Image message to OpenCV format
             cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
-            request = ImageMaskDetectionRequest(image=img_msg)
+            request = ImageSegmentationRequest(image=img_msg)
             response = self.annotator_service(request)
 
             # If logging level is DEBUG, display the segmentation masks

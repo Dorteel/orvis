@@ -6,6 +6,7 @@ import yaml
 import rospkg
 import sys
 import os
+import rosservice
 
 rospack = rospkg.RosPack()
 package_path = rospack.get_path('orvis')
@@ -15,9 +16,11 @@ from annotators.object_detector import ObjectDetector
 from annotators.image_segmenter import ImageSegmenter
 from annotators.depth_estimator import DepthEstimator
 from annotators.pose_detector import PoseDetector
+from annotators.video_classifier import VideoClassifier
+from annotators.image_to_text import ImageToTextConverter
 from annotators.prompted_object_detector import PromptedObjectDetector
 from cv_bridge import CvBridge
-from orvis.srv import ImageDetection, ImageMaskDetection, PromptedImageDetection  # Import the necessary service types
+from orvis.srv import ObjectDetection, ImageSegmentation, PromptedObjectDetection, DepthEstimation, VideoClassification, ImageToText  # Import the necessary service types
 
 
 
@@ -29,7 +32,7 @@ class ServiceManager:
         # Load config files
         rospack = rospkg.RosPack()
         package_path = rospack.get_path('orvis')
-        main_config_path = f"{package_path}/config/main_config.yaml"
+        main_config_path = f"{package_path}/config/orvis_config.yaml"
         model_config_dir = f"{package_path}/config/models"
 
         # Load the main configuration
@@ -39,6 +42,7 @@ class ServiceManager:
         # Iterate over annotators in the main config
         for annotator_name in self.main_config['annotators']:
             model_config_path = f"{model_config_dir}/{annotator_name}.yaml"
+            print(f"Initializing {annotator_name}")
             with open(model_config_path, 'r') as file:
                 annotator_config = yaml.safe_load(file)
                 self.create_service_from_config(annotator_config)
@@ -49,27 +53,27 @@ class ServiceManager:
         This method imports the appropriate class and registers a ROS service.
         """
         task_type = config['annotator']['task_type']
-        
-        if task_type == 'StandardDetectionTask':
+        service_name = f"/annotators/{task_type}/{config['annotator']['name']}/detect"
+
+        if task_type == 'ObjectDetection':
             annotator = ObjectDetector(config)
-            service_name = f"/{config['annotator']['name']}/detect"
-            service = rospy.Service(service_name, ImageDetection, annotator.handle_request)
-        elif task_type == 'SegmentationTask':
+            service = rospy.Service(service_name, ObjectDetection, annotator.handle_request)
+        elif task_type == 'ImageSegmentation':
             annotator = ImageSegmenter(config)
-            service_name = f"/{config['annotator']['name']}/detect"
-            service = rospy.Service(service_name, ImageMaskDetection, annotator.handle_request)
-        elif task_type == 'DepthEstimationTask':
+            service = rospy.Service(service_name, ImageSegmentation, annotator.handle_request)
+        elif task_type == 'DepthEstimation':
             annotator = DepthEstimator(config)
-            service_name = f"/{config['annotator']['name']}/detect"
-            service = rospy.Service(service_name, ImageDetection, annotator.handle_request)
-        elif task_type == 'HumanPoseDetectionTask':
+            service = rospy.Service(service_name, ObjectDetection, annotator.handle_request)
+        elif task_type == 'HumanPoseDetection':
             annotator = PoseDetector(config)
-            service_name = f"/{config['annotator']['name']}/detect"
-            service = rospy.Service(service_name, ImageDetection, annotator.handle_request)
-        elif task_type == 'PromptedDetectionTask':
+            service = rospy.Service(service_name, ObjectDetection, annotator.handle_request)
+        elif task_type == 'PromptedObjectDetection':
             annotator = PromptedObjectDetector(config)
-            service_name = f"/{config['annotator']['name']}/detect"
-            service = rospy.Service(service_name, PromptedImageDetection, annotator.handle_request)
+            service = rospy.Service(service_name, PromptedObjectDetection, annotator.handle_request)
+        elif task_type == 'ImageToText':
+            annotator = ImageToTextConverter(config)
+            
+            service = rospy.Service(service_name, ImageToText, annotator.handle_request)
         else:
             rospy.logwarn(f"Unknown task type: {task_type}")
             return

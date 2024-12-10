@@ -5,10 +5,12 @@ system:
   logging_level: DEBUG
   max_timing_records: 100
   model_directory: /home/user/pel_ws/models/  # Common model storage location
-  camera_topic: webcam/image_raw
-  service_to_test: /owl_v2/detect  # Service to test
+  camera_topic: /webcam/image_raw
+  service_to_test: /detr_resnet_50/detect  # Service to test
   task_type: PromptedDetectionTask
-  request_interval: 3
+  # service_to_test: /detr_resnet_50/detect  # Service to test
+  # task_type: StandardDetectionTask
+  request_interval: 10
 # Annotators
 annotators:
   - detr_resnet_50

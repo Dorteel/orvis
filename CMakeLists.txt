@@ -65,10 +65,13 @@ add_service_files(
   FILES
   # graph.srv
   # Query.srv
-  ImageDetection.srv
+  ObjectDetection.srv
   PointCloudDetection.srv
-  ImageMaskDetection.srv
-  PromptedImageDetection.srv
+  ImageSegmentation.srv
+  PromptedObjectDetection.srv
+  VideoClassification.srv
+  ImageToText.srv
+  DepthEstimation.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -175,6 +178,8 @@ include_directories(
 catkin_install_python(PROGRAMS
   scripts/service_manager.py
   scripts/main.py
+  scripts/task_selector.py
+  scripts/service_tester.py
   test/webcam.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

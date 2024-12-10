@@ -1,5 +1,5 @@
 # prompted_object_detector.py
-from orvis.srv import PromptedImageDetectionResponse
+from orvis.srv import PromptedObjectDetectionResponse
 from orvis.msg import BoundingBoxes, BoundingBox
 import torch
 import rospy
@@ -38,7 +38,7 @@ class PromptedObjectDetector:
             cv_image = self.bridge.imgmsg_to_cv2(req.image, "bgr8")
         except Exception as e:
             rospy.logerr(f"Failed to convert image: {e}")
-            return PromptedImageDetectionResponse()
+            return PromptedObjectDetectionResponse()
 
         pil_image = Image.fromarray(cv_image[:, :, ::-1])
 
@@ -69,7 +69,7 @@ class PromptedObjectDetector:
             bbox.xmin, bbox.ymin, bbox.xmax, bbox.ymax = [int(round(i)) for i in box.tolist()]
             bounding_boxes.bounding_boxes.append(bbox)
 
-        response = PromptedImageDetectionResponse()
+        response = PromptedObjectDetectionResponse()
         response.objects = bounding_boxes
         return response
 

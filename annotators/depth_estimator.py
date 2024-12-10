@@ -1,5 +1,5 @@
 # depth_estimator.py
-from orvis.srv import ImageDetectionResponse
+from orvis.srv import ObjectDetectionResponse
 
 class DepthEstimator:
     def __init__(self, config):

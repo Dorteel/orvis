@@ -1,5 +1,5 @@
 # image_segmenter.py
-from orvis.srv import ImageMaskDetectionResponse
+from orvis.srv import ImageSegmentationResponse
 from orvis.msg import ImageMasks, ImageMask
 from PIL import Image
 import rospy
@@ -42,7 +42,7 @@ class ImageSegmenter:
             cv_image = self.bridge.imgmsg_to_cv2(req.image, "bgr8")
         except Exception as e:
             rospy.logerr(f"Failed to convert image: {e}")
-            return ImageMaskDetectionResponse()
+            return ImageSegmentationResponse()
 
         pil_image = Image.fromarray(cv_image[:, :, ::-1])
 
@@ -72,7 +72,7 @@ class ImageSegmenter:
             mask_msg.mask = self.bridge.cv2_to_imgmsg(mask, encoding="mono8")
             image_masks.masks.append(mask_msg)
 
-        response = ImageMaskDetectionResponse()
+        response = ImageSegmentationResponse()
         response.objects = image_masks
         return response
 
@@ -115,7 +115,7 @@ class ImageSegmenter:
             image_masks.masks.append(mask_msg)
 
         # Return the response
-        response = ImageMaskDetectionResponse()
+        response = ImageSegmentationResponse()
         response.objects = image_masks  # Assign the ImageMasks object to the `objects` attribute
         return response
 
