@@ -1,0 +1,34 @@
+# dpt_hybrid_midas.yaml
+
+# Annotator-specific settings
+annotator:
+  name: dpt_hybrid_midas
+  type: DPT_DepthEstimation  # Type of model/algorithm used for this annotator
+  task_type: DepthEstimation  # Type of task performed by this annotator
+  detected_property: distance  # The property being detected (depth map)
+
+# Model-specific imports and configurations
+imports:
+  model_class: transformers.DPTForDepthEstimation  # Class to import for the model
+  processor_class: transformers.DPTImageProcessor  # Class to import for the processor
+
+model:
+  model_name: Intel/dpt-hybrid-midas  # Pretrained model name or path for depth estimation
+
+processor:
+  processor_name: Intel/dpt-hybrid-midas  # Processor name or path (same as model)
+
+# ROS topics specific to this annotator
+ros:
+  result_topic: annotators/dpt_hybrid_midas/result  # Topic for publishing depth results
+  image_topic: annotators/dpt_hybrid_midas/image  # Topic for publishing annotated images
+
+# Depth estimation-related settings
+detection:
+  confidence_threshold: 0.9  # Confidence threshold for depth predictions
+  interpolation_mode: bicubic  # Interpolation mode for resizing the depth map
+  align_corners: false  # Whether to align corners during interpolation
+
+camera:
+  device_index: 0  # Camera device index (default is 0)
+  resolution: 640x480  # Resolution of the captured frames (update as needed)

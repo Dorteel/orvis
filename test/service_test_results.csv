@@ -1,0 +1,2 @@
+service_name,service_type
+/annotators/VideoClassification/timesformer_hr_finetuned_k600/detect,orvis/VideoClassification

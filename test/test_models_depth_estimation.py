@@ -9,7 +9,7 @@ cap = cv2.VideoCapture(0)  # 0 is typically the default camera
 
 # Load the depth estimation model
 image_processor = DPTImageProcessor.from_pretrained("Intel/dpt-hybrid-midas")
-model = DPTForDepthEstimation.from_pretrained("Intel/dpt-hybrid-midas", low_cpu_mem_usage=True)
+model = DPTForDepthEstimation.from_pretrained("Intel/dpt-hybrid-midas")#, low_cpu_mem_usage=True)
 
 if not cap.isOpened():
     print("Cannot open camera")
@@ -49,7 +49,7 @@ while True:
     # Convert the prediction to a format suitable for visualization
     output = prediction.squeeze().cpu().numpy()
     formatted = (output * 255 / np.max(output)).astype("uint8")
-
+    print(formatted)
     # Display the depth map
     cv2.imshow('Depth Estimation', formatted)
 

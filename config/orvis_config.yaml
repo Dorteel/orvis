@@ -6,17 +6,19 @@ system:
   max_timing_records: 100
   model_directory: /home/user/pel_ws/models/  # Common model storage location
   camera_topic: /webcam/image_raw
-  service_to_test: /detr_resnet_50/detect  # Service to test
-  task_type: PromptedDetectionTask
+  service_to_test: /annotators/VideoClassification/timesformer_hr_finetuned_k600/detect  # Service to test
+  task_type: VideoClassification
   # service_to_test: /detr_resnet_50/detect  # Service to test
   # task_type: StandardDetectionTask
-  request_interval: 10
+  request_interval: 1
+  num_video_frames: 16 # Number of frames to collect for videos
 # Annotators
 annotators:
-  - detr_resnet_50
-  - yolos_tiny
-  - detr_resnet_50_panoptic
-  - owl_v2
+  # - detr_resnet_50
+  # - yolos_tiny
+  # - detr_resnet_50_panoptic
+  # - owl_v2
+  - timesformer_hr_finetuned_k600
   # - fruit_detector
   # - segmentation_model
 

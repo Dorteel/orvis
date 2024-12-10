@@ -8,7 +8,7 @@ from orvis.srv import PromptedObjectDetection, PromptedObjectDetectionRequest, P
 from orvis.srv import DepthEstimation, DepthEstimationRequest, DepthEstimationResponse  # Import the necessary service types
 from orvis.srv import VideoClassification, VideoClassificationRequest, VideoClassificationResponse  # Detection service
 from orvis.srv import ImageToText, ImageToTextRequest, ImageToTextResponse  # Detection service
-
+from collections import deque
 
 import rosservice
 from std_msgs.msg import String
@@ -140,8 +140,10 @@ def image_callback(img_msg):
                 request = PromptedObjectDetectionRequest(image=img_msg, prompt=prompt)
                 result = call_service(service_name, PromptedObjectDetection, request, repeat)
             elif service_type == 'orvis/VideoClassification':
-                request = VideoClassificationRequest(image=img_msg)
-                result = call_service(service_name, VideoClassification, request, repeat)
+                video_frames.append(img_msg)
+                if len(video_frames) == num_video_frames:
+                    request = VideoClassificationRequest(video_frames=video_frames)
+                    result = call_service(service_name, VideoClassification, request, repeat)
             elif service_type == 'orvis/DepthEstimation':
                 request = DepthEstimationRequest(image=img_msg)
                 result = call_service(service_name, DepthEstimation, request, repeat)
@@ -154,16 +156,18 @@ def image_callback(img_msg):
             rospy.logerr(f"Failed to test service {service_name}: {e}")
         results.append(result)
 
-    save_results_to_csv(results)
-    rospy.loginfo("Experiment timing finished. Shutting down.")
-    rospy.signal_shutdown("Service testing complete.")
+    if service_type != 'orvis/VideoClassification':
+        save_results_to_csv(results)
+        rospy.loginfo("Experiment timing finished. Shutting down.")
+        rospy.signal_shutdown("Service testing complete.")
 
 
 if __name__ == "__main__":
     rospy.init_node("service_tester")
     topic = '/webcam/image_raw'
+    num_video_frames = 16
     rospy.Subscriber(topic, Image, image_callback)
-
+    video_frames = deque(maxlen=num_video_frames)
     try:
         rospy.spin()
     except rospy.ROSInterruptException:

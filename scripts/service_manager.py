@@ -63,16 +63,15 @@ class ServiceManager:
             service = rospy.Service(service_name, ImageSegmentation, annotator.handle_request)
         elif task_type == 'DepthEstimation':
             annotator = DepthEstimator(config)
-            service = rospy.Service(service_name, ObjectDetection, annotator.handle_request)
-        elif task_type == 'HumanPoseDetection':
-            annotator = PoseDetector(config)
-            service = rospy.Service(service_name, ObjectDetection, annotator.handle_request)
+            service = rospy.Service(service_name, DepthEstimation, annotator.handle_request)
+        elif task_type == 'VideoClassification':
+            annotator = VideoClassifier(config)
+            service = rospy.Service(service_name, VideoClassification, annotator.handle_request)
         elif task_type == 'PromptedObjectDetection':
             annotator = PromptedObjectDetector(config)
             service = rospy.Service(service_name, PromptedObjectDetection, annotator.handle_request)
         elif task_type == 'ImageToText':
             annotator = ImageToTextConverter(config)
-            
             service = rospy.Service(service_name, ImageToText, annotator.handle_request)
         else:
             rospy.logwarn(f"Unknown task type: {task_type}")

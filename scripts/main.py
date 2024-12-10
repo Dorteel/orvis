@@ -6,10 +6,14 @@ import cv2
 from cv_bridge import CvBridge
 from sensor_msgs.msg import Image
 import rospkg
+import numpy as np
 from orvis.srv import ObjectDetection, ObjectDetectionRequest, ObjectDetectionResponse  # Detection service
 from orvis.srv import ImageSegmentation, ImageSegmentationRequest, ImageSegmentationResponse  # Segmentation service
 from orvis.msg import ImageMasks, ImageMask  # Import the segmentation message types
 from orvis.srv import PromptedObjectDetection, PromptedObjectDetectionRequest, PromptedObjectDetectionResponse  # Detection service
+from orvis.srv import DepthEstimation, DepthEstimationRequest, DepthEstimationResponse  # Import the necessary service types
+from orvis.srv import VideoClassification, VideoClassificationRequest, VideoClassificationResponse  # Detection service
+from collections import deque
 from std_msgs.msg import String
 
 class MainAnnotatorClient:
@@ -30,6 +34,7 @@ class MainAnnotatorClient:
         # Initialize the ROS service
         rospy.wait_for_service(self.service_name)
         self.annotator_service = rospy.ServiceProxy(self.service_name, self.service_type)
+        self.video_frames = deque(maxlen=self.num_frames)
 
         rospy.loginfo(f"Service {self.service_name} connected.")
 
@@ -57,10 +62,14 @@ class MainAnnotatorClient:
             self.service_type = ObjectDetection
         elif self.task_type == 'PromptedObjectDetection':
             self.service_type = PromptedObjectDetection
-        
+        elif self.task_type == 'DepthEstimation':
+            self.service_type = DepthEstimation
+        elif self.task_type == 'VideoClassification':
+            self.service_type = VideoClassification
         # Determine the camera topic
         self.camera_topic = self.config['system']['camera_topic']
-
+        # Determine the number of frames to collect for a video
+        self.num_frames = self.config['system']['num_video_frames']
         # Determine logging level
         self.logging_level = self.config['system']['logging_level']
 
@@ -80,6 +89,11 @@ class MainAnnotatorClient:
             self.process_prompteddetection(img_msg)
         elif self.service_type == ImageSegmentation:
             self.process_segmentation(img_msg)
+        elif self.service_type == DepthEstimation:
+            self.process_depthestimation(img_msg)
+        elif self.service_type == VideoClassification:
+            self.process_videoclassification(img_msg)
+
 
     def process_prompteddetection(self, img_msg):
         """Process image detection service requests."""
@@ -123,6 +137,40 @@ class MainAnnotatorClient:
         except Exception as e:
             rospy.logerr(f"Error processing segmentation image: {e}")
 
+    def process_depthestimation(self, img_msg):
+        """Process depth estimation service requests."""
+        try:
+            # Convert the ROS Image message to OpenCV format
+            cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+            request = DepthEstimationRequest(image=img_msg)
+            response = self.annotator_service(request)
+
+            # If logging level is DEBUG, display the bounding boxes
+            if self.logging_level == 'DEBUG':
+                self.display_depthmap(response)
+        except Exception as e:
+            rospy.logerr(f"Error processing detection image: {e}")
+
+
+    def process_videoclassification(self, img_msg):
+        """Process depth estimation service requests."""
+        try:
+            # Convert the ROS Image message to OpenCV format
+            cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+            self.video_frames.append(cv_image)
+            if len(self.video_frames) == self.num_frames:
+                ros_video_frames = [self.bridge.cv2_to_imgmsg(frame, "bgr8") for frame in self.video_frames]
+
+                request = VideoClassificationRequest(video_frames=ros_video_frames)
+                response = self.annotator_service(request)
+                rospy.loginfo(f"Detected activity: {response}")
+            else:
+                rospy.loginfo(f"Collecting frames ({len(self.video_frames)}/{self.num_frames} frames collected)")
+        except Exception as e:
+            rospy.logerr(f"Error processing detection image: {e}")
+
+# DISPLAY FUNCTIONS
+
     def display_bounding_boxes(self, image, response):
         """Display bounding boxes from the detection response."""
         for bbox in response.objects.bounding_boxes:
@@ -156,6 +204,56 @@ class MainAnnotatorClient:
             # Display the mask
             cv2.imshow('Segmentation Image', overlaid_image)
             cv2.waitKey(1)
+
+
+
+    def display_depthmap(self, response):
+        """
+        Display the depth map from a DepthEstimationResponse.
+
+        Args:
+            response (DepthEstimationResponse): The response containing the depth map.
+
+        Returns:
+            None
+        """
+        try:
+            # Extract metadata
+            width = response.depth_map.width
+            height = response.depth_map.height
+
+            # Decode raw byte data if necessary
+            if isinstance(response.depth_map.data, bytes):
+                depth_data = np.frombuffer(response.depth_map.data, dtype=np.uint8).astype(np.float32)
+            else:
+                depth_data = np.array(response.depth_map.data, dtype=np.float32)
+
+            # Check if reshaping is possible
+            if depth_data.size != width * height:
+                rospy.logerr(
+                    f"Mismatch in depth data size ({depth_data.size}) and dimensions ({width}x{height})"
+                )
+                return
+
+            # Reshape to original dimensions
+            depth_data = depth_data.reshape((height, width))
+
+            # Normalize depth values for visualization
+            max_value = depth_data.max()
+            if max_value <= 0:
+                rospy.logerr("Invalid max value in depth data. Cannot normalize.")
+                return
+
+            formatted_depth = (depth_data * 255 / max_value).astype("uint8")
+
+            # Display the depth map
+            cv2.imshow("Depth Estimation", formatted_depth)
+            rospy.loginfo("Press any key in the display window to exit.")
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+
+        except Exception as e:
+            rospy.logerr(f"Failed to display depth map: {e}")
 
 
 if __name__ == "__main__":
