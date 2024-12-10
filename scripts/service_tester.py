@@ -163,6 +163,7 @@ def image_callback(img_msg):
 
 
 if __name__ == "__main__":
+    service_type = ''
     rospy.init_node("service_tester")
     topic = '/webcam/image_raw'
     num_video_frames = 16

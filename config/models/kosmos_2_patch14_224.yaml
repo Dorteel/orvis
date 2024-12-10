@@ -1,0 +1,32 @@
+# Annotator-specific settings
+annotator:
+  name: kosmos_2_patch14_224
+  type: Kosmos2_ImageToText  # Type of model/algorithm used for this annotator
+  task_type: ImageToText  # Task type performed by this annotator
+  detected_property: description_and_entities  # The property being detected (text + bounding boxes)
+
+# Model-specific imports and configurations
+imports:
+  model_class: transformers.AutoModelForVision2Seq  # Class to import for the model
+  processor_class: transformers.AutoProcessor  # Class to import for the processor
+
+model:
+  model_name: microsoft/kosmos-2-patch14-224  # Pretrained model name or path
+
+processor:
+  processor_name: microsoft/kosmos-2-patch14-224  # Processor name or path (same as model)
+
+# ROS topics specific to this annotator
+ros:
+  result_topic: annotators/kosmos_2_patch14_224/result  # Topic for publishing detection results
+  image_topic: annotators/kosmos_2_patch14_224/image  # Topic for publishing annotated images
+
+# Text generation-related settings
+generation:
+  prompt: "<grounding>An image of"  # Prompt used for generating descriptions
+  max_new_tokens: 128  # Maximum number of tokens for text generation
+  use_cache: true  # Whether to use caching during generation
+
+# Bounding box and entity extraction settings
+detection:
+  cleanup_and_extract: true  # Whether to clean up and extract entities from the generated text
