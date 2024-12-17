@@ -72,6 +72,7 @@ add_service_files(
   VideoClassification.srv
   ImageToText.srv
   DepthEstimation.srv
+  LoadModels.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -180,6 +181,7 @@ catkin_install_python(PROGRAMS
   scripts/main.py
   scripts/task_selector.py
   scripts/service_tester.py
+  scripts/model_loader.py
   test/webcam.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

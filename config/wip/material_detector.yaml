@@ -5,7 +5,7 @@ annotator:
   name: material_detector
   type: YOLO_ViT  # Type of model/algorithm used for this annotator
   task_type: ObjectDetection  # Type of task performed by this annotator
-  detected_property: material  # The property that is being detected (in this case, material)
+  detected_property: MaterialName  # The property that is being detected (in this case, material)
 
 # Model-specific imports and configurations
 imports:

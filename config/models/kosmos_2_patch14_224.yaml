@@ -3,7 +3,7 @@ annotator:
   name: kosmos_2_patch14_224
   type: Kosmos2_ImageToText  # Type of model/algorithm used for this annotator
   task_type: ImageToText  # Task type performed by this annotator
-  detected_property: description_and_entities  # The property being detected (text + bounding boxes)
+  detected_property: ObjectType  # The property being detected (text + bounding boxes)
 
 # Model-specific imports and configurations
 imports:

@@ -5,7 +5,7 @@ annotator:
   name: dpt_hybrid_midas
   type: DPT_DepthEstimation  # Type of model/algorithm used for this annotator
   task_type: DepthEstimation  # Type of task performed by this annotator
-  detected_property: distance  # The property being detected (depth map)
+  detected_property: Distance  # The property being detected (depth map)
 
 # Model-specific imports and configurations
 imports:

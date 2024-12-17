@@ -3,9 +3,9 @@
 # Annotator-specific settings
 annotator:
   name: yolos_tiny
-  type: YOLOS  # Type of model/algorithm used for this annotator
+  type: YOLO  # Type of model/algorithm used for this annotator
   task_type: ObjectDetection  # Type of task performed by this annotator
-  detected_property: class  # The property that is being detected (in this case, object class)
+  detected_property: ObjectType  # The property that is being detected (in this case, object class)
 
 # Model-specific imports and configurations
 imports:

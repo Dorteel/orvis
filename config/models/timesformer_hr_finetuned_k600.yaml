@@ -5,7 +5,7 @@ annotator:
   name: timesformer_hr_finetuned_k600
   type: Timesformer_VideoClassifier  # Type of model/algorithm used for this annotator
   task_type: VideoClassification  # Task type performed by this annotator
-  detected_property: action_class  # The property being detected (e.g., action class)
+  detected_property: ActivityType  # The property being detected (e.g., action class)
 
 # Model-specific imports and configurations
 imports:

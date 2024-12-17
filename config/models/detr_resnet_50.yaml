@@ -5,7 +5,7 @@ annotator:
   name: detr_resnet_50
   type: DETR  # Type of model/algorithm used for this annotator
   task_type: ObjectDetection  # Type of task performed by this annotator
-  detected_property: class  # The property that is being detected (in this case, object)
+  detected_property: ObjectType  # The property that is being detected (in this case, object)
 
 # Model-specific imports and configurations
 imports:
