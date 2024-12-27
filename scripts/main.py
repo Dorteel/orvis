@@ -57,7 +57,8 @@ class MainAnnotatorClient:
 
         # Determine service to test (can be adjusted to allow dynamic selection)
         self.service_name = self.config['system']['service_to_test']
-        self.task_type = self.config['system']['task_type']
+        self.task_type = self.service_name.split('/')[2]
+
         if self.task_type == 'ImageSegmentation':
             self.service_type = ImageSegmentation 
         elif self.task_type == 'ObjectDetection':
@@ -70,6 +71,8 @@ class MainAnnotatorClient:
             self.service_type = VideoClassification
         elif self.task_type == 'ImageToText':
             self.service_type = ImageToText
+        else:
+            raise NameError("Service type not recognized. Check the name of the services.")
         # Determine the camera topic
         self.camera_topic = self.config['system']['camera_topic']
         # Determine the number of frames to collect for a video
