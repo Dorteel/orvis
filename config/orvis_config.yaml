@@ -5,9 +5,10 @@ system:
   logging_level: DEBUG
   max_timing_records: 100
   model_directory: /home/user/pel_ws/models/  # Common model storage location
+  orka_path: /home/user/pel_ws/src/orvis/orka/orka_orvis.owl
   camera_topic: /webcam/image_raw
   # service_to_test: /annotators/ImageToText/kosmos_2_patch14_224/detect  # Service to test
-  service_to_test: /annotators/VideoClassification/timesformer_hr_finetuned_k600/detect
+  service_to_test: /annotators/ImageSegmentation/detr_resnet_50_panoptic/detect # /annotators/ImageSegmentation/segformer_b1/detect
   # task_type: VideoClassification
   # service_to_test: /detr_resnet_50/detect  # Service to test
   # task_type: StandardDetectionTask
@@ -24,7 +25,7 @@ annotators:
    - owl_v2
    - kosmos_2_patch14_224
    - timesformer_hr_finetuned_k600
-   
+
 # ROS parameters
 ros:
   node_name: orvis_annotators_node

@@ -175,7 +175,7 @@ def load_models(updated_ontology_name):
                             # label_class = types.new_class(formatted_label, (detecting_class))
 
                             # types.new_class(formatted_label, (detected_property_class,))
-                            annotator_class.is_a.append(ontology.canDetect.some(label_class))
+                            # annotator_class.is_a.append(ontology.canDetect.some(label_class)) # This class axiom is removed due to not being used
 
                 # Add the SWRL rules
                 rospy.loginfo(f"Adding SWRL rule for {annotator_class} to the ontology...")

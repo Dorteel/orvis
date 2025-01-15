@@ -7,13 +7,15 @@ from cv_bridge import CvBridge
 from sensor_msgs.msg import Image
 import rospkg
 import numpy as np
+
+from orvis.msg import ImageMasks, ImageMask  # Import the segmentation message types
+
 from orvis.srv import ObjectDetection, ObjectDetectionRequest, ObjectDetectionResponse  # Detection service
 from orvis.srv import ImageSegmentation, ImageSegmentationRequest, ImageSegmentationResponse  # Segmentation service
-from orvis.msg import ImageMasks, ImageMask  # Import the segmentation message types
-from orvis.srv import PromptedObjectDetection, PromptedObjectDetectionRequest, PromptedObjectDetectionResponse  # Detection service
-from orvis.srv import DepthEstimation, DepthEstimationRequest, DepthEstimationResponse  # Import the necessary service types
-from orvis.srv import VideoClassification, VideoClassificationRequest, VideoClassificationResponse  # Detection service
-from orvis.srv import ImageToText, ImageToTextRequest, ImageToTextResponse  # Detection service
+from orvis.srv import PromptedObjectDetection, PromptedObjectDetectionRequest, PromptedObjectDetectionResponse  # PromptedObjectDetection service
+from orvis.srv import DepthEstimation, DepthEstimationRequest, DepthEstimationResponse  # DepthEstimation service
+from orvis.srv import VideoClassification, VideoClassificationRequest, VideoClassificationResponse  # VideoClassification service
+from orvis.srv import ImageToText, ImageToTextRequest, ImageToTextResponse  # ImageToText service
 
 from collections import deque
 from std_msgs.msg import String

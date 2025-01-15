@@ -1,60 +1,37 @@
-food_wikidata_ids = {
-    "Apple": "Q89",
-    "Asparagus": "Q28367",
-    "Avocado": "Q961769",
-    "Banana": "Q503",
-    "Beef Pattie": "Q192628",
-    "Bell Pepper": "Q201959",
-    "Biscuits": "Q13266",
-    "Bread Slice": "Q7802",
-    "Broccoli": "Q47722",
-    "Broth": "Q275068",
-    "Burger Bun": "Q117234715",
-    "Cake Slice": "Q13276",
-    "Carrot": "Q81",
-    "Cheese": "Q10943",
-    "Cheese Slice": "Q10943",
-    "Chips": "Q152088",
-    "Cookie": "Q13266",
-    "Corn": "Q11575",
-    "Cucumber": "Q2735883",
-    "Cupcake": "Q816851",
-    "Dishwasher": "Q80228",
-    "Donuts": "Q192783",
-    "Drink Can": "Q1121690",
-    "Egg": "Q93189",
-    "Eggplant": "Q12533094",
-    "Food Can": "Q2846150",
-    "French Fries": "Q152088",
-    "French Fries Box": "Q987767",
-    "Grapes": "Q10978",
-    "Hot Dog Bun": "Q23004",
-    "Ice Cream": "Q13233",
-    "Jar": "Q1207302",
-    "Juice Bottle": "Q80228",
-    "Ketchup Bottle": "Q178143",
-    "Lemon": "Q1093742",
-    "Lettuce": "Q83193",
-    "Milk Carton": "Q1144411",
-    "Mushrooms": "Q654236",
-    "Oil Bottle": "Q80228",
-    "Orange": "Q13191",
-    "Pear": "Q13099586",
-    "Pepper": "Q201959",
-    "Pineapple": "Q10817602",
-    "Pizza": "Q177",
-    "Potato": "Q16587531",
-    "Salt & Pepper": "Q1501968",
-    "Sauce Bottles": "Q80228",
-    "Sausage": "Q131419",
-    "Seasoning": "Q773108",
-    "Snack": "Q749316",
-    "Steak": "Q213062",
-    "Strawberry": "Q745",
-    "Sunny-side up Egg": "Q93189",
-    "Tomato": "Q20638126",
-    "Tomato Slice": "Q20638126",
-    "Waffle": "Q375",
-    "Water Bottles": "Q80228",
-    "Watermelon": "Q38645"
-}
+import rospy
+
+
+def query_orka(query):
+    """
+    Queries the knowledge base
+    """
+    pass
+
+
+def locate_object(object):
+    """
+    Locates the given object
+    """
+    # Which of the annotators is able to detect the fruit?
+    capable_annotators = query_orka(object)
+    
+    # Try out each of the annotators
+    for annotator in capable_annotators:
+        # Call annotator service
+        request = ObjectDetectionRequest(image=img_msg)
+        response = annotator_service(request)
+        
+
+
+
+if __name__ == "__main__":
+
+    # Food salad items
+    fruit_salad_items = ['Banana', 'Apple', 'Strawberry', 'Orange', 'Pineapple']
+
+    # 
+    for fruit in fruit_salad_items:
+        rospy.loginfo(f"Processing {fruit}...")
+        fruit_position = locate_object(fruit)
+
+
