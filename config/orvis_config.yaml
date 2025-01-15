@@ -13,7 +13,8 @@ system:
   # task_type: StandardDetectionTask
   request_interval: 1
   num_video_frames: 16 # Number of frames to collect for videos
-# Annotators
+
+# Annotators to start up
 annotators:
    - detr_resnet_50
    - segformer_b1
@@ -23,6 +24,7 @@ annotators:
    - owl_v2
    - kosmos_2_patch14_224
    - timesformer_hr_finetuned_k600
+   
 # ROS parameters
 ros:
   node_name: orvis_annotators_node

@@ -1,5 +1,7 @@
 #!/home/user/pel_ws/pel_venv/bin/python
 
+# This file takes the model configurations, and adds each available model to ORKA
+
 import rospy
 import os
 import yaml
@@ -7,13 +9,13 @@ import types
 
 from xml.etree import ElementTree as ET
 
-from owlready2 import get_ontology
+from owlready2 import get_ontology, sync_reasoner_pellet, Imp
 from orvis.srv import LoadModels, LoadModelsResponse  # Updated service definition
 
 # Constants for paths
 BASE_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 MODEL_PATH = os.path.join(BASE_PATH, "orvis/config/models")
-ONTOLOGY_PATH = os.path.join(BASE_PATH, "orvis/orka/owl/orka.owl")
+ONTOLOGY_PATH = os.path.join(BASE_PATH, "orvis/orka/orka.owl")
 
 
 def fix_ontology_imports(ontology_path, fixed_ontology_path):
@@ -135,6 +137,15 @@ def load_models(updated_ontology_name):
                     annotator_class = getattr(ontology, annotator_class_name)
                     rospy.loginfo(f"Class {annotator_class_name} found: {annotator_class}")
 
+                # Create a class for grouping the objects detectable
+                detecting_class_name = f'EntitiesDetectectableBy{annotator_class_name}'
+                try:
+                    rospy.loginfo(f"Creating subclass '{detecting_class_name}' for algorithm type '{ontology.DetectableEntity}'.")
+                    with ontology:
+                        detecting_class = types.new_class(detecting_class_name, (ontology.DetectableEntity, ))
+                except Exception as e:
+                    rospy.logerr(f"Error adding class {detecting_class_name} to the ontology: {e}")
+
                 # Create an instance of the annotator class
                 annotator_instance = annotator_class(annotator_name)
 
@@ -143,7 +154,6 @@ def load_models(updated_ontology_name):
                     for label in detected_labels:
                         # Format labels
                         formatted_label = label.replace(' ', '_').capitalize()
-                        print(formatted_label)
                         # Add the detected property
                         if getattr(ontology, detected_property) is not None:
                             detected_property_class = getattr(ontology, detected_property)
@@ -151,24 +161,32 @@ def load_models(updated_ontology_name):
                             print(f"Can't find property {detected_property} in the ontology")
                             continue
                         # Ensure the labels are in the ontology
-                        
-                        if not hasattr(ontology, formatted_label) or getattr(ontology, formatted_label) is None:
-                            rospy.loginfo(f"Creating subclass '{formatted_label}' for '{detected_property_class}'.")
-                            with ontology:
-                                if detected_property == 'ObjectType':
-                                    label_class = types.new_class(formatted_label, (ontology.PhysicalEntity,))
-                                elif detected_property == 'ActivityType':
-                                    label_class = types.new_class(formatted_label, (ontology.Activity,))
-                                else:
-                                    label_class = types.new_class(formatted_label, (detected_property_class,))                        
-                                annotator_class.is_a.append(ontology.canDetect.some(label_class))
-                # Assign properties to the annotator instance
+                        #if not hasattr(ontology, formatted_label) or getattr(ontology, formatted_label) is None:
+                        rospy.loginfo(f"Creating subclass '{formatted_label}' for '{detected_property_class}'.")
+                        with ontology:
+                            if detected_property == 'ObjectType':
+                                label_class = types.new_class(formatted_label, (ontology.PhysicalEntity,))
+                            elif detected_property == 'ActivityType':
+                                label_class = types.new_class(formatted_label, (ontology.Activity,))
+                            else:
+                                label_class = types.new_class(formatted_label, (detected_property_class,))                        
+                            label_class = types.new_class(formatted_label, (detecting_class,))
+                            # Also add the class as a DetectableBy
+                            # label_class = types.new_class(formatted_label, (detecting_class))
 
-                # annotator_instance.task_type = task_type
-                # annotator_instance.model_class = model_class
-                # annotator_instance.processor_class = processor_class
-                # annotator_instance.capabilities = detected_property
+                            # types.new_class(formatted_label, (detected_property_class,))
+                            annotator_class.is_a.append(ontology.canDetect.some(label_class))
 
+                # Add the SWRL rules
+                rospy.loginfo(f"Adding SWRL rule for {annotator_class} to the ontology...")
+                try:
+                    with ontology:
+                        rule = Imp()
+                        rule_text = """{}(?a), {}(?entity) -> canDetect(?a, ?entity)""".format(str(annotator_class).split('.')[-1], str(detecting_class).split('.')[-1])
+                        rule.set_as_rule(rule_text)
+                        rospy.loginfo(f"...Added SWRL rule to the ontology...")
+                except Exception as e:
+                    rospy.logerr(f"Failed to add SWRL rule")
                 rospy.loginfo(f"Added annotator '{annotator_name}' to the ontology.")
                 added_annotators.append(annotator_name)
 
@@ -177,11 +195,19 @@ def load_models(updated_ontology_name):
             except Exception as e:
                 rospy.logerr(f"Error adding annotator {annotator_name} to the ontology: {e}")
 
+
     # Save the updated ontology
     updated_ontology_path = os.path.join(os.path.dirname(ONTOLOGY_PATH), updated_ontology_name)
 
     try:
-        ontology.save(file=updated_ontology_path)
+        with ontology:
+            # Save the inferred ontology
+            rospy.loginfo(f"Materializing knowledge graph...")
+            sync_reasoner_pellet(infer_property_values = True, infer_data_property_values = True, debug = 0)
+            # Save the inferred ontology
+            rospy.loginfo(f"Saving inferred knowledge graph...")   
+            ontology.save(file=updated_ontology_path, format="rdfxml")
+
         rospy.loginfo(f"Ontology updated and saved at {updated_ontology_path}.")
         return f"Done. Annotators added: {', '.join(added_annotators)}"
     except Exception as e:
