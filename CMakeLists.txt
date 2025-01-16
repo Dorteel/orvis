@@ -182,6 +182,7 @@ catkin_install_python(PROGRAMS
   scripts/task_selector.py
   scripts/service_tester.py
   scripts/model_loader.py
+  scripts/experiment.py
   test/webcam.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

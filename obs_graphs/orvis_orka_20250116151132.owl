@@ -12508,174 +12508,344 @@ TODO: Need to add frame of reference as coordinates (measurements)</rdfs:comment
   <rdf:type rdf:resource="#Timesformer_VideoClassifier"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#obs_20250115183402">
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#obs_20250116151137">
   <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Observation"/>
-  <oboe:hasMeasurement rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_20250115183402"/>
-  <oboe:ofEntity rdf:resource="#ent_20250115183402"/>
+  <oboe:hasMeasurement rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511372186"/>
+  <oboe:ofEntity rdf:resource="#ent_202501161511372186"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ent_20250115183402">
-  <rdf:type rdf:resource="#PhysicalEntity"/>
+<owl:NamedIndividual rdf:about="#ent_202501161511372186">
+  <rdf:type rdf:resource="#Person"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#loc_20250115183402">
+<owl:NamedIndividual rdf:about="#loc_202501161511372186">
   <rdf:type rdf:resource="#Location"/>
-  <oboe:characteristicFor rdf:resource="#ent_20250115183402"/>
-  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">270, 262</hasValue>
+  <oboe:characteristicFor rdf:resource="#ent_202501161511372186"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">304, 292</hasValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_20250115183402">
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511372186">
   <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Measurement"/>
-  <sosa:hasResult rdf:resource="http://www.w3.org/ns/sosa/res_20250115183402"/>
-  <oboe:ofCharacteristic rdf:resource="#loc_20250115183402"/>
+  <sosa:hasResult rdf:resource="http://www.w3.org/ns/sosa/res_202501161511372186"/>
+  <oboe:ofCharacteristic rdf:resource="#loc_202501161511372186"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="http://www.w3.org/ns/sosa/res_20250115183402">
+<owl:NamedIndividual rdf:about="http://www.w3.org/ns/sosa/res_202501161511372186">
   <rdf:type rdf:resource="http://www.w3.org/ns/sosa/Result"/>
-  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class: "a man wearing headphones"
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class: "person"
 additional_label: ''
-probability: 1.0
-xmin: 10
-ymin: 52
-xmax: 530
-ymax: 472</hasValue>
-  <hasProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</hasProbability>
+probability: 0.9966282248497009
+xmin: 71
+ymin: 108
+xmax: 537
+ymax: 477</hasValue>
+  <hasProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.9966282248497009</hasProbability>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#obs_20250115183405">
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#obs_20250116151138">
   <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Observation"/>
-  <oboe:hasMeasurement rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_20250115183405"/>
-  <oboe:ofEntity rdf:resource="#ent_20250115183405"/>
+  <oboe:hasMeasurement rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511389449"/>
+  <oboe:ofEntity rdf:resource="#ent_202501161511389449"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ent_20250115183405">
-  <rdf:type rdf:resource="#PhysicalEntity"/>
+<owl:NamedIndividual rdf:about="#ent_202501161511389449">
+  <rdf:type rdf:resource="#Person"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#loc_20250115183405">
+<owl:NamedIndividual rdf:about="#loc_202501161511389449">
   <rdf:type rdf:resource="#Location"/>
-  <oboe:characteristicFor rdf:resource="#ent_20250115183405"/>
-  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">270, 262</hasValue>
+  <oboe:characteristicFor rdf:resource="#ent_202501161511389449"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">305, 292</hasValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_20250115183405">
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511389449">
   <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Measurement"/>
-  <sosa:hasResult rdf:resource="http://www.w3.org/ns/sosa/res_20250115183405"/>
-  <oboe:ofCharacteristic rdf:resource="#loc_20250115183405"/>
+  <sosa:hasResult rdf:resource="http://www.w3.org/ns/sosa/res_202501161511389449"/>
+  <oboe:ofCharacteristic rdf:resource="#loc_202501161511389449"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="http://www.w3.org/ns/sosa/res_20250115183405">
+<owl:NamedIndividual rdf:about="http://www.w3.org/ns/sosa/res_202501161511389449">
   <rdf:type rdf:resource="http://www.w3.org/ns/sosa/Result"/>
-  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class: "a man wearing headphones"
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class: "person"
 additional_label: ''
-probability: 1.0
-xmin: 10
-ymin: 52
-xmax: 530
-ymax: 472</hasValue>
-  <hasProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</hasProbability>
+probability: 0.9973293542861938
+xmin: 73
+ymin: 108
+xmax: 538
+ymax: 477</hasValue>
+  <hasProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.9973293542861938</hasProbability>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#obs_20250115183408">
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#obs_20250116151139">
   <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Observation"/>
-  <oboe:hasMeasurement rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_20250115183408"/>
-  <oboe:ofEntity rdf:resource="#ent_20250115183408"/>
+  <oboe:hasMeasurement rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511394897"/>
+  <oboe:ofEntity rdf:resource="#ent_202501161511394897"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ent_20250115183408">
-  <rdf:type rdf:resource="#PhysicalEntity"/>
+<owl:NamedIndividual rdf:about="#ent_202501161511394897">
+  <rdf:type rdf:resource="#Person"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#loc_20250115183408">
+<owl:NamedIndividual rdf:about="#loc_202501161511394897">
   <rdf:type rdf:resource="#Location"/>
-  <oboe:characteristicFor rdf:resource="#ent_20250115183408"/>
-  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">270, 262</hasValue>
+  <oboe:characteristicFor rdf:resource="#ent_202501161511394897"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">304, 291</hasValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_20250115183408">
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511394897">
   <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Measurement"/>
-  <sosa:hasResult rdf:resource="http://www.w3.org/ns/sosa/res_20250115183408"/>
-  <oboe:ofCharacteristic rdf:resource="#loc_20250115183408"/>
+  <sosa:hasResult rdf:resource="http://www.w3.org/ns/sosa/res_202501161511394897"/>
+  <oboe:ofCharacteristic rdf:resource="#loc_202501161511394897"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="http://www.w3.org/ns/sosa/res_20250115183408">
+<owl:NamedIndividual rdf:about="http://www.w3.org/ns/sosa/res_202501161511394897">
   <rdf:type rdf:resource="http://www.w3.org/ns/sosa/Result"/>
-  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class: "a man wearing headphones"
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class: "person"
 additional_label: ''
-probability: 1.0
-xmin: 10
-ymin: 52
-xmax: 530
-ymax: 472</hasValue>
-  <hasProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</hasProbability>
+probability: 0.9971044659614563
+xmin: 71
+ymin: 106
+xmax: 537
+ymax: 477</hasValue>
+  <hasProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.9971044659614563</hasProbability>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#obs_20250115183411">
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#obs_20250116151140">
   <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Observation"/>
-  <oboe:hasMeasurement rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_20250115183411"/>
-  <oboe:ofEntity rdf:resource="#ent_20250115183411"/>
+  <oboe:hasMeasurement rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511409803"/>
+  <oboe:ofEntity rdf:resource="#ent_202501161511409803"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ent_20250115183411">
-  <rdf:type rdf:resource="#PhysicalEntity"/>
+<owl:NamedIndividual rdf:about="#ent_202501161511409803">
+  <rdf:type rdf:resource="#Person"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#loc_20250115183411">
+<owl:NamedIndividual rdf:about="#loc_202501161511409803">
   <rdf:type rdf:resource="#Location"/>
-  <oboe:characteristicFor rdf:resource="#ent_20250115183411"/>
-  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">270, 262</hasValue>
+  <oboe:characteristicFor rdf:resource="#ent_202501161511409803"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">303, 292</hasValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_20250115183411">
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511409803">
   <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Measurement"/>
-  <sosa:hasResult rdf:resource="http://www.w3.org/ns/sosa/res_20250115183411"/>
-  <oboe:ofCharacteristic rdf:resource="#loc_20250115183411"/>
+  <sosa:hasResult rdf:resource="http://www.w3.org/ns/sosa/res_202501161511409803"/>
+  <oboe:ofCharacteristic rdf:resource="#loc_202501161511409803"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="http://www.w3.org/ns/sosa/res_20250115183411">
+<owl:NamedIndividual rdf:about="http://www.w3.org/ns/sosa/res_202501161511409803">
   <rdf:type rdf:resource="http://www.w3.org/ns/sosa/Result"/>
-  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class: "a man wearing headphones"
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class: "person"
 additional_label: ''
-probability: 1.0
-xmin: 10
-ymin: 52
-xmax: 530
-ymax: 472</hasValue>
-  <hasProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</hasProbability>
+probability: 0.9971812963485718
+xmin: 70
+ymin: 107
+xmax: 537
+ymax: 477</hasValue>
+  <hasProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.9971812963485718</hasProbability>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#obs_20250115183414">
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#obs_20250116151141">
   <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Observation"/>
-  <oboe:hasMeasurement rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_20250115183414"/>
-  <oboe:ofEntity rdf:resource="#ent_20250115183414"/>
+  <oboe:hasMeasurement rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511415009"/>
+  <oboe:ofEntity rdf:resource="#ent_202501161511415009"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ent_20250115183414">
-  <rdf:type rdf:resource="#PhysicalEntity"/>
+<owl:NamedIndividual rdf:about="#ent_202501161511415009">
+  <rdf:type rdf:resource="#Person"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#loc_20250115183414">
+<owl:NamedIndividual rdf:about="#loc_202501161511415009">
   <rdf:type rdf:resource="#Location"/>
-  <oboe:characteristicFor rdf:resource="#ent_20250115183414"/>
-  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">270, 262</hasValue>
+  <oboe:characteristicFor rdf:resource="#ent_202501161511415009"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">304, 292</hasValue>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_20250115183414">
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511415009">
   <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Measurement"/>
-  <sosa:hasResult rdf:resource="http://www.w3.org/ns/sosa/res_20250115183414"/>
-  <oboe:ofCharacteristic rdf:resource="#loc_20250115183414"/>
+  <sosa:hasResult rdf:resource="http://www.w3.org/ns/sosa/res_202501161511415009"/>
+  <oboe:ofCharacteristic rdf:resource="#loc_202501161511415009"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="http://www.w3.org/ns/sosa/res_20250115183414">
+<owl:NamedIndividual rdf:about="http://www.w3.org/ns/sosa/res_202501161511415009">
   <rdf:type rdf:resource="http://www.w3.org/ns/sosa/Result"/>
-  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class: "a man wearing headphones"
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class: "person"
 additional_label: ''
-probability: 1.0
-xmin: 10
-ymin: 52
-xmax: 530
-ymax: 472</hasValue>
-  <hasProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</hasProbability>
+probability: 0.9968500733375549
+xmin: 71
+ymin: 107
+xmax: 538
+ymax: 477</hasValue>
+  <hasProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.9968500733375549</hasProbability>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#obs_20250116151142">
+  <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Observation"/>
+  <oboe:hasMeasurement rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511429272"/>
+  <oboe:ofEntity rdf:resource="#ent_202501161511429272"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ent_202501161511429272">
+  <rdf:type rdf:resource="#Person"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#loc_202501161511429272">
+  <rdf:type rdf:resource="#Location"/>
+  <oboe:characteristicFor rdf:resource="#ent_202501161511429272"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">305, 291</hasValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511429272">
+  <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Measurement"/>
+  <sosa:hasResult rdf:resource="http://www.w3.org/ns/sosa/res_202501161511429272"/>
+  <oboe:ofCharacteristic rdf:resource="#loc_202501161511429272"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.w3.org/ns/sosa/res_202501161511429272">
+  <rdf:type rdf:resource="http://www.w3.org/ns/sosa/Result"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class: "person"
+additional_label: ''
+probability: 0.9960021376609802
+xmin: 70
+ymin: 106
+xmax: 541
+ymax: 477</hasValue>
+  <hasProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.9960021376609802</hasProbability>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#obs_20250116151143">
+  <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Observation"/>
+  <oboe:hasMeasurement rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511433086"/>
+  <oboe:ofEntity rdf:resource="#ent_202501161511433086"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ent_202501161511433086">
+  <rdf:type rdf:resource="#Person"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#loc_202501161511433086">
+  <rdf:type rdf:resource="#Location"/>
+  <oboe:characteristicFor rdf:resource="#ent_202501161511433086"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">304, 291</hasValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511433086">
+  <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Measurement"/>
+  <sosa:hasResult rdf:resource="http://www.w3.org/ns/sosa/res_202501161511433086"/>
+  <oboe:ofCharacteristic rdf:resource="#loc_202501161511433086"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.w3.org/ns/sosa/res_202501161511433086">
+  <rdf:type rdf:resource="http://www.w3.org/ns/sosa/Result"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class: "person"
+additional_label: ''
+probability: 0.9966591596603394
+xmin: 70
+ymin: 106
+xmax: 539
+ymax: 477</hasValue>
+  <hasProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.9966591596603394</hasProbability>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#obs_20250116151144">
+  <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Observation"/>
+  <oboe:hasMeasurement rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511442254"/>
+  <oboe:ofEntity rdf:resource="#ent_202501161511442254"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ent_202501161511442254">
+  <rdf:type rdf:resource="#Person"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#loc_202501161511442254">
+  <rdf:type rdf:resource="#Location"/>
+  <oboe:characteristicFor rdf:resource="#ent_202501161511442254"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">302, 292</hasValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511442254">
+  <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Measurement"/>
+  <sosa:hasResult rdf:resource="http://www.w3.org/ns/sosa/res_202501161511442254"/>
+  <oboe:ofCharacteristic rdf:resource="#loc_202501161511442254"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.w3.org/ns/sosa/res_202501161511442254">
+  <rdf:type rdf:resource="http://www.w3.org/ns/sosa/Result"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class: "person"
+additional_label: ''
+probability: 0.9966296553611755
+xmin: 68
+ymin: 107
+xmax: 537
+ymax: 477</hasValue>
+  <hasProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.9966296553611755</hasProbability>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#obs_20250116151145">
+  <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Observation"/>
+  <oboe:hasMeasurement rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511456139"/>
+  <oboe:ofEntity rdf:resource="#ent_202501161511456139"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ent_202501161511456139">
+  <rdf:type rdf:resource="#Person"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#loc_202501161511456139">
+  <rdf:type rdf:resource="#Location"/>
+  <oboe:characteristicFor rdf:resource="#ent_202501161511456139"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">304, 292</hasValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511456139">
+  <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Measurement"/>
+  <sosa:hasResult rdf:resource="http://www.w3.org/ns/sosa/res_202501161511456139"/>
+  <oboe:ofCharacteristic rdf:resource="#loc_202501161511456139"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.w3.org/ns/sosa/res_202501161511456139">
+  <rdf:type rdf:resource="http://www.w3.org/ns/sosa/Result"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class: "person"
+additional_label: ''
+probability: 0.9961407780647278
+xmin: 69
+ymin: 107
+xmax: 540
+ymax: 477</hasValue>
+  <hasProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.9961407780647278</hasProbability>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#obs_20250116151146">
+  <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Observation"/>
+  <oboe:hasMeasurement rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511468107"/>
+  <oboe:ofEntity rdf:resource="#ent_202501161511468107"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ent_202501161511468107">
+  <rdf:type rdf:resource="#Person"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#loc_202501161511468107">
+  <rdf:type rdf:resource="#Location"/>
+  <oboe:characteristicFor rdf:resource="#ent_202501161511468107"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">312, 291</hasValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#mes_202501161511468107">
+  <rdf:type rdf:resource="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#Measurement"/>
+  <sosa:hasResult rdf:resource="http://www.w3.org/ns/sosa/res_202501161511468107"/>
+  <oboe:ofCharacteristic rdf:resource="#loc_202501161511468107"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://www.w3.org/ns/sosa/res_202501161511468107">
+  <rdf:type rdf:resource="http://www.w3.org/ns/sosa/Result"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Class: "person"
+additional_label: ''
+probability: 0.9969667792320251
+xmin: 86
+ymin: 105
+xmax: 538
+ymax: 477</hasValue>
+  <hasProbability rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.9969667792320251</hasProbability>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#hasPrecision">

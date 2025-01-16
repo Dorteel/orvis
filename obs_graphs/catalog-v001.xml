@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1736965483663" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250115192417.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1736965483663" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250115191448.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1736965483663" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250115185228.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1736965483663" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250115191859.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1736965483663" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250115183443.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1736965483663" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250115190651.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1736965483663" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250115190907.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1736965483663" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250115192219.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1736965483663" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250115183736.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1736965483663" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250115185411.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1736965483663" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250115183353.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1737036722292" name="https://w3id.org/def/orka" uri="orvis_orka_20250116151132.owl"/>
     </group>
 </catalog>
