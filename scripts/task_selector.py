@@ -56,6 +56,7 @@ class TaskSelector:
         self.sosa = self.orka.get_namespace("http://www.w3.org/ns/sosa/") 
         self.oboe = self.orka.get_namespace("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#")
         self.ssn = self.orka.get_namespace("http://www.w3.org/ns/ssn/")  
+    
 
         # Subscribe to the appropriate image topic
         rospy.Subscriber(self.camera_topic, Image, self.image_callback)
@@ -101,6 +102,7 @@ class TaskSelector:
 
     def image_callback(self, img_msg):
         """Callback for the image topic."""
+
         current_time = rospy.Time.now()
         if (current_time - self.last_request_time) < self.request_interval:
             return  # Skip if the time interval hasn't passed

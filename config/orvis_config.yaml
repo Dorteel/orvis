@@ -2,7 +2,7 @@
 
 # General settings
 system:
-  logging_level: DEBUG
+  logging_level: LIVE # DEBUG
   max_timing_records: 100
   model_directory: /home/user/pel_ws/models/  # Common model storage location
   orka_path: /home/user/pel_ws/src/orvis/orka/orka_orvis.owl
