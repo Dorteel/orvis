@@ -3,6 +3,8 @@ import rospy
 import rospkg
 import actionlib
 
+from orvis.msg import PickPlaceAction, PickPlaceGoal
+
 import yaml
 import cv2
 
@@ -190,6 +192,32 @@ class TaskSelector:
         timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
         observation_id = 'obs_' + timestamp  # Format: YYYYMMDDHHMMSS
         obs_instance = self.oboe.Observation(observation_id) # Create an instance of Observation
+        
+        # Get observation graph if doesn't exist yet
+        rospy.loginfo("Fetching observation graph...")
+
+        # Path to the obs_graphs directory (one level up from the script directory)
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        obs_graph_dir = os.path.join(os.path.dirname(script_dir), "obs_graphs")
+
+        # Check if the directory exists
+        if not os.path.exists(obs_graph_dir):
+            rospy.logwarn(f"The directory {obs_graph_dir} does not exist.")
+            return None
+
+        # Get all .owl files in the directory
+        owl_files = [os.path.join(obs_graph_dir, f) for f in os.listdir(obs_graph_dir) if f.endswith(".owl")]
+
+        # If no .owl files are found, return None
+        if owl_files:
+            # Find the most recently modified .owl file
+            latest_obs_graph_path = max(owl_files, key=os.path.getmtime)
+            rospy.loginfo(f"Latest observation graph found: {latest_obs_graph_path}")
+
+            # Load the ontology using owlready2
+            self.orka = get_ontology(latest_obs_graph_path).load()
+            rospy.loginfo(f"Latest observation graph successfully loaded from {latest_obs_graph_path}.")    
+        
         # TODO: Add UsedProcedure Procedure
 
         if self.service_type == ObjectDetection or self.service_type == PromptedObjectDetection or self.service_type == ImageToText:
@@ -296,7 +324,13 @@ class TaskSelector:
         """Process image detection service requests."""
         try:
             # Convert the ROS Image message to OpenCV format
-            cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+        # Determine the image encoding and handle accordingly
+            if img_msg.encoding == "bgr8":
+                # Convert the ROS Image message to OpenCV format for color images
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+            elif img_msg.encoding == "16UC1":
+                # Convert the ROS Image message to OpenCV format for depth images
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "16UC1")
             request = PromptedObjectDetectionRequest(image=img_msg, prompt=self.prompt)
             response = self.annotator_service(request)
 
@@ -313,7 +347,12 @@ class TaskSelector:
         """Process image detection service requests."""
         try:
             # Convert the ROS Image message to OpenCV format
-            cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+            if img_msg.encoding == "bgr8":
+                # Convert the ROS Image message to OpenCV format for color images
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+            elif img_msg.encoding == "16UC1":
+                # Convert the ROS Image message to OpenCV format for depth images
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "16UC1")
             request = ImageToTextRequest(image=img_msg)
             response = self.annotator_service(request)
 
@@ -329,7 +368,12 @@ class TaskSelector:
         """Process image detection service requests."""
         try:
             # Convert the ROS Image message to OpenCV format
-            cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+            if img_msg.encoding == "bgr8":
+                # Convert the ROS Image message to OpenCV format for color images
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+            elif img_msg.encoding == "16UC1":
+                # Convert the ROS Image message to OpenCV format for depth images
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "16UC1")
             request = ObjectDetectionRequest(image=img_msg)
             response = self.annotator_service(request)
 
@@ -347,7 +391,12 @@ class TaskSelector:
         """Process segmentation service requests."""
         try:
             # Convert the ROS Image message to OpenCV format
-            cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+            if img_msg.encoding == "bgr8":
+                # Convert the ROS Image message to OpenCV format for color images
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+            elif img_msg.encoding == "16UC1":
+                # Convert the ROS Image message to OpenCV format for depth images
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "16UC1")
             request = ImageSegmentationRequest(image=img_msg)
             response = self.annotator_service(request)
 
@@ -364,7 +413,12 @@ class TaskSelector:
         """Process depth estimation service requests."""
         try:
             # Convert the ROS Image message to OpenCV format
-            cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+            if img_msg.encoding == "bgr8":
+                # Convert the ROS Image message to OpenCV format for color images
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+            elif img_msg.encoding == "16UC1":
+                # Convert the ROS Image message to OpenCV format for depth images
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "16UC1")
             request = DepthEstimationRequest(image=img_msg)
             response = self.annotator_service(request)
 
@@ -380,7 +434,12 @@ class TaskSelector:
         """Process depth estimation service requests."""
         try:
             # Convert the ROS Image message to OpenCV format
-            cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+            if img_msg.encoding == "bgr8":
+                # Convert the ROS Image message to OpenCV format for color images
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+            elif img_msg.encoding == "16UC1":
+                # Convert the ROS Image message to OpenCV format for depth images
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "16UC1")
             self.video_frames.append(cv_image)
             if len(self.video_frames) == self.num_frames:
                 ros_video_frames = [self.bridge.cv2_to_imgmsg(frame, "bgr8") for frame in self.video_frames]
@@ -509,11 +568,12 @@ def query_annotators(obs_graph, object):
         PREFIX orka: <https://w3id.org/def/orka#>
         PREFIX oboe: <http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#>
 
-        SELECT DISTINCT ?annotator
+        SELECT DISTINCT ?annotator ?annotatorName
         WHERE {{
           # Query for the simulated entity and related annotators
           ?temp_entity a orka:{object} .
           ?annotator orka:canDetect ?temp_entity .
+          ?annotator orka:hasServiceName ?annotatorName .
         }}
         """
         results = list(default_world.sparql(sparql_query_annotators, error_on_undefined_entities=False))
@@ -563,13 +623,13 @@ def get_obs_graph():
         rospy.logerr(f"Failed to load ontology: {e}")
         return None
 
-def create_obs_graph():
-    """
-    Creates a new observation graph.
-    Returns the newly created observation graph.
-    """
-    rospy.loginfo("Creating a new observation graph...")
-    return {"graph": "new_obs_graph"}
+# def create_obs_graph():
+#     """
+#     Creates a new observation graph.
+#     Returns the newly created observation graph.
+#     """
+    
+#     return {"graph": "new_obs_graph"}
 
 
 def query_location(obs_graph, object):
@@ -604,93 +664,105 @@ def query_location(obs_graph, object):
         rospy.logerr(f"Error running SPARQL query: {e}")
         return None
 
-def call_annotator(annotator, object):
+def call_annotator(annotator_service, object):
     """
     Calls the annotator service to detect the given object.
     """
-    rospy.loginfo(f"Calling annotator service '{annotator}' to detect {object}...")
+    rospy.loginfo(f"Calling annotator service '{annotator_service}' to detect {object}...")
     try:
-        rospy.wait_for_service(annotator, timeout=5.0)
-        annotator_service = rospy.ServiceProxy(annotator, AnnotatorService)
-        request = AnnotatorServiceRequest()
-        request.object = object  # Populate request fields as required
-        response = annotator_service(request)
-        rospy.loginfo(f"Annotator service '{annotator}' response: {response}")
+        # Call the service
+        annotator_client.call_service(annotator_service)
+
     except rospy.ServiceException as e:
-        rospy.logerr(f"Failed to call annotator service '{annotator}': {e}")
+        rospy.logerr(f"Failed to call annotator service '{annotator_service}': {e}")
 
 
-def pickup_object(object_position):
+def pickup_object(pickup_coordinates, destination_coordinates):
     """
     Sends a goal to the pickup action server to pick up an object at the given position.
     """
-    rospy.loginfo(f"Sending goal to pickup action for position {object_position}...")
+    rospy.loginfo(f"Sending goal to pickup action for position {pickup_coordinates}...")
 
-    # Create an action client for the pickup action
-    client = actionlib.SimpleActionClient('/pickup_action', PickupAction)
+    # Connect to the action server
+    action_client = actionlib.SimpleActionClient('pick_place', PickPlaceAction)
+    rospy.loginfo("Waiting for the pick_place action server...")
+    action_client.wait_for_server()
 
     # Wait for the action server to be available
     rospy.loginfo("Waiting for pickup action server...")
-    client.wait_for_server()
+    action_client.wait_for_server()
 
-    # Create and send the goal
-    goal = PickupGoal()
-    goal.position.x = object_position["x"]
-    goal.position.y = object_position["y"]
+    # Create the goal
+    goal = PickPlaceGoal()
+    goal.pickup_coordinates = pickup_coordinates
+    goal.destination_coordinates = destination_coordinates
 
-    rospy.loginfo(f"Sending pickup goal: {goal}")
-    client.send_goal(goal)
+    rospy.loginfo(f"Sending pickup coordinates: {pickup_coordinates}")
+    rospy.loginfo(f"Sending destination coordinates: {destination_coordinates}")
+    
+    # Send the goal to the server
+    action_client.send_goal(goal)
 
     # Wait for the result
-    client.wait_for_result()
-    result = client.get_result()
+    rospy.loginfo("Waiting for result...")
+    action_client.wait_for_result()
 
-    rospy.loginfo(f"Pickup action completed with result: {result}")
+    # Retrieve the result
+    result = action_client.get_result()
+    rospy.loginfo(f"Result: success={result.success}, message={result.message}")
 
 
 # # Main script
 # if __name__ == "__main__":
-#     rospy.init_node("object_locator_node")
 
-#     #fruit_salad_items = ['Banana', 'Apple', 'Strawberry', 'Orange', 'Pineapple']
-#     fruit_salad_items = ['Banana']
-
-
-#     for fruit in fruit_salad_items:
-#         rospy.loginfo(f"Processing {fruit}...")
-#         fruit_position = None
-
-#         obs_graph = get_obs_graph()
-#         if not obs_graph:
-#             obs_graph = create_obs_graph()
-
-#         options_left = True
-
-#         fruit_position = query_location(obs_graph, fruit)
-#         while options_left and not fruit_position:
-#             capable_annotators = query_annotators(obs_graph, fruit)
-#             for annotator in capable_annotators:
-#                 call_annotator(annotator, fruit)
-#                 obs_graph = get_obs_graph()
-#                 fruit_position = query_location(obs_graph, fruit)
-
-#                 if fruit_position:
-#                     break
-
-#                 capable_annotators.remove(annotator)
-#                 if not capable_annotators:
-#                     options_left = False
-
-#         if fruit_position:
-#             pickup_object(fruit_position)
-#         else:
-#             rospy.loginfo(f"{fruit} not found!")
 
 if __name__ == "__main__":
     try:
+        #fruit_salad_items = ['Banana', 'Apple', 'Strawberry', 'Orange', 'Pineapple']
+        fruit_salad_items = ['Banana', 'Apple', 'Orange']
         annotator_client = TaskSelector()
         annotator_client.call_service('/annotators/ObjectDetection/yolos_tiny/detect')
-        annotator_client.call_service('/annotators/ImageSegmentation/detr_resnet_50_panoptic/detect')
+        # annotator_client.call_service('/annotators/ImageSegmentation/detr_resnet_50_panoptic/detect')
+
+
+        for fruit in fruit_salad_items:
+            rospy.loginfo(f"Processing {fruit}...")
+            fruit_position = None
+
+            obs_graph = get_obs_graph()
+            # if not obs_graph:
+            #     obs_graph = create_obs_graph()
+
+            options_left = True
+
+            fruit_position = query_location(obs_graph, fruit)
+            capable_annotators = query_annotators(obs_graph, fruit)
+            
+            while options_left and not fruit_position:
+                for annotators in capable_annotators:
+                    annotator_name, service_name = annotators
+                    annotator_client.call_service(service_name)
+                    obs_graph = get_obs_graph()
+                    fruit_position = query_location(obs_graph, fruit)
+
+                    if fruit_position:
+                        break
+
+                    capable_annotators.remove(annotators)
+                    if not capable_annotators:
+                        options_left = False
+
+            if fruit_position:
+                # Define pickup and destination coordinates
+                pickup_coordinates = [0.266, 0.075, -0.088]
+                destination_coordinates = [0.271, -0.061, -0.088]
+
+                pickup_object(pickup_coordinates, destination_coordinates)
+
+            else:
+                rospy.logwarn(f"{fruit} not found!")
+
+
         rospy.spin()
     except rospy.ROSInterruptException:
         pass

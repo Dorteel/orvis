@@ -15,6 +15,8 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   std_msgs
   message_generation
+  actionlib_msgs
+  actionlib
 )
 
 ## System dependencies are found with CMake's conventions
@@ -76,18 +78,17 @@ add_service_files(
 )
 
 ## Generate actions in the 'action' folder
-# add_action_files(
-#   FILES
-#   Action1.action
-#   Action2.action
-# )
+add_action_files(
+  FILES
+  PickPlace.action
+)
 
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
   DEPENDENCIES
   std_msgs
   sensor_msgs
-  #   std_msgs
+  actionlib_msgs
 )
 
 ################################################
@@ -183,6 +184,7 @@ catkin_install_python(PROGRAMS
   scripts/service_tester.py
   scripts/model_loader.py
   scripts/experiment.py
+  test/test_pickplace_client.py
   test/webcam.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

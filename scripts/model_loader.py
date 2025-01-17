@@ -110,10 +110,11 @@ def load_models(updated_ontology_name):
             # Extract model details
             annotator_name = config.get('annotator', {}).get('name', 'UnknownAnnotator')
             task_type = config.get('annotator', {}).get('task_type', 'UnknownTask')
+            service_name = f"/annotators/{task_type}/{annotator_name}/detect"
             detected_property = config.get('annotator', {}).get('detected_property', [])
             annotator_class_name = config.get('annotator', {}).get('type', 'UnknownType')
-            model_class = config.get('imports', {}).get('model_class', 'UnknownModelClass')
-            processor_class = config.get('imports', {}).get('processor_class', 'UnknownProcessorClass')
+            # model_class = config.get('imports', {}).get('model_class', 'UnknownModelClass')
+            # processor_class = config.get('imports', {}).get('processor_class', 'UnknownProcessorClass')
             detected_labels = config.get('detection', {}).get('labels', [])
             algorithm_type = task_type + 'Algorithm'
 
@@ -148,6 +149,7 @@ def load_models(updated_ontology_name):
 
                 # Create an instance of the annotator class
                 annotator_instance = annotator_class(annotator_name)
+                annotator_instance.hasServiceName.append(service_name)
 
                 # Check the labels created by the classes
                 if detected_labels:

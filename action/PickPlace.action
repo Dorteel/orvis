@@ -1,0 +1,11 @@
+# The goal definition
+float32[] pickup_coordinates
+float32[] destination_coordinates
+---
+# The result definition
+bool success      # True if the pick-and-place operation succeeded
+string message    # A message describing the result (e.g., success or error details)
+
+---
+# (Optional feedback section - leave blank if not used)
+
