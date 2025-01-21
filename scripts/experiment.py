@@ -76,24 +76,6 @@ class TaskSelector:
         with open(main_config_path, 'r') as file:
             self.config = yaml.safe_load(file)
 
-        # Determine service to test (can be adjusted to allow dynamic selection)
-        # self.service_name = self.config['system']['service_to_test']
-        # self.task_type = self.service_name.split('/')[2]
-
-        # if self.task_type == 'ImageSegmentation':
-        #     self.service_type = ImageSegmentation 
-        # elif self.task_type == 'ObjectDetection':
-        #     self.service_type = ObjectDetection
-        # elif self.task_type == 'PromptedObjectDetection':
-        #     self.service_type = PromptedObjectDetection
-        # elif self.task_type == 'DepthEstimation':
-        #     self.service_type = DepthEstimation
-        # elif self.task_type == 'VideoClassification':
-        #     self.service_type = VideoClassification
-        # elif self.task_type == 'ImageToText':
-        #     self.service_type = ImageToText
-        # else:
-        #     raise NameError("Service type not recognized. Check the name of the services.")
         # Determine the camera topic
         self.camera_topic = self.config['system']['camera_topic']
         # Determine ORKA path
@@ -102,6 +84,11 @@ class TaskSelector:
         self.num_frames = self.config['system']['num_video_frames']
         # Determine logging level
         self.logging_level = self.config['system']['logging_level']
+
+    def create_3d_coordinates(self, response):
+        """
+        Creates 3D coordinates from a boundingbox or image
+        """
 
     def image_callback(self, img_msg):
         """Store the last received image."""
@@ -162,28 +149,6 @@ class TaskSelector:
         except Exception as e:
             rospy.logerr(f"Error calling service {service_to_call}: {e}")
 
-    # def image_callback(self, img_msg):
-    #     """Callback for the image topic."""
-    #     current_time = rospy.Time.now()
-    #     if (current_time - self.last_request_time) < self.request_interval:
-    #         return  # Skip if the time interval hasn't passed
-
-    #     # Update the last request time
-    #     self.last_request_time = current_time
-
-    #     # Send the image to the appropriate service
-    #     if self.service_type == ObjectDetection:
-    #         self.process_detection(img_msg)
-    #     elif self.service_type == PromptedObjectDetection:
-    #         self.process_prompteddetection(img_msg)
-    #     elif self.service_type == ImageSegmentation:
-    #         self.process_segmentation(img_msg)
-    #     elif self.service_type == DepthEstimation:
-    #         self.process_depthestimation(img_msg)
-    #     elif self.service_type == VideoClassification:
-    #         self.process_videoclassification(img_msg)
-    #     elif self.service_type == ImageToText:
-    #         self.process_image_to_text(img_msg)
 
     def create_obs_graph(self, result):
         """
@@ -223,6 +188,7 @@ class TaskSelector:
         if self.service_type == ObjectDetection or self.service_type == PromptedObjectDetection or self.service_type == ImageToText:
             for boundingbox in result.objects.bounding_boxes:
                 rospy.loginfo(f'Creating observation for {boundingbox.Class}')
+                coordinates = self.create_3d_coordinates()
                 timestamp = datetime.now().strftime("%Y%m%d%H%M%S") + str(random.randint(1000, 9999))
 
                 # Creating instances
@@ -623,14 +589,6 @@ def get_obs_graph():
         rospy.logerr(f"Failed to load ontology: {e}")
         return None
 
-# def create_obs_graph():
-#     """
-#     Creates a new observation graph.
-#     Returns the newly created observation graph.
-#     """
-    
-#     return {"graph": "new_obs_graph"}
-
 
 def query_location(obs_graph, object):
     """
@@ -704,7 +662,7 @@ def pickup_object(pickup_coordinates, destination_coordinates):
     action_client.send_goal(goal)
 
     # Wait for the result
-    rospy.loginfo("Waiting for result...")
+    rospy.loginfo("Waiting for move action result...")
     action_client.wait_for_result()
 
     # Retrieve the result
@@ -730,8 +688,6 @@ if __name__ == "__main__":
             fruit_position = None
 
             obs_graph = get_obs_graph()
-            # if not obs_graph:
-            #     obs_graph = create_obs_graph()
 
             options_left = True
 

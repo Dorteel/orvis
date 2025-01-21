@@ -58,3 +58,15 @@ food_wikidata_ids = {
     "Water Bottles": "Q80228",
     "Watermelon": "Q38645"
 }
+
+
+def getLocation(depth_image, roi):
+    """
+    This is a utility function that, given a depth topic, subscribes to it and determines the center of the Region of Interest (ROI)
+    Returns a triple indicating the x,y,z location from the frame of the camera.
+
+    """
+    # Give
+
+    # 
+    pass

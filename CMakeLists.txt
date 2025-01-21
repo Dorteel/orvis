@@ -75,6 +75,7 @@ add_service_files(
   ImageToText.srv
   DepthEstimation.srv
   LoadModels.srv
+  Get3DCoordinates.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -184,6 +185,7 @@ catkin_install_python(PROGRAMS
   scripts/service_tester.py
   scripts/model_loader.py
   scripts/experiment.py
+  scripts/get3Dcoordinates.py
   test/test_pickplace_client.py
   test/webcam.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}

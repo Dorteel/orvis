@@ -1,0 +1,7 @@
+int32 pixel_x   # The x-coordinate (u) of the pixel in the image
+int32 pixel_y   # The y-coordinate (v) of the pixel in the image
+---
+bool success    # Whether the 3D coordinate computation was successful
+float64 x       # The x-coordinate in the 3D space (in meters)
+float64 y       # The y-coordinate in the 3D space (in meters)
+float64 z       # The z-coordinate in the 3D space (in meters)
