@@ -3,6 +3,11 @@ import rospy
 import rospkg
 import actionlib
 
+from orvis.srv import Get3DCoordinates, Get3DCoordinatesRequest
+from geometry_msgs.msg import TransformStamped
+import tf2_ros
+import uuid
+
 from orvis.msg import PickPlaceAction, PickPlaceGoal
 
 import yaml
@@ -84,11 +89,8 @@ class TaskSelector:
         self.num_frames = self.config['system']['num_video_frames']
         # Determine logging level
         self.logging_level = self.config['system']['logging_level']
-
-    def create_3d_coordinates(self, response):
-        """
-        Creates 3D coordinates from a boundingbox or image
-        """
+        # Set parent frame
+        self.parent_frame = self.config['system']['parent_frame']
 
     def image_callback(self, img_msg):
         """Store the last received image."""
@@ -188,7 +190,8 @@ class TaskSelector:
         if self.service_type == ObjectDetection or self.service_type == PromptedObjectDetection or self.service_type == ImageToText:
             for boundingbox in result.objects.bounding_boxes:
                 rospy.loginfo(f'Creating observation for {boundingbox.Class}')
-                coordinates = self.create_3d_coordinates()
+                coordinates = self.create_3d_coordinates(boundingbox)
+                rospy.logwarn(f"The coordinates are {coordinates}")
                 timestamp = datetime.now().strftime("%Y%m%d%H%M%S") + str(random.randint(1000, 9999))
 
                 # Creating instances
@@ -285,6 +288,11 @@ class TaskSelector:
             char_instance.hasValue.append(str(result.activity.data))
 
         self.orka.save(self.save_dir)
+
+
+#===========================
+# IMAGE PROCESSING FUNCTIONS
+#---------------------------
 
     def process_prompteddetection(self, img_msg):
         """Process image detection service requests."""
@@ -421,8 +429,101 @@ class TaskSelector:
         except Exception as e:
             rospy.logerr(f"Error processing detection image: {e}")
 
-# DISPLAY FUNCTIONS
+#========================
+# 3D CALULATION FUNCTIONS
+#------------------------
+    def create_3d_coordinates(self, response):
+        """
+        Creates 3D coordinates from a boundingbox or image
+        """
+        # Calculate middle depending on bbox vs mask
+        if hasattr(response, 'mask'):
+            bridge = CvBridge()
+            try:
+                # Convert the mask to a numpy array
+                mask_array = bridge.imgmsg_to_cv2(response.mask, desired_encoding="mono8")
 
+                # Find the indices of non-zero pixels in the mask
+                non_zero_indices = np.argwhere(mask_array > 0)
+
+                if non_zero_indices.size == 0:
+                    rospy.logerr("Mask is empty or does not contain any non-zero pixels.")
+                    return None
+
+                # Calculate the center of the non-zero pixels
+                pixel_x, pixel_y = np.mean(non_zero_indices, axis=0).astype(int)
+            except Exception as e:
+                rospy.logerr(f"Failed to process mask: {e}")
+                return None
+        elif all(hasattr(response, attr) for attr in ['xmin', 'ymin', 'xmax', 'ymax']):
+            pixel_x = (response.xmin + response.xmax) // 2
+            pixel_y = (response.ymin + response.ymax) // 2
+        else:
+            rospy.logerr("Response does not contain a valid mask or bounding box.")
+            return None
+        coordinates = self.get_3d_coordinates(pixel_x, pixel_y)
+
+        if coordinates:
+            x, y, z = coordinates
+            # Continuously broadcast the TF frame at the computed coordinates
+            self.broadcast_tf_frame(x, y, z)
+            return coordinates
+        else:
+            rospy.logwarn("No coordinates received.")
+
+    def broadcast_tf_frame(self, x, y, z):
+        # Create a TF broadcaster
+        tf_broadcaster = tf2_ros.TransformBroadcaster()
+
+        # Generate a unique frame name
+        frame_name = f"object_{uuid.uuid4().hex[:8]}"
+
+        # Define the transform
+        transform = TransformStamped()
+        transform.header.stamp = rospy.Time.now()
+        transform.header.frame_id = self.parent_frame
+        transform.child_frame_id = frame_name
+
+        # Set the translation
+        transform.transform.translation.x = x
+        transform.transform.translation.y = y
+        transform.transform.translation.z = z
+
+        # Set the rotation (no rotation applied, identity quaternion)
+        transform.transform.rotation.x = 0.0
+        transform.transform.rotation.y = 0.0
+        transform.transform.rotation.z = 0.0
+        transform.transform.rotation.w = 1.0
+
+        # Broadcast the transform
+        tf_broadcaster.sendTransform(transform)
+
+        rospy.loginfo_once(f"Broadcasting TF frame {frame_name} at x={x:.2f}, y={y:.2f}, z={z:.2f}")
+
+    def get_3d_coordinates(self, pixel_x, pixel_y):
+        rospy.wait_for_service('get_3d_coordinates')  # Wait for the service to be available
+
+        try:
+            # Create a service proxy
+            get_coords_service = rospy.ServiceProxy('get_3d_coordinates', Get3DCoordinates)
+
+            # Create and send the request
+            request = Get3DCoordinatesRequest(pixel_x=pixel_x, pixel_y=pixel_y)
+            response = get_coords_service(request)
+
+            if response.success:
+                rospy.loginfo(f"3D Coordinates: x={response.x:.2f}, y={response.y:.2f}, z={response.z:.2f}")
+                return response.x, response.y, response.z
+            else:
+                rospy.logwarn("Failed to compute 3D coordinates.")
+                return None
+        except rospy.ServiceException as e:
+            rospy.logerr(f"Service call failed: {e}")
+            return None
+        
+#==================
+# DISPLAY FUNCTIONS
+#------------------
     def display_bounding_boxes(self, image, response):
         """Display bounding boxes from the detection response."""
         for bbox in response.objects.bounding_boxes:
@@ -505,7 +606,9 @@ class TaskSelector:
         except Exception as e:
             rospy.logerr(f"Failed to display depth map: {e}")
 
-
+#========================================================================================================
+# OTHER UTILITY FUNCTIONS
+#------------------------
 def query_annotators(obs_graph, object):
     """
     Queries the observation graph for annotators able to detect the given object using a SPARQL query.
@@ -544,7 +647,7 @@ def query_annotators(obs_graph, object):
         """
         results = list(default_world.sparql(sparql_query_annotators, error_on_undefined_entities=False))
         rospy.loginfo(f"SPARQL query returned {len(results)} results.")
-        print(results)
+        for result in results: print(result[0]) # Print the name of the annotator
         return results if results else None
     
     except Exception as e:
@@ -695,8 +798,9 @@ if __name__ == "__main__":
             capable_annotators = query_annotators(obs_graph, fruit)
             
             while options_left and not fruit_position:
-                for annotators in capable_annotators:
+                for annotators in capable_annotators:          
                     annotator_name, service_name = annotators
+                    rospy.loginfo(f"Calling service {annotator_name}")
                     annotator_client.call_service(service_name)
                     obs_graph = get_obs_graph()
                     fruit_position = query_location(obs_graph, fruit)
@@ -712,8 +816,8 @@ if __name__ == "__main__":
                 # Define pickup and destination coordinates
                 pickup_coordinates = [0.266, 0.075, -0.088]
                 destination_coordinates = [0.271, -0.061, -0.088]
-
-                pickup_object(pickup_coordinates, destination_coordinates)
+                rospy.loginfo(f'Picking up fruit{fruit}')
+                # pickup_object(pickup_coordinates, destination_coordinates)
 
             else:
                 rospy.logwarn(f"{fruit} not found!")

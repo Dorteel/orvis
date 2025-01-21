@@ -188,6 +188,7 @@ catkin_install_python(PROGRAMS
   scripts/get3Dcoordinates.py
   test/test_pickplace_client.py
   test/webcam.py
+  test/test3Dcoordinates.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
