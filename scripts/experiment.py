@@ -466,17 +466,17 @@ class TaskSelector:
         if coordinates:
             x, y, z = coordinates
             # Continuously broadcast the TF frame at the computed coordinates
-            self.broadcast_tf_frame(x, y, z)
+            self.broadcast_tf_frame(x, y, z, response.Class)
             return coordinates
         else:
             rospy.logwarn("No coordinates received.")
 
-    def broadcast_tf_frame(self, x, y, z):
+    def broadcast_tf_frame(self, x, y, z, name):
         # Create a TF broadcaster
         tf_broadcaster = tf2_ros.TransformBroadcaster()
 
         # Generate a unique frame name
-        frame_name = f"object_{uuid.uuid4().hex[:8]}"
+        frame_name = f"{name}_{uuid.uuid4().hex[:8]}"
 
         # Define the transform
         transform = TransformStamped()
@@ -816,7 +816,7 @@ if __name__ == "__main__":
                 # Define pickup and destination coordinates
                 pickup_coordinates = [0.266, 0.075, -0.088]
                 destination_coordinates = [0.271, -0.061, -0.088]
-                rospy.loginfo(f'Picking up fruit{fruit}')
+                rospy.logwarn(f'Picking up fruit: {fruit} at position {fruit_position}')
                 # pickup_object(pickup_coordinates, destination_coordinates)
 
             else:

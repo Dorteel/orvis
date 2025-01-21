@@ -13,7 +13,6 @@ class Get3DCoordinatesService:
         self.bridge = CvBridge()
         self.depth_image = None
         self.camera_intrinsics = None
-        self.depth_scale = 0.001  # Convert depth from mm to meters (if necessary)
 
         # Subscribers
         rospy.Subscriber('/locobot/camera/aligned_depth_to_color/image_raw', Image, self.depth_callback)
@@ -25,7 +24,11 @@ class Get3DCoordinatesService:
 
     def depth_callback(self, msg):
         # Convert depth image to numpy array
-        self.depth_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='passthrough')
+        try:
+            self.depth_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding="passthrough")
+            rospy.loginfo_once(f"Depth image received with shape: {self.depth_image.shape} and dtype: {self.depth_image.dtype}")
+        except Exception as e:
+            rospy.logerr(f"Failed to process depth image: {e}")
 
     def camera_info_callback(self, msg):
         # Store camera intrinsics
@@ -35,7 +38,7 @@ class Get3DCoordinatesService:
             'cx': msg.K[2],  # Optical center x
             'cy': msg.K[5]   # Optical center y
         }
-        # rospy.loginfo(f"Camera Intrinsics received: {self.camera_intrinsics}")
+        rospy.loginfo_once(f"Camera Intrinsics received: {self.camera_intrinsics}")
 
     def handle_request(self, req):
         if self.depth_image is None or self.camera_intrinsics is None:
@@ -49,10 +52,11 @@ class Get3DCoordinatesService:
             rospy.logwarn(f"Pixel coordinates ({u}, {v}) are out of bounds for the depth image.")
             return Get3DCoordinatesResponse(success=False, x=0, y=0, z=0)
 
-        # Retrieve depth value
-        depth = self.depth_image[v, u] * self.depth_scale  # Convert to meters
-        if depth == 0 or np.isnan(depth):
-            rospy.logwarn(f"Invalid depth at pixel ({u}, {v}).")
+        # Retrieve depth value and scale it to meters
+        raw_depth = self.depth_image[v, u]
+        depth = raw_depth * 0.001  # Convert mm to meters
+        if depth <= 0 or np.isnan(depth):
+            rospy.logwarn(f"Invalid depth at pixel ({u}, {v}): raw_depth={raw_depth}, depth={depth}")
             return Get3DCoordinatesResponse(success=False, x=0, y=0, z=0)
 
         # Retrieve camera intrinsics
@@ -66,6 +70,8 @@ class Get3DCoordinatesService:
         y = (v - cy) * depth / fy
         z = depth
 
+        rospy.loginfo(f"Raw depth at ({u}, {v}): {raw_depth} mm")
+        rospy.loginfo(f"Converted depth (meters): {depth}")
         rospy.loginfo(f"Computed 3D coordinates: x={x:.2f}, y={y:.2f}, z={z:.2f} for pixel ({u}, {v})")
         return Get3DCoordinatesResponse(success=True, x=x, y=y, z=z)
 

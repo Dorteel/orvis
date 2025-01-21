@@ -9,7 +9,7 @@ system:
   camera_topic: /locobot/camera/color/image_raw # /webcam/image_raw #/locobot/camera/aligned_depth_to_color/image_raw
   depth_topic: /locobot/camera/aligned_depth_to_color/image_raw
   depth_info_topic: /locobot/camera/aligned_depth_to_color/camera_info
-  parent_frame: locobot/camera_aligned_depth_to_color_frame
+  parent_frame: locobot/camera_color_optical_frame
   # service_to_test: /annotators/ImageToText/kosmos_2_patch14_224/detect  # Service to test
   service_to_test: /annotators/ObjectDetection/yolos_tiny/detect # /annotators/ImageSegmentation/segformer_b1/detect
   # task_type: VideoClassification
