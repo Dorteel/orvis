@@ -17,6 +17,9 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
   actionlib_msgs
   actionlib
+  geometry_msgs
+  tf2_geometry_msgs
+  tf2_ros
 )
 
 ## System dependencies are found with CMake's conventions
@@ -90,6 +93,7 @@ generate_messages(
   std_msgs
   sensor_msgs
   actionlib_msgs
+  geometry_msgs
 )
 
 ################################################
@@ -124,7 +128,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES pel_ros
-CATKIN_DEPENDS cv_bridge image_transport owlready2 roscpp rospy sensor_msgs std_msgs
+CATKIN_DEPENDS cv_bridge image_transport owlready2 roscpp rospy sensor_msgs std_msgs geometry_msgs tf2_ros tf2_geometry_msgs
 #  DEPENDS system_lib
 )
 

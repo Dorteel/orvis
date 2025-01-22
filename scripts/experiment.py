@@ -2,20 +2,22 @@
 import rospy
 import rospkg
 import actionlib
-
-from orvis.srv import Get3DCoordinates, Get3DCoordinatesRequest
-from geometry_msgs.msg import TransformStamped
 import tf2_ros
 import uuid
-
-from orvis.msg import PickPlaceAction, PickPlaceGoal
-
 import yaml
 import cv2
+import random
+import os
+import numpy as np
 
+from datetime import datetime
+from collections import deque
+
+from orvis.srv import Get3DCoordinates, Get3DCoordinatesRequest
 from orvis.srv import ObjectDetection, ObjectDetectionRequest, ObjectDetectionResponse  # Detection service
 from orvis.srv import ImageSegmentation, ImageSegmentationRequest, ImageSegmentationResponse  # Segmentation service
 from orvis.msg import ImageMasks, ImageMask  # Import the segmentation message types
+from orvis.msg import PickPlaceAction, PickPlaceGoal
 from orvis.srv import PromptedObjectDetection, PromptedObjectDetectionRequest, PromptedObjectDetectionResponse  # Detection service
 from orvis.srv import DepthEstimation, DepthEstimationRequest, DepthEstimationResponse  # Import the necessary service types
 from orvis.srv import VideoClassification, VideoClassificationRequest, VideoClassificationResponse  # Detection service
@@ -23,14 +25,9 @@ from orvis.srv import ImageToText, ImageToTextRequest, ImageToTextResponse  # De
 
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
-
-# from some_msgs.msg import PickupAction, PickupGoal
-# from some_msgs.srv import AnnotatorService, AnnotatorServiceRequest
-import random
-import os
-import numpy as np
-from datetime import datetime
-from collections import deque
+from geometry_msgs.msg import PointStamped
+from geometry_msgs.msg import TransformStamped
+import tf2_geometry_msgs  # Ensure compatibility with tf2
 
 from owlready2 import get_ontology, default_world, sync_reasoner_pellet
 
@@ -697,6 +694,54 @@ def get_obs_graph():
         return None
 
 
+def transform_coordinates(source_frame, target_frame, source_coordinates):
+    """
+    Transforms coordinates from one TF frame to another.
+
+    Args:
+        source_frame (str): Name of the source frame.
+        target_frame (str): Name of the target frame.
+        source_coordinates (list): [x, y, z] coordinates in the source frame.
+
+    Returns:
+        list: Transformed coordinates in the target frame, or None if transformation fails.
+    """
+    tf_buffer = tf2_ros.Buffer()
+    tf_listener = tf2_ros.TransformListener(tf_buffer)
+
+    # Create a PointStamped message for the source coordinates
+    point = PointStamped()
+    point.header.stamp = rospy.Time(0)  # Use the latest available time
+    point.header.frame_id = source_frame
+    point.point.x = source_coordinates[0]
+    point.point.y = source_coordinates[1]
+    point.point.z = source_coordinates[2]
+
+    try:
+        # Wait for the transform to be available
+        rospy.loginfo(f"Waiting for transform from {source_frame} to {target_frame}...")
+        if not tf_buffer.can_transform(target_frame, source_frame, rospy.Time(0), rospy.Duration(3.0)):
+            rospy.logerr(f"Transform from {source_frame} to {target_frame} is not available.")
+            return None
+
+        # Perform the transformation
+        transformed_point = tf_buffer.transform(point, target_frame)
+
+        # Extract transformed coordinates
+        return [transformed_point.point.x, transformed_point.point.y, transformed_point.point.z]
+
+    except tf2_ros.LookupException as e:
+        rospy.logerr(f"Transform lookup error: {e}")
+    except tf2_ros.ConnectivityException as e:
+        rospy.logerr(f"Transform connectivity error: {e}")
+    except tf2_ros.ExtrapolationException as e:
+        rospy.logerr(f"Transform extrapolation error: {e}")
+    except Exception as e:
+        rospy.logerr(f"Unexpected error while transforming coordinates: {e}")
+
+    return None
+
+
 def query_location(obs_graph, object):
     """
     Queries the observation graph for the location of the given object using a SPARQL query.
@@ -820,9 +865,13 @@ if __name__ == "__main__":
                 rospy.logwarn(f'{len(fruit_position)} {fruit}s detected!')
                 # Define pickup and destination coordinates
                 pickup_coordinates = [0.266, 0.075, -0.088]
-                destination_coordinates = [0.271, -0.061, -0.088]
-                rospy.logwarn(f'Picking up fruit: {fruit_position[0][1]} at position {fruit_position[0][0]}')
-                # pickup_object(pickup_coordinates, destination_coordinates)
+                
+                object_coordinates = [round(float(x), 3) for x in fruit_position[0][0].strip("()").split(",")]
+                rospy.logwarn(object_coordinates)
+                pickup_coordinates = transform_coordinates('locobot/camera_color_optical_frame', 'locobot/arm_base_link', object_coordinates)
+                destination_coordinates = [pickup_coordinates[0], 0.3, 0.2]
+                rospy.logwarn(f'Picking up fruit: {fruit_position[0][1]} at position {pickup_coordinates}')
+                pickup_object(pickup_coordinates, destination_coordinates)
 
             else:
                 rospy.logwarn(f"{fruit} not found!")
