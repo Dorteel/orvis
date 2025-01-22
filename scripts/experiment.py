@@ -216,13 +216,13 @@ class TaskSelector:
                 # Adding data properties
                 result_instance.hasValue.append(str(boundingbox))
                 result_instance.hasProbability.append(boundingbox.probability)
-                char_instance.hasValue.append("{}, {}".format(int((boundingbox.xmin + boundingbox.xmax)/2), int((boundingbox.ymin + boundingbox.ymax)/2)))
+                char_instance.hasValue.append(str(coordinates))
 
         elif self.service_type == ImageSegmentation:
             for imagemask in result.objects.masks:
                 rospy.loginfo(f'Creating observation for {imagemask.Class}')
                 timestamp = datetime.now().strftime("%Y%m%d%H%M%S") + str(random.randint(1000, 9999))
-
+                coordinates = self.create_3d_coordinates(imagemask)
                 # Creating instances
                 try:
                     ent_instance = self.orka[imagemask.Class.capitalize()]('ent_' + timestamp)
@@ -240,11 +240,12 @@ class TaskSelector:
                 char_instance.characteristicFor = ent_instance
                 obs_instance.ofEntity = ent_instance
                 mes_instance.usedProcedure.append(procedure_instance)
+
                 # Adding data properties
                 result_instance.hasValue.append(str(imagemask))
                 result_instance.hasProbability.append(imagemask.probability)
-                # TODO: Need to calculate middle of the mask
-                # char_instance.hasValue.append("{}, {}".format(int((imagemask.xmin + imagemask.xmax)/2), int((imagemask.ymin + imagemask.ymax)/2)))
+                if coordinates:
+                    char_instance.hasValue.append(str(coordinates))
 
         elif self.service_type == DepthEstimation:
             rospy.loginfo(f'Creating observation for Depth Map')
@@ -440,11 +441,12 @@ class TaskSelector:
         """
         # Calculate middle depending on bbox vs mask
         if hasattr(response, 'mask'):
+            rospy.loginfo('Calculating coordinates from image mask')
             bridge = CvBridge()
             try:
                 # Convert the mask to a numpy array
                 mask_array = bridge.imgmsg_to_cv2(response.mask, desired_encoding="mono8")
-
+                rospy.loginfo(f"Mask shape: {mask_array.shape}")
                 # Find the indices of non-zero pixels in the mask
                 non_zero_indices = np.argwhere(mask_array > 0)
 
