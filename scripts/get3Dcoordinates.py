@@ -49,7 +49,7 @@ class Get3DCoordinatesService:
 
         # Validate pixel coordinates
         if not (0 <= u < self.depth_image.shape[1] and 0 <= v < self.depth_image.shape[0]):
-            rospy.logwarn(f"Pixel coordinates ({u}, {v}) are out of bounds for the depth image.")
+            rospy.logwarn(f"Pixel coordinates ({u}, {v}) are out of bounds for the depth image shape ({self.depth_image.shape[1]}, {self.depth_image.shape[0]}).")
             return Get3DCoordinatesResponse(success=False, x=0, y=0, z=0)
 
         # Retrieve depth value and scale it to meters
@@ -57,8 +57,11 @@ class Get3DCoordinatesService:
         depth = raw_depth * 0.001  # Convert mm to meters
         if depth <= 0 or np.isnan(depth):
             rospy.logwarn(f"Invalid depth at pixel ({u}, {v}): raw_depth={raw_depth}, depth={depth}")
-            return Get3DCoordinatesResponse(success=False, x=0, y=0, z=0)
-
+            new_depth = self.depth_image[v+1, u+1] * 0.001
+            if new_depth <= 0 or np.isnan(new_depth):
+                rospy.logwarn(f"Still invalid depth at pixel ({u+1}, {v+1}): depth={new_depth}")
+                return Get3DCoordinatesResponse(success=False, x=0, y=0, z=0)
+            else: depth = new_depth
         # Retrieve camera intrinsics
         fx = self.camera_intrinsics['fx']
         fy = self.camera_intrinsics['fy']

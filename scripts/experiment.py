@@ -193,7 +193,7 @@ class TaskSelector:
             for boundingbox in result.objects.bounding_boxes:
                 rospy.loginfo(f'Creating observation for {boundingbox.Class}')
                 coordinates = self.create_3d_coordinates(boundingbox)
-                rospy.logwarn(f"The coordinates are {coordinates}")
+                rospy.loginfo(f"... the calculated coordinates are {coordinates}")
                 timestamp = datetime.now().strftime("%Y%m%d%H%M%S") + str(random.randint(1000, 9999))
 
                 # Creating instances
@@ -455,7 +455,7 @@ class TaskSelector:
                     return None
 
                 # Calculate the center of the non-zero pixels
-                pixel_x, pixel_y = np.mean(non_zero_indices, axis=0).astype(int)
+                pixel_y, pixel_x = np.mean(non_zero_indices, axis=0).astype(int)
             except Exception as e:
                 rospy.logerr(f"Failed to process mask: {e}")
                 return None
@@ -821,7 +821,7 @@ if __name__ == "__main__":
                 # Define pickup and destination coordinates
                 pickup_coordinates = [0.266, 0.075, -0.088]
                 destination_coordinates = [0.271, -0.061, -0.088]
-                rospy.logwarn(f'Picking up fruit: {fruit} at position {fruit_position}')
+                rospy.logwarn(f'Picking up fruit: {fruit_position[0][1]} at position {fruit_position[0][0]}')
                 # pickup_object(pickup_coordinates, destination_coordinates)
 
             else:
