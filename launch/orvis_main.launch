@@ -1,1 +1,8 @@
 <!-- Launches orvis only -->
+<launch>
+    <!-- Run webcam.py -->
+    <node pkg="orvis" type="get3Dcoordinates.py" name="coordinate_calculation_service" output="screen" />
+
+    <!-- Run service_manager.py -->
+    <node pkg="orvis" type="service_manager.py" name="service_manager_node" output="screen" />
+</launch>

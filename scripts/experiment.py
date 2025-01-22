@@ -54,6 +54,7 @@ class TaskSelector:
         self.obs_graph_dir = os.path.join(os.path.dirname(self.script_dir), "obs_graphs")
         self.run_id = 'orvis_orka_' + datetime.now().strftime("%Y%m%d%H%M%S" + '.owl')
         self.save_dir = os.path.join(self.obs_graph_dir, self.run_id)
+        self.service_name = ''
 
         # Initialize the ROS service
         self.video_frames = deque(maxlen=self.num_frames)
@@ -110,7 +111,7 @@ class TaskSelector:
 
         
         task_type = service_to_call.split('/')[2]
-
+        self.service_name = service_to_call.split('/')[3] 
 
         if task_type == 'ImageSegmentation':
             self.service_type = ImageSegmentation 
@@ -160,6 +161,9 @@ class TaskSelector:
         observation_id = 'obs_' + timestamp  # Format: YYYYMMDDHHMMSS
         obs_instance = self.oboe.Observation(observation_id) # Create an instance of Observation
         
+        procedure_instance = self.sosa.Procedure(self.service_name)
+        rospy.loginfo(procedure_instance)
+        
         # Get observation graph if doesn't exist yet
         rospy.loginfo("Fetching observation graph...")
 
@@ -184,8 +188,6 @@ class TaskSelector:
             # Load the ontology using owlready2
             self.orka = get_ontology(latest_obs_graph_path).load()
             rospy.loginfo(f"Latest observation graph successfully loaded from {latest_obs_graph_path}.")    
-        
-        # TODO: Add UsedProcedure Procedure
 
         if self.service_type == ObjectDetection or self.service_type == PromptedObjectDetection or self.service_type == ImageToText:
             for boundingbox in result.objects.bounding_boxes:
@@ -210,7 +212,7 @@ class TaskSelector:
                 mes_instance.ofCharacteristic = char_instance
                 char_instance.characteristicFor = ent_instance
                 obs_instance.ofEntity = ent_instance
-
+                mes_instance.usedProcedure.append(procedure_instance)
                 # Adding data properties
                 result_instance.hasValue.append(str(boundingbox))
                 result_instance.hasProbability.append(boundingbox.probability)
@@ -237,7 +239,7 @@ class TaskSelector:
                 mes_instance.ofCharacteristic = char_instance
                 char_instance.characteristicFor = ent_instance
                 obs_instance.ofEntity = ent_instance
-
+                mes_instance.usedProcedure.append(procedure_instance)
                 # Adding data properties
                 result_instance.hasValue.append(str(imagemask))
                 result_instance.hasProbability.append(imagemask.probability)
@@ -261,7 +263,7 @@ class TaskSelector:
             mes_instance.ofCharacteristic = char_instance
             char_instance.characteristicFor = ent_instance
             obs_instance.ofEntity = ent_instance
-
+            mes_instance.usedProcedure.append(procedure_instance)
             # Adding data properties
             result_instance.hasValue.append(depth_map)
             char_instance.hasValue.append(depth_map)
@@ -282,11 +284,11 @@ class TaskSelector:
             mes_instance.ofCharacteristic = char_instance
             char_instance.characteristicFor = ent_instance
             obs_instance.ofEntity = ent_instance
-
+            mes_instance.usedProcedure.append(procedure_instance)
             # Adding data properties
             result_instance.hasValue.append(str(result.activity.data))
             char_instance.hasValue.append(str(result.activity.data))
-
+        
         self.orka.save(self.save_dir)
 
 
@@ -813,6 +815,7 @@ if __name__ == "__main__":
                         options_left = False
 
             if fruit_position:
+                rospy.logwarn(f'{len(fruit_position)} {fruit}s detected!')
                 # Define pickup and destination coordinates
                 pickup_coordinates = [0.266, 0.075, -0.088]
                 destination_coordinates = [0.271, -0.061, -0.088]
