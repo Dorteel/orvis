@@ -624,7 +624,7 @@ def query_annotators(obs_graph, object):
         
         # Step 1: Add a simulated entity of type 'object' to the ontology
         with obs_graph:
-            simulated_entity = obs_graph[object](f"SimulatedEntity_{object}")
+            obs_graph[object](f"SimulatedEntity_{object}")
             # simulated_entity.is_a.append()  # Assign type `object`
             rospy.loginfo("Running reasoning...")
             sync_reasoner_pellet(infer_property_values=True, debug=0)
@@ -869,7 +869,7 @@ if __name__ == "__main__":
                 object_coordinates = [round(float(x), 3) for x in fruit_position[0][0].strip("()").split(",")]
                 rospy.logwarn(object_coordinates)
                 pickup_coordinates = transform_coordinates('locobot/camera_color_optical_frame', 'locobot/arm_base_link', object_coordinates)
-                destination_coordinates = [pickup_coordinates[0], 0.3, 0.2]
+                destination_coordinates = [0, 0.3, 0.2]
                 rospy.logwarn(f'Picking up fruit: {fruit_position[0][1]} at position {pickup_coordinates}')
                 pickup_object(pickup_coordinates, destination_coordinates)
 

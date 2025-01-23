@@ -21,7 +21,7 @@ system:
 # Annotators to start up
 annotators:
    - detr_resnet_50
-   - segformer_b1
+   #- segformer_b1
    - dpt_hybrid_midas
    - yolos_tiny
    - detr_resnet_50_panoptic

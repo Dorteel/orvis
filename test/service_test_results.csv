@@ -1,2 +1,0 @@
-service_name,service_type,total_time,avg_time,calls_per_second
-/annotators/ImageToText/kosmos_2_patch14_224/detect,<class 'orvis.srv._ImageToText.ImageToText'>,38.63867425918579,3.863867425918579,0.25880805156306946
