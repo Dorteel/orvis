@@ -184,6 +184,8 @@ include_directories(
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
   scripts/service_manager.py
+  scripts/run_individual_services.py
+  scripts/rosbag_record.py
   scripts/main.py
   scripts/task_selector.py
   scripts/service_tester.py
