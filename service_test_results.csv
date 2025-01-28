@@ -1,5 +1,0 @@
-service_name,service_type,total_time,avg_time,calls_per_second
-/annotators/ObjectDetection/detr_resnet_50/detect,<class 'orvis.srv._ObjectDetection.ObjectDetection'>,9.583610773086548,0.9583610773086548,1.0434480528031032
-/annotators/ObjectDetection/yolos_tiny/detect,<class 'orvis.srv._ObjectDetection.ObjectDetection'>,3.313720703125,0.3313720703125,3.017755838797613
-/annotators/ImageSegmentation/detr_resnet_50_panoptic/detect,<class 'orvis.srv._ImageSegmentation.ImageSegmentation'>,31.177109718322754,3.1177109718322753,0.3207481415162423
-/annotators/PromptedObjectDetection/owl_v2/detect,<class 'orvis.srv._PromptedObjectDetection.PromptedObjectDetection'>,78.58254265785217,7.8582542657852175,0.12725472683595807

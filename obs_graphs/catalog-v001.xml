@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1737552378527" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250122134021.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1737552378527" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250122141004.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1737552378527" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250122135131.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1737552378527" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250122141848.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1737552378527" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250122141312.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1737552378527" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250122140800.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1737552378527" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250122142152.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1737552378527" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250122135508.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1737552378527" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250122135623.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1737552378527" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250122141954.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1737552378527" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250122134246.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250124112023.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="auto-generated-graph-with-entities.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250128134247.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250128133606.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250124103451.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250124095446.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250122155639.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250124111650.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250128140906.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250124102825.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250124095745.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250128141602.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250124115828.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250128141940.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250128133824.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250128141811.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250128135735.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250124100451.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250124102115.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250128134547.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250124100110.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250124103125.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250128132806.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250128140444.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250128135442.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250128134410.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250124120043.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250128141128.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1738084538716" name="duplicate:https://w3id.org/def/orka" uri="orvis_orka_20250128134112.owl"/>
     </group>
 </catalog>

@@ -1,8 +1,0 @@
-<!-- Launches the webcam as well as the orvis system -->
-<launch>
-    <!-- Run webcam.py -->
-    <node pkg="orvis" type="webcam.py" name="webcam_node" output="screen" />
-
-    <!-- Run service_manager.py -->
-    <node pkg="orvis" type="service_manager.py" name="service_manager_node" output="screen" />
-</launch>

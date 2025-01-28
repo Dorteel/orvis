@@ -1,0 +1,7 @@
+<launch>
+    <node pkg="orvis" type="color_assignment_service.py" name="assign_color_service" output="screen">
+        <param name="method" value="most_common" />
+        <param name="window_size" value="9" />
+        <param name="num_clusters" value="5" />
+    </node>
+</launch>
