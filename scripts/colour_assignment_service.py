@@ -2,7 +2,7 @@ import rospy
 import numpy as np
 from sensor_msgs.msg import Image
 from geometry_msgs.msg import Point
-from custom_msgs.srv import AssignColor, AssignColorResponse
+from orvis.srv import AssignColour, AssignColourResponse
 from cv_bridge import CvBridge
 from sklearn.cluster import KMeans
 
