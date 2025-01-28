@@ -192,6 +192,7 @@ catkin_install_python(PROGRAMS
   scripts/model_loader.py
   scripts/experiment.py
   scripts/get3Dcoordinates.py
+  scripts/query_tester.py
   test/test_pickplace_client.py
   test/webcam.py
   test/test3Dcoordinates.py

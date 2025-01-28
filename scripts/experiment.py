@@ -9,6 +9,7 @@ import cv2
 import random
 import os
 import numpy as np
+import time
 
 from datetime import datetime
 from collections import deque
@@ -94,7 +95,7 @@ class TaskSelector:
         """Store the last received image."""
         self.last_image = img_msg
 
-    def call_service(self, service_to_call):
+    def call_service(self, service_to_call, prompt=None):
         """
         Call the specified service using the last received image.
 
@@ -106,7 +107,7 @@ class TaskSelector:
             rospy.loginfo("Waiting for an image...")
             rospy.sleep(0.1)  # Sleep for a short duration to avoid busy-waiting
 
-        
+        self.prompt.data = prompt
         task_type = service_to_call.split('/')[2]
         self.service_name = service_to_call.split('/')[3] 
 
@@ -159,7 +160,6 @@ class TaskSelector:
         obs_instance = self.oboe.Observation(observation_id) # Create an instance of Observation
         
         procedure_instance = self.sosa.Procedure(self.service_name)
-        rospy.loginfo(procedure_instance)
         
         # Get observation graph if doesn't exist yet
         rospy.loginfo("Fetching observation graph...")
@@ -191,6 +191,9 @@ class TaskSelector:
                 rospy.loginfo(f'Creating observation for {boundingbox.Class}')
                 coordinates = self.create_3d_coordinates(boundingbox)
                 rospy.loginfo(f"... the calculated coordinates are {coordinates}")
+                if coordinates == 'None':
+                    rospy.logwarn(f"Incorrect coordinates recieved for {boundingbox.Class}, entity skipped.")
+                    continue
                 timestamp = datetime.now().strftime("%Y%m%d%H%M%S") + str(random.randint(1000, 9999))
 
                 # Creating instances
@@ -610,6 +613,7 @@ class TaskSelector:
 #========================================================================================================
 # OTHER UTILITY FUNCTIONS
 #------------------------
+
 def query_annotators(obs_graph, object):
     """
     Queries the observation graph for annotators able to detect the given object using a SPARQL query.
@@ -623,12 +627,12 @@ def query_annotators(obs_graph, object):
         rospy.loginfo(f"Adding a simulated entity of type {object} to the ontology...")
         
         # Step 1: Add a simulated entity of type 'object' to the ontology
-        with obs_graph:
-            obs_graph[object](f"SimulatedEntity_{object}")
-            # simulated_entity.is_a.append()  # Assign type `object`
-            rospy.loginfo("Running reasoning...")
-            sync_reasoner_pellet(infer_property_values=True, debug=0)
-            rospy.loginfo("Reasoning complete.")
+        # with obs_graph:
+        #     obs_graph[object](f"SimulatedEntity_{object}")
+        #     # simulated_entity.is_a.append()  # Assign type `object`
+        #     rospy.loginfo("Running reasoning...")
+        #     sync_reasoner_pellet(infer_property_values=True, debug=0)
+        #     rospy.loginfo("Reasoning complete.")
 
         # Step 2: Construct and run the SPARQL query
         rospy.loginfo(f"Querying the observation graph for annotators capable of detecting {object}...")
@@ -774,18 +778,6 @@ def query_location(obs_graph, object):
         rospy.logerr(f"Error running SPARQL query: {e}")
         return None
 
-def call_annotator(annotator_service, object):
-    """
-    Calls the annotator service to detect the given object.
-    """
-    rospy.loginfo(f"Calling annotator service '{annotator_service}' to detect {object}...")
-    try:
-        # Call the service
-        annotator_client.call_service(annotator_service)
-
-    except rospy.ServiceException as e:
-        rospy.logerr(f"Failed to call annotator service '{annotator_service}': {e}")
-
 
 def pickup_object(pickup_coordinates, destination_coordinates):
     """
@@ -850,7 +842,7 @@ if __name__ == "__main__":
                 for annotators in capable_annotators:          
                     annotator_name, service_name = annotators
                     rospy.loginfo(f"Calling service {annotator_name}")
-                    annotator_client.call_service(service_name)
+                    annotator_client.call_service(service_name, prompt=fruit)
                     obs_graph = get_obs_graph()
                     fruit_position = query_location(obs_graph, fruit)
 
@@ -865,13 +857,15 @@ if __name__ == "__main__":
                 rospy.logwarn(f'{len(fruit_position)} {fruit}s detected!')
                 # Define pickup and destination coordinates
                 pickup_coordinates = [0.266, 0.075, -0.088]
-                
+                for position in fruit_position:
+                    rospy.logwarn(f'\t{position}')
                 object_coordinates = [round(float(x), 3) for x in fruit_position[0][0].strip("()").split(",")]
                 rospy.logwarn(object_coordinates)
                 pickup_coordinates = transform_coordinates('locobot/camera_color_optical_frame', 'locobot/arm_base_link', object_coordinates)
                 destination_coordinates = [0, 0.3, 0.2]
                 rospy.logwarn(f'Picking up fruit: {fruit_position[0][1]} at position {pickup_coordinates}')
-                pickup_object(pickup_coordinates, destination_coordinates)
+                #pickup_object(pickup_coordinates, destination_coordinates)
+                rospy.logwarn(f'---Actual pickup skipped---')
 
             else:
                 rospy.logwarn(f"{fruit} not found!")

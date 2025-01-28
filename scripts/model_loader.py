@@ -138,6 +138,14 @@ def load_models(updated_ontology_name):
                     annotator_class = getattr(ontology, annotator_class_name)
                     rospy.loginfo(f"Class {annotator_class_name} found: {annotator_class}")
 
+                # Create an instance of the annotator class
+                annotator_instance = annotator_class(annotator_name)
+                annotator_instance.hasServiceName.append(service_name)
+
+                # Save the updated ontology containing the base
+                # ontology_path_base = os.path.join(os.path.dirname(ONTOLOGY_PATH), updated_ontology_name + '_base.owl')
+                # ontology.save(file=ontology_path_base, format="rdfxml")
+
                 # Create a class for grouping the objects detectable
                 detecting_class_name = f'EntitiesDetectectableBy{annotator_class_name}'
                 try:
@@ -147,9 +155,6 @@ def load_models(updated_ontology_name):
                 except Exception as e:
                     rospy.logerr(f"Error adding class {detecting_class_name} to the ontology: {e}")
 
-                # Create an instance of the annotator class
-                annotator_instance = annotator_class(annotator_name)
-                annotator_instance.hasServiceName.append(service_name)
 
                 # Check the labels created by the classes
                 if detected_labels:
@@ -173,12 +178,16 @@ def load_models(updated_ontology_name):
                             else:
                                 label_class = types.new_class(formatted_label, (detected_property_class,))                        
                             label_class = types.new_class(formatted_label, (detecting_class,))
+                            label_class(f'test_{formatted_label}')
                             # Also add the class as a DetectableBy
                             # label_class = types.new_class(formatted_label, (detecting_class))
 
                             # types.new_class(formatted_label, (detected_property_class,))
                             # annotator_class.is_a.append(ontology.canDetect.some(label_class)) # This class axiom is removed due to not being used
-
+                # Check if the model has an open-set labels and add physical entity as the general layer
+                elif not detected_labels and detected_property == 'ObjectType':
+                    types.new_class('PhysicalEntity', (detecting_class,))
+                ontology.PhysicalEntity('test_PhysicalEntity')
                 # Add the SWRL rules
                 rospy.loginfo(f"Adding SWRL rule for {annotator_class} to the ontology...")
                 try:
@@ -199,7 +208,8 @@ def load_models(updated_ontology_name):
 
 
     # Save the updated ontology
-    updated_ontology_path = os.path.join(os.path.dirname(ONTOLOGY_PATH), updated_ontology_name)
+    ontology_path_capability = os.path.join(os.path.dirname(ONTOLOGY_PATH), updated_ontology_name + '_capability.owl')
+
 
     try:
         with ontology:
@@ -208,9 +218,9 @@ def load_models(updated_ontology_name):
             sync_reasoner_pellet(infer_property_values = True, infer_data_property_values = True, debug = 0)
             # Save the inferred ontology
             rospy.loginfo(f"Saving inferred knowledge graph...")   
-            ontology.save(file=updated_ontology_path, format="rdfxml")
+            ontology.save(file=ontology_path_capability, format="rdfxml")
 
-        rospy.loginfo(f"Ontology updated and saved at {updated_ontology_path}.")
+        rospy.loginfo(f"Ontology updated and saved at {ontology_path_capability}.")
         return f"Done. Annotators added: {', '.join(added_annotators)}"
     except Exception as e:
         rospy.logerr(f"Error saving updated ontology: {e}")
