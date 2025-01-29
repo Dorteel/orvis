@@ -23,6 +23,7 @@ from orvis.srv import PromptedObjectDetection, PromptedObjectDetectionRequest, P
 from orvis.srv import DepthEstimation, DepthEstimationRequest, DepthEstimationResponse  # Import the necessary service types
 from orvis.srv import VideoClassification, VideoClassificationRequest, VideoClassificationResponse  # Detection service
 from orvis.srv import ImageToText, ImageToTextRequest, ImageToTextResponse  # Detection service
+from orvis.srv import AssignColour, AssignColourRequest, AssignColourResponse
 
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
@@ -67,7 +68,7 @@ class TaskSelector:
 
         # Subscribe to the appropriate image topic
         rospy.Subscriber(self.camera_topic, Image, self.image_callback)
-        rospy.loginfo("MainAnnotatorClient initialized.")
+        rospy.loginfo("Experiment initialized.")
 
     def load_config(self):
         """Load main configuration and determine service parameters."""
@@ -95,63 +96,11 @@ class TaskSelector:
         """Store the last received image."""
         self.last_image = img_msg
 
-    def call_service(self, service_to_call, prompt=None):
-        """
-        Call the specified service using the last received image.
+    #==============================
+    # Creating an observation graph
+    #------------------------------
 
-        :param service_to_call: A string representing the service to call
-                                (e.g., 'ObjectDetection', 'ImageSegmentation', etc.).
-        """
-        # Wait until at least one image is received
-        while not rospy.is_shutdown() and self.last_image is None:
-            rospy.loginfo("Waiting for an image...")
-            rospy.sleep(0.1)  # Sleep for a short duration to avoid busy-waiting
-
-        self.prompt.data = prompt
-        task_type = service_to_call.split('/')[2]
-        self.service_name = service_to_call.split('/')[3] 
-
-        if task_type == 'ImageSegmentation':
-            self.service_type = ImageSegmentation 
-        elif task_type == 'ObjectDetection':
-            self.service_type = ObjectDetection
-        elif task_type == 'PromptedObjectDetection':
-            self.service_type = PromptedObjectDetection
-        elif task_type == 'DepthEstimation':
-            self.service_type = DepthEstimation
-        elif task_type == 'VideoClassification':
-            self.service_type = VideoClassification
-        elif task_type == 'ImageToText':
-            self.service_type = ImageToText
-        else:
-            raise NameError("Service type not recognized. Check the name of the services.")
-
-
-        rospy.wait_for_service(service_to_call)
-        self.annotator_service = rospy.ServiceProxy(service_to_call, self.service_type)
-        rospy.loginfo(f"Service {service_to_call} connected.")
-
-        try:
-            # Dispatch the request to the appropriate service processing method
-            if task_type == 'ObjectDetection':
-                self.process_detection(self.last_image)
-            elif task_type == 'PromptedObjectDetection':
-                self.process_prompteddetection(self.last_image)
-            elif task_type == 'ImageSegmentation':
-                self.process_segmentation(self.last_image)
-            elif task_type == 'DepthEstimation':
-                self.process_depthestimation(self.last_image)
-            elif task_type == 'VideoClassification':
-                self.process_videoclassification(self.last_image)
-            elif task_type == 'ImageToText':
-                self.process_image_to_text(self.last_image)
-            else:
-                rospy.logerr(f"Unknown service type: {service_to_call}. Cannot process the request.")
-        except Exception as e:
-            rospy.logerr(f"Error calling service {service_to_call}: {e}")
-
-
-    def create_obs_graph(self, result):
+    def create_obs_graph(self, result, input_img):
         """
         Creates an observation graph
         """
@@ -163,7 +112,6 @@ class TaskSelector:
         
         # Get observation graph if doesn't exist yet
         rospy.loginfo("Fetching observation graph...")
-
         # Path to the obs_graphs directory (one level up from the script directory)
         script_dir = os.path.dirname(os.path.abspath(__file__))
         obs_graph_dir = os.path.join(os.path.dirname(script_dir), "obs_graphs")
@@ -187,20 +135,25 @@ class TaskSelector:
             rospy.loginfo(f"Latest observation graph successfully loaded from {latest_obs_graph_path}.")    
 
         if self.service_type == ObjectDetection or self.service_type == PromptedObjectDetection or self.service_type == ImageToText:
-            for boundingbox in result.objects.bounding_boxes:
-                rospy.loginfo(f'Creating observation for {boundingbox.Class}')
-                coordinates = self.create_3d_coordinates(boundingbox)
+            for bbox in result.objects.bounding_boxes:
+                rospy.loginfo(f'Creating observation for {bbox.Class}')
+                coordinates = self.create_3d_coordinates(bbox)
                 rospy.loginfo(f"... the calculated coordinates are {coordinates}")
-                if coordinates == 'None':
-                    rospy.logwarn(f"Incorrect coordinates recieved for {boundingbox.Class}, entity skipped.")
+                if not coordinates:
+                    rospy.logwarn(f"Incorrect coordinates recieved for {bbox.Class}, entity skipped.")
                     continue
                 timestamp = datetime.now().strftime("%Y%m%d%H%M%S") + str(random.randint(1000, 9999))
+                # Get the coordinates
 
+                cropped_img = input_img[bbox.ymin:bbox.ymax, bbox.xmin:bbox.xmax]
+                cv2.imshow("Cropped Image", cropped_img)
+                cv2.waitKey(2000)
+                cv2.destroyAllWindows() 
                 # Creating instances
                 try:
-                    ent_instance = self.orka[boundingbox.Class.capitalize()]('ent_' + timestamp)
+                    ent_instance = self.orka[bbox.Class.capitalize()]('ent_' + timestamp)
                 except Exception as e:
-                    rospy.loginfo(f"Class \"{boundingbox.Class.capitalize()}\" not found. Defaulting to PhysicalEntity")
+                    rospy.loginfo(f"Class \"{bbox.Class.capitalize()}\" not found. Defaulting to PhysicalEntity")
                     ent_instance = self.orka['PhysicalEntity']('ent_' + timestamp)
                 char_instance = self.orka.Location('loc_' + timestamp)
                 mes_instance = self.oboe.Measurement('mes_' + timestamp)
@@ -214,8 +167,8 @@ class TaskSelector:
                 obs_instance.ofEntity = ent_instance
                 mes_instance.usedProcedure.append(procedure_instance)
                 # Adding data properties
-                result_instance.hasValue.append(str(boundingbox))
-                result_instance.hasProbability.append(boundingbox.probability)
+                result_instance.hasValue.append(str(bbox))
+                result_instance.hasProbability.append(bbox.probability)
                 char_instance.hasValue.append(str(coordinates))
 
         elif self.service_type == ImageSegmentation:
@@ -232,6 +185,10 @@ class TaskSelector:
                 char_instance = self.orka.Location('loc_' + timestamp)
                 mes_instance = self.oboe.Measurement('mes_' + timestamp)
                 result_instance = self.sosa.Result('res_' + timestamp)
+                cv_image = self.bridge.imgmsg_to_cv2(imagemask.mask, "bgr8")
+                cv2.imshow("Cropped Image", cv_image)
+                cv2.waitKey(2000)
+                cv2.destroyAllWindows() 
 
                 # Adding properties
                 obs_instance.hasMeasurement.append(mes_instance)
@@ -293,6 +250,62 @@ class TaskSelector:
         self.orka.save(self.save_dir)
 
 
+    def call_service(self, service_to_call, prompt=None):
+        """
+        Call the specified service using the last received image.
+
+        :param service_to_call: A string representing the service to call
+                                (e.g., 'ObjectDetection', 'ImageSegmentation', etc.).
+        """
+        # Wait until at least one image is received
+        while not rospy.is_shutdown() and self.last_image is None:
+            rospy.loginfo("Waiting for an image...")
+            rospy.sleep(0.1)  # Sleep for a short duration to avoid busy-waiting
+
+        self.prompt.data = prompt
+        task_type = service_to_call.split('/')[2]
+        self.service_name = service_to_call.split('/')[3] 
+
+        if task_type == 'ImageSegmentation':
+            self.service_type = ImageSegmentation 
+        elif task_type == 'ObjectDetection':
+            self.service_type = ObjectDetection
+        elif task_type == 'PromptedObjectDetection':
+            self.service_type = PromptedObjectDetection
+        elif task_type == 'DepthEstimation':
+            self.service_type = DepthEstimation
+        elif task_type == 'VideoClassification':
+            self.service_type = VideoClassification
+        elif task_type == 'ImageToText':
+            self.service_type = ImageToText
+        else:
+            raise NameError("Service type not recognized. Check the name of the services.")
+
+
+        rospy.wait_for_service(service_to_call)
+        self.annotator_service = rospy.ServiceProxy(service_to_call, self.service_type)
+        rospy.loginfo(f"Service {service_to_call} connected.")
+
+        try:
+            # Dispatch the request to the appropriate service processing method
+            if task_type == 'ObjectDetection':
+                self.process_detection(self.last_image)
+            elif task_type == 'PromptedObjectDetection':
+                self.process_prompteddetection(self.last_image)
+            elif task_type == 'ImageSegmentation':
+                self.process_segmentation(self.last_image)
+            elif task_type == 'DepthEstimation':
+                self.process_depthestimation(self.last_image)
+            elif task_type == 'VideoClassification':
+                self.process_videoclassification(self.last_image)
+            elif task_type == 'ImageToText':
+                self.process_image_to_text(self.last_image)
+            else:
+                rospy.logerr(f"Unknown service type: {service_to_call}. Cannot process the request.")
+        except Exception as e:
+            rospy.logerr(f"Error calling service {service_to_call}: {e}")
+
+
 #===========================
 # IMAGE PROCESSING FUNCTIONS
 #---------------------------
@@ -301,20 +314,19 @@ class TaskSelector:
         """Process image detection service requests."""
         try:
             # Convert the ROS Image message to OpenCV format
-        # Determine the image encoding and handle accordingly
-            if img_msg.encoding == "bgr8":
-                # Convert the ROS Image message to OpenCV format for color images
-                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
-            elif img_msg.encoding == "16UC1":
+            # Determine the image encoding and handle accordingly
+            if img_msg.encoding == "16UC1":
                 # Convert the ROS Image message to OpenCV format for depth images
                 cv_image = self.bridge.imgmsg_to_cv2(img_msg, "16UC1")
+            else:
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
             request = PromptedObjectDetectionRequest(image=img_msg, prompt=self.prompt)
             response = self.annotator_service(request)
 
             # If logging level is DEBUG, display the bounding boxes
             if self.logging_level == 'DEBUG':
                 self.display_bounding_boxes(cv_image, response)
-            self.create_obs_graph(response)
+            self.create_obs_graph(response, cv_image)
             return response
 
         except Exception as e:
@@ -324,19 +336,19 @@ class TaskSelector:
         """Process image detection service requests."""
         try:
             # Convert the ROS Image message to OpenCV format
-            if img_msg.encoding == "bgr8":
-                # Convert the ROS Image message to OpenCV format for color images
-                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
-            elif img_msg.encoding == "16UC1":
+            # Determine the image encoding and handle accordingly
+            if img_msg.encoding == "16UC1":
                 # Convert the ROS Image message to OpenCV format for depth images
                 cv_image = self.bridge.imgmsg_to_cv2(img_msg, "16UC1")
+            else:
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
             request = ImageToTextRequest(image=img_msg)
             response = self.annotator_service(request)
 
             # If logging level is DEBUG, display the bounding boxes
             if self.logging_level == 'DEBUG':
                 self.display_bounding_boxes(cv_image, response)
-            self.create_obs_graph(response)
+            self.create_obs_graph(response, cv_image)
             return response
         except Exception as e:
             rospy.logerr(f"Error processing detection image: {e}")
@@ -345,12 +357,12 @@ class TaskSelector:
         """Process image detection service requests."""
         try:
             # Convert the ROS Image message to OpenCV format
-            if img_msg.encoding == "bgr8":
-                # Convert the ROS Image message to OpenCV format for color images
-                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
-            elif img_msg.encoding == "16UC1":
+            # Determine the image encoding and handle accordingly
+            if img_msg.encoding == "16UC1":
                 # Convert the ROS Image message to OpenCV format for depth images
                 cv_image = self.bridge.imgmsg_to_cv2(img_msg, "16UC1")
+            else:
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
             request = ObjectDetectionRequest(image=img_msg)
             response = self.annotator_service(request)
 
@@ -358,7 +370,7 @@ class TaskSelector:
             if self.logging_level == 'DEBUG':
                 self.display_bounding_boxes(cv_image, response)
 
-            self.create_obs_graph(response)
+            self.create_obs_graph(response, cv_image)
             return response
         
         except Exception as e:
@@ -368,19 +380,19 @@ class TaskSelector:
         """Process segmentation service requests."""
         try:
             # Convert the ROS Image message to OpenCV format
-            if img_msg.encoding == "bgr8":
-                # Convert the ROS Image message to OpenCV format for color images
-                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
-            elif img_msg.encoding == "16UC1":
+            # Determine the image encoding and handle accordingly
+            if img_msg.encoding == "16UC1":
                 # Convert the ROS Image message to OpenCV format for depth images
                 cv_image = self.bridge.imgmsg_to_cv2(img_msg, "16UC1")
+            else:
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
             request = ImageSegmentationRequest(image=img_msg)
             response = self.annotator_service(request)
 
             # If logging level is DEBUG, display the segmentation masks
             if self.logging_level == 'DEBUG':
                 self.display_segmentation_masks(cv_image, response)
-            self.create_obs_graph(response)
+            self.create_obs_graph(response, cv_image)
             return response
         
         except Exception as e:
@@ -390,19 +402,19 @@ class TaskSelector:
         """Process depth estimation service requests."""
         try:
             # Convert the ROS Image message to OpenCV format
-            if img_msg.encoding == "bgr8":
-                # Convert the ROS Image message to OpenCV format for color images
-                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
-            elif img_msg.encoding == "16UC1":
+            # Determine the image encoding and handle accordingly
+            if img_msg.encoding == "16UC1":
                 # Convert the ROS Image message to OpenCV format for depth images
                 cv_image = self.bridge.imgmsg_to_cv2(img_msg, "16UC1")
+            else:
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
             request = DepthEstimationRequest(image=img_msg)
             response = self.annotator_service(request)
 
             # If logging level is DEBUG, display the bounding boxes
             if self.logging_level == 'DEBUG':
                 self.display_depthmap(response)
-            self.create_obs_graph(response)
+            self.create_obs_graph(response, cv_image)
             return response
         except Exception as e:
             rospy.logerr(f"Error processing detection image: {e}")
@@ -411,11 +423,12 @@ class TaskSelector:
         """Process depth estimation service requests."""
         try:
             # Convert the ROS Image message to OpenCV format
-            if img_msg.encoding == "bgr8":
-                # Convert the ROS Image message to OpenCV format for color images
-                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
-            elif img_msg.encoding == "16UC1":
+            # Determine the image encoding and handle accordingly
+            if img_msg.encoding == "16UC1":
                 # Convert the ROS Image message to OpenCV format for depth images
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "16UC1")
+            else:
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
                 cv_image = self.bridge.imgmsg_to_cv2(img_msg, "16UC1")
             self.video_frames.append(cv_image)
             if len(self.video_frames) == self.num_frames:
@@ -424,13 +437,20 @@ class TaskSelector:
                 request = VideoClassificationRequest(video_frames=ros_video_frames)
                 response = self.annotator_service(request)
                 rospy.loginfo(f"Detected activity: {response}")
-                self.create_obs_graph(response)
+                self.create_obs_graph(response, cv_image)
                 return response
             
             else:
                 rospy.loginfo(f"Collecting frames ({len(self.video_frames)}/{self.num_frames} frames collected)")
         except Exception as e:
             rospy.logerr(f"Error processing detection image: {e}")
+
+    def process_color_information(self, img, detection):
+        """
+        Given an image, and a mask or a boundingbox as a detection,
+        requests the colour information from the assign_colour service
+        """
+        pass
 
 #========================
 # 3D CALULATION FUNCTIONS
@@ -845,13 +865,9 @@ if __name__ == "__main__":
                     annotator_client.call_service(service_name, prompt=fruit)
                     obs_graph = get_obs_graph()
                     fruit_position = query_location(obs_graph, fruit)
-
-                    if fruit_position:
-                        break
-
+                    if fruit_position: break
                     capable_annotators.remove(annotators)
-                    if not capable_annotators:
-                        options_left = False
+                    if not capable_annotators: options_left = False
 
             if fruit_position:
                 rospy.logwarn(f'{len(fruit_position)} {fruit}s detected!')

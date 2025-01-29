@@ -17,7 +17,7 @@ class ColorAssignerService:
         self.num_clusters = rospy.get_param('~num_clusters', 5)  # Number of clusters for k-means
 
         # Service setup
-        self.service = rospy.Service('/assign_color', AssignColor, self.handle_assign_color)
+        self.service = rospy.Service('/assign_color', AssignColour, self.handle_assign_color)
 
         # CV Bridge for image conversion
         self.bridge = CvBridge()
@@ -45,11 +45,11 @@ class ColorAssignerService:
 
                 pixels = cv_image[y_min:y_max, x_min:x_max].reshape(-1, 3)
             else:
-                return AssignColorResponse(success=False, hex_color="", message="Invalid input type")
+                return AssignColourResponse(success=False, hex_color="", message="Invalid input type")
 
             # Check if pixels are valid
             if len(pixels) == 0:
-                return AssignColorResponse(success=False, hex_color="", message="No valid pixels found")
+                return AssignColourResponse(success=False, hex_color="", message="No valid pixels found")
 
             # Determine the color based on the method
             if self.method == 'most_common':
@@ -57,12 +57,12 @@ class ColorAssignerService:
             elif self.method == 'average':
                 hex_color = self.get_average_color(pixels)
             else:
-                return AssignColorResponse(success=False, hex_color="", message="Invalid method")
+                return AssignColourResponse(success=False, hex_color="", message="Invalid method")
 
-            return AssignColorResponse(success=True, hex_color=hex_color, message="Color assigned successfully")
+            return AssignColourResponse(success=True, hex_color=hex_color, message="Color assigned successfully")
         except Exception as e:
             rospy.logerr(f"Error in handle_assign_color: {e}")
-            return AssignColorResponse(success=False, hex_color="", message=str(e))
+            return AssignColourResponse(success=False, hex_color="", message=str(e))
 
     def get_most_common_color(self, pixels):
         # Use k-means clustering to find the most common color
