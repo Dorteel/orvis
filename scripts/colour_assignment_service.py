@@ -1,10 +1,12 @@
+#!/home/user/pel_ws/pel_venv/bin/python
+
 import rospy
 import numpy as np
 from sensor_msgs.msg import Image
-from geometry_msgs.msg import Point
 from orvis.srv import AssignColour, AssignColourResponse
 from cv_bridge import CvBridge
 from sklearn.cluster import KMeans
+import cv2
 
 class ColorAssignerService:
     def __init__(self):
@@ -13,7 +15,6 @@ class ColorAssignerService:
 
         # ROS Parameters
         self.method = rospy.get_param('~method', 'most_common')  # 'most_common' or 'average'
-        self.window_size = rospy.get_param('~window_size', 9)  # Size of the bounding box window
         self.num_clusters = rospy.get_param('~num_clusters', 5)  # Number of clusters for k-means
 
         # Service setup
@@ -28,22 +29,14 @@ class ColorAssignerService:
         try:
             # Convert image to OpenCV format
             cv_image = self.bridge.imgmsg_to_cv2(req.image, desired_encoding='bgr8')
-
-            # Extract pixels based on the input type
+            
+            # Extract pixels based on input type
             if req.input_type == 'mask':
-                mask = self.bridge.imgmsg_to_cv2(req.mask, desired_encoding='mono8')
-                pixels = cv_image[mask > 0]
+                mask_gray = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
+                _, mask_binary = cv2.threshold(mask_gray, 1, 255, cv2.THRESH_BINARY)
+                pixels = cv_image[mask_binary > 0]
             elif req.input_type == 'bounding_box':
-                x_center, y_center = req.bounding_box.center.x, req.bounding_box.center.y
-                half_window = self.window_size // 2
-
-                # Crop the bounding box window
-                x_min = max(0, x_center - half_window)
-                y_min = max(0, y_center - half_window)
-                x_max = min(cv_image.shape[1], x_center + half_window)
-                y_max = min(cv_image.shape[0], y_center + half_window)
-
-                pixels = cv_image[y_min:y_max, x_min:x_max].reshape(-1, 3)
+                pixels = cv_image.reshape(-1, 3)  # Use the whole image
             else:
                 return AssignColourResponse(success=False, hex_color="", message="Invalid input type")
 
@@ -79,7 +72,7 @@ class ColorAssignerService:
     @staticmethod
     def rgb_to_hex(color):
         # Convert RGB to hex
-        return "#{:02x}{:02x}{:02x}".format(color[2], color[1], color[0])  # BGR to RGB
+        return "{:02x}{:02x}{:02x}".format(color[2], color[1], color[0])  # BGR to RGB
 
 if __name__ == '__main__':
     try:

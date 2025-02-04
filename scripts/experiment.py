@@ -51,20 +51,24 @@ class TaskSelector:
         # Other initializations
         self.script_dir = os.path.dirname(os.path.abspath(__file__))
         self.obs_graph_dir = os.path.join(os.path.dirname(self.script_dir), "obs_graphs")
-        self.run_id = 'orvis_orka_' + datetime.now().strftime("%Y%m%d%H%M%S" + '.owl')
-        self.save_dir = os.path.join(self.obs_graph_dir, self.run_id)
+        self.timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+        self.run_id = 'orvis_orka_' + self.timestamp + '.owl'
+        self.run_folder = os.path.join(self.obs_graph_dir, f"run_{self.timestamp}")
+        os.makedirs(self.run_folder, exist_ok=True)
+        self.save_dir = os.path.join(self.run_folder, self.run_id)
         self.service_name = ''
 
         # Initialize the ROS service
         self.video_frames = deque(maxlen=self.num_frames)
-
-        
 
         # Load the ontology
         self.orka = get_ontology(self.orka_path).load()
         self.sosa = self.orka.get_namespace("http://www.w3.org/ns/sosa/")
         self.oboe = self.orka.get_namespace("http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#")
         self.ssn = self.orka.get_namespace("http://www.w3.org/ns/ssn/")
+
+        # Colour calculation service
+        self.assign_color_service = rospy.ServiceProxy('/assign_color', AssignColour)
 
         # Subscribe to the appropriate image topic
         rospy.Subscriber(self.camera_topic, Image, self.image_callback)
@@ -112,18 +116,9 @@ class TaskSelector:
         
         # Get observation graph if doesn't exist yet
         rospy.loginfo("Fetching observation graph...")
-        # Path to the obs_graphs directory (one level up from the script directory)
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        obs_graph_dir = os.path.join(os.path.dirname(script_dir), "obs_graphs")
-
-        # Check if the directory exists
-        if not os.path.exists(obs_graph_dir):
-            rospy.logwarn(f"The directory {obs_graph_dir} does not exist.")
-            return None
 
         # Get all .owl files in the directory
-        owl_files = [os.path.join(obs_graph_dir, f) for f in os.listdir(obs_graph_dir) if f.endswith(".owl")]
-
+        owl_files = [os.path.join(self.run_folder, f) for f in os.listdir(self.run_folder) if f.endswith(".owl")]
         # If no .owl files are found, return None
         if owl_files:
             # Find the most recently modified .owl file
@@ -143,22 +138,26 @@ class TaskSelector:
                     rospy.logwarn(f"Incorrect coordinates recieved for {bbox.Class}, entity skipped.")
                     continue
                 timestamp = datetime.now().strftime("%Y%m%d%H%M%S") + str(random.randint(1000, 9999))
-                # Get the coordinates
-
-                cropped_img = input_img[bbox.ymin:bbox.ymax, bbox.xmin:bbox.xmax]
-                cv2.imshow("Cropped Image", cropped_img)
-                cv2.waitKey(2000)
-                cv2.destroyAllWindows() 
+                entity_name = 'ent_' + timestamp + '_' + self.service_name
+                image_path = os.path.join(self.run_folder, f'{entity_name}.png')
                 # Creating instances
                 try:
-                    ent_instance = self.orka[bbox.Class.capitalize()]('ent_' + timestamp)
+                    ent_instance = self.orka[bbox.Class.capitalize()](entity_name)
                 except Exception as e:
                     rospy.loginfo(f"Class \"{bbox.Class.capitalize()}\" not found. Defaulting to PhysicalEntity")
-                    ent_instance = self.orka['PhysicalEntity']('ent_' + timestamp)
+                    ent_instance = self.orka['PhysicalEntity'](entity_name)
                 char_instance = self.orka.Location('loc_' + timestamp)
                 mes_instance = self.oboe.Measurement('mes_' + timestamp)
                 result_instance = self.sosa.Result('res_' + timestamp)
+                
+                cropped_img = input_img[bbox.ymin:bbox.ymax, bbox.xmin:bbox.xmax]
 
+                cv2.imwrite(image_path, cropped_img)
+
+                # Color calculation
+                assigned_color = self.process_color(cropped_img)
+
+                rospy.loginfo(f"Cropped image saved at: {image_path}")
                 # Adding properties
                 obs_instance.hasMeasurement.append(mes_instance)
                 mes_instance.hasResult.append(result_instance)
@@ -167,29 +166,49 @@ class TaskSelector:
                 obs_instance.ofEntity = ent_instance
                 mes_instance.usedProcedure.append(procedure_instance)
                 # Adding data properties
-                result_instance.hasValue.append(str(bbox))
+                result_instance.hasValue.append(image_path)
                 result_instance.hasProbability.append(bbox.probability)
                 char_instance.hasValue.append(str(coordinates))
+
+                # Adding color to KG (TODO: Could be a separate function)
+                mes_instance_color = self.oboe.Measurement('mes_color_' + timestamp)
+                obs_instance.hasMeasurement.append(mes_instance_color)
+                char_color_instance = self.orka.Color('color_' + timestamp)
+                char_color_instance.characteristicFor = ent_instance
+                result_color_instance = self.sosa.Result('res_color' + timestamp)
+                mes_instance_color.ofCharacteristic = char_color_instance
+                mes_instance_color.hasResult.append(result_color_instance)
+                result_color_instance.hasValue.append(assigned_color)
 
         elif self.service_type == ImageSegmentation:
             for imagemask in result.objects.masks:
                 rospy.loginfo(f'Creating observation for {imagemask.Class}')
                 timestamp = datetime.now().strftime("%Y%m%d%H%M%S") + str(random.randint(1000, 9999))
+                entity_name = 'ent_' + timestamp + '_' + self.service_name
+                image_path = os.path.join(self.run_folder, f'{entity_name}.png')
                 coordinates = self.create_3d_coordinates(imagemask)
                 # Creating instances
                 try:
-                    ent_instance = self.orka[imagemask.Class.capitalize()]('ent_' + timestamp)
+                    ent_instance = self.orka[imagemask.Class.capitalize()](entity_name)
                 except Exception as e:
                     rospy.loginfo(f"Class \"{imagemask.Class.capitalize()}\" not found. Defaulting to PhysicalEntity")
-                    ent_instance = self.orka['PhysicalEntity']('ent_' + timestamp)
+                    ent_instance = self.orka['PhysicalEntity'](entity_name)
                 char_instance = self.orka.Location('loc_' + timestamp)
                 mes_instance = self.oboe.Measurement('mes_' + timestamp)
                 result_instance = self.sosa.Result('res_' + timestamp)
                 cv_image = self.bridge.imgmsg_to_cv2(imagemask.mask, "bgr8")
-                cv2.imshow("Cropped Image", cv_image)
-                cv2.waitKey(2000)
-                cv2.destroyAllWindows() 
+                cv_image = cv2.resize(cv_image, (input_img.shape[1], input_img.shape[0])) 
 
+                # Convert the mask to grayscale to use as an actual mask
+                mask_gray = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
+                # Ensure mask is binary (some segmentation masks might have soft edges)
+                _, mask_binary = cv2.threshold(mask_gray, 1, 255, cv2.THRESH_BINARY)
+                # Apply the mask to keep the colors
+                masked_img = cv2.bitwise_and(input_img, input_img, mask=mask_binary.astype(np.uint8))
+                cv2.imwrite(image_path, masked_img)
+
+                # Color calculation
+                assigned_color = self.process_color(masked_img, input_type="mask")
                 # Adding properties
                 obs_instance.hasMeasurement.append(mes_instance)
                 mes_instance.hasResult.append(result_instance)
@@ -199,10 +218,20 @@ class TaskSelector:
                 mes_instance.usedProcedure.append(procedure_instance)
 
                 # Adding data properties
-                result_instance.hasValue.append(str(imagemask))
+                result_instance.hasValue.append(image_path)
                 result_instance.hasProbability.append(imagemask.probability)
                 if coordinates:
                     char_instance.hasValue.append(str(coordinates))
+
+                # Adding color to KG (TODO: Could be a separate function)
+                mes_instance_color = self.oboe.Measurement('mes_color_' + timestamp)
+                obs_instance.hasMeasurement.append(mes_instance_color)
+                char_color_instance = self.orka.Color('color_' + timestamp)
+                char_color_instance.characteristicFor = ent_instance
+                result_color_instance = self.sosa.Result('res_color' + timestamp)
+                mes_instance_color.ofCharacteristic = char_color_instance
+                mes_instance_color.hasResult.append(result_color_instance)
+                result_color_instance.hasValue.append(str(assigned_color))
 
         elif self.service_type == DepthEstimation:
             rospy.loginfo(f'Creating observation for Depth Map')
@@ -259,7 +288,7 @@ class TaskSelector:
         """
         # Wait until at least one image is received
         while not rospy.is_shutdown() and self.last_image is None:
-            rospy.loginfo("Waiting for an image...")
+            rospy.loginfo(f"Waiting for an image on topic: {self.camera_topic}")
             rospy.sleep(0.1)  # Sleep for a short duration to avoid busy-waiting
 
         self.prompt.data = prompt
@@ -306,9 +335,34 @@ class TaskSelector:
             rospy.logerr(f"Error calling service {service_to_call}: {e}")
 
 
-#===========================
-# IMAGE PROCESSING FUNCTIONS
-#---------------------------
+    #===========================
+    # IMAGE PROCESSING FUNCTIONS
+    #---------------------------
+
+    def process_color(self, image, input_type="bounding_box"):
+        """Calls the assign_color service with the provided image and input type."""
+        try:
+            # Convert OpenCV image to ROS Image message
+            image_msg = self.bridge.cv2_to_imgmsg(image, encoding="bgr8")
+
+            # Create a request
+            request = AssignColourRequest()
+            request.image = image_msg
+            request.input_type = input_type  # Can be "mask" or "bounding_box"
+
+            # Call the service
+            response = self.assign_color_service(request)
+
+            # Handle the response
+            if response.success:
+                rospy.loginfo(f"Assigned color: {response.hex_color}")
+            else:
+                rospy.logwarn(f"Color assignment failed: {response.message}")
+            return response.hex_color
+
+        except rospy.ServiceException as e:
+            rospy.logerr(f"Service call failed: {e}")
+            return None
 
     def process_prompteddetection(self, img_msg):
         """Process image detection service requests."""
@@ -324,8 +378,8 @@ class TaskSelector:
             response = self.annotator_service(request)
 
             # If logging level is DEBUG, display the bounding boxes
-            if self.logging_level == 'DEBUG':
-                self.display_bounding_boxes(cv_image, response)
+            if self.logging_level == 'DEBUG': self.display_bounding_boxes(cv_image, response)
+
             self.create_obs_graph(response, cv_image)
             return response
 
@@ -346,8 +400,8 @@ class TaskSelector:
             response = self.annotator_service(request)
 
             # If logging level is DEBUG, display the bounding boxes
-            if self.logging_level == 'DEBUG':
-                self.display_bounding_boxes(cv_image, response)
+            if self.logging_level == 'DEBUG': self.display_bounding_boxes(cv_image, response)
+            
             self.create_obs_graph(response, cv_image)
             return response
         except Exception as e:
@@ -367,8 +421,7 @@ class TaskSelector:
             response = self.annotator_service(request)
 
             # If logging level is DEBUG, display the bounding boxes
-            if self.logging_level == 'DEBUG':
-                self.display_bounding_boxes(cv_image, response)
+            if self.logging_level == 'DEBUG': self.display_bounding_boxes(cv_image, response)
 
             self.create_obs_graph(response, cv_image)
             return response
@@ -390,8 +443,8 @@ class TaskSelector:
             response = self.annotator_service(request)
 
             # If logging level is DEBUG, display the segmentation masks
-            if self.logging_level == 'DEBUG':
-                self.display_segmentation_masks(cv_image, response)
+            if self.logging_level == 'DEBUG': self.display_segmentation_masks(cv_image, response)
+
             self.create_obs_graph(response, cv_image)
             return response
         
@@ -412,8 +465,8 @@ class TaskSelector:
             response = self.annotator_service(request)
 
             # If logging level is DEBUG, display the bounding boxes
-            if self.logging_level == 'DEBUG':
-                self.display_depthmap(response)
+            if self.logging_level == 'DEBUG': self.display_depthmap(response)
+            
             self.create_obs_graph(response, cv_image)
             return response
         except Exception as e:
@@ -429,7 +482,6 @@ class TaskSelector:
                 cv_image = self.bridge.imgmsg_to_cv2(img_msg, "16UC1")
             else:
                 cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
-                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "16UC1")
             self.video_frames.append(cv_image)
             if len(self.video_frames) == self.num_frames:
                 ros_video_frames = [self.bridge.cv2_to_imgmsg(frame, "bgr8") for frame in self.video_frames]
@@ -445,16 +497,39 @@ class TaskSelector:
         except Exception as e:
             rospy.logerr(f"Error processing detection image: {e}")
 
-    def process_color_information(self, img, detection):
+    def get_obs_graph(self):
         """
-        Given an image, and a mask or a boundingbox as a detection,
-        requests the colour information from the assign_colour service
+        Fetches and loads the most recently modified observation graph (.owl file) 
+        from the current run folder using owlready2.
+        Returns the loaded ontology or None if no .owl file exists.
         """
-        pass
+        rospy.loginfo("Fetching observation graph...")
 
-#========================
-# 3D CALULATION FUNCTIONS
-#------------------------
+        # Get all .owl files in the current run folder
+        owl_files = [os.path.join(self.run_folder, f) for f in os.listdir(self.run_folder) if f.endswith(".owl")]
+
+        # If no .owl files are found, return None
+        if not owl_files:
+            rospy.logwarn(f"No .owl files found in {self.run_folder}.")
+            return None
+
+        # Find the most recently modified .owl file
+        latest_obs_graph_path = max(owl_files, key=os.path.getmtime)
+        rospy.loginfo(f"Latest observation graph found: {latest_obs_graph_path}")
+
+        # Load the ontology using owlready2
+        try:
+            ontology = get_ontology(latest_obs_graph_path).load()
+            rospy.loginfo(f"Ontology successfully loaded from {latest_obs_graph_path}.")
+            return ontology
+        except Exception as e:
+            rospy.logerr(f"Failed to load ontology: {e}")
+            return None
+
+
+    #========================
+    # 3D CALULATION FUNCTIONS
+    #------------------------
     def create_3d_coordinates(self, response):
         """
         Creates 3D coordinates from a boundingbox or image
@@ -545,9 +620,9 @@ class TaskSelector:
             rospy.logerr(f"Service call failed: {e}")
             return None
         
-#==================
-# DISPLAY FUNCTIONS
-#------------------
+    #==================
+    # DISPLAY FUNCTIONS
+    #------------------
     def display_bounding_boxes(self, image, response):
         """Display bounding boxes from the detection response."""
         for bbox in response.objects.bounding_boxes:
@@ -630,173 +705,137 @@ class TaskSelector:
         except Exception as e:
             rospy.logerr(f"Failed to display depth map: {e}")
 
-#========================================================================================================
-# OTHER UTILITY FUNCTIONS
-#------------------------
+    #========================================================================================================
+    # OTHER UTILITY FUNCTIONS
+    #------------------------
 
-def query_annotators(obs_graph, object):
-    """
-    Queries the observation graph for annotators able to detect the given object using a SPARQL query.
-    Adds a simulated entity of the given type to the ontology, performs reasoning, and then executes the query.
-    
-    :param obs_graph: The loaded ontology graph (owlready2 ontology object).
-    :param object: The target object (assumed to be an IRI or identifier).
-    :return: List of results from the SPARQL query, or None if no results are found.
-    """
-    try:
-        rospy.loginfo(f"Adding a simulated entity of type {object} to the ontology...")
+    def query_annotators(self, obs_graph, object):
+        """
+        Queries the observation graph for annotators able to detect the given object using a SPARQL query.
+        Adds a simulated entity of the given type to the ontology, performs reasoning, and then executes the query.
         
-        # Step 1: Add a simulated entity of type 'object' to the ontology
-        # with obs_graph:
-        #     obs_graph[object](f"SimulatedEntity_{object}")
-        #     # simulated_entity.is_a.append()  # Assign type `object`
-        #     rospy.loginfo("Running reasoning...")
-        #     sync_reasoner_pellet(infer_property_values=True, debug=0)
-        #     rospy.loginfo("Reasoning complete.")
+        :param obs_graph: The loaded ontology graph (owlready2 ontology object).
+        :param object: The target object (assumed to be an IRI or identifier).
+        :return: List of results from the SPARQL query, or None if no results are found.
+        """
+        try:
+            rospy.loginfo(f"Adding a simulated entity of type {object} to the ontology...")
+            
+            # Step 1: Add a simulated entity of type 'object' to the ontology
+            # with obs_graph:
+            #     obs_graph[object](f"SimulatedEntity_{object}")
+            #     # simulated_entity.is_a.append()  # Assign type `object`
+            #     rospy.loginfo("Running reasoning...")
+            #     sync_reasoner_pellet(infer_property_values=True, debug=0)
+            #     rospy.loginfo("Reasoning complete.")
 
-        # Step 2: Construct and run the SPARQL query
-        rospy.loginfo(f"Querying the observation graph for annotators capable of detecting {object}...")
-        sparql_query_annotators = f"""
+            # Step 2: Construct and run the SPARQL query
+            rospy.loginfo(f"Querying the observation graph for annotators capable of detecting {object}...")
+            sparql_query_annotators = f"""
+            PREFIX sosa: <http://www.w3.org/ns/sosa/>
+            PREFIX ssn: <http://www.w3.org/ns/ssn/>
+            PREFIX orka: <https://w3id.org/def/orka#>
+            PREFIX oboe: <http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#>
+
+            SELECT DISTINCT ?annotator ?annotatorName
+            WHERE {{
+            # Query for the simulated entity and related annotators
+            ?temp_entity a orka:{object} .
+            ?annotator orka:canDetect ?temp_entity .
+            ?annotator orka:hasServiceName ?annotatorName .
+            }}
+            """
+            results = list(default_world.sparql(sparql_query_annotators, error_on_undefined_entities=False))
+            rospy.loginfo(f"SPARQL query returned {len(results)} results.")
+            for result in results: print(result[0]) # Print the name of the annotator
+            return results if results else None
+        
+        except Exception as e:
+            rospy.logerr(f"Error running query_annotators function: {e}")
+            return None
+
+
+
+
+    def transform_coordinates(self, source_frame, target_frame, source_coordinates):
+        """
+        Transforms coordinates from one TF frame to another.
+
+        Args:
+            source_frame (str): Name of the source frame.
+            target_frame (str): Name of the target frame.
+            source_coordinates (list): [x, y, z] coordinates in the source frame.
+
+        Returns:
+            list: Transformed coordinates in the target frame, or None if transformation fails.
+        """
+        tf_buffer = tf2_ros.Buffer()
+        tf_listener = tf2_ros.TransformListener(tf_buffer)
+
+        # Create a PointStamped message for the source coordinates
+        point = PointStamped()
+        point.header.stamp = rospy.Time(0)  # Use the latest available time
+        point.header.frame_id = source_frame
+        point.point.x = source_coordinates[0]
+        point.point.y = source_coordinates[1]
+        point.point.z = source_coordinates[2]
+
+        try:
+            # Wait for the transform to be available
+            rospy.loginfo(f"Waiting for transform from {source_frame} to {target_frame}...")
+            if not tf_buffer.can_transform(target_frame, source_frame, rospy.Time(0), rospy.Duration(3.0)):
+                rospy.logerr(f"Transform from {source_frame} to {target_frame} is not available.")
+                return None
+
+            # Perform the transformation
+            transformed_point = tf_buffer.transform(point, target_frame)
+
+            # Extract transformed coordinates
+            return [transformed_point.point.x, transformed_point.point.y, transformed_point.point.z]
+
+        except tf2_ros.LookupException as e:
+            rospy.logerr(f"Transform lookup error: {e}")
+        except tf2_ros.ConnectivityException as e:
+            rospy.logerr(f"Transform connectivity error: {e}")
+        except tf2_ros.ExtrapolationException as e:
+            rospy.logerr(f"Transform extrapolation error: {e}")
+        except Exception as e:
+            rospy.logerr(f"Unexpected error while transforming coordinates: {e}")
+
+        return None
+
+
+    def query_location(self, obs_graph, object):
+        """
+        Queries the observation graph for the location of the given object using a SPARQL query.
+        :param obs_graph: The loaded ontology graph (owlready2 ontology object).
+        :param object: The target object (assumed to be an IRI or identifier).
+        :return: List of results from the SPARQL query, or None if no results are found.
+        """
+        rospy.loginfo(f"Querying the observation graph for the location of {object}...")
+
+        sparql_query_location = f"""
         PREFIX sosa: <http://www.w3.org/ns/sosa/>
         PREFIX ssn: <http://www.w3.org/ns/ssn/>
         PREFIX orka: <https://w3id.org/def/orka#>
         PREFIX oboe: <http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#>
 
-        SELECT DISTINCT ?annotator ?annotatorName
-        WHERE {{
-          # Query for the simulated entity and related annotators
-          ?temp_entity a orka:{object} .
-          ?annotator orka:canDetect ?temp_entity .
-          ?annotator orka:hasServiceName ?annotatorName .
+        SELECT ?loc ?ent WHERE {{
+        ?ent a orka:{object} .
+        ?loc_instance a orka:Location .
+        ?loc_instance oboe:characteristicFor ?ent .
+        ?loc_instance orka:hasValue ?loc .                               
         }}
         """
-        results = list(default_world.sparql(sparql_query_annotators, error_on_undefined_entities=False))
-        rospy.loginfo(f"SPARQL query returned {len(results)} results.")
-        for result in results: print(result[0]) # Print the name of the annotator
-        return results if results else None
-    
-    except Exception as e:
-        rospy.logerr(f"Error running query_annotators function: {e}")
-        return None
 
-def get_obs_graph():
-    """
-    Fetches and loads the most recently modified observation graph (.owl file) 
-    from the knowledge base directory using owlready2.
-    Returns the loaded ontology or None if no .owl file exists.
-    """
-    rospy.loginfo("Fetching observation graph...")
-
-    # Path to the obs_graphs directory (one level up from the script directory)
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    obs_graph_dir = os.path.join(os.path.dirname(script_dir), "obs_graphs")
-
-    # Check if the directory exists
-    if not os.path.exists(obs_graph_dir):
-        rospy.logwarn(f"The directory {obs_graph_dir} does not exist.")
-        return None
-
-    # Get all .owl files in the directory
-    owl_files = [os.path.join(obs_graph_dir, f) for f in os.listdir(obs_graph_dir) if f.endswith(".owl")]
-
-    # If no .owl files are found, return None
-    if not owl_files:
-        rospy.logwarn(f"No .owl files found in {obs_graph_dir}.")
-        return None
-
-    # Find the most recently modified .owl file
-    latest_obs_graph_path = max(owl_files, key=os.path.getmtime)
-    rospy.loginfo(f"Latest observation graph found: {latest_obs_graph_path}")
-
-    # Load the ontology using owlready2
-    try:
-        ontology = get_ontology(latest_obs_graph_path).load()
-        rospy.loginfo(f"Ontology successfully loaded from {latest_obs_graph_path}.")
-        return ontology
-    except Exception as e:
-        rospy.logerr(f"Failed to load ontology: {e}")
-        return None
-
-
-def transform_coordinates(source_frame, target_frame, source_coordinates):
-    """
-    Transforms coordinates from one TF frame to another.
-
-    Args:
-        source_frame (str): Name of the source frame.
-        target_frame (str): Name of the target frame.
-        source_coordinates (list): [x, y, z] coordinates in the source frame.
-
-    Returns:
-        list: Transformed coordinates in the target frame, or None if transformation fails.
-    """
-    tf_buffer = tf2_ros.Buffer()
-    tf_listener = tf2_ros.TransformListener(tf_buffer)
-
-    # Create a PointStamped message for the source coordinates
-    point = PointStamped()
-    point.header.stamp = rospy.Time(0)  # Use the latest available time
-    point.header.frame_id = source_frame
-    point.point.x = source_coordinates[0]
-    point.point.y = source_coordinates[1]
-    point.point.z = source_coordinates[2]
-
-    try:
-        # Wait for the transform to be available
-        rospy.loginfo(f"Waiting for transform from {source_frame} to {target_frame}...")
-        if not tf_buffer.can_transform(target_frame, source_frame, rospy.Time(0), rospy.Duration(3.0)):
-            rospy.logerr(f"Transform from {source_frame} to {target_frame} is not available.")
+        try:
+            # Run the SPARQL query on the ontology
+            results = list(default_world.sparql(sparql_query_location, error_on_undefined_entities=False))
+            rospy.loginfo(f"SPARQL query returned {len(results)} results.")
+            return results if results else None
+        except Exception as e:
+            rospy.logerr(f"Error running SPARQL query: {e}")
             return None
-
-        # Perform the transformation
-        transformed_point = tf_buffer.transform(point, target_frame)
-
-        # Extract transformed coordinates
-        return [transformed_point.point.x, transformed_point.point.y, transformed_point.point.z]
-
-    except tf2_ros.LookupException as e:
-        rospy.logerr(f"Transform lookup error: {e}")
-    except tf2_ros.ConnectivityException as e:
-        rospy.logerr(f"Transform connectivity error: {e}")
-    except tf2_ros.ExtrapolationException as e:
-        rospy.logerr(f"Transform extrapolation error: {e}")
-    except Exception as e:
-        rospy.logerr(f"Unexpected error while transforming coordinates: {e}")
-
-    return None
-
-
-def query_location(obs_graph, object):
-    """
-    Queries the observation graph for the location of the given object using a SPARQL query.
-    :param obs_graph: The loaded ontology graph (owlready2 ontology object).
-    :param object: The target object (assumed to be an IRI or identifier).
-    :return: List of results from the SPARQL query, or None if no results are found.
-    """
-    rospy.loginfo(f"Querying the observation graph for the location of {object}...")
-
-    sparql_query_location = f"""
-    PREFIX sosa: <http://www.w3.org/ns/sosa/>
-    PREFIX ssn: <http://www.w3.org/ns/ssn/>
-    PREFIX orka: <https://w3id.org/def/orka#>
-    PREFIX oboe: <http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#>
-
-    SELECT ?loc ?ent WHERE {{
-      ?ent a orka:{object} .
-      ?loc_instance a orka:Location .
-      ?loc_instance oboe:characteristicFor ?ent .
-      ?loc_instance orka:hasValue ?loc .                               
-    }}
-    """
-
-    try:
-        # Run the SPARQL query on the ontology
-        results = list(default_world.sparql(sparql_query_location, error_on_undefined_entities=False))
-        rospy.loginfo(f"SPARQL query returned {len(results)} results.")
-        return results if results else None
-    except Exception as e:
-        rospy.logerr(f"Error running SPARQL query: {e}")
-        return None
 
 
 def pickup_object(pickup_coordinates, destination_coordinates):
@@ -851,20 +890,20 @@ if __name__ == "__main__":
             rospy.loginfo(f"Processing {fruit}...")
             fruit_position = None
 
-            obs_graph = get_obs_graph()
+            obs_graph = annotator_client.get_obs_graph()
 
             options_left = True
 
-            fruit_position = query_location(obs_graph, fruit)
-            capable_annotators = query_annotators(obs_graph, fruit)
+            fruit_position = annotator_client.query_location(obs_graph, fruit)
+            capable_annotators = annotator_client.query_annotators(obs_graph, fruit)
             
             while options_left and not fruit_position:
                 for annotators in capable_annotators:          
                     annotator_name, service_name = annotators
                     rospy.loginfo(f"Calling service {annotator_name}")
                     annotator_client.call_service(service_name, prompt=fruit)
-                    obs_graph = get_obs_graph()
-                    fruit_position = query_location(obs_graph, fruit)
+                    obs_graph = annotator_client.get_obs_graph()
+                    fruit_position = annotator_client.query_location(obs_graph, fruit)
                     if fruit_position: break
                     capable_annotators.remove(annotators)
                     if not capable_annotators: options_left = False
@@ -877,7 +916,7 @@ if __name__ == "__main__":
                     rospy.logwarn(f'\t{position}')
                 object_coordinates = [round(float(x), 3) for x in fruit_position[0][0].strip("()").split(",")]
                 rospy.logwarn(object_coordinates)
-                pickup_coordinates = transform_coordinates('locobot/camera_color_optical_frame', 'locobot/arm_base_link', object_coordinates)
+                pickup_coordinates = annotator_client.transform_coordinates('locobot/camera_color_optical_frame', 'locobot/arm_base_link', object_coordinates)
                 destination_coordinates = [0, 0.3, 0.2]
                 rospy.logwarn(f'Picking up fruit: {fruit_position[0][1]} at position {pickup_coordinates}')
                 #pickup_object(pickup_coordinates, destination_coordinates)

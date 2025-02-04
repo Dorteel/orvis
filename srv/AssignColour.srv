@@ -1,8 +1,5 @@
 sensor_msgs/Image image
 string input_type
-sensor_msgs/Image mask
-geometry_msgs/Point center
-int32[] bounding_box_size
 ---
 bool success
 string hex_color

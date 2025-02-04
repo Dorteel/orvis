@@ -7,6 +7,7 @@ system:
   model_directory: /home/user/pel_ws/models/  # Common model storage location
   orka_path: /home/user/pel_ws/src/orvis/orka/orvis_demo.owl
   camera_topic: /locobot/camera/color/image_raw # /webcam/image_raw #/locobot/camera/aligned_depth_to_color/image_raw
+  #camera_topic: /webcam/image_raw
   depth_topic: /locobot/camera/aligned_depth_to_color/image_raw
   depth_info_topic: /locobot/camera/aligned_depth_to_color/camera_info
   parent_frame: locobot/camera_color_optical_frame

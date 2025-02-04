@@ -1,8 +1,14 @@
-<!-- Launches orvis only -->
 <launch>
-    <!-- Run webcam.py -->
+    <!-- get coordinates -->
     <node pkg="orvis" type="get3Dcoordinates.py" name="coordinate_calculation_service" output="screen" />
 
     <!-- Run service_manager.py -->
     <node pkg="orvis" type="service_manager.py" name="service_manager_node" output="screen" />
+
+    <!-- Assign color service -->
+    <node pkg="orvis" type="colour_assignment_service.py" name="assign_color_service" output="screen">
+        <param name="method" value="most_common" />
+        <param name="window_size" value="9" />
+        <param name="num_clusters" value="5" />
+    </node>
 </launch>
