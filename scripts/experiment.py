@@ -10,6 +10,7 @@ import random
 import os
 import numpy as np
 import time
+from scipy.spatial import distance
 
 from datetime import datetime
 from collections import deque
@@ -108,34 +109,36 @@ class TaskSelector:
         """
         Creates an observation graph
         """
-        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-        observation_id = 'obs_' + timestamp  # Format: YYYYMMDDHHMMSS
+        timestamp_obs = datetime.now().strftime("%Y%m%d%H%M%S")
+        observation_id = 'obs_' + timestamp_obs  # Format: YYYYMMDDHHMMSS
         obs_instance = self.oboe.Observation(observation_id) # Create an instance of Observation
-        
+        rospy.loginfo(f"Creating observation graph for {observation_id}")
         procedure_instance = self.sosa.Procedure(self.service_name)
         
-        # Get observation graph if doesn't exist yet
-        rospy.loginfo("Fetching observation graph...")
+        # # Get observation graph if doesn't exist yet
+        # rospy.loginfo(f"\t...Fetching observation graph...")
 
-        # Get all .owl files in the directory
-        owl_files = [os.path.join(self.run_folder, f) for f in os.listdir(self.run_folder) if f.endswith(".owl")]
-        # If no .owl files are found, return None
-        if owl_files:
-            # Find the most recently modified .owl file
-            latest_obs_graph_path = max(owl_files, key=os.path.getmtime)
-            rospy.loginfo(f"Latest observation graph found: {latest_obs_graph_path}")
+        # # Get all .owl files in the directory
+        # owl_files = [os.path.join(self.run_folder, f) for f in os.listdir(self.run_folder) if f.endswith(".owl")]
+        # # If no .owl files are found, return None
+        # if owl_files:
+        #     # Find the most recently modified .owl file
+        #     latest_obs_graph_path = max(owl_files, key=os.path.getmtime)
+        #     rospy.loginfo(f"\t... ...Latest observation graph found: {latest_obs_graph_path}")
 
-            # Load the ontology using owlready2
-            self.orka = get_ontology(latest_obs_graph_path).load()
-            rospy.loginfo(f"Latest observation graph successfully loaded from {latest_obs_graph_path}.")    
+        #     # Load the ontology using owlready2
+        #     self.orka = default_world.get_ontology(latest_obs_graph_path).load()
+        #     rospy.loginfo(f"\t... ... ... Latest observation graph successfully loaded from {latest_obs_graph_path}.")    
+        # else:
+        #     rospy.logwarn('First time, no previous ontology')
 
         if self.service_type == ObjectDetection or self.service_type == PromptedObjectDetection or self.service_type == ImageToText:
             for bbox in result.objects.bounding_boxes:
-                rospy.loginfo(f'Creating observation for {bbox.Class}')
+                rospy.loginfo(f'... Creating observation for {str(self.service_type)} result: {bbox.Class}')
                 coordinates = self.create_3d_coordinates(bbox)
-                rospy.loginfo(f"... the calculated coordinates are {coordinates}")
+                rospy.loginfo(f"... ... the calculated coordinates are {coordinates}")
                 if not coordinates:
-                    rospy.logwarn(f"Incorrect coordinates recieved for {bbox.Class}, entity skipped.")
+                    rospy.loginfo(f"... ... Incorrect coordinates recieved for {bbox.Class}, entity skipped.")
                     continue
                 timestamp = datetime.now().strftime("%Y%m%d%H%M%S") + str(random.randint(1000, 9999))
                 entity_name = 'ent_' + timestamp + '_' + self.service_name
@@ -144,20 +147,15 @@ class TaskSelector:
                 try:
                     ent_instance = self.orka[bbox.Class.capitalize()](entity_name)
                 except Exception as e:
-                    rospy.loginfo(f"Class \"{bbox.Class.capitalize()}\" not found. Defaulting to PhysicalEntity")
+                    rospy.loginfo(f"... ... Class \"{bbox.Class.capitalize()}\" not found. Defaulting to PhysicalEntity")
                     ent_instance = self.orka['PhysicalEntity'](entity_name)
                 char_instance = self.orka.Location('loc_' + timestamp)
                 mes_instance = self.oboe.Measurement('mes_' + timestamp)
                 result_instance = self.sosa.Result('res_' + timestamp)
                 
                 cropped_img = input_img[bbox.ymin:bbox.ymax, bbox.xmin:bbox.xmax]
-
                 cv2.imwrite(image_path, cropped_img)
-
-                # Color calculation
-                assigned_color = self.process_color(cropped_img)
-
-                rospy.loginfo(f"Cropped image saved at: {image_path}")
+                rospy.loginfo(f"... ... Cropped image saved at: {image_path}")
                 # Adding properties
                 obs_instance.hasMeasurement.append(mes_instance)
                 mes_instance.hasResult.append(result_instance)
@@ -171,14 +169,27 @@ class TaskSelector:
                 char_instance.hasValue.append(str(coordinates))
 
                 # Adding color to KG (TODO: Could be a separate function)
+                # Color calculation
+                assigned_color = self.process_color(cropped_img)
+                color_class = self.find_color_class(assigned_color)
+                
                 mes_instance_color = self.oboe.Measurement('mes_color_' + timestamp)
                 obs_instance.hasMeasurement.append(mes_instance_color)
-                char_color_instance = self.orka.Color('color_' + timestamp)
+                color_class_instance = None
+                for cls in self.orka.classes():
+                    if str(cls) == color_class or cls.iri == color_class:  # Match name or full IRI
+                        color_class_instance = cls
+                        break
+                if color_class_instance:
+                    char_color_instance = color_class_instance('color_' + timestamp + '_' + str(color_class_instance).split('.')[-1])
+                else:
+                    rospy.logwarn(f"Color class {color_class} not found in ontology. Defaulting to orka:Color.")
+                    char_color_instance = self.orka.Color('color_' + timestamp)  # Default to generic orka:Color
                 char_color_instance.characteristicFor = ent_instance
                 result_color_instance = self.sosa.Result('res_color' + timestamp)
                 mes_instance_color.ofCharacteristic = char_color_instance
                 mes_instance_color.hasResult.append(result_color_instance)
-                result_color_instance.hasValue.append(assigned_color)
+                result_color_instance.hasValue.append(str(assigned_color))
 
         elif self.service_type == ImageSegmentation:
             for imagemask in result.objects.masks:
@@ -207,9 +218,8 @@ class TaskSelector:
                 masked_img = cv2.bitwise_and(input_img, input_img, mask=mask_binary.astype(np.uint8))
                 cv2.imwrite(image_path, masked_img)
 
-                # Color calculation
-                assigned_color = self.process_color(masked_img, input_type="mask")
                 # Adding properties
+                
                 obs_instance.hasMeasurement.append(mes_instance)
                 mes_instance.hasResult.append(result_instance)
                 mes_instance.ofCharacteristic = char_instance
@@ -224,9 +234,23 @@ class TaskSelector:
                     char_instance.hasValue.append(str(coordinates))
 
                 # Adding color to KG (TODO: Could be a separate function)
+                # Color calculation
+                assigned_color = self.process_color(masked_img, input_type="mask")
+                color_class = self.find_color_class(assigned_color)
+                
                 mes_instance_color = self.oboe.Measurement('mes_color_' + timestamp)
                 obs_instance.hasMeasurement.append(mes_instance_color)
-                char_color_instance = self.orka.Color('color_' + timestamp)
+                color_class_instance = None
+                for cls in self.orka.classes():
+                    if str(cls) == color_class or cls.iri == color_class:  # Match name or full IRI
+                        color_class_instance = cls
+                        break
+
+                if color_class_instance:
+                    char_color_instance = color_class_instance('color_' + timestamp + '_' + str(color_class_instance).split('.')[-1])
+                else:
+                    rospy.logwarn(f"Color class {color_class} not found in ontology. Defaulting to orka:Color.")
+                    char_color_instance = self.orka.Color('color_' + timestamp)  # Default to generic orka:Color
                 char_color_instance.characteristicFor = ent_instance
                 result_color_instance = self.sosa.Result('res_color' + timestamp)
                 mes_instance_color.ofCharacteristic = char_color_instance
@@ -275,9 +299,44 @@ class TaskSelector:
             # Adding data properties
             result_instance.hasValue.append(str(result.activity.data))
             char_instance.hasValue.append(str(result.activity.data))
-        
+        default_world.save()
         self.orka.save(self.save_dir)
 
+
+    def find_color_class(self, assigned_color):
+        """
+        Looks at the assigned colour in ORKA and finds the closest colour class
+        """
+        # Get the classes from ORKA
+        sparql_query_color = """
+        PREFIX orka: <https://w3id.org/def/orka#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX owl: <http://www.w3.org/2002/07/owl#>
+        SELECT DISTINCT ?color ?colorvalue
+        WHERE {
+        ?color rdfs:subClassOf orka:Color .
+        ?color rdfs:subClassOf [ owl:hasValue ?colorvalue ; owl:onProperty orka:hasRGBvalue ] .
+        }
+        """
+        try:
+            results = list(default_world.sparql(sparql_query_color))
+            color_map = {str(color): str(colorvalue) for color, colorvalue in results}
+
+            # Convert hex to RGB
+            assigned_rgb = np.array([int(assigned_color[i:i+2], 16) for i in (0, 2, 4)])
+            min_dist = float('inf')
+            closest_color = assigned_color
+
+            for color, hex_value in color_map.items():
+                color_rgb = np.array([int(hex_value[i:i+2], 16) for i in (0, 2, 4)])
+                dist = distance.euclidean(assigned_rgb, color_rgb)
+                if dist < min_dist:
+                    min_dist = dist
+                    closest_color = color
+            return closest_color
+        except Exception as e:
+            rospy.logerr(f"Error finding closest ORKA color: {e}")
+            return assigned_color  
 
     def call_service(self, service_to_call, prompt=None):
         """
@@ -503,7 +562,7 @@ class TaskSelector:
         from the current run folder using owlready2.
         Returns the loaded ontology or None if no .owl file exists.
         """
-        rospy.loginfo("Fetching observation graph...")
+        rospy.loginfo("... Fetching observation graph...")
 
         # Get all .owl files in the current run folder
         owl_files = [os.path.join(self.run_folder, f) for f in os.listdir(self.run_folder) if f.endswith(".owl")]
@@ -515,11 +574,10 @@ class TaskSelector:
 
         # Find the most recently modified .owl file
         latest_obs_graph_path = max(owl_files, key=os.path.getmtime)
-        rospy.loginfo(f"Latest observation graph found: {latest_obs_graph_path}")
 
         # Load the ontology using owlready2
         try:
-            ontology = get_ontology(latest_obs_graph_path).load()
+            ontology = default_world.get_ontology(latest_obs_graph_path).load()
             rospy.loginfo(f"Ontology successfully loaded from {latest_obs_graph_path}.")
             return ontology
         except Exception as e:
@@ -536,12 +594,10 @@ class TaskSelector:
         """
         # Calculate middle depending on bbox vs mask
         if hasattr(response, 'mask'):
-            rospy.loginfo('Calculating coordinates from image mask')
             bridge = CvBridge()
             try:
                 # Convert the mask to a numpy array
                 mask_array = bridge.imgmsg_to_cv2(response.mask, desired_encoding="mono8")
-                rospy.loginfo(f"Mask shape: {mask_array.shape}")
                 # Find the indices of non-zero pixels in the mask
                 non_zero_indices = np.argwhere(mask_array > 0)
 
@@ -611,7 +667,7 @@ class TaskSelector:
             response = get_coords_service(request)
 
             if response.success:
-                rospy.loginfo(f"3D Coordinates: x={response.x:.2f}, y={response.y:.2f}, z={response.z:.2f}")
+                # rospy.loginfo(f"3D Coordinates: x={response.x:.2f}, y={response.y:.2f}, z={response.z:.2f}")
                 return response.x, response.y, response.z
             else:
                 rospy.logwarn("Failed to compute 3D coordinates.")
@@ -754,9 +810,6 @@ class TaskSelector:
             rospy.logerr(f"Error running query_annotators function: {e}")
             return None
 
-
-
-
     def transform_coordinates(self, source_frame, target_frame, source_coordinates):
         """
         Transforms coordinates from one TF frame to another.
@@ -803,7 +856,6 @@ class TaskSelector:
             rospy.logerr(f"Unexpected error while transforming coordinates: {e}")
 
         return None
-
 
     def query_location(self, obs_graph, object):
         """
@@ -891,7 +943,6 @@ if __name__ == "__main__":
             fruit_position = None
 
             obs_graph = annotator_client.get_obs_graph()
-
             options_left = True
 
             fruit_position = annotator_client.query_location(obs_graph, fruit)
@@ -909,17 +960,15 @@ if __name__ == "__main__":
                     if not capable_annotators: options_left = False
 
             if fruit_position:
-                rospy.logwarn(f'{len(fruit_position)} {fruit}s detected!')
+                rospy.loginfo(f'{len(fruit_position)} {fruit}s detected!')
                 # Define pickup and destination coordinates
                 pickup_coordinates = [0.266, 0.075, -0.088]
-                for position in fruit_position:
-                    rospy.logwarn(f'\t{position}')
+                pickup_coordinates = [0.266, 0.075, 0.088]
                 object_coordinates = [round(float(x), 3) for x in fruit_position[0][0].strip("()").split(",")]
-                rospy.logwarn(object_coordinates)
                 pickup_coordinates = annotator_client.transform_coordinates('locobot/camera_color_optical_frame', 'locobot/arm_base_link', object_coordinates)
                 destination_coordinates = [0, 0.3, 0.2]
                 rospy.logwarn(f'Picking up fruit: {fruit_position[0][1]} at position {pickup_coordinates}')
-                #pickup_object(pickup_coordinates, destination_coordinates)
+                # pickup_object(pickup_coordinates, destination_coordinates)
                 rospy.logwarn(f'---Actual pickup skipped---')
 
             else:
