@@ -142,7 +142,7 @@ class TaskSelector:
                     continue
                 timestamp = datetime.now().strftime("%Y%m%d%H%M%S") + str(random.randint(1000, 9999))
                 entity_name = 'ent_' + timestamp + '_' + self.service_name
-                image_path = os.path.join(self.run_folder, f'{entity_name}.png')
+                image_path = os.path.join(self.run_folder, f'{entity_name}_{bbox.Class}.png')
                 # Creating instances
                 try:
                     ent_instance = self.orka[bbox.Class.capitalize()](entity_name)
@@ -196,7 +196,7 @@ class TaskSelector:
                 rospy.loginfo(f'Creating observation for {imagemask.Class}')
                 timestamp = datetime.now().strftime("%Y%m%d%H%M%S") + str(random.randint(1000, 9999))
                 entity_name = 'ent_' + timestamp + '_' + self.service_name
-                image_path = os.path.join(self.run_folder, f'{entity_name}.png')
+                image_path = os.path.join(self.run_folder, f'{entity_name}_{imagemask.Class}.png')
                 coordinates = self.create_3d_coordinates(imagemask)
                 # Creating instances
                 try:

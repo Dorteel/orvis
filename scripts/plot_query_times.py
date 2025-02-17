@@ -1,3 +1,4 @@
+#!/home/user/pel_ws/pel_venv/bin/python
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -73,4 +74,4 @@ def process_and_plot_violin(file1, file2, column_names=("Function", "Execution T
 file1 = "location_query_results.csv"
 file2 = "annotator_query_results.csv"
 process_and_plot(file1, file2)
-process_and_plot_violin(file1, file2)
+# process_and_plot_violin(file1, file2)
