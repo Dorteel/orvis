@@ -15,13 +15,14 @@ sys.path.append(os.path.join(package_path))
 from annotators.object_detector import ObjectDetector
 from annotators.image_segmenter import ImageSegmenter
 from annotators.depth_estimator import DepthEstimator
+from annotators.image_classifier import ImageClassifier
 from annotators.pose_detector import PoseDetector
 from annotators.prompted_image_classifier import PromptedImageClassifier
 from annotators.video_classifier import VideoClassifier
 from annotators.image_to_text import ImageToTextConverter
 from annotators.prompted_object_detector import PromptedObjectDetector
 from cv_bridge import CvBridge
-from orvis.srv import ObjectDetection, ImageSegmentation, PromptedObjectDetection, DepthEstimation, VideoClassification, ImageToText, PromptedImageClassification  # Import the necessary service types
+from orvis.srv import ObjectDetection, ImageSegmentation, PromptedObjectDetection, DepthEstimation, ImageClassification, VideoClassification, ImageToText, PromptedImageClassification  # Import the necessary service types
 
 
 
@@ -41,6 +42,8 @@ class ServiceManager:
             self.main_config = yaml.safe_load(file)
 
         # Iterate over annotators in the main config
+        print("Annotators to initialize:")
+        print(f"\t{self.main_config['annotators']}")
         for annotator_name in self.main_config['annotators']:
             model_config_path = f"{model_config_dir}/{annotator_name}.yaml"
             print(f"Initializing {annotator_name}")
@@ -55,7 +58,10 @@ class ServiceManager:
         """
         task_type = config['annotator']['task_type']
         service_name = f"/annotators/{task_type}/{config['annotator']['name']}/detect"
-
+        print(f'{task_type}: {service_name}')
+        if task_type == 'ImageClassification':
+            annotator = ImageClassifier(config)
+            service = rospy.Service(service_name, ImageClassification, annotator.handle_request)
         if task_type == 'PromptedImageClassification':
             annotator = PromptedImageClassifier(config)
             service = rospy.Service(service_name, PromptedImageClassification, annotator.handle_request)

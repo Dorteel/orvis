@@ -27,5 +27,5 @@ ros:
 detection:
   labels: 
     - None
-  confidence_threshold: 0.9  # Confidence threshold for segmentation
-  iou_threshold: 0.45  # Intersection over Union threshold for segmentation masks
+  confidence_threshold:  # Confidence threshold for segmentation
+  iou_threshold:  # Intersection over Union threshold for segmentation masks

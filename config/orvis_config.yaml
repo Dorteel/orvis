@@ -21,11 +21,11 @@ system:
 
 # Annotators to start up
 annotators:
-  #  - detr_resnet_50
-   #- segformer_b1
-   - clip_vit_large_patch14
+   - detr_resnet_50
+   - ioanasong_vit_MINC_2500
+  #  - clip_vit_large_patch14
   #  - dpt_hybrid_midas
-   - yolos_tiny
+  #  - yolos_tiny
   #  - detr_resnet_50_panoptic
   #  - owl_v2
   #  - kosmos_2_patch14_224

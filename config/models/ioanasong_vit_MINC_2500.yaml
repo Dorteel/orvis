@@ -1,0 +1,42 @@
+annotator:
+  detected_property: Material
+  name: vit_MINC_2500
+  task_type: ImageClassification
+  type: ViTForImageClassification
+detection:
+  confidence_threshold: 0.9
+  iou_threshold: 0.45
+  labels:
+  - brick
+  - carpet
+  - mirror
+  - other
+  - painted
+  - paper
+  - plastic
+  - polishedstone
+  - skin
+  - sky
+  - stone
+  - tile
+  - ceramic
+  - wallpaper
+  - water
+  - wood
+  - fabric
+  - foliage
+  - food
+  - glass
+  - hair
+  - leather
+  - metal
+imports:
+  model_class: transformers.AutoModelForImageClassification
+  processor_class: transformers.AutoImageProcessor
+model:
+  model_name: ioanasong/vit-MINC-2500
+processor:
+  processor_name: ioanasong/vit-MINC-2500
+ros:
+  image_topic: annotators/ioanasong_vit_MINC_2500/image
+  result_topic: annotators/ioanasong_vit_MINC_2500/result

@@ -1,25 +1,32 @@
 import rospy
 from sensor_msgs.msg import Image
-from orvis.srv import ObjectDetection, ObjectDetectionRequest, PromptedImageClassification, PromptedImageClassificationRequest
+from orvis.srv import ObjectDetection, ObjectDetectionRequest
+from orvis.srv import ImageClassification, ImageClassificationRequest
 import cv2
 from cv_bridge import CvBridge
 import matplotlib.pyplot as plt
 
 class ImageClassifierTester:
     def __init__(self):
-        rospy.init_node('prompted_object_detector_tester')
+        rospy.init_node('image_classification_tester')
         self.bridge = CvBridge()
+        rospy.loginfo('Initializing image classification testing...')
         
         # Service proxies
-        rospy.wait_for_service('/annotators/ObjectDetection/yolos_tiny/detect')
-        rospy.wait_for_service('/annotators/PromptedImageClassification/clip_vit_large_patch14/detect')
+        rospy.wait_for_service('/annotators/ObjectDetection/detr_resnet_50/detect')
+        rospy.wait_for_service('/annotators/ImageClassification/vit_MINC_2500/detect')
         
-        self.object_detection_service = rospy.ServiceProxy('/annotators/ObjectDetection/yolos_tiny/detect', ObjectDetection)
-        self.classification_service = rospy.ServiceProxy('/annotators/PromptedImageClassification/clip_vit_large_patch14/detect', PromptedImageClassification)
+        self.object_detection_service = rospy.ServiceProxy('/annotators/ObjectDetection/detr_resnet_50/detect', ObjectDetection)
+        self.classification_service = rospy.ServiceProxy('/annotators/ImageClassification/vit_MINC_2500/detect', ImageClassification)
         
-        self.prompts = ['salt', 'fruit', 'bottle', 'vegetable']
         self.image = None
         rospy.Subscriber('/locobot/camera/color/image_raw', Image, self.image_callback)
+        rospy.loginfo("Waiting for an image from /locobot/camera/color/image_raw...")
+        
+        while self.image is None and not rospy.is_shutdown():
+            rospy.sleep(0.1)
+        
+        rospy.loginfo("Image received. Ready to run tests.")
     
     def image_callback(self, msg):
         """Callback function to update the latest image from the ROS topic."""
@@ -35,7 +42,7 @@ class ImageClassifierTester:
         cv_image = self.bridge.imgmsg_to_cv2(self.image, "bgr8")
         ros_image = self.bridge.cv2_to_imgmsg(cv_image, encoding="bgr8")
         
-        # Step 1: Call YOLO object detection service
+        # Step 1: Call Object Detection Service
         detect_req = ObjectDetectionRequest()
         detect_req.image = ros_image
         detect_resp = self.object_detection_service(detect_req)
@@ -47,9 +54,8 @@ class ImageClassifierTester:
             cropped_image = cv_image[bbox.ymin:bbox.ymax, bbox.xmin:bbox.xmax]
             ros_cropped_image = self.bridge.cv2_to_imgmsg(cropped_image, encoding="bgr8")
             
-            classify_req = PromptedImageClassificationRequest()
+            classify_req = ImageClassificationRequest()
             classify_req.image = ros_cropped_image
-            classify_req.prompts = self.prompts
             classify_resp = self.classification_service(classify_req)
             
             self.print_classification_results(bbox, classify_resp)
@@ -65,12 +71,13 @@ class ImageClassifierTester:
         plt.show()
     
     def print_classification_results(self, bbox, classify_resp):
-        """Prints classification results for a detected object."""
+        """Prints classification results for a detected object, sorted by probability."""
+        results = sorted(zip(classify_resp.keys, classify_resp.values), key=lambda x: x[1], reverse=True)
+        
         print(f"Object ({bbox.Class}) classification results:")
-        for key, value in zip(classify_resp.keys, classify_resp.values):
+        for key, value in results:
             print(f"  {key}: {value:.4f}")
 
 if __name__ == '__main__':
     tester = ImageClassifierTester()
-    rospy.sleep(2)  # Allow some time to receive an image
     tester.run_test()
