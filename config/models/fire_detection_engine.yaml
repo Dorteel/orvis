@@ -1,0 +1,31 @@
+# Template for adding new models
+
+# Annotator-specific settings
+annotator:
+  name: 
+  type:   # Type of model/algorithm used for this annotator
+  task_type:   # Type of task performed by this annotator
+  detected_property:   # The property that is being detected (in this case, segmentation masks)
+
+# Model-specific imports and configurations
+imports:
+  model_class:   # Class to import for the model
+  processor_class:   # Class to import for the processor
+
+model:
+  model_name:   # Pretrained model name or path for segmentation
+
+processor:
+  processor_name:  # Processor name or path (same as model)
+
+# ROS topics specific to this annotator
+ros:
+  result_topic: # Topic for publishing detection results
+  image_topic:   # Topic for publishing annotated images
+
+# Segmentation-related settings
+detection:
+  labels: 
+    - None
+  confidence_threshold: 0.9  # Confidence threshold for segmentation
+  iou_threshold: 0.45  # Intersection over Union threshold for segmentation masks

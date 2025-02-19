@@ -16,15 +16,17 @@ from datetime import datetime
 from collections import deque
 
 from orvis.srv import Get3DCoordinates, Get3DCoordinatesRequest
-from orvis.srv import ObjectDetection, ObjectDetectionRequest, ObjectDetectionResponse  # Detection service
-from orvis.srv import ImageSegmentation, ImageSegmentationRequest, ImageSegmentationResponse  # Segmentation service
+from orvis.srv import ObjectDetection, ObjectDetectionRequest  # Detection service
+from orvis.srv import ImageSegmentation, ImageSegmentationRequest  # Segmentation service
 from orvis.msg import ImageMasks, ImageMask  # Import the segmentation message types
 from orvis.msg import PickPlaceAction, PickPlaceGoal
-from orvis.srv import PromptedObjectDetection, PromptedObjectDetectionRequest, PromptedObjectDetectionResponse  # Detection service
-from orvis.srv import DepthEstimation, DepthEstimationRequest, DepthEstimationResponse  # Import the necessary service types
-from orvis.srv import VideoClassification, VideoClassificationRequest, VideoClassificationResponse  # Detection service
-from orvis.srv import ImageToText, ImageToTextRequest, ImageToTextResponse  # Detection service
-from orvis.srv import AssignColour, AssignColourRequest, AssignColourResponse
+from orvis.srv import PromptedObjectDetection, PromptedObjectDetectionRequest  # Detection service
+from orvis.srv import DepthEstimation, DepthEstimationRequest  # Import the necessary service types
+from orvis.srv import VideoClassification, VideoClassificationRequest  # Detection service
+from orvis.srv import ImageToText, ImageToTextRequest  # Detection service
+from orvis.srv import AssignColour, AssignColourRequest
+from orvis.srv import PromptedImageClassification, PromptedImageClassificationRequest  # Detection service
+f
 
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
@@ -115,23 +117,6 @@ class TaskSelector:
         rospy.loginfo(f"Creating observation graph for {observation_id}")
         procedure_instance = self.sosa.Procedure(self.service_name)
         
-        # # Get observation graph if doesn't exist yet
-        # rospy.loginfo(f"\t...Fetching observation graph...")
-
-        # # Get all .owl files in the directory
-        # owl_files = [os.path.join(self.run_folder, f) for f in os.listdir(self.run_folder) if f.endswith(".owl")]
-        # # If no .owl files are found, return None
-        # if owl_files:
-        #     # Find the most recently modified .owl file
-        #     latest_obs_graph_path = max(owl_files, key=os.path.getmtime)
-        #     rospy.loginfo(f"\t... ...Latest observation graph found: {latest_obs_graph_path}")
-
-        #     # Load the ontology using owlready2
-        #     self.orka = default_world.get_ontology(latest_obs_graph_path).load()
-        #     rospy.loginfo(f"\t... ... ... Latest observation graph successfully loaded from {latest_obs_graph_path}.")    
-        # else:
-        #     rospy.logwarn('First time, no previous ontology')
-
         if self.service_type == ObjectDetection or self.service_type == PromptedObjectDetection or self.service_type == ImageToText:
             for bbox in result.objects.bounding_boxes:
                 rospy.loginfo(f'... Creating observation for {str(self.service_type)} result: {bbox.Class}')
@@ -219,7 +204,6 @@ class TaskSelector:
                 cv2.imwrite(image_path, masked_img)
 
                 # Adding properties
-                
                 obs_instance.hasMeasurement.append(mes_instance)
                 mes_instance.hasResult.append(result_instance)
                 mes_instance.ofCharacteristic = char_instance
@@ -303,6 +287,7 @@ class TaskSelector:
         self.orka.save(self.save_dir)
 
 
+
     def find_color_class(self, assigned_color):
         """
         Looks at the assigned colour in ORKA and finds the closest colour class
@@ -366,6 +351,9 @@ class TaskSelector:
             self.service_type = VideoClassification
         elif task_type == 'ImageToText':
             self.service_type = ImageToText
+        elif task_type == 'PromptedImageClassification':
+            self.service_type = PromptedImageClassification
+
         else:
             raise NameError("Service type not recognized. Check the name of the services.")
 
@@ -378,6 +366,8 @@ class TaskSelector:
             # Dispatch the request to the appropriate service processing method
             if task_type == 'ObjectDetection':
                 self.process_detection(self.last_image)
+            if task_type == 'PromptedImageClassification':
+                self.process_promptedclassification(self.last_image)
             elif task_type == 'PromptedObjectDetection':
                 self.process_prompteddetection(self.last_image)
             elif task_type == 'ImageSegmentation':
@@ -422,6 +412,28 @@ class TaskSelector:
         except rospy.ServiceException as e:
             rospy.logerr(f"Service call failed: {e}")
             return None
+
+    def process_promptedclassification(self, img_msg):
+        """Process image detection service requests."""
+        try:
+            # Convert the ROS Image message to OpenCV format
+            # Determine the image encoding and handle accordingly
+            if img_msg.encoding == "16UC1":
+                # Convert the ROS Image message to OpenCV format for depth images
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "16UC1")
+            else:
+                cv_image = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+            request = PromptedImageClassificationRequest(image=img_msg, prompt=self.prompt)
+            response = self.annotator_service(request)
+
+            # If logging level is DEBUG, display the bounding boxes
+            if self.logging_level == 'DEBUG': self.display_bounding_boxes(cv_image, response)
+
+            self.create_obs_graph(response, cv_image)
+            return response
+
+        except Exception as e:
+            rospy.logerr(f"Error processing detection image: {e}")
 
     def process_prompteddetection(self, img_msg):
         """Process image detection service requests."""

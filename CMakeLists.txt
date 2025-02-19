@@ -78,6 +78,8 @@ add_service_files(
   DepthEstimation.srv
   LoadModels.srv
   Get3DCoordinates.srv
+  PromptedImageClassification.srv
+  ImageClassification.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -132,9 +134,12 @@ catkin_install_python(PROGRAMS
   scripts/experiment.py
   scripts/get3Dcoordinates.py
   scripts/query_tester.py
-  test/test_pickplace_client.py
+  # test/test_pickplace_client.py
   test/webcam.py
-  test/test3Dcoordinates.py
+  # test/test3Dcoordinates.py
+  # test/servicetests/test_promptedimageclassification.py
+  test/servicetests/test_imageclassification.py
+  test/modeltests/fireclassifier.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

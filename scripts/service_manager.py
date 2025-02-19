@@ -16,11 +16,12 @@ from annotators.object_detector import ObjectDetector
 from annotators.image_segmenter import ImageSegmenter
 from annotators.depth_estimator import DepthEstimator
 from annotators.pose_detector import PoseDetector
+from annotators.prompted_image_classifier import PromptedImageClassifier
 from annotators.video_classifier import VideoClassifier
 from annotators.image_to_text import ImageToTextConverter
 from annotators.prompted_object_detector import PromptedObjectDetector
 from cv_bridge import CvBridge
-from orvis.srv import ObjectDetection, ImageSegmentation, PromptedObjectDetection, DepthEstimation, VideoClassification, ImageToText  # Import the necessary service types
+from orvis.srv import ObjectDetection, ImageSegmentation, PromptedObjectDetection, DepthEstimation, VideoClassification, ImageToText, PromptedImageClassification  # Import the necessary service types
 
 
 
@@ -55,6 +56,9 @@ class ServiceManager:
         task_type = config['annotator']['task_type']
         service_name = f"/annotators/{task_type}/{config['annotator']['name']}/detect"
 
+        if task_type == 'PromptedImageClassification':
+            annotator = PromptedImageClassifier(config)
+            service = rospy.Service(service_name, PromptedImageClassification, annotator.handle_request)
         if task_type == 'ObjectDetection':
             annotator = ObjectDetector(config)
             service = rospy.Service(service_name, ObjectDetection, annotator.handle_request)

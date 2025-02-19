@@ -1,0 +1,25 @@
+# Template for adding new models
+
+# Annotator-specific settings
+annotator:
+  name: clip_vit_large_patch14
+  type: vision-language-model
+  task_type: PromptedImageClassification
+  detected_property: ObjectType
+
+# Model-specific imports and configurations
+imports:
+  model_class: transformers.CLIPModel  # Class to import for the model
+  processor_class: transformers.CLIPProcessor  # Class to import for the processor
+
+model:
+  model_name: openai/clip-vit-large-patch14  # Pretrained model name
+
+processor:
+  processor_name: openai/clip-vit-large-patch14  # Processor name (same as model)
+
+# ROS topics specific to this annotator
+ros:
+  result_topic: /annotators/PromptedImageClassifier/clip_vit_large_patch14/results  # Topic for publishing detection results
+  image_topic: /annotators/PromptedImageClassifier/clip_vit_large_patch14/image  # Topic for receiving input images
+

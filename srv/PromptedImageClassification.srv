@@ -1,0 +1,6 @@
+# PromptedImageClassification.srv
+string[] prompts  # List of input strings
+sensor_msgs/Image image
+---
+string[] keys          # List of keys (same as input_strings)
+float32[] values       # List of confidence values corresponding to keys
