@@ -1,6 +1,6 @@
 annotator:
   detected_property: ObjectType
-  name: google_mobilenet_v2_1.0_224
+  name: google_mobilenet_v2_1_0_224
   task_type: ImageClassification
   type: MobileNetV2ForImageClassification
 detection:

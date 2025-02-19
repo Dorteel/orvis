@@ -11,13 +11,13 @@ class ImageClassifierTester:
         rospy.init_node('image_classification_tester')
         self.bridge = CvBridge()
         rospy.loginfo('Initializing image classification testing...')
-        
+        self.n = 5
         # Service proxies
         rospy.wait_for_service('/annotators/ObjectDetection/detr_resnet_50/detect')
-        rospy.wait_for_service('/annotators/ImageClassification/vit_MINC_2500/detect')
+        rospy.wait_for_service('/annotators/ImageClassification/google_mobilenet_v2_1_0_224/detect')
         
         self.object_detection_service = rospy.ServiceProxy('/annotators/ObjectDetection/detr_resnet_50/detect', ObjectDetection)
-        self.classification_service = rospy.ServiceProxy('/annotators/ImageClassification/vit_MINC_2500/detect', ImageClassification)
+        self.classification_service = rospy.ServiceProxy('/annotators/ImageClassification/google_mobilenet_v2_1_0_224/detect', ImageClassification)
         
         self.image = None
         rospy.Subscriber('/locobot/camera/color/image_raw', Image, self.image_callback)
@@ -74,8 +74,8 @@ class ImageClassifierTester:
         """Prints classification results for a detected object, sorted by probability."""
         results = sorted(zip(classify_resp.keys, classify_resp.values), key=lambda x: x[1], reverse=True)
         
-        print(f"Object ({bbox.Class}) classification results:")
-        for key, value in results:
+        print(f"Object ({bbox.Class}) classification results for top {self.n} candidates:")
+        for key, value in results[:self.n]:
             print(f"  {key}: {value:.4f}")
 
 if __name__ == '__main__':

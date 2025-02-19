@@ -22,7 +22,7 @@ system:
 # Annotators to start up
 annotators:
    - detr_resnet_50
-   - ioanasong_vit_MINC_2500
+   - google_mobilenet_v2_1_0_224
   #  - clip_vit_large_patch14
   #  - dpt_hybrid_midas
   #  - yolos_tiny
