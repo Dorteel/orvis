@@ -21,15 +21,16 @@ system:
 
 # Annotators to start up
 annotators:
-   - detr_resnet_50
-   - google_mobilenet_v2_1_0_224
-  #  - clip_vit_large_patch14
-  #  - dpt_hybrid_midas
-  #  - yolos_tiny
-  #  - detr_resnet_50_panoptic
-  #  - owl_v2
-  #  - kosmos_2_patch14_224
-  #  - timesformer_hr_finetuned_k600
+   #- detr_resnet_50
+   #- google_mobilenet_v2_1_0_224
+   #- clip_vit_large_patch14
+   #- dpt_hybrid_midas
+   #- yolos_tiny
+   #- detr_resnet_50_panoptic
+   #- owl_v2
+   #- kosmos_2_patch14_224
+   - timesformer_hr_finetuned_k600
+   #- ioanasong_vit_MINC_2500
 
 # ROS parameters
 ros:

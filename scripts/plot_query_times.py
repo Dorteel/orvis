@@ -18,8 +18,8 @@ def process_and_plot(file1, file2, column_names=("Function", "Execution Time")):
     times2 = df2[column_names[1]]
 
     # Print min, max, and mean for each file
-    print(f"{file1} - Min: {times1.min():.4f}, Max: {times1.max():.4f}, Mean: {times1.mean():.4f}")
-    print(f"{file2} - Min: {times2.min():.4f}, Max: {times2.max():.4f}, Mean: {times2.mean():.4f}")
+    print(f"{file1} - Min: {times1.min():.4f}, Max: {times1.max():.4f}, Mean: {times1.mean():.4f}, Std: {times1.std():.4f}")
+    print(f"{file2} - Min: {times2.min():.4f}, Max: {times2.max():.4f}, Mean: {times2.mean():.4f}, Std: {times2.std():.4f}")
 
     # Create a log-scaled box plot
     plt.figure(figsize=(6, 6))  # Adjust width to make the plot narrower
@@ -50,8 +50,8 @@ def process_and_plot_violin(file1, file2, column_names=("Function", "Execution T
     times2 = df2[column_names[1]]
 
     # Print min, max, and mean for each file
-    print(f"{file1} - Min: {times1.min():.4f}, Max: {times1.max():.4f}, Mean: {times1.mean():.4f}")
-    print(f"{file2} - Min: {times2.min():.4f}, Max: {times2.max():.4f}, Mean: {times2.mean():.4f}")
+    print(f"{file1} - Min: {times1.min():.4f}, Max: {times1.max():.4f}, Mean: {times1.mean():.4f}, Std: {times1.std():.4f}")
+    print(f"{file2} - Min: {times2.min():.4f}, Max: {times2.max():.4f}, Mean: {times2.mean():.4f}, Std: {times2.std():.4f}")
 
     # Create a violin plot
     plt.figure(figsize=(6, 6))
@@ -71,7 +71,7 @@ def process_and_plot_violin(file1, file2, column_names=("Function", "Execution T
     plt.show()
 
 # Example usage
-file1 = "location_query_results.csv"
-file2 = "annotator_query_results.csv"
+file1 = "results/location_query_results.csv"
+file2 = "results/annotator_query_results.csv"
 process_and_plot(file1, file2)
 # process_and_plot_violin(file1, file2)

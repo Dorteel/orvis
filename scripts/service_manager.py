@@ -62,10 +62,10 @@ class ServiceManager:
         if task_type == 'ImageClassification':
             annotator = ImageClassifier(config)
             service = rospy.Service(service_name, ImageClassification, annotator.handle_request)
-        if task_type == 'PromptedImageClassification':
+        elif task_type == 'PromptedImageClassification':
             annotator = PromptedImageClassifier(config)
             service = rospy.Service(service_name, PromptedImageClassification, annotator.handle_request)
-        if task_type == 'ObjectDetection':
+        elif task_type == 'ObjectDetection':
             annotator = ObjectDetector(config)
             service = rospy.Service(service_name, ObjectDetection, annotator.handle_request)
         elif task_type == 'ImageSegmentation':

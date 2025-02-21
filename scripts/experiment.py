@@ -26,7 +26,6 @@ from orvis.srv import VideoClassification, VideoClassificationRequest  # Detecti
 from orvis.srv import ImageToText, ImageToTextRequest  # Detection service
 from orvis.srv import AssignColour, AssignColourRequest
 from orvis.srv import PromptedImageClassification, PromptedImageClassificationRequest  # Detection service
-f
 
 from std_msgs.msg import String
 from sensor_msgs.msg import Image

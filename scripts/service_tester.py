@@ -8,6 +8,9 @@ from orvis.srv import PromptedObjectDetection, PromptedObjectDetectionRequest, P
 from orvis.srv import DepthEstimation, DepthEstimationRequest, DepthEstimationResponse  # Import the necessary service types
 from orvis.srv import VideoClassification, VideoClassificationRequest, VideoClassificationResponse  # Detection service
 from orvis.srv import ImageToText, ImageToTextRequest, ImageToTextResponse  # Detection service
+from orvis.srv import ImageClassification, ImageClassificationRequest  # Detection service
+from orvis.srv import PromptedImageClassification, PromptedImageClassificationRequest  # Detection service
+
 from collections import deque
 
 import rosservice
@@ -17,7 +20,7 @@ import importlib
 import csv
 import matplotlib.pyplot as plt
 
-def save_results_to_csv(call_times, filename="service_call_times.csv"):
+def save_results_to_csv(call_times, filename="service_evaluation.csv"):
     """
     Save the call times of each service to a CSV file.
 
@@ -102,7 +105,7 @@ def call_service(service_name, service_type, request, repeat=1):
             elapsed_time = end_time - start_time
             call_times.append(elapsed_time)
 
-            rospy.loginfo(f"  Request {i + 1}/{repeat}: Time elapsed: {elapsed_time:.4f} seconds")
+            rospy.loginfo(f"  {service_name.split('/')[-2]}: Request {i + 1}/{repeat}: Time elapsed: {elapsed_time:.4f} seconds")
 
         return call_times
     except rospy.ServiceException as e:
@@ -149,7 +152,7 @@ def image_callback(img_msg):
     prompt.data = "man"
     repeat = 100
     call_times = {}
-
+    print(services)
     for service_name, service_type in services.items():
         rospy.loginfo(f"Testing service: {service_name} with type: {service_type}")
         try:
@@ -163,16 +166,23 @@ def image_callback(img_msg):
                 request = PromptedObjectDetectionRequest(image=img_msg, prompt=prompt)
                 call_times[service_name] = call_service(service_name, PromptedObjectDetection, request, repeat)
             elif service_type == 'orvis/VideoClassification':
-                video_frames.append(img_msg)
-                if len(video_frames) == num_video_frames:
-                    request = VideoClassificationRequest(video_frames=video_frames)
-                    call_times[service_name] = call_service(service_name, VideoClassification, request, repeat)
+                while len(video_frames) != num_video_frames:
+                    video_frames.append(img_msg)
+                request = VideoClassificationRequest(video_frames=video_frames)
+                call_times[service_name] = call_service(service_name, VideoClassification, request, repeat)
             elif service_type == 'orvis/DepthEstimation':
                 request = DepthEstimationRequest(image=img_msg)
                 call_times[service_name] = call_service(service_name, DepthEstimation, request, repeat)
             elif service_type == 'orvis/ImageToText':
                 request = ImageToTextRequest(image=img_msg)
                 call_times[service_name] = call_service(service_name, ImageToText, request, repeat)
+
+            elif service_type == 'orvis/PromptedImageClassification':
+                request = PromptedImageClassificationRequest(image=img_msg, prompts=['fruit', 'vegetable', 'toy'])
+                call_times[service_name] = call_service(service_name, PromptedImageClassification, request, repeat)
+            elif service_type == 'orvis/ImageClassification':
+                request = ImageClassificationRequest(image=img_msg)
+                call_times[service_name] = call_service(service_name, ImageClassification, request, repeat)
             else:
                 rospy.logwarn(f"Unknown service type: {service_type}")
         except Exception as e:

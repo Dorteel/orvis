@@ -2,6 +2,52 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
+def summarize_service_data(file_path):
+    """
+    Reads a CSV file with service call times, computes summary statistics (mean, median,
+    standard deviation, min, and max) for each service_name grouped by service_type,
+    and saves the summary to a CSV file.
+    """
+    try:
+        # Load the CSV file
+        data = pd.read_csv(file_path)
+
+        # Ensure required columns exist
+        if 'service_name' not in data.columns or 'service_type' not in data.columns:
+            raise ValueError("The required columns 'service_name' and 'service_type' are missing.")
+
+        # Melt the data for call times
+        melted_data = pd.melt(
+            data,
+            id_vars=['service_name', 'service_type'],
+            value_vars=[col for col in data.columns if col.startswith('call_')],
+            var_name='Call',
+            value_name='Call_Time'
+        )
+
+        # Ensure Call_Time is numeric
+        melted_data['Call_Time'] = pd.to_numeric(melted_data['Call_Time'], errors='coerce')
+
+        # Compute summary statistics grouped by service_type and service_name
+        summary = melted_data.groupby(['service_type', 'service_name'])['Call_Time'].agg(
+            mean='mean',
+            median='median',
+            std='std',
+            min='min',
+            max='max'
+        ).reset_index()
+
+        # Save the summary to a CSV file
+        summary.to_csv('service_summary_statistics.csv', index=False)
+        print("Summary statistics saved to 'service_summary_statistics.csv'.")
+
+        # Print the summary in a readable format
+        print("Summary Statistics:")
+        print(summary)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
 # Function to plot bar chart with error bars on a log scale
 def plot_bar_chart_with_stats(file_path):
     """
@@ -98,5 +144,6 @@ def plot_bar_chart_with_stats(file_path):
 
 # Example usage
 if __name__ == "__main__":
-    file_path = "service_call_times.csv"  # Ensure this is the correct path to your file
+    file_path = "results/service_evaluation_times.csv"  # Ensure this is the correct path to your file
     plot_bar_chart_with_stats(file_path)
+    summarize_service_data(file_path)
