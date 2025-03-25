@@ -1,5 +1,23 @@
+# This script takes the models for the selected tasks, and extracts the models
+
 from huggingface_hub import HfApi
 from transformers import AutoConfig
+
+tasks = [
+    "depth-estimation",
+    "image-classification",
+    "image-feature-extraction",
+    "image-segmentation",
+    "image-to-text",
+    "mask-generation",
+    "keypoint-detection",
+    "object-detection",
+    "video-classification",
+    "zero-shot-classification",
+    "zero-shot-image-classification",
+    "zero-shot-object-detection",
+    "visual-question-answering"
+]
 
 def get_model_info(model_name):
     """
@@ -60,21 +78,6 @@ for task in task_types:
     print(f"- {task}")
 print()
 
-relevant_tasks = [
-    "depth-estimation",
-    "image-classification",
-    "image-feature-extraction",
-    "image-segmentation",
-    "image-to-text",
-    "mask-generation",
-    "keypoint-detection",
-    "object-detection",
-    "video-classification",
-    "zero-shot-classification",
-    "zero-shot-image-classification",
-    "zero-shot-object-detection",
-    "visual-question-answering"
-]
 
 def get_models(task = 'object-detection'):
     api = HfApi()
