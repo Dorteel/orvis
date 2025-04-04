@@ -80,6 +80,7 @@ add_service_files(
   Get3DCoordinates.srv
   PromptedImageClassification.srv
   ImageClassification.srv
+  VLM.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -134,6 +135,7 @@ catkin_install_python(PROGRAMS
   scripts/experiment.py
   scripts/get3Dcoordinates.py
   scripts/query_tester.py
+  scripts/vlm_service_node.py
   # test/test_pickplace_client.py
   test/webcam.py
   # test/test3Dcoordinates.py

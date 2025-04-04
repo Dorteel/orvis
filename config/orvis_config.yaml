@@ -18,6 +18,7 @@ system:
   # task_type: StandardDetectionTask
   request_interval: 1
   num_video_frames: 16 # Number of frames to collect for videos
+  vlmm_model: "llama-3.2-90b-vision-preview" # Model to use for VLM tasks
 
 # Annotators to start up
 annotators:
