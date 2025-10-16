@@ -1,2 +1,4 @@
 .venv
 .obs_graphs
+*.npz
+*.owl
