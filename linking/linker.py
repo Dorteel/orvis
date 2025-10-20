@@ -20,8 +20,7 @@ def load_groundtruth(source_path):
             id_ = concept.split(' ')[0]
             id_corrected = id_[1:] + '-n'
             names = concept.split(id_)[1:][0].strip().split(', ')
-            for name in names:
-                results[name] = id_corrected
+            results[id_corrected] = names
     logging.debug(f"Loaded {len(results)} concepts.")
     return results
 
@@ -37,7 +36,7 @@ def create_id_lookup(path_to_kg=None):
     }}
     """
     results = g.query(q)
-    concept_id_lookup = {str(r['label']): str(r['id']) for r in results}
+    concept_id_lookup = {str(r['id']): str(r['label']) for r in results}
     logging.debug(f"Loaded {len(concept_id_lookup)} concepts.")
     return concept_id_lookup
 
@@ -111,25 +110,30 @@ class PerceivedEntityLinker:
 
 def main():
     groundtruth = load_groundtruth(SOURCE_PATH)
-    concept_ids = create_id_lookup()
+    id_to_label = create_id_lookup()
+    label_to_id = {v: k for k, v in id_to_label.items()}  # reverse map: label → id
     pel = PerceivedEntityLinker()
 
     rows = []
-    for i, concept in enumerate(list(groundtruth.keys())):
-        closest, elapsed = pel.find_closest(concept)
-        clean_result = closest.split('. Definition')[0]
-        target_id = groundtruth.get(concept, 'N/A')
-        result_id = concept_ids.get(clean_result, 'N/A')
-        correct = (target_id == result_id)
-        logging.info(f"[{i+1}] {concept}: Target={target_id}, Result={result_id}, Match={correct}")
-        rows.append({
-            "concept": concept,
-            "closest_match": clean_result,
-            "target_id": target_id,
-            "result_id": result_id,
-            "correct": correct,
-            "time_sec": elapsed
-        })
+    for i, target_id in enumerate(list(groundtruth.keys())):
+        names = groundtruth[target_id]
+        for name in names:
+            closest, elapsed = pel.find_closest(name)
+            clean_result = closest.split('. Definition')[0].strip()
+            result_id = label_to_id.get(clean_result, 'N/A')
+            correct = (target_id == result_id)
+            logging.info(
+                f"[{i+1}] {name}: Target={target_id}, Result={result_id}, "
+                f"LabelMatch={clean_result}, Match={correct}"
+            )
+            rows.append({
+                "query": name,
+                "closest_label": clean_result,
+                "target_id": target_id,
+                "result_id": result_id,
+                "correct": correct,
+                "time_sec": elapsed
+            })
 
     RESULTS_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(RESULTS_PATH, "w", newline="") as f:
