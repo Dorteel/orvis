@@ -131,7 +131,7 @@ class PerceivedEntityLinker:
         logging.debug(f"Closest match for '{concept}' → '{closests[0]}' (time: {elapsed}s)")
         return closests, elapsed
 
-    def disambiguate(closests):
+    def disambiguate(self, closests):
         # Check POS (look for nouns)
 
         # 
