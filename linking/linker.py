@@ -9,7 +9,7 @@ kg_path = Path('linking/wn_full.owl')
 definition_iri = "http://example.org/wordnet.owl#definition"
 identifier_iri = "http://example.org/wordnet.owl#identifier"
 SOURCE_PATH = 'experiments/perceived-entity-linking/source.txt'
-RESULTS_PATH = Path('experiments/perceived-entity-linking/results.csv')
+RESULTS_PATH = Path('experiments/perceived-entity-linking/results-v2.csv')
 
 
 def load_groundtruth(source_path):
@@ -30,13 +30,14 @@ def create_id_lookup(path_to_kg=None):
     g = Graph()
     g.parse(str(path_to_kg or kg_path))
     q = f"""
-    SELECT ?label ?id WHERE {{
+    SELECT ?label ?id ?def WHERE {{
         ?c rdfs:label ?label .
         OPTIONAL {{ ?c <{identifier_iri}> ?id . }}
+        OPTIONAL {{ ?c <{definition_iri}> ?def . }}
     }}
     """
     results = g.query(q)
-    concept_id_lookup = {str(r['id']): str(r['label']) for r in results}
+    concept_id_lookup = {str(r['id']) : f"{str(r['label'])}. Definition: {str(r['def']) if r['def'] else ''}" for r in results}
     logging.debug(f"Loaded {len(concept_id_lookup)} concepts.")
     return concept_id_lookup
 
@@ -120,7 +121,7 @@ def main():
         for name in names:
             closest, elapsed = pel.find_closest(name)
             clean_result = closest.split('. Definition')[0].strip()
-            result_id = label_to_id.get(clean_result, 'N/A')
+            result_id = label_to_id.get(closest, 'N/A')
             correct = (target_id == result_id)
             logging.info(
                 f"[{i+1}] {name}: Target={target_id}, Result={result_id}, "
