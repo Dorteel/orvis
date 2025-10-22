@@ -220,14 +220,14 @@ class PerceivedEntityLinker:
 class AblatedPerceivedEntityLinker:
     def __init__(self, condition='', kg_path='linking/wn_full.owl', model="all-MiniLM-L6-v2"):
         self.kg_path = Path(kg_path)
+        self.condition = condition #no-context, no-physical, no-noun
         self.definition_iri = "http://example.org/wordnet.owl#definition"
         self.embedder = SentenceTransformer(model)
         self.concepts, self.kg, self.id_to_label, self.label_to_iri = self.load_knowledgegraph()
         self.label_to_id = {v: k for k, v in self.id_to_label.items()}
         self.physical_descendants = self.get_descendants(EX["C_00001930-n"])
         self.target_emb = None
-        self.condition = condition #no-context, no-physical, no-noun
-        logging
+
         if Path("embedded_kg.npz").exists():
             self.embedded_kg = self.load_embedded_kg()
         else:
@@ -250,26 +250,16 @@ class AblatedPerceivedEntityLinker:
         """
         results = list(g.query(q))  # materialize once
         logging.debug("Loaded graph...")
-        if self.condition == 'no-context':
-            concept_id_lookup = {
-                str(r['id']): f"{r['label']}"
-                for r in results
-                if r['id'] is not None
-            }
-            concept_iri_lookup = {
-                f"{r['label']}": str(r['c'])
-                for r in results
-            }
-        else:
-            concept_id_lookup = {
-                str(r['id']): f"{r['label']}. Definition: {r['def'] if r['def'] else ''}"
-                for r in results
-                if r['id'] is not None
-            }
-            concept_iri_lookup = {
-                f"{r['label']}. Definition: {r['def'] if r['def'] else ''}": str(r['c'])
-                for r in results
-            }
+
+        concept_id_lookup = {
+            str(r['id']): f"{r['label']}. Definition: {r['def'] if r['def'] else ''}"
+            for r in results
+            if r['id'] is not None
+        }
+        concept_iri_lookup = {
+            f"{r['label']}. Definition: {r['def'] if r['def'] else ''}": str(r['c'])
+            for r in results
+        }
         concepts = list(concept_iri_lookup.keys())
         logging.debug(f"Loaded {len(concepts)} concepts. Example: {concepts[:3]}")
         return concepts, g, concept_id_lookup, concept_iri_lookup
@@ -397,7 +387,7 @@ class AblatedPerceivedEntityLinker:
 
             logging.debug(
                 f"Disambiguation: {desc}, mask={mask}, sim={sim:.3f}, "
-                f"descendants='{descendants[:80]}...'"
+                # f"descendants='{descendants[:80]}...'"
             )
         elapsed = round(time.time() - start, 2)
         return sorted(scores, key=lambda x: x[1], reverse=True), elapsed
@@ -504,41 +494,6 @@ class BaseLinePerceivedEntityLinker:
             max_score = max(max_score, score)
 
         return max_score
-
-    # def get_class(self, entity_label):
-    #     """
-    #     Retrieve the class label(s) of a KG entity, given its label.
-
-    #     Args:
-    #         entity_label (str): The rdfs:label of the entity (e.g., "apple")
-
-    #     Returns:
-    #         list[str]: Labels of the rdf:type classes for that entity.
-    #     """
-    #     q = f"""
-    #     SELECT ?class_label WHERE {{
-    #         ?entity rdfs:label "{entity_label}" .
-    #         ?entity rdf:type ?cls .
-    #         OPTIONAL {{ ?cls rdfs:label ?class_label . }}
-    #     }}
-    #     """
-    #     results = self.kg.query(q)
-
-    #     class_labels = []
-    #     for row in results:
-    #         if row["class_label"]:
-    #             class_labels.append(str(row["class_label"]))
-    #         else:
-    #             # fallback to URI if no rdfs:label exists
-    #             q2 = f"""
-    #             SELECT ?cls WHERE {{
-    #                 ?entity rdfs:label "{entity_label}" .
-    #                 ?entity rdf:type ?cls .
-    #             }}
-    #             """
-    #             class_labels.extend([str(r["cls"]) for r in self.kg.query(q2)])
-
-    #     return class_labels
 
     def get_class(self, entity_iri):
         """
@@ -776,10 +731,10 @@ def experiment_orvis_linker_no_context(groundtruth, source_name):
         names = groundtruth[target_id]
         for name in names:
             closests, elapsed_cand = linker.candidate_selection(name)
-            closest, elapsed_disamb = closests, 0
+            closest, elapsed_disamb = linker.disambiguate(closests)
             clean_result = closest[0][0].split('. Definition')[0].strip()
             print(closest[0])
-            result_id = linker.label_to_id.get(closest[0], 'N/A')
+            result_id = linker.label_to_id.get(closest[0][0], 'N/A')
             correct = (target_id == result_id)
             logging.info(
                 f"[{i+1}] {name}: Target={target_id}, Result={result_id}, "
@@ -814,7 +769,7 @@ def experiment_orvis_linker_no_noun_filter(groundtruth, source_name):
             closest, elapsed_disamb = closests, 0
             clean_result = closest[0][0].split('. Definition')[0].strip()
             print(closest[0])
-            result_id = linker.label_to_id.get(closest[0], 'N/A')
+            result_id = linker.label_to_id.get(closest[0][0], 'N/A')
             correct = (target_id == result_id)
             logging.info(
                 f"[{i+1}] {name}: Target={target_id}, Result={result_id}, "
@@ -849,7 +804,7 @@ def experiment_orvis_linker_no_physical_filter(groundtruth, source_name):
             closest, elapsed_disamb = closests, 0
             clean_result = closest[0][0].split('. Definition')[0].strip()
             print(closest[0])
-            result_id = linker.label_to_id.get(closest[0], 'N/A')
+            result_id = linker.label_to_id.get(closest[0][0], 'N/A')
             correct = (target_id == result_id)
             logging.info(
                 f"[{i+1}] {name}: Target={target_id}, Result={result_id}, "
