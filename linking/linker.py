@@ -475,8 +475,10 @@ class BaseLinePerceivedEntityLinker:
         return concepts, g, concept_id_lookup, concept_iri_lookup, iri_id_lookup
 
     def get_altlabels_by_label(self, label):
+        
+        logging.debug(f"Looking for alternative labels for {label}")
         q = f"""
-        SELECT DISTINCT ?l ?altlabel WHERE {{
+        SELECT ?altlabel WHERE {{
             ?entity rdfs:label ?l .
             FILTER (lcase(str(?l)) = lcase("{label}"))
             OPTIONAL {{ ?entity <{self.altlabel_iri}> ?altlabel . }}
@@ -487,9 +489,10 @@ class BaseLinePerceivedEntityLinker:
         if not results:
             logging.debug(f"No entity found for label: {label}")
             return [label]
-        altlabels = {str(r["altlabel"]) for r in results if r["altlabel"]}
-
-        return list(altlabels).append(label)
+        altlabels = list({str(r["altlabel"]) for r in results if r["altlabel"]})
+        altlabels.append(label)
+        print(altlabels)
+        return altlabels
 
     def get_entities_by_label(self, label):
         logging.debug(f'...Getting entities by label: {label}')
@@ -535,7 +538,6 @@ class BaseLinePerceivedEntityLinker:
             # Levenshtein ratio gives normalized similarity (1 = identical)
             score = Levenshtein.ratio(nameA, target_name)
             max_score = max(max_score, score)
-
         return max_score
 
     def get_class(self, entity_iri):
@@ -580,8 +582,10 @@ class BaseLinePerceivedEntityLinker:
             # Retrieve all names (lemmas) associated with the synset
             raw_names = self.get_names(sn)            
             # Add variations:
-            altLabels = set(self.get_altlabels_by_label(concept))
-            names = altLabels + raw_names if raw_names else altLabels
+            logging.debug(f"\t Raw names: {raw_names}")
+            altLabels = self.get_altlabels_by_label(concept)
+            logging.debug(f"\t Alternative labels for {concept}: {altLabels}")
+            names = set(altLabels + raw_names) if raw_names else altLabels
             logging.debug(f"Synset {sn} → {names}")
             # --- 3. Compute similarity between the perceived entity and each name ---
             for name in names:
@@ -662,7 +666,7 @@ def experiment_baseline(groundtruth, source_name):
                 closest = closests_ordered[0][0]
                 clean_result = closest.split('. Definition')[0].strip()
                 print(closest[0])
-                result_id = linker.label_to_id.get(closest, 'N/A')
+                result_id = linker.iri_to_id.get(closest, 'N/A')
             else:
                 clean_result = 'N/A'
                 result_id = 'N/A'
@@ -896,7 +900,7 @@ def main():
     for source in [IMGNET_SOURCE_PATH, VGENOME_SOURCE_PATH]:
         groundtruth = load_groundtruth(source)
         source_name = source.split('/')[-1].split('.')[0]
-        experiment_orvis_linker(groundtruth, source_name)
+        # experiment_orvis_linker(groundtruth, source_name)
         experiment_baseline(groundtruth, source_name)
         experiment_orvis_linker_no_context(groundtruth, source_name)
         experiment_orvis_linker_no_physical_filter(groundtruth, source_name)
