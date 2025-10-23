@@ -97,6 +97,23 @@ class PerceivedEntityLinker:
         logging.debug(f"Loaded {len(concepts)} concepts. Example: {concepts[:3]}")
         return concepts, g, concept_id_lookup, concept_iri_lookup
 
+    def get_altlabels_by_label(self, label):
+        q = f"""
+        SELECT DISTINCT ?l ?altlabel WHERE {{
+            ?entity rdfs:label ?l .
+            FILTER (lcase(str(?l)) = lcase("{label}"))
+            OPTIONAL {{ ?entity <{self.altlabel_iri}> ?altlabel . }}
+        }}
+        """
+        results = list(self.kg.query(q))
+
+        if not results:
+            logging.debug(f"No entity found for label: {label}")
+            return [label]
+        altlabels = {str(r["altlabel"]) for r in results if r["altlabel"]}
+
+        return list(altlabels).append(label)
+
     def get_descendants(self, root):
         q = f"""
         SELECT ?x WHERE {{
@@ -222,6 +239,7 @@ class AblatedPerceivedEntityLinker:
         self.kg_path = Path(kg_path)
         self.condition = condition #no-context, no-physical, no-noun
         self.definition_iri = "http://example.org/wordnet.owl#definition"
+        self.altlabel_iri = "http://example.org/wordnet.owl#altLabel"
         self.embedder = SentenceTransformer(model)
         self.concepts, self.kg, self.id_to_label, self.label_to_iri = self.load_knowledgegraph()
         self.label_to_id = {v: k for k, v in self.id_to_label.items()}
@@ -236,6 +254,23 @@ class AblatedPerceivedEntityLinker:
             
         logging.info("PerceivedEntityLinker initialized and ready.")
 
+    def get_altlabels_by_label(self, label):
+        q = f"""
+        SELECT DISTINCT ?l ?altlabel WHERE {{
+            ?entity rdfs:label ?l .
+            FILTER (lcase(str(?l)) = lcase("{label}"))
+            OPTIONAL {{ ?entity <{self.altlabel_iri}> ?altlabel . }}
+        }}
+        """
+        results = list(self.kg.query(q))
+
+        if not results:
+            logging.debug(f"No entity found for label: {label}")
+            return [label]
+        altlabels = {str(r["altlabel"]) for r in results if r["altlabel"]}
+
+        return list(altlabels).append(label)
+    
     def load_knowledgegraph(self):
         logging.info("Loading knowledge graph via SPARQL...")
         g = Graph()
@@ -437,6 +472,23 @@ class BaseLinePerceivedEntityLinker:
         logging.debug(f"Loaded {len(concepts)} concepts. Example: {concepts[:3]}")
         return concepts, g, concept_id_lookup, concept_iri_lookup, iri_id_lookup
 
+    def get_altlabels_by_label(self, label):
+        q = f"""
+        SELECT DISTINCT ?l ?altlabel WHERE {{
+            ?entity rdfs:label ?l .
+            FILTER (lcase(str(?l)) = lcase("{label}"))
+            OPTIONAL {{ ?entity <{self.altlabel_iri}> ?altlabel . }}
+        }}
+        """
+        results = list(self.kg.query(q))
+
+        if not results:
+            logging.debug(f"No entity found for label: {label}")
+            return [label]
+        altlabels = {str(r["altlabel"]) for r in results if r["altlabel"]}
+
+        return list(altlabels).append(label)
+
     def get_entities_by_label(self, label):
         logging.debug(f'...Getting entities by label: {label}')
         q = f"""
@@ -470,17 +522,6 @@ class BaseLinePerceivedEntityLinker:
 
 
     def get_synset_similarity(self, synsets_A, synset_B):
-        """
-        Compute the maximum Levenshtein-based similarity between
-        a set of synsets (synsets_A) and one target synset (synset_B).
-
-        Args:
-            synsets_A (list[Synset]): synsets of the perceived entity
-            synset_B (Synset): synset of a candidate class
-
-        Returns:
-            float: maximum normalized similarity score in [0, 1]
-        """
         if not synsets_A or not synset_B:
             return 0.0
 
@@ -496,15 +537,6 @@ class BaseLinePerceivedEntityLinker:
         return max_score
 
     def get_class(self, entity_iri):
-        """
-        Retrieve the class label(s) of a KG entity, given its IRI.
-
-        Args:
-            entity_iri (str): The full IRI of the entity (e.g., "http://example.org/wordnet.owl#C_00007484-n")
-
-        Returns:
-            list[str]: Labels of the rdf:type classes for that entity (or IRIs if labels are missing).
-        """
         q = f"""
         SELECT ?class_label WHERE {{
             <{entity_iri}> rdfs:subClassOf ?cls .
@@ -529,13 +561,6 @@ class BaseLinePerceivedEntityLinker:
         return class_labels
 
     def candidate_selection(self, concept, k=5):
-        """
-        Candidate selection stage.
-        Given an observed entity e_Go (from perception),
-        returns a sorted list of candidate KG entities with similarity scores.
-
-        Implements Algorithm (Candidate Selection).
-        """
         logging.debug(f"Selecting candidates for: {concept}")
         self.target_concept = concept
         start = time.time()
@@ -553,7 +578,7 @@ class BaseLinePerceivedEntityLinker:
             # Retrieve all names (lemmas) associated with the synset
             raw_names = self.get_names(sn)            
             # Add variations:
-            names = set([name.replace('_', ' ') for name in raw_names] + raw_names)
+            names = set(self.get_altlabels_by_label(concept) + raw_names)
             logging.debug(f"Synset {sn} → {names}")
             # --- 3. Compute similarity between the perceived entity and each name ---
             for name in names:
@@ -628,14 +653,20 @@ def experiment_baseline(groundtruth, source_name):
         names = groundtruth[target_id]
         for name in names:
             closests, elapsed_cand = linker.candidate_selection(name)
-            closest, elapsed_disamb = linker.disambiguate(closests)
-            clean_result = closest[0][0].split('. Definition')[0].strip()
-            print(closest[0][0])
-            result_id = linker.iri_to_id.get(closest[0][0], 'N/A')
+            closests_ordered, elapsed_disamb = linker.disambiguate(closests)
+            
+            if closests_ordered:
+                closest = closests_ordered[0][0]
+                clean_result = closest.split('. Definition')[0].strip()
+                print(closest[0])
+                result_id = linker.label_to_id.get(closest, 'N/A')
+            else:
+                clean_result = 'N/A'
+                result_id = 'N/A'
             correct = (target_id == result_id)
             logging.info(
                 f"[{i+1}] {name}: Target={target_id}, Result={result_id}, "
-                f"LabelMatch={clean_result}, Match={correct}\n{'='*200}\n"
+                f"LabelMatch={clean_result}, Match={correct}"
             )
             rows.append({
                 "query": name,
@@ -662,10 +693,16 @@ def experiment_orvis_linker(groundtruth, source_name):
         names = groundtruth[target_id]
         for name in names:
             closests, elapsed_cand = linker.candidate_selection(name)
-            closest, elapsed_disamb = linker.disambiguate(closests)
-            clean_result = closest[0][0].split('. Definition')[0].strip()
-            print(closest[0])
-            result_id = linker.label_to_id.get(closest[0], 'N/A')
+            closests_ordered, elapsed_disamb = linker.disambiguate(closests)
+            
+            if closests_ordered:
+                closest = closests_ordered[0][0]
+                clean_result = closest.split('. Definition')[0].strip()
+                print(closest[0])
+                result_id = linker.label_to_id.get(closest, 'N/A')
+            else:
+                clean_result = 'N/A'
+                result_id = 'N/A'
             correct = (target_id == result_id)
             logging.info(
                 f"[{i+1}] {name}: Target={target_id}, Result={result_id}, "
@@ -696,10 +733,16 @@ def experiment_orvis_linker_no_disambiguation(groundtruth, source_name):
         names = groundtruth[target_id]
         for name in names:
             closests, elapsed_cand = linker.candidate_selection(name)
-            closest, elapsed_disamb = closests, 0
-            clean_result = closest[0][0].split('. Definition')[0].strip()
-            print(closest[0])
-            result_id = linker.label_to_id.get(closest[0], 'N/A')
+            closests_ordered, elapsed_disamb = closests, 0
+            
+            if closests_ordered:
+                closest = closests_ordered[0][0]
+                clean_result = closest.split('. Definition')[0].strip()
+                print(closest[0])
+                result_id = linker.label_to_id.get(closest, 'N/A')
+            else:
+                clean_result = 'N/A'
+                result_id = 'N/A'
             correct = (target_id == result_id)
             logging.info(
                 f"[{i+1}] {name}: Target={target_id}, Result={result_id}, "
@@ -731,10 +774,16 @@ def experiment_orvis_linker_no_context(groundtruth, source_name):
         names = groundtruth[target_id]
         for name in names:
             closests, elapsed_cand = linker.candidate_selection(name)
-            closest, elapsed_disamb = linker.disambiguate(closests)
-            clean_result = closest[0][0].split('. Definition')[0].strip()
-            print(closest[0])
-            result_id = linker.label_to_id.get(closest[0][0], 'N/A')
+            closests_ordered, elapsed_disamb = linker.disambiguate(closests)
+            
+            if closests_ordered:
+                closest = closests_ordered[0][0]
+                clean_result = closest.split('. Definition')[0].strip()
+                print(closest[0])
+                result_id = linker.label_to_id.get(closest, 'N/A')
+            else:
+                clean_result = 'N/A'
+                result_id = 'N/A'
             correct = (target_id == result_id)
             logging.info(
                 f"[{i+1}] {name}: Target={target_id}, Result={result_id}, "
@@ -766,10 +815,16 @@ def experiment_orvis_linker_no_noun_filter(groundtruth, source_name):
         names = groundtruth[target_id]
         for name in names:
             closests, elapsed_cand = linker.candidate_selection(name)
-            closest, elapsed_disamb = closests, 0
-            clean_result = closest[0][0].split('. Definition')[0].strip()
-            print(closest[0])
-            result_id = linker.label_to_id.get(closest[0][0], 'N/A')
+            closests_ordered, elapsed_disamb = linker.disambiguate(closests)
+            
+            if closests_ordered:
+                closest = closests_ordered[0][0]
+                clean_result = closest.split('. Definition')[0].strip()
+                print(closest[0])
+                result_id = linker.label_to_id.get(closest, 'N/A')
+            else:
+                clean_result = 'N/A'
+                result_id = 'N/A'
             correct = (target_id == result_id)
             logging.info(
                 f"[{i+1}] {name}: Target={target_id}, Result={result_id}, "
@@ -801,10 +856,16 @@ def experiment_orvis_linker_no_physical_filter(groundtruth, source_name):
         names = groundtruth[target_id]
         for name in names:
             closests, elapsed_cand = linker.candidate_selection(name)
-            closest, elapsed_disamb = closests, 0
-            clean_result = closest[0][0].split('. Definition')[0].strip()
-            print(closest[0])
-            result_id = linker.label_to_id.get(closest[0][0], 'N/A')
+            closests_ordered, elapsed_disamb = linker.disambiguate(closests)
+            
+            if closests_ordered:
+                closest = closests_ordered[0][0]
+                clean_result = closest.split('. Definition')[0].strip()
+                print(closest[0])
+                result_id = linker.label_to_id.get(closest, 'N/A')
+            else:
+                clean_result = 'N/A'
+                result_id = 'N/A'
             correct = (target_id == result_id)
             logging.info(
                 f"[{i+1}] {name}: Target={target_id}, Result={result_id}, "
@@ -838,5 +899,6 @@ def main():
         experiment_orvis_linker_no_physical_filter(groundtruth, source_name)
         experiment_orvis_linker_no_noun_filter(groundtruth, source_name)
         experiment_orvis_linker_no_disambiguation(groundtruth, source_name)
+
 if __name__ == "__main__":
     main()
