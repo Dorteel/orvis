@@ -56,6 +56,7 @@ class PerceivedEntityLinker:
     def __init__(self, kg_path='linking/wn_full.owl', model="all-MiniLM-L6-v2"):
         self.kg_path = Path(kg_path)
         self.definition_iri = "http://example.org/wordnet.owl#definition"
+        self.altlabel_iri = "http://example.org/wordnet.owl#altLabel"
         self.embedder = SentenceTransformer(model)
         self.concepts, self.kg, self.id_to_label, self.label_to_iri = self.load_knowledgegraph()
         self.label_to_id = {v: k for k, v in self.id_to_label.items()}
@@ -435,6 +436,7 @@ class BaseLinePerceivedEntityLinker:
     def __init__(self, kg_path='linking/wn_full.owl', model="all-MiniLM-L6-v2"):
         self.kg_path = Path(kg_path)
         self.definition_iri = "http://example.org/wordnet.owl#definition"
+        self.altlabel_iri = "http://example.org/wordnet.owl#altLabel"
         self.concepts, self.kg, self.id_to_label, self.label_to_iri, self.iri_to_id = self.load_knowledgegraph()
         self.label_to_id = {v: k for k, v in self.id_to_label.items()}
         self.target_concept = None
@@ -578,7 +580,8 @@ class BaseLinePerceivedEntityLinker:
             # Retrieve all names (lemmas) associated with the synset
             raw_names = self.get_names(sn)            
             # Add variations:
-            names = set(self.get_altlabels_by_label(concept) + raw_names)
+            altLabels = set(self.get_altlabels_by_label(concept))
+            names = altLabels + raw_names if raw_names else altLabels
             logging.debug(f"Synset {sn} → {names}")
             # --- 3. Compute similarity between the perceived entity and each name ---
             for name in names:
