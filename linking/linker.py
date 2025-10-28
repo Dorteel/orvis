@@ -613,7 +613,7 @@ class BaseLinePerceivedEntityLinker:
         target_ss = self.get_synset(self.target_concept)
         if not target_ss:
             logging.debug(f"No synsets found for observed entity '{self.target_concept}', returning candidates as-is.")
-            return [(c, 0.0) for c in candidates]
+            return candidates, 0.0
 
         scores = []
 
@@ -661,9 +661,11 @@ def experiment_baseline(groundtruth, source_name):
         for name in names:
             closests, elapsed_cand = linker.candidate_selection(name)
             closests_ordered, elapsed_disamb = linker.disambiguate(closests)
-            
+            # print(closests_ordered)
             if closests_ordered:
                 closest = closests_ordered[0][0]
+                print(closest)
+                print(closests_ordered)
                 clean_result = closest.split('. Definition')[0].strip()
                 print(closest[0])
                 result_id = linker.iri_to_id.get(closest, 'N/A')
@@ -897,15 +899,15 @@ def experiment_orvis_linker_no_physical_filter(groundtruth, source_name):
     logging.info(f"Results saved → {RESULTS_PATH}")
 
 def main():
-    for source in [IMGNET_SOURCE_PATH, VGENOME_SOURCE_PATH]:
+    for source in [VGENOME_SOURCE_PATH]:
         groundtruth = load_groundtruth(source)
         source_name = source.split('/')[-1].split('.')[0]
         # experiment_orvis_linker(groundtruth, source_name)
-        # experiment_baseline(groundtruth, source_name)
-        experiment_orvis_linker_no_context(groundtruth, source_name)
-        experiment_orvis_linker_no_physical_filter(groundtruth, source_name)
-        experiment_orvis_linker_no_noun_filter(groundtruth, source_name)
-        experiment_orvis_linker_no_disambiguation(groundtruth, source_name)
+        experiment_baseline(groundtruth, source_name)
+        # experiment_orvis_linker_no_context(groundtruth, source_name)
+        # experiment_orvis_linker_no_physical_filter(groundtruth, source_name)
+        # experiment_orvis_linker_no_noun_filter(groundtruth, source_name)
+        # experiment_orvis_linker_no_disambiguation(groundtruth, source_name)
 
 if __name__ == "__main__":
     main()
