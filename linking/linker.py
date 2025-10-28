@@ -901,7 +901,7 @@ def main():
         groundtruth = load_groundtruth(source)
         source_name = source.split('/')[-1].split('.')[0]
         # experiment_orvis_linker(groundtruth, source_name)
-        experiment_baseline(groundtruth, source_name)
+        # experiment_baseline(groundtruth, source_name)
         experiment_orvis_linker_no_context(groundtruth, source_name)
         experiment_orvis_linker_no_physical_filter(groundtruth, source_name)
         experiment_orvis_linker_no_noun_filter(groundtruth, source_name)

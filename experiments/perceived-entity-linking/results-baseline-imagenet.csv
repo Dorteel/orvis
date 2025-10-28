@@ -1,0 +1,1861 @@
+query,closest_label,target_id,result_id,correct,time_sec_candidate_selection,time_sec_disambiguation
+tench,http://example.org/wordnet.owl#C_01440764-n,01440764-n,01440764-n,True,78.33,0.01
+Tinca tinca,http://example.org/wordnet.owl#C_01440764-n,01440764-n,01440764-n,True,63.3,0.0
+goldfish,http://example.org/wordnet.owl#C_01443537-n,01443537-n,01443537-n,True,74.41,0.01
+Carassius auratus,http://example.org/wordnet.owl#C_01443537-n,01443537-n,01443537-n,True,63.6,0.0
+great white shark,http://example.org/wordnet.owl#C_01484850-n,01484850-n,01484850-n,True,74.78,0.01
+white shark,N/A,01484850-n,N/A,False,75.36,0.0
+man-eater,N/A,01484850-n,N/A,False,122.4,0.0
+man-eating shark,N/A,01484850-n,N/A,False,74.16,0.0
+Carcharodon carcharias,N/A,01484850-n,N/A,False,74.83,0.0
+tiger shark,http://example.org/wordnet.owl#C_01491361-n,01491361-n,01491361-n,True,75.55,0.01
+Galeocerdo cuvieri,N/A,01491361-n,N/A,False,64.42,0.0
+hammerhead,http://example.org/wordnet.owl#C_03482128-n,01494475-n,03482128-n,False,169.18,0.04
+hammerhead shark,http://example.org/wordnet.owl#C_03482128-n,01494475-n,03482128-n,False,63.43,0.01
+electric ray,http://example.org/wordnet.owl#C_04456964-n,01496331-n,04456964-n,False,75.56,0.02
+crampfish,http://example.org/wordnet.owl#C_04457157-n,01496331-n,04457157-n,False,71.32,0.01
+numbfish,http://example.org/wordnet.owl#C_04457157-n,01496331-n,04457157-n,False,69.78,0.01
+torpedo,http://example.org/wordnet.owl#C_04457157-n,01496331-n,04457157-n,False,408.14,0.02
+stingray,http://example.org/wordnet.owl#C_01498041-n,01498041-n,01498041-n,True,64.09,0.01
+cock,http://example.org/wordnet.owl#C_05526713-n,01514668-n,05526713-n,False,405.6,0.02
+hen,http://example.org/wordnet.owl#C_07646067-n,01514859-n,07646067-n,False,216.17,0.02
+ostrich,http://example.org/wordnet.owl#C_10385707-n,01518878-n,10385707-n,False,123.24,0.01
+Struthio camelus,http://example.org/wordnet.owl#C_10385707-n,01518878-n,10385707-n,False,63.8,0.01
+brambling,http://example.org/wordnet.owl#C_01530575-n,01530575-n,01530575-n,True,74.94,0.01
+Fringilla montifringilla,http://example.org/wordnet.owl#C_01530575-n,01530575-n,01530575-n,True,64.09,0.0
+goldfinch,http://example.org/wordnet.owl#C_01531178-n,01531178-n,01531178-n,True,126.12,0.01
+Carduelis carduelis,http://example.org/wordnet.owl#C_01531178-n,01531178-n,01531178-n,True,63.89,0.0
+house finch,http://example.org/wordnet.owl#C_01532829-n,01532829-n,01532829-n,True,75.65,0.01
+linnet,http://example.org/wordnet.owl#C_01531344-n,01532829-n,01531344-n,False,121.9,0.01
+Carpodacus mexicanus,http://example.org/wordnet.owl#C_01531344-n,01532829-n,01531344-n,False,69.13,0.0
+junco,http://example.org/wordnet.owl#C_01534433-n,01534433-n,01534433-n,True,75.4,0.01
+snowbird,http://example.org/wordnet.owl#C_11509066-n,01534433-n,11509066-n,False,168.21,0.0
+indigo bunting,http://example.org/wordnet.owl#C_01537544-n,01537544-n,01537544-n,True,75.98,0.01
+indigo finch,N/A,01537544-n,N/A,False,75.17,0.0
+indigo bird,N/A,01537544-n,N/A,False,75.34,0.0
+Passerina cyanea,N/A,01537544-n,N/A,False,76.33,0.0
+robin,http://example.org/wordnet.owl#C_01562265-n,01558993-n,01562265-n,False,125.02,0.02
+American robin,http://example.org/wordnet.owl#C_01562265-n,01558993-n,01562265-n,False,70.98,0.01
+Turdus migratorius,http://example.org/wordnet.owl#C_01562265-n,01558993-n,01562265-n,False,72.15,0.01
+bulbul,http://example.org/wordnet.owl#C_01560419-n,01560419-n,01560419-n,True,65.86,0.01
+jay,http://example.org/wordnet.owl#C_11081111-n,01580077-n,11081111-n,False,122.62,0.01
+magpie,http://example.org/wordnet.owl#C_10281276-n,01582220-n,10281276-n,False,173.47,0.02
+chickadee,http://example.org/wordnet.owl#C_01592084-n,01592084-n,01592084-n,True,64.72,0.01
+water ouzel,http://example.org/wordnet.owl#C_03204306-n,01601694-n,03204306-n,False,77.29,0.01
+dipper,http://example.org/wordnet.owl#C_03204306-n,01601694-n,03204306-n,False,263.99,0.01
+kite,http://example.org/wordnet.owl#C_13382471-n,01608432-n,13382471-n,False,403.94,0.02
+bald eagle,http://example.org/wordnet.owl#C_01614925-n,01614925-n,01614925-n,True,75.43,0.01
+American eagle,N/A,01614925-n,N/A,False,69.71,0.0
+Haliaeetus leucocephalus,N/A,01614925-n,N/A,False,69.55,0.0
+vulture,http://example.org/wordnet.owl#C_10293172-n,01616318-n,10293172-n,False,122.56,0.01
+great grey owl,http://example.org/wordnet.owl#C_01622779-n,01622779-n,01622779-n,True,74.79,0.01
+great gray owl,N/A,01622779-n,N/A,False,69.39,0.0
+Strix nebulosa,N/A,01622779-n,N/A,False,70.25,0.0
+European fire salamander,http://example.org/wordnet.owl#C_01629819-n,01629819-n,01629819-n,True,75.28,0.01
+Salamandra salamandra,N/A,01629819-n,N/A,False,63.92,0.0
+common newt,http://example.org/wordnet.owl#C_01630670-n,01630670-n,01630670-n,True,75.38,0.01
+Triturus vulgaris,N/A,01630670-n,N/A,False,63.99,0.0
+eft,http://example.org/wordnet.owl#C_01631663-n,01631663-n,01631663-n,True,64.06,0.01
+spotted salamander,http://example.org/wordnet.owl#C_01632458-n,01632458-n,01632458-n,True,123.11,0.01
+Ambystoma maculatum,N/A,01632458-n,N/A,False,64.45,0.0
+axolotl,http://example.org/wordnet.owl#C_01632777-n,01632777-n,01632777-n,True,74.55,0.01
+mud puppy,http://example.org/wordnet.owl#C_01634522-n,01632777-n,01634522-n,False,169.33,0.01
+Ambystoma mexicanum,http://example.org/wordnet.owl#C_01632777-n,01632777-n,01632777-n,True,70.01,0.0
+bullfrog,http://example.org/wordnet.owl#C_01641577-n,01641577-n,01641577-n,True,74.56,0.01
+Rana catesbeiana,http://example.org/wordnet.owl#C_01641577-n,01641577-n,01641577-n,True,64.1,0.0
+tree frog,http://example.org/wordnet.owl#C_01644373-n,01644373-n,01644373-n,True,122.96,0.01
+tree-frog,N/A,01644373-n,N/A,False,121.88,0.0
+tailed frog,http://example.org/wordnet.owl#C_01644900-n,01644900-n,01644900-n,True,75.56,0.01
+bell toad,N/A,01644900-n,N/A,False,74.8,0.0
+ribbed toad,N/A,01644900-n,N/A,False,75.08,0.0
+tailed toad,N/A,01644900-n,N/A,False,74.78,0.0
+Ascaphus trui,N/A,01644900-n,N/A,False,75.88,0.0
+loggerhead,http://example.org/wordnet.owl#C_01664065-n,01664065-n,01664065-n,True,121.98,0.01
+loggerhead turtle,http://example.org/wordnet.owl#C_01664065-n,01664065-n,01664065-n,True,70.09,0.0
+Caretta caretta,http://example.org/wordnet.owl#C_01664065-n,01664065-n,01664065-n,True,70.42,0.0
+leatherback turtle,http://example.org/wordnet.owl#C_01665541-n,01665541-n,01665541-n,True,75.69,0.01
+leatherback,N/A,01665541-n,N/A,False,69.65,0.0
+leathery turtle,N/A,01665541-n,N/A,False,75.19,0.0
+Dermochelys coriacea,N/A,01665541-n,N/A,False,75.59,0.0
+mud turtle,http://example.org/wordnet.owl#C_01667114-n,01667114-n,01667114-n,True,69.38,0.01
+terrapin,http://example.org/wordnet.owl#C_01667778-n,01667778-n,01667778-n,True,63.95,0.01
+box turtle,http://example.org/wordnet.owl#C_01669191-n,01669191-n,01669191-n,True,75.26,0.01
+box tortoise,N/A,01669191-n,N/A,False,63.16,0.0
+banded gecko,http://example.org/wordnet.owl#C_01675722-n,01675722-n,01675722-n,True,69.17,0.01
+common iguana,http://example.org/wordnet.owl#C_01677366-n,01677366-n,01677366-n,True,76.23,0.01
+iguana,N/A,01677366-n,N/A,False,64.32,0.0
+Iguana iguana,N/A,01677366-n,N/A,False,69.59,0.0
+American chameleon,http://example.org/wordnet.owl#C_01682714-n,01682714-n,01682714-n,True,75.66,0.01
+anole,N/A,01682714-n,N/A,False,63.7,0.0
+Anolis carolinensis,N/A,01682714-n,N/A,False,69.19,0.0
+whiptail,http://example.org/wordnet.owl#C_01685808-n,01685808-n,01685808-n,True,74.98,0.01
+whiptail lizard,http://example.org/wordnet.owl#C_01685808-n,01685808-n,01685808-n,True,63.42,0.0
+agama,http://example.org/wordnet.owl#C_01687978-n,01687978-n,01687978-n,True,63.4,0.01
+frilled lizard,http://example.org/wordnet.owl#C_01688243-n,01688243-n,01688243-n,True,74.48,0.01
+Chlamydosaurus kingi,N/A,01688243-n,N/A,False,63.77,0.0
+alligator lizard,http://example.org/wordnet.owl#C_01689811-n,01689811-n,01689811-n,True,68.97,0.01
+Gila monster,http://example.org/wordnet.owl#C_01692333-n,01692333-n,01692333-n,True,75.38,0.01
+Heloderma suspectum,N/A,01692333-n,N/A,False,63.79,0.0
+green lizard,http://example.org/wordnet.owl#C_01693334-n,01693334-n,01693334-n,True,74.81,0.01
+Lacerta viridis,N/A,01693334-n,N/A,False,63.8,0.0
+African chameleon,http://example.org/wordnet.owl#C_01694178-n,01694178-n,01694178-n,True,74.98,0.01
+Chamaeleo chamaeleon,N/A,01694178-n,N/A,False,63.17,0.0
+Komodo dragon,http://example.org/wordnet.owl#C_01695060-n,01695060-n,01695060-n,True,75.01,0.01
+Komodo lizard,N/A,01695060-n,N/A,False,75.34,0.0
+dragon lizard,N/A,01695060-n,N/A,False,74.89,0.0
+giant lizard,N/A,01695060-n,N/A,False,74.1,0.0
+Varanus komodoensis,N/A,01695060-n,N/A,False,74.77,0.0
+African crocodile,http://example.org/wordnet.owl#C_01697457-n,01697457-n,01697457-n,True,75.08,0.01
+Nile crocodile,N/A,01697457-n,N/A,False,68.63,0.0
+Crocodylus niloticus,N/A,01697457-n,N/A,False,69.13,0.0
+American alligator,http://example.org/wordnet.owl#C_01698640-n,01698640-n,01698640-n,True,74.61,0.01
+Alligator mississipiensis,N/A,01698640-n,N/A,False,63.18,0.0
+triceratops,http://example.org/wordnet.owl#C_01704323-n,01704323-n,01704323-n,True,64.13,0.01
+thunder snake,http://example.org/wordnet.owl#C_01728572-n,01728572-n,01728572-n,True,75.45,0.01
+worm snake,N/A,01728572-n,N/A,False,122.17,0.0
+Carphophis amoenus,N/A,01728572-n,N/A,False,69.3,0.0
+ringneck snake,http://example.org/wordnet.owl#C_01728920-n,01728920-n,01728920-n,True,75.03,0.01
+ring-necked snake,N/A,01728920-n,N/A,False,68.99,0.0
+ring snake,N/A,01728920-n,N/A,False,121.88,0.0
+hognose snake,http://example.org/wordnet.owl#C_01753032-n,01729322-n,01753032-n,False,74.88,0.01
+puff adder,http://example.org/wordnet.owl#C_01753032-n,01729322-n,01753032-n,False,122.31,0.01
+sand viper,N/A,01729322-n,N/A,False,122.21,0.0
+green snake,http://example.org/wordnet.owl#C_01730563-n,01729977-n,01730563-n,False,121.17,0.01
+grass snake,http://example.org/wordnet.owl#C_01737875-n,01729977-n,01737875-n,False,168.89,0.01
+king snake,http://example.org/wordnet.owl#C_01734418-n,01734418-n,01734418-n,True,75.07,0.01
+kingsnake,N/A,01734418-n,N/A,False,57.87,0.0
+garter snake,http://example.org/wordnet.owl#C_01737875-n,01735189-n,01737875-n,False,76.79,0.01
+grass snake,http://example.org/wordnet.owl#C_01737875-n,01735189-n,01737875-n,False,169.54,0.01
+water snake,http://example.org/wordnet.owl#C_01737021-n,01737021-n,01737021-n,True,69.49,0.01
+vine snake,http://example.org/wordnet.owl#C_01739381-n,01739381-n,01739381-n,True,69.44,0.01
+night snake,http://example.org/wordnet.owl#C_01740131-n,01740131-n,01740131-n,True,75.32,0.01
+Hypsiglena torquata,N/A,01740131-n,N/A,False,63.71,0.0
+boa constrictor,http://example.org/wordnet.owl#C_01742172-n,01742172-n,01742172-n,True,74.57,0.01
+Constrictor constrictor,N/A,01742172-n,N/A,False,63.95,0.0
+rock python,http://example.org/wordnet.owl#C_01744401-n,01744401-n,01744401-n,True,74.79,0.01
+rock snake,N/A,01744401-n,N/A,False,69.63,0.0
+Python sebae,N/A,01744401-n,N/A,False,69.15,0.0
+Indian cobra,http://example.org/wordnet.owl#C_01748264-n,01748264-n,01748264-n,True,74.42,0.01
+Naja naja,N/A,01748264-n,N/A,False,63.47,0.0
+green mamba,http://example.org/wordnet.owl#C_01749939-n,01749939-n,01749939-n,True,68.89,0.01
+sea snake,http://example.org/wordnet.owl#C_01751748-n,01751748-n,01751748-n,True,69.71,0.01
+horned viper,http://example.org/wordnet.owl#C_01753488-n,01753488-n,01753488-n,True,74.22,0.01
+cerastes,N/A,01753488-n,N/A,False,74.31,0.0
+sand viper,N/A,01753488-n,N/A,False,121.89,0.0
+horned asp,N/A,01753488-n,N/A,False,74.45,0.0
+Cerastes cornutus,N/A,01753488-n,N/A,False,75.53,0.0
+diamondback,http://example.org/wordnet.owl#C_01755581-n,01755581-n,01755581-n,True,75.64,0.01
+diamondback rattlesnake,http://example.org/wordnet.owl#C_01755581-n,01755581-n,01755581-n,True,68.76,0.0
+Crotalus adamanteus,http://example.org/wordnet.owl#C_01755581-n,01755581-n,01755581-n,True,69.38,0.0
+sidewinder,http://example.org/wordnet.owl#C_04215910-n,01756291-n,04215910-n,False,121.62,0.02
+horned rattlesnake,http://example.org/wordnet.owl#C_04215910-n,01756291-n,04215910-n,False,69.08,0.01
+Crotalus cerastes,http://example.org/wordnet.owl#C_04215910-n,01756291-n,04215910-n,False,69.44,0.01
+trilobite,http://example.org/wordnet.owl#C_01768244-n,01768244-n,01768244-n,True,63.98,0.01
+harvestman,http://example.org/wordnet.owl#C_01770081-n,01770081-n,01770081-n,True,75.0,0.01
+daddy longlegs,N/A,01770081-n,N/A,False,121.79,0.0
+Phalangium opilio,http://example.org/wordnet.owl#C_01770081-n,01770081-n,01770081-n,True,68.91,0.0
+scorpion,http://example.org/wordnet.owl#C_01770393-n,01770393-n,01770393-n,True,168.59,0.02
+black and gold garden spider,http://example.org/wordnet.owl#C_01773157-n,01773157-n,01773157-n,True,75.02,0.01
+Argiope aurantia,N/A,01773157-n,N/A,False,63.96,0.0
+barn spider,http://example.org/wordnet.owl#C_01773549-n,01773549-n,01773549-n,True,75.59,0.01
+Araneus cavaticus,N/A,01773549-n,N/A,False,63.72,0.0
+garden spider,http://example.org/wordnet.owl#C_01773797-n,01773797-n,01773797-n,True,75.61,0.01
+Aranea diademata,N/A,01773797-n,N/A,False,63.42,0.0
+black widow,http://example.org/wordnet.owl#C_01774384-n,01774384-n,01774384-n,True,75.19,0.01
+Latrodectus mactans,N/A,01774384-n,N/A,False,63.3,0.0
+tarantula,http://example.org/wordnet.owl#C_01774750-n,01774750-n,01774750-n,True,121.71,0.01
+wolf spider,http://example.org/wordnet.owl#C_01775062-n,01775062-n,01775062-n,True,74.92,0.01
+hunting spider,N/A,01775062-n,N/A,False,63.91,0.0
+tick,http://example.org/wordnet.owl#C_07397761-n,01776313-n,07397761-n,False,404.25,0.02
+centipede,http://example.org/wordnet.owl#C_01784675-n,01784675-n,01784675-n,True,63.93,0.01
+black grouse,http://example.org/wordnet.owl#C_01795545-n,01795545-n,01795545-n,True,68.92,0.01
+ptarmigan,http://example.org/wordnet.owl#C_01796340-n,01796340-n,01796340-n,True,63.71,0.01
+ruffed grouse,http://example.org/wordnet.owl#C_07647496-n,01797886-n,07647496-n,False,74.79,0.01
+partridge,http://example.org/wordnet.owl#C_07647496-n,01797886-n,07647496-n,False,263.07,0.01
+Bonasa umbellus,http://example.org/wordnet.owl#C_07647496-n,01797886-n,07647496-n,False,70.31,0.01
+prairie chicken,http://example.org/wordnet.owl#C_01798484-n,01798484-n,01798484-n,True,74.73,0.01
+prairie grouse,N/A,01798484-n,N/A,False,69.18,0.0
+prairie fowl,N/A,01798484-n,N/A,False,68.89,0.0
+peacock,http://example.org/wordnet.owl#C_02279257-n,01806143-n,02279257-n,False,121.51,0.01
+quail,http://example.org/wordnet.owl#C_07647321-n,01806567-n,07647321-n,False,167.36,0.02
+partridge,http://example.org/wordnet.owl#C_07647496-n,01807496-n,07647496-n,False,262.31,0.01
+African grey,http://example.org/wordnet.owl#C_01817953-n,01817953-n,01817953-n,True,74.97,0.01
+African gray,N/A,01817953-n,N/A,False,69.03,0.0
+Psittacus erithacus,N/A,01817953-n,N/A,False,69.7,0.0
+macaw,http://example.org/wordnet.owl#C_01818515-n,01818515-n,01818515-n,True,64.08,0.01
+sulphur-crested cockatoo,http://example.org/wordnet.owl#C_01819313-n,01819313-n,01819313-n,True,75.25,0.01
+Kakatoe galerita,N/A,01819313-n,N/A,False,69.8,0.0
+Cacatua galerita,N/A,01819313-n,N/A,False,69.03,0.0
+lorikeet,http://example.org/wordnet.owl#C_01820546-n,01820546-n,01820546-n,True,63.51,0.01
+coucal,http://example.org/wordnet.owl#C_01824575-n,01824575-n,01824575-n,True,63.88,0.01
+bee eater,http://example.org/wordnet.owl#C_01828970-n,01828970-n,01828970-n,True,69.14,0.01
+hornbill,http://example.org/wordnet.owl#C_01829413-n,01829413-n,01829413-n,True,64.24,0.01
+hummingbird,http://example.org/wordnet.owl#C_01833805-n,01833805-n,01833805-n,True,63.85,0.01
+jacamar,http://example.org/wordnet.owl#C_01843065-n,01843065-n,01843065-n,True,63.16,0.01
+toucan,http://example.org/wordnet.owl#C_01843383-n,01843383-n,01843383-n,True,64.23,0.01
+drake,http://example.org/wordnet.owl#C_10942866-n,01847000-n,10942866-n,False,121.78,0.02
+red-breasted merganser,http://example.org/wordnet.owl#C_01855032-n,01855032-n,01855032-n,True,74.87,0.01
+Mergus serrator,N/A,01855032-n,N/A,False,63.95,0.0
+goose,http://example.org/wordnet.owl#C_07646821-n,01855672-n,07646821-n,False,310.84,0.02
+black swan,http://example.org/wordnet.owl#C_01860187-n,01860187-n,01860187-n,True,74.73,0.01
+Cygnus atratus,N/A,01860187-n,N/A,False,63.54,0.0
+tusker,http://example.org/wordnet.owl#C_01871265-n,01871265-n,01871265-n,True,63.2,0.01
+echidna,http://example.org/wordnet.owl#C_01872772-n,01872401-n,01872772-n,False,123.21,0.01
+spiny anteater,http://example.org/wordnet.owl#C_02460009-n,01872401-n,02460009-n,False,122.32,0.0
+anteater,http://example.org/wordnet.owl#C_02460009-n,01872401-n,02460009-n,False,310.53,0.02
+platypus,http://example.org/wordnet.owl#C_01873310-n,01873310-n,01873310-n,True,75.2,0.01
+duckbill,http://example.org/wordnet.owl#C_00206900-s,01873310-n,00206900-s,False,169.7,0.01
+duckbilled platypus,http://example.org/wordnet.owl#C_01873310-n,01873310-n,01873310-n,True,75.06,0.01
+duck-billed platypus,http://example.org/wordnet.owl#C_01873310-n,01873310-n,01873310-n,True,75.16,0.01
+Ornithorhynchus anatinus,http://example.org/wordnet.owl#C_01873310-n,01873310-n,01873310-n,True,74.47,0.0
+wallaby,http://example.org/wordnet.owl#C_01877812-n,01877812-n,01877812-n,True,75.49,0.01
+brush kangaroo,http://example.org/wordnet.owl#C_01877812-n,01877812-n,01877812-n,True,64.08,0.0
+koala,http://example.org/wordnet.owl#C_01882714-n,01882714-n,01882714-n,True,75.35,0.01
+koala bear,http://example.org/wordnet.owl#C_01882714-n,01882714-n,01882714-n,True,75.01,0.0
+kangaroo bear,N/A,01882714-n,N/A,False,75.58,0.0
+native bear,N/A,01882714-n,N/A,False,74.3,0.0
+Phascolarctos cinereus,N/A,01882714-n,N/A,False,75.08,0.0
+wombat,http://example.org/wordnet.owl#C_01883070-n,01883070-n,01883070-n,True,62.87,0.01
+jellyfish,http://example.org/wordnet.owl#C_01910747-n,01910747-n,01910747-n,True,121.15,0.01
+sea anemone,http://example.org/wordnet.owl#C_11725015-n,01914609-n,11725015-n,False,75.23,0.01
+anemone,http://example.org/wordnet.owl#C_11725015-n,01914609-n,11725015-n,False,121.26,0.01
+brain coral,http://example.org/wordnet.owl#C_01917289-n,01917289-n,01917289-n,True,69.65,0.01
+flatworm,http://example.org/wordnet.owl#C_01924916-n,01924916-n,01924916-n,True,75.55,0.01
+platyhelminth,http://example.org/wordnet.owl#C_01924916-n,01924916-n,01924916-n,True,58.48,0.0
+nematode,http://example.org/wordnet.owl#C_01930112-n,01930112-n,01930112-n,True,75.85,0.01
+nematode worm,http://example.org/wordnet.owl#C_01930112-n,01930112-n,01930112-n,True,69.43,0.0
+roundworm,http://example.org/wordnet.owl#C_01930112-n,01930112-n,01930112-n,True,122.63,0.0
+conch,http://example.org/wordnet.owl#C_01943899-n,01943899-n,01943899-n,True,63.99,0.01
+snail,http://example.org/wordnet.owl#C_01944390-n,01944390-n,01944390-n,True,169.55,0.02
+slug,http://example.org/wordnet.owl#C_13719102-n,01945685-n,13719102-n,False,497.91,0.02
+sea slug,http://example.org/wordnet.owl#C_01950731-n,01950731-n,01950731-n,True,75.18,0.01
+nudibranch,N/A,01950731-n,N/A,False,58.35,0.0
+chiton,http://example.org/wordnet.owl#C_03021121-n,01955084-n,03021121-n,False,122.41,0.01
+coat-of-mail shell,http://example.org/wordnet.owl#C_03021121-n,01955084-n,03021121-n,False,74.25,0.01
+sea cradle,http://example.org/wordnet.owl#C_03021121-n,01955084-n,03021121-n,False,74.07,0.01
+polyplacophore,http://example.org/wordnet.owl#C_03021121-n,01955084-n,03021121-n,False,69.47,0.01
+chambered nautilus,http://example.org/wordnet.owl#C_01968897-n,01968897-n,01968897-n,True,74.83,0.01
+pearly nautilus,http://example.org/wordnet.owl#C_03811295-n,01968897-n,03811295-n,False,69.53,0.0
+nautilus,http://example.org/wordnet.owl#C_03811295-n,01968897-n,03811295-n,False,169.06,0.02
+Dungeness crab,http://example.org/wordnet.owl#C_07788609-n,01978287-n,07788609-n,False,123.02,0.01
+Cancer magister,N/A,01978287-n,N/A,False,63.57,0.0
+rock crab,http://example.org/wordnet.owl#C_01978455-n,01978455-n,01978455-n,True,75.13,0.01
+Cancer irroratus,N/A,01978455-n,N/A,False,63.46,0.0
+fiddler crab,http://example.org/wordnet.owl#C_01980166-n,01980166-n,01980166-n,True,69.06,0.01
+king crab,http://example.org/wordnet.owl#C_01981276-n,01981276-n,01981276-n,True,215.72,0.02
+Alaska crab,N/A,01981276-n,N/A,False,122.67,0.0
+Alaskan king crab,N/A,01981276-n,N/A,False,122.14,0.0
+Alaska king crab,http://example.org/wordnet.owl#C_07788435-n,01981276-n,07788435-n,False,122.74,0.01
+Paralithodes camtschatica,N/A,01981276-n,N/A,False,75.08,0.0
+American lobster,http://example.org/wordnet.owl#C_07792926-n,01983481-n,07792926-n,False,122.05,0.02
+Northern lobster,N/A,01983481-n,N/A,False,122.42,0.0
+Maine lobster,N/A,01983481-n,N/A,False,122.02,0.0
+Homarus americanus,N/A,01983481-n,N/A,False,75.82,0.0
+spiny lobster,http://example.org/wordnet.owl#C_07793260-n,01984695-n,07793260-n,False,122.49,0.01
+langouste,N/A,01984695-n,N/A,False,122.62,0.0
+rock lobster,N/A,01984695-n,N/A,False,122.66,0.0
+crawfish,http://example.org/wordnet.owl#C_07788885-n,01984695-n,07788885-n,False,216.7,0.01
+crayfish,http://example.org/wordnet.owl#C_07788885-n,01984695-n,07788885-n,False,216.38,0.02
+sea crawfish,http://example.org/wordnet.owl#C_07788885-n,01984695-n,07788885-n,False,75.38,0.01
+crayfish,http://example.org/wordnet.owl#C_07788885-n,01985128-n,07788885-n,False,216.17,0.02
+crawfish,http://example.org/wordnet.owl#C_07788885-n,01985128-n,07788885-n,False,216.36,0.01
+crawdad,N/A,01985128-n,N/A,False,122.57,0.0
+crawdaddy,http://example.org/wordnet.owl#C_07788885-n,01985128-n,07788885-n,False,69.34,0.01
+hermit crab,http://example.org/wordnet.owl#C_01986214-n,01986214-n,01986214-n,True,70.17,0.01
+isopod,http://example.org/wordnet.owl#C_01990800-n,01990800-n,01990800-n,True,64.61,0.01
+white stork,http://example.org/wordnet.owl#C_02002556-n,02002556-n,02002556-n,True,74.8,0.01
+Ciconia ciconia,N/A,02002556-n,N/A,False,63.63,0.0
+black stork,http://example.org/wordnet.owl#C_02002724-n,02002724-n,02002724-n,True,75.28,0.01
+Ciconia nigra,N/A,02002724-n,N/A,False,64.08,0.0
+spoonbill,http://example.org/wordnet.owl#C_02006656-n,02006656-n,02006656-n,True,64.11,0.01
+flamingo,http://example.org/wordnet.owl#C_02007558-n,02007558-n,02007558-n,True,64.0,0.01
+little blue heron,http://example.org/wordnet.owl#C_02009229-n,02009229-n,02009229-n,True,75.33,0.01
+Egretta caerulea,N/A,02009229-n,N/A,False,64.19,0.0
+American egret,http://example.org/wordnet.owl#C_02009912-n,02009912-n,02009912-n,True,74.78,0.01
+great white heron,http://example.org/wordnet.owl#C_02009750-n,02009912-n,02009750-n,False,169.45,0.01
+Egretta albus,N/A,02009912-n,N/A,False,68.93,0.0
+bittern,http://example.org/wordnet.owl#C_02011460-n,02011460-n,02011460-n,True,63.19,0.01
+crane,http://example.org/wordnet.owl#C_10914447-n,02012849-n,10914447-n,False,310.86,0.02
+limpkin,http://example.org/wordnet.owl#C_02013706-n,02013706-n,02013706-n,True,75.8,0.01
+Aramus pictus,http://example.org/wordnet.owl#C_02013706-n,02013706-n,02013706-n,True,63.29,0.0
+European gallinule,http://example.org/wordnet.owl#C_02017213-n,02017213-n,02017213-n,True,74.26,0.01
+Porphyrio porphyrio,N/A,02017213-n,N/A,False,63.85,0.0
+American coot,http://example.org/wordnet.owl#C_02018207-n,02018207-n,02018207-n,True,75.27,0.01
+marsh hen,N/A,02018207-n,N/A,False,121.49,0.0
+mud hen,N/A,02018207-n,N/A,False,74.72,0.0
+water hen,N/A,02018207-n,N/A,False,121.07,0.0
+Fulica americana,N/A,02018207-n,N/A,False,75.31,0.0
+bustard,http://example.org/wordnet.owl#C_02018795-n,02018795-n,02018795-n,True,64.09,0.01
+ruddy turnstone,http://example.org/wordnet.owl#C_02025239-n,02025239-n,02025239-n,True,75.34,0.01
+Arenaria interpres,N/A,02025239-n,N/A,False,63.81,0.0
+red-backed sandpiper,http://example.org/wordnet.owl#C_02027492-n,02027492-n,02027492-n,True,75.29,0.01
+dunlin,N/A,02027492-n,N/A,False,63.78,0.0
+Erolia alpina,N/A,02027492-n,N/A,False,68.66,0.0
+redshank,http://example.org/wordnet.owl#C_02028035-n,02028035-n,02028035-n,True,75.34,0.01
+Tringa totanus,http://example.org/wordnet.owl#C_02028035-n,02028035-n,02028035-n,True,63.07,0.0
+dowitcher,http://example.org/wordnet.owl#C_02033041-n,02033041-n,02033041-n,True,63.52,0.01
+oystercatcher,http://example.org/wordnet.owl#C_02037110-n,02037110-n,02037110-n,True,75.04,0.01
+oyster catcher,http://example.org/wordnet.owl#C_02037110-n,02037110-n,02037110-n,True,62.89,0.0
+pelican,http://example.org/wordnet.owl#C_02051845-n,02051845-n,02051845-n,True,64.35,0.01
+king penguin,http://example.org/wordnet.owl#C_02056570-n,02056570-n,02056570-n,True,74.88,0.01
+Aptenodytes patagonica,N/A,02056570-n,N/A,False,63.69,0.0
+albatross,http://example.org/wordnet.owl#C_05689645-n,02058221-n,05689645-n,False,121.89,0.01
+mollymawk,http://example.org/wordnet.owl#C_05689645-n,02058221-n,05689645-n,False,57.49,0.01
+grey whale,http://example.org/wordnet.owl#C_02066245-n,02066245-n,02066245-n,True,75.14,0.01
+gray whale,N/A,02066245-n,N/A,False,75.31,0.0
+devilfish,N/A,02066245-n,N/A,False,169.06,0.0
+Eschrichtius gibbosus,N/A,02066245-n,N/A,False,74.4,0.0
+Eschrichtius robustus,N/A,02066245-n,N/A,False,74.57,0.0
+killer whale,http://example.org/wordnet.owl#C_10231087-n,02071294-n,10231087-n,False,74.98,0.02
+killer,http://example.org/wordnet.owl#C_10231087-n,02071294-n,10231087-n,False,214.36,0.02
+orca,http://example.org/wordnet.owl#C_10231087-n,02071294-n,10231087-n,False,74.34,0.01
+grampus,http://example.org/wordnet.owl#C_02071028-n,02071294-n,02071028-n,False,122.22,0.01
+sea wolf,N/A,02071294-n,N/A,False,75.6,0.0
+Orcinus orca,http://example.org/wordnet.owl#C_02071028-n,02071294-n,02071028-n,False,74.36,0.0
+dugong,http://example.org/wordnet.owl#C_02074367-n,02074367-n,02074367-n,True,74.91,0.01
+Dugong dugon,http://example.org/wordnet.owl#C_02074367-n,02074367-n,02074367-n,True,64.01,0.0
+sea lion,http://example.org/wordnet.owl#C_02077923-n,02077923-n,02077923-n,True,68.99,0.01
+Chihuahua,http://example.org/wordnet.owl#C_08742578-n,02085620-n,08742578-n,False,169.04,0.02
+Japanese spaniel,http://example.org/wordnet.owl#C_02085782-n,02085782-n,02085782-n,True,69.96,0.01
+Maltese dog,http://example.org/wordnet.owl#C_06988913-n,02085936-n,06988913-n,False,75.55,0.01
+Maltese terrier,http://example.org/wordnet.owl#C_09747618-n,02085936-n,09747618-n,False,70.13,0.01
+Maltese,http://example.org/wordnet.owl#C_09747618-n,02085936-n,09747618-n,False,265.02,0.01
+Pekinese,http://example.org/wordnet.owl#C_02086079-n,02086079-n,02086079-n,True,74.85,0.01
+Pekingese,http://example.org/wordnet.owl#C_02086079-n,02086079-n,02086079-n,True,121.32,0.01
+Peke,http://example.org/wordnet.owl#C_02086079-n,02086079-n,02086079-n,True,64.0,0.0
+Shih-Tzu,http://example.org/wordnet.owl#C_02086240-n,02086240-n,02086240-n,True,69.89,0.01
+Blenheim spaniel,http://example.org/wordnet.owl#C_02086646-n,02086646-n,02086646-n,True,69.69,0.01
+papillon,http://example.org/wordnet.owl#C_02086910-n,02086910-n,02086910-n,True,64.09,0.01
+toy terrier,http://example.org/wordnet.owl#C_02087046-n,02087046-n,02087046-n,True,69.02,0.01
+Rhodesian ridgeback,http://example.org/wordnet.owl#C_02087394-n,02087394-n,02087394-n,True,69.74,0.01
+Afghan hound,http://example.org/wordnet.owl#C_09689435-n,02088094-n,09689435-n,False,74.61,0.02
+Afghan,http://example.org/wordnet.owl#C_09689435-n,02088094-n,09689435-n,False,308.08,0.01
+basset,http://example.org/wordnet.owl#C_02088238-n,02088238-n,02088238-n,True,122.18,0.02
+basset hound,http://example.org/wordnet.owl#C_02088238-n,02088238-n,02088238-n,True,63.49,0.01
+beagle,http://example.org/wordnet.owl#C_02088364-n,02088364-n,02088364-n,True,63.75,0.01
+bloodhound,http://example.org/wordnet.owl#C_02088466-n,02088466-n,02088466-n,True,75.17,0.01
+sleuthhound,http://example.org/wordnet.owl#C_10611613-n,02088466-n,10611613-n,False,116.07,0.01
+bluetick,http://example.org/wordnet.owl#C_02088632-n,02088632-n,02088632-n,True,63.85,0.01
+black-and-tan coonhound,http://example.org/wordnet.owl#C_02089078-n,02089078-n,02089078-n,True,69.31,0.01
+Walker hound,http://example.org/wordnet.owl#C_02089867-n,02089867-n,02089867-n,True,75.17,0.01
+Walker foxhound,N/A,02089867-n,N/A,False,63.9,0.0
+English foxhound,http://example.org/wordnet.owl#C_02089973-n,02089973-n,02089973-n,True,69.18,0.01
+redbone,http://example.org/wordnet.owl#C_02090379-n,02090379-n,02090379-n,True,62.99,0.01
+borzoi,http://example.org/wordnet.owl#C_02090622-n,02090622-n,02090622-n,True,74.92,0.01
+Russian wolfhound,http://example.org/wordnet.owl#C_02090622-n,02090622-n,02090622-n,True,63.75,0.0
+Irish wolfhound,http://example.org/wordnet.owl#C_02090721-n,02090721-n,02090721-n,True,69.32,0.01
+Italian greyhound,http://example.org/wordnet.owl#C_02091032-n,02091032-n,02091032-n,True,69.74,0.01
+whippet,http://example.org/wordnet.owl#C_02091134-n,02091134-n,02091134-n,True,63.71,0.01
+Ibizan hound,http://example.org/wordnet.owl#C_02091244-n,02091244-n,02091244-n,True,74.37,0.01
+Ibizan Podenco,N/A,02091244-n,N/A,False,63.74,0.0
+Norwegian elkhound,http://example.org/wordnet.owl#C_02091467-n,02091467-n,02091467-n,True,74.85,0.01
+elkhound,N/A,02091467-n,N/A,False,58.89,0.0
+otterhound,http://example.org/wordnet.owl#C_02091635-n,02091635-n,02091635-n,True,75.59,0.01
+otter hound,http://example.org/wordnet.owl#C_02091635-n,02091635-n,02091635-n,True,63.53,0.0
+Saluki,http://example.org/wordnet.owl#C_02091831-n,02091831-n,02091831-n,True,74.91,0.01
+gazelle hound,http://example.org/wordnet.owl#C_02091831-n,02091831-n,02091831-n,True,63.37,0.0
+Scottish deerhound,http://example.org/wordnet.owl#C_02092002-n,02092002-n,02092002-n,True,75.16,0.01
+deerhound,N/A,02092002-n,N/A,False,58.4,0.0
+Weimaraner,http://example.org/wordnet.owl#C_02092339-n,02092339-n,02092339-n,True,64.2,0.01
+Staffordshire bullterrier,http://example.org/wordnet.owl#C_02093256-n,02093256-n,02093256-n,True,74.83,0.01
+Staffordshire bull terrier,N/A,02093256-n,N/A,False,64.35,0.0
+American Staffordshire terrier,http://example.org/wordnet.owl#C_02093428-n,02093428-n,02093428-n,True,75.79,0.01
+Staffordshire terrier,N/A,02093428-n,N/A,False,75.04,0.0
+American pit bull terrier,N/A,02093428-n,N/A,False,74.42,0.0
+pit bull terrier,N/A,02093428-n,N/A,False,75.84,0.0
+Bedlington terrier,http://example.org/wordnet.owl#C_02093647-n,02093647-n,02093647-n,True,72.0,0.01
+Border terrier,http://example.org/wordnet.owl#C_02093754-n,02093754-n,02093754-n,True,69.6,0.01
+Kerry blue terrier,http://example.org/wordnet.owl#C_02093859-n,02093859-n,02093859-n,True,69.49,0.01
+Irish terrier,http://example.org/wordnet.owl#C_02093991-n,02093991-n,02093991-n,True,68.95,0.01
+Norfolk terrier,http://example.org/wordnet.owl#C_02094114-n,02094114-n,02094114-n,True,70.27,0.01
+Norwich terrier,http://example.org/wordnet.owl#C_02094258-n,02094258-n,02094258-n,True,69.15,0.01
+Yorkshire terrier,http://example.org/wordnet.owl#C_02094433-n,02094433-n,02094433-n,True,69.8,0.01
+wire-haired fox terrier,http://example.org/wordnet.owl#C_02095314-n,02095314-n,02095314-n,True,70.95,0.01
+Lakeland terrier,http://example.org/wordnet.owl#C_02095570-n,02095570-n,02095570-n,True,70.6,0.01
+Sealyham terrier,http://example.org/wordnet.owl#C_08895623-n,02095889-n,08895623-n,False,75.39,0.01
+Sealyham,http://example.org/wordnet.owl#C_08895623-n,02095889-n,08895623-n,False,121.51,0.01
+Airedale,http://example.org/wordnet.owl#C_02096051-n,02096051-n,02096051-n,True,75.48,0.01
+Airedale terrier,http://example.org/wordnet.owl#C_02096051-n,02096051-n,02096051-n,True,63.4,0.0
+cairn,http://example.org/wordnet.owl#C_07273802-n,02096177-n,07273802-n,False,121.99,0.01
+cairn terrier,http://example.org/wordnet.owl#C_07273802-n,02096177-n,07273802-n,False,64.78,0.01
+Australian terrier,http://example.org/wordnet.owl#C_02096294-n,02096294-n,02096294-n,True,68.58,0.01
+Dandie Dinmont,http://example.org/wordnet.owl#C_02096437-n,02096437-n,02096437-n,True,75.12,0.01
+Dandie Dinmont terrier,N/A,02096437-n,N/A,False,64.02,0.0
+Boston bull,http://example.org/wordnet.owl#C_02096585-n,02096585-n,02096585-n,True,74.27,0.01
+Boston terrier,N/A,02096585-n,N/A,False,63.9,0.0
+miniature schnauzer,http://example.org/wordnet.owl#C_02097047-n,02097047-n,02097047-n,True,69.81,0.01
+giant schnauzer,http://example.org/wordnet.owl#C_02097130-n,02097130-n,02097130-n,True,70.69,0.01
+standard schnauzer,http://example.org/wordnet.owl#C_02097209-n,02097209-n,02097209-n,True,69.06,0.01
+Scotch terrier,http://example.org/wordnet.owl#C_02097298-n,02097298-n,02097298-n,True,75.09,0.01
+Scottish terrier,N/A,02097298-n,N/A,False,70.37,0.0
+Scottie,N/A,02097298-n,N/A,False,64.58,0.0
+Tibetan terrier,http://example.org/wordnet.owl#C_02097474-n,02097474-n,02097474-n,True,75.45,0.01
+chrysanthemum dog,N/A,02097474-n,N/A,False,63.91,0.0
+silky terrier,http://example.org/wordnet.owl#C_02097658-n,02097658-n,02097658-n,True,75.21,0.01
+Sydney silky,N/A,02097658-n,N/A,False,64.45,0.0
+soft-coated wheaten terrier,http://example.org/wordnet.owl#C_02098105-n,02098105-n,02098105-n,True,69.37,0.01
+West Highland white terrier,http://example.org/wordnet.owl#C_02098286-n,02098286-n,02098286-n,True,76.17,0.01
+Lhasa,http://example.org/wordnet.owl#C_08907377-n,02098413-n,08907377-n,False,122.14,0.01
+Lhasa apso,http://example.org/wordnet.owl#C_08907377-n,02098413-n,08907377-n,False,64.29,0.01
+flat-coated retriever,http://example.org/wordnet.owl#C_02099267-n,02099267-n,02099267-n,True,69.8,0.01
+curly-coated retriever,http://example.org/wordnet.owl#C_02099429-n,02099429-n,02099429-n,True,70.07,0.01
+golden retriever,http://example.org/wordnet.owl#C_02099601-n,02099601-n,02099601-n,True,69.01,0.01
+Labrador retriever,http://example.org/wordnet.owl#C_02099712-n,02099712-n,02099712-n,True,68.86,0.01
+Chesapeake Bay retriever,http://example.org/wordnet.owl#C_02099849-n,02099849-n,02099849-n,True,75.19,0.01
+German short-haired pointer,http://example.org/wordnet.owl#C_02100236-n,02100236-n,02100236-n,True,70.15,0.01
+vizsla,http://example.org/wordnet.owl#C_02100583-n,02100583-n,02100583-n,True,74.83,0.01
+Hungarian pointer,http://example.org/wordnet.owl#C_02100583-n,02100583-n,02100583-n,True,63.62,0.0
+English setter,http://example.org/wordnet.owl#C_02100735-n,02100735-n,02100735-n,True,69.47,0.01
+Irish setter,http://example.org/wordnet.owl#C_02100877-n,02100877-n,02100877-n,True,74.99,0.01
+red setter,N/A,02100877-n,N/A,False,63.37,0.0
+Gordon setter,http://example.org/wordnet.owl#C_02101006-n,02101006-n,02101006-n,True,69.82,0.01
+Brittany spaniel,http://example.org/wordnet.owl#C_02101388-n,02101388-n,02101388-n,True,69.36,0.01
+clumber,http://example.org/wordnet.owl#C_02101556-n,02101556-n,02101556-n,True,75.0,0.01
+clumber spaniel,http://example.org/wordnet.owl#C_02101556-n,02101556-n,02101556-n,True,63.65,0.0
+English springer,http://example.org/wordnet.owl#C_02102040-n,02102040-n,02102040-n,True,74.95,0.01
+English springer spaniel,N/A,02102040-n,N/A,False,63.88,0.0
+Welsh springer spaniel,http://example.org/wordnet.owl#C_02102177-n,02102177-n,02102177-n,True,69.91,0.01
+cocker spaniel,http://example.org/wordnet.owl#C_02102318-n,02102318-n,02102318-n,True,75.25,0.01
+English cocker spaniel,N/A,02102318-n,N/A,False,68.67,0.0
+cocker,http://example.org/wordnet.owl#C_00320410-v,02102318-n,00320410-v,False,121.82,0.0
+Sussex spaniel,http://example.org/wordnet.owl#C_02102480-n,02102480-n,02102480-n,True,68.49,0.01
+Irish water spaniel,http://example.org/wordnet.owl#C_02102973-n,02102973-n,02102973-n,True,69.19,0.01
+kuvasz,http://example.org/wordnet.owl#C_02104029-n,02104029-n,02104029-n,True,63.79,0.01
+schipperke,http://example.org/wordnet.owl#C_02104365-n,02104365-n,02104365-n,True,63.59,0.01
+groenendael,http://example.org/wordnet.owl#C_02105056-n,02105056-n,02105056-n,True,63.68,0.01
+malinois,http://example.org/wordnet.owl#C_02105162-n,02105162-n,02105162-n,True,64.32,0.01
+briard,http://example.org/wordnet.owl#C_02105251-n,02105251-n,02105251-n,True,64.05,0.01
+kelpie,http://example.org/wordnet.owl#C_09543924-n,02105412-n,09543924-n,False,122.48,0.01
+komondor,http://example.org/wordnet.owl#C_02105505-n,02105505-n,02105505-n,True,64.33,0.01
+Old English sheepdog,http://example.org/wordnet.owl#C_02105641-n,02105641-n,02105641-n,True,75.74,0.01
+bobtail,http://example.org/wordnet.owl#C_02158066-n,02105641-n,02158066-n,False,170.07,0.02
+Shetland sheepdog,http://example.org/wordnet.owl#C_02105855-n,02105855-n,02105855-n,True,75.12,0.01
+Shetland sheep dog,http://example.org/wordnet.owl#C_08954057-n,02105855-n,08954057-n,False,69.27,0.0
+Shetland,http://example.org/wordnet.owl#C_08954057-n,02105855-n,08954057-n,False,122.26,0.01
+collie,http://example.org/wordnet.owl#C_02106030-n,02106030-n,02106030-n,True,64.16,0.01
+Border collie,http://example.org/wordnet.owl#C_02106166-n,02106166-n,02106166-n,True,69.03,0.01
+Bouvier des Flandres,http://example.org/wordnet.owl#C_02106382-n,02106382-n,02106382-n,True,75.21,0.01
+Bouviers des Flandres,N/A,02106382-n,N/A,False,63.47,0.0
+Rottweiler,http://example.org/wordnet.owl#C_02106550-n,02106550-n,02106550-n,True,64.2,0.01
+German shepherd,http://example.org/wordnet.owl#C_02106662-n,02106662-n,02106662-n,True,75.4,0.01
+German shepherd dog,http://example.org/wordnet.owl#C_09785786-n,02106662-n,09785786-n,False,76.06,0.01
+German police dog,http://example.org/wordnet.owl#C_09785786-n,02106662-n,09785786-n,False,76.71,0.01
+alsatian,http://example.org/wordnet.owl#C_09785786-n,02106662-n,09785786-n,False,170.23,0.01
+Doberman,http://example.org/wordnet.owl#C_02107142-n,02107142-n,02107142-n,True,75.06,0.01
+Doberman pinscher,http://example.org/wordnet.owl#C_02107142-n,02107142-n,02107142-n,True,63.01,0.0
+miniature pinscher,http://example.org/wordnet.owl#C_02107312-n,02107312-n,02107312-n,True,69.02,0.01
+Greater Swiss Mountain dog,http://example.org/wordnet.owl#C_02107574-n,02107574-n,02107574-n,True,74.59,0.01
+Bernese mountain dog,http://example.org/wordnet.owl#C_02107683-n,02107683-n,02107683-n,True,69.17,0.01
+Appenzeller,http://example.org/wordnet.owl#C_02107908-n,02107908-n,02107908-n,True,64.29,0.01
+EntleBucher,http://example.org/wordnet.owl#C_02108000-n,02108000-n,02108000-n,True,68.77,0.01
+boxer,http://example.org/wordnet.owl#C_09870746-n,02108089-n,09870746-n,False,215.75,0.02
+bull mastiff,http://example.org/wordnet.owl#C_02108422-n,02108422-n,02108422-n,True,69.07,0.01
+Tibetan mastiff,http://example.org/wordnet.owl#C_02108551-n,02108551-n,02108551-n,True,69.77,0.01
+French bulldog,http://example.org/wordnet.owl#C_02108915-n,02108915-n,02108915-n,True,68.97,0.01
+Great Dane,http://example.org/wordnet.owl#C_02109047-n,02109047-n,02109047-n,True,75.18,0.01
+Saint Bernard,http://example.org/wordnet.owl#C_02109525-n,02109525-n,02109525-n,True,75.14,0.01
+St Bernard,N/A,02109525-n,N/A,False,64.27,0.0
+Eskimo dog,http://example.org/wordnet.owl#C_02109961-n,02109961-n,02109961-n,True,74.73,0.01
+husky,N/A,02109961-n,N/A,False,169.16,0.0
+malamute,http://example.org/wordnet.owl#C_02110063-n,02110063-n,02110063-n,True,74.82,0.01
+malemute,http://example.org/wordnet.owl#C_02110063-n,02110063-n,02110063-n,True,64.02,0.0
+Alaskan malamute,http://example.org/wordnet.owl#C_02110063-n,02110063-n,02110063-n,True,69.33,0.0
+Siberian husky,http://example.org/wordnet.owl#C_02110185-n,02110185-n,02110185-n,True,69.64,0.01
+dalmatian,http://example.org/wordnet.owl#C_09988918-n,02110341-n,09988918-n,False,169.69,0.01
+coach dog,http://example.org/wordnet.owl#C_09988918-n,02110341-n,09988918-n,False,69.13,0.01
+carriage dog,http://example.org/wordnet.owl#C_09988918-n,02110341-n,09988918-n,False,68.5,0.01
+affenpinscher,http://example.org/wordnet.owl#C_02110627-n,02110627-n,02110627-n,True,75.63,0.01
+monkey pinscher,http://example.org/wordnet.owl#C_02110627-n,02110627-n,02110627-n,True,69.22,0.0
+monkey dog,http://example.org/wordnet.owl#C_02110627-n,02110627-n,02110627-n,True,69.22,0.0
+basenji,http://example.org/wordnet.owl#C_02110806-n,02110806-n,02110806-n,True,63.79,0.01
+pug,http://example.org/wordnet.owl#C_02110958-n,02110958-n,02110958-n,True,75.91,0.01
+pug-dog,http://example.org/wordnet.owl#C_02110958-n,02110958-n,02110958-n,True,57.21,0.0
+Leonberg,http://example.org/wordnet.owl#C_02111129-n,02111129-n,02111129-n,True,63.55,0.01
+Newfoundland,http://example.org/wordnet.owl#C_08825211-n,02111277-n,08825211-n,False,121.3,0.01
+Newfoundland dog,http://example.org/wordnet.owl#C_08825211-n,02111277-n,08825211-n,False,63.34,0.01
+Great Pyrenees,http://example.org/wordnet.owl#C_02111500-n,02111500-n,02111500-n,True,74.87,0.01
+Samoyed,http://example.org/wordnet.owl#C_09707887-n,02111889-n,09707887-n,False,169.03,0.01
+Samoyede,http://example.org/wordnet.owl#C_09707887-n,02111889-n,09707887-n,False,58.04,0.01
+Pomeranian,http://example.org/wordnet.owl#C_02112018-n,02112018-n,02112018-n,True,63.64,0.01
+chow,http://example.org/wordnet.owl#C_07565161-n,02112137-n,07565161-n,False,169.14,0.01
+chow chow,http://example.org/wordnet.owl#C_07565161-n,02112137-n,07565161-n,False,63.38,0.01
+keeshond,http://example.org/wordnet.owl#C_02112350-n,02112350-n,02112350-n,True,63.75,0.01
+Brabancon griffon,http://example.org/wordnet.owl#C_02112706-n,02112706-n,02112706-n,True,69.46,0.01
+Pembroke,http://example.org/wordnet.owl#C_02113023-n,02113023-n,02113023-n,True,75.53,0.01
+Pembroke Welsh corgi,http://example.org/wordnet.owl#C_02113023-n,02113023-n,02113023-n,True,64.03,0.0
+Cardigan,http://example.org/wordnet.owl#C_02963159-n,02113186-n,02963159-n,False,122.55,0.02
+Cardigan Welsh corgi,http://example.org/wordnet.owl#C_02963159-n,02113186-n,02963159-n,False,64.92,0.01
+toy poodle,http://example.org/wordnet.owl#C_02113624-n,02113624-n,02113624-n,True,70.74,0.01
+miniature poodle,http://example.org/wordnet.owl#C_02113712-n,02113712-n,02113712-n,True,69.55,0.01
+standard poodle,http://example.org/wordnet.owl#C_02113799-n,02113799-n,02113799-n,True,69.63,0.01
+Mexican hairless,http://example.org/wordnet.owl#C_02113978-n,02113978-n,02113978-n,True,69.81,0.01
+timber wolf,http://example.org/wordnet.owl#C_02114367-n,02114367-n,02114367-n,True,75.53,0.01
+grey wolf,N/A,02114367-n,N/A,False,74.54,0.0
+gray wolf,N/A,02114367-n,N/A,False,74.49,0.0
+Canis lupus,N/A,02114367-n,N/A,False,75.95,0.0
+white wolf,http://example.org/wordnet.owl#C_02114548-n,02114548-n,02114548-n,True,75.44,0.01
+Arctic wolf,N/A,02114548-n,N/A,False,69.02,0.0
+Canis lupus tundrarum,N/A,02114548-n,N/A,False,70.21,0.0
+red wolf,http://example.org/wordnet.owl#C_02114712-n,02114712-n,02114712-n,True,75.16,0.01
+maned wolf,N/A,02114712-n,N/A,False,74.61,0.0
+Canis rufus,N/A,02114712-n,N/A,False,74.99,0.0
+Canis niger,N/A,02114712-n,N/A,False,75.54,0.0
+coyote,http://example.org/wordnet.owl#C_09973903-n,02114855-n,09973903-n,False,169.62,0.02
+prairie wolf,http://example.org/wordnet.owl#C_09973903-n,02114855-n,09973903-n,False,75.18,0.01
+brush wolf,http://example.org/wordnet.owl#C_09973903-n,02114855-n,09973903-n,False,75.01,0.01
+Canis latrans,http://example.org/wordnet.owl#C_09973903-n,02114855-n,09973903-n,False,75.08,0.01
+dingo,http://example.org/wordnet.owl#C_02115641-n,02115641-n,02115641-n,True,75.97,0.01
+warrigal,http://example.org/wordnet.owl#C_02381744-n,02115641-n,02381744-n,False,121.92,0.01
+warragal,http://example.org/wordnet.owl#C_02381744-n,02115641-n,02381744-n,False,122.19,0.01
+Canis dingo,http://example.org/wordnet.owl#C_02381744-n,02115641-n,02381744-n,False,75.04,0.01
+dhole,http://example.org/wordnet.owl#C_02115913-n,02115913-n,02115913-n,True,75.53,0.01
+Cuon alpinus,http://example.org/wordnet.owl#C_02115913-n,02115913-n,02115913-n,True,63.97,0.0
+African hunting dog,http://example.org/wordnet.owl#C_02116738-n,02116738-n,02116738-n,True,75.63,0.01
+hyena dog,N/A,02116738-n,N/A,False,75.38,0.0
+Cape hunting dog,N/A,02116738-n,N/A,False,75.79,0.0
+Lycaon pictus,N/A,02116738-n,N/A,False,75.45,0.0
+hyena,http://example.org/wordnet.owl#C_02117135-n,02117135-n,02117135-n,True,76.91,0.01
+hyaena,http://example.org/wordnet.owl#C_02117135-n,02117135-n,02117135-n,True,58.02,0.0
+red fox,http://example.org/wordnet.owl#C_11825211-n,02119022-n,11825211-n,False,169.57,0.01
+Vulpes vulpes,N/A,02119022-n,N/A,False,63.93,0.0
+kit fox,http://example.org/wordnet.owl#C_02119789-n,02119789-n,02119789-n,True,122.68,0.01
+Vulpes macrotis,N/A,02119789-n,N/A,False,63.92,0.0
+Arctic fox,http://example.org/wordnet.owl#C_02120079-n,02120079-n,02120079-n,True,75.71,0.01
+white fox,N/A,02120079-n,N/A,False,68.84,0.0
+Alopex lagopus,N/A,02120079-n,N/A,False,69.45,0.0
+grey fox,http://example.org/wordnet.owl#C_02120505-n,02120505-n,02120505-n,True,75.63,0.01
+gray fox,N/A,02120505-n,N/A,False,70.11,0.0
+Urocyon cinereoargenteus,N/A,02120505-n,N/A,False,69.66,0.0
+tabby,http://example.org/wordnet.owl#C_02123045-n,02123045-n,02123045-n,True,170.15,0.02
+tabby cat,http://example.org/wordnet.owl#C_02123045-n,02123045-n,02123045-n,True,64.02,0.01
+tiger cat,http://example.org/wordnet.owl#C_02126465-n,02123159-n,02126465-n,False,122.58,0.02
+Persian cat,http://example.org/wordnet.owl#C_02123394-n,02123394-n,02123394-n,True,69.47,0.01
+Siamese cat,http://example.org/wordnet.owl#C_04212573-n,02123597-n,04212573-n,False,75.92,0.01
+Siamese,http://example.org/wordnet.owl#C_04212573-n,02123597-n,04212573-n,False,359.15,0.02
+Egyptian cat,http://example.org/wordnet.owl#C_02124075-n,02124075-n,02124075-n,True,69.23,0.01
+cougar,http://example.org/wordnet.owl#C_02125311-n,02125311-n,02125311-n,True,75.64,0.01
+puma,http://example.org/wordnet.owl#C_10393909-n,02125311-n,10393909-n,False,76.29,0.02
+catamount,http://example.org/wordnet.owl#C_10393909-n,02125311-n,10393909-n,False,122.41,0.01
+mountain lion,http://example.org/wordnet.owl#C_10393909-n,02125311-n,10393909-n,False,75.81,0.01
+painter,http://example.org/wordnet.owl#C_10393909-n,02125311-n,10393909-n,False,216.74,0.01
+panther,http://example.org/wordnet.owl#C_02128669-n,02125311-n,02128669-n,False,168.45,0.01
+Felis concolor,http://example.org/wordnet.owl#C_10393909-n,02125311-n,10393909-n,False,76.33,0.01
+lynx,http://example.org/wordnet.owl#C_06571724-n,02127052-n,06571724-n,False,122.27,0.01
+catamount,http://example.org/wordnet.owl#C_10393909-n,02127052-n,10393909-n,False,122.04,0.01
+leopard,http://example.org/wordnet.owl#C_14765422-n,02128385-n,14765422-n,False,121.99,0.02
+Panthera pardus,http://example.org/wordnet.owl#C_14765422-n,02128385-n,14765422-n,False,63.22,0.01
+snow leopard,http://example.org/wordnet.owl#C_13722522-n,02128757-n,13722522-n,False,75.07,0.02
+ounce,http://example.org/wordnet.owl#C_13722522-n,02128757-n,13722522-n,False,168.15,0.01
+Panthera uncia,http://example.org/wordnet.owl#C_13722522-n,02128757-n,13722522-n,False,68.2,0.01
+jaguar,http://example.org/wordnet.owl#C_02128925-n,02128925-n,02128925-n,True,75.39,0.01
+panther,http://example.org/wordnet.owl#C_02128669-n,02128925-n,02128669-n,False,169.01,0.01
+Panthera onca,http://example.org/wordnet.owl#C_02128925-n,02128925-n,02128925-n,True,74.94,0.01
+Felis onca,http://example.org/wordnet.owl#C_02128925-n,02128925-n,02128925-n,True,74.24,0.01
+lion,http://example.org/wordnet.owl#C_10265070-n,02129165-n,10265070-n,False,216.09,0.01
+king of beasts,http://example.org/wordnet.owl#C_10265070-n,02129165-n,10265070-n,False,69.29,0.01
+Panthera leo,http://example.org/wordnet.owl#C_10265070-n,02129165-n,10265070-n,False,69.59,0.01
+tiger,http://example.org/wordnet.owl#C_10710632-n,02129604-n,10710632-n,False,121.16,0.02
+Panthera tigris,http://example.org/wordnet.owl#C_10710632-n,02129604-n,10710632-n,False,63.83,0.01
+cheetah,http://example.org/wordnet.owl#C_02130308-n,02130308-n,02130308-n,True,74.54,0.01
+chetah,http://example.org/wordnet.owl#C_02130308-n,02130308-n,02130308-n,True,63.54,0.0
+Acinonyx jubatus,http://example.org/wordnet.owl#C_02130308-n,02130308-n,02130308-n,True,68.48,0.0
+brown bear,http://example.org/wordnet.owl#C_02132320-n,02132136-n,02132320-n,False,75.48,0.01
+bruin,http://example.org/wordnet.owl#C_02132320-n,02132136-n,02132320-n,False,122.08,0.01
+Ursus arctos,http://example.org/wordnet.owl#C_02132320-n,02132136-n,02132320-n,False,69.52,0.0
+American black bear,http://example.org/wordnet.owl#C_02133161-n,02133161-n,02133161-n,True,75.23,0.01
+black bear,N/A,02133161-n,N/A,False,121.08,0.0
+Ursus americanus,N/A,02133161-n,N/A,False,75.28,0.0
+Euarctos americanus,N/A,02133161-n,N/A,False,75.18,0.0
+ice bear,http://example.org/wordnet.owl#C_02134084-n,02134084-n,02134084-n,True,75.33,0.01
+polar bear,N/A,02134084-n,N/A,False,74.77,0.0
+Ursus Maritimus,N/A,02134084-n,N/A,False,74.2,0.0
+Thalarctos maritimus,N/A,02134084-n,N/A,False,74.56,0.0
+sloth bear,http://example.org/wordnet.owl#C_02134418-n,02134418-n,02134418-n,True,75.42,0.01
+Melursus ursinus,N/A,02134418-n,N/A,False,70.22,0.0
+Ursus ursinus,N/A,02134418-n,N/A,False,69.34,0.0
+mongoose,http://example.org/wordnet.owl#C_02137549-n,02137549-n,02137549-n,True,63.84,0.01
+meerkat,http://example.org/wordnet.owl#C_02138441-n,02138441-n,02138441-n,True,75.33,0.01
+mierkat,http://example.org/wordnet.owl#C_02138441-n,02138441-n,02138441-n,True,57.32,0.0
+tiger beetle,http://example.org/wordnet.owl#C_02165105-n,02165105-n,02165105-n,True,70.07,0.01
+ladybug,http://example.org/wordnet.owl#C_02165456-n,02165456-n,02165456-n,True,75.27,0.01
+ladybeetle,http://example.org/wordnet.owl#C_02165456-n,02165456-n,02165456-n,True,74.93,0.0
+lady beetle,http://example.org/wordnet.owl#C_02165456-n,02165456-n,02165456-n,True,75.63,0.0
+ladybird,http://example.org/wordnet.owl#C_02165456-n,02165456-n,02165456-n,True,75.55,0.0
+ladybird beetle,N/A,02165456-n,N/A,False,75.73,0.0
+ground beetle,http://example.org/wordnet.owl#C_02167151-n,02167151-n,02167151-n,True,76.02,0.01
+carabid beetle,N/A,02167151-n,N/A,False,64.14,0.0
+long-horned beetle,http://example.org/wordnet.owl#C_02168699-n,02168699-n,02168699-n,True,75.39,0.01
+longicorn,N/A,02168699-n,N/A,False,63.45,0.0
+longicorn beetle,N/A,02168699-n,N/A,False,69.18,0.0
+leaf beetle,http://example.org/wordnet.owl#C_02169497-n,02169497-n,02169497-n,True,74.81,0.01
+chrysomelid,N/A,02169497-n,N/A,False,57.75,0.0
+dung beetle,http://example.org/wordnet.owl#C_02172182-n,02172182-n,02172182-n,True,69.47,0.01
+rhinoceros beetle,http://example.org/wordnet.owl#C_02174001-n,02174001-n,02174001-n,True,69.08,0.01
+weevil,http://example.org/wordnet.owl#C_02177972-n,02177972-n,02177972-n,True,63.83,0.01
+fly,http://example.org/wordnet.owl#C_03373237-n,02190166-n,03373237-n,False,966.57,0.02
+bee,http://example.org/wordnet.owl#C_07975909-n,02206856-n,07975909-n,False,121.29,0.01
+ant,http://example.org/wordnet.owl#C_02219486-n,02219486-n,02219486-n,True,75.16,0.01
+emmet,http://example.org/wordnet.owl#C_02219486-n,02219486-n,02219486-n,True,64.36,0.0
+pismire,http://example.org/wordnet.owl#C_02219486-n,02219486-n,02219486-n,True,63.93,0.0
+grasshopper,http://example.org/wordnet.owl#C_07915213-n,02226429-n,07915213-n,False,121.6,0.02
+hopper,http://example.org/wordnet.owl#C_10185327-n,02226429-n,10185327-n,False,263.69,0.01
+cricket,http://example.org/wordnet.owl#C_02229544-n,02229544-n,02229544-n,True,168.17,0.02
+walking stick,http://example.org/wordnet.owl#C_04546194-n,02231487-n,04546194-n,False,120.96,0.01
+walkingstick,N/A,02231487-n,N/A,False,63.62,0.0
+stick insect,N/A,02231487-n,N/A,False,68.96,0.0
+cockroach,http://example.org/wordnet.owl#C_05261088-n,02233338-n,05261088-n,False,74.49,0.02
+roach,http://example.org/wordnet.owl#C_05261088-n,02233338-n,05261088-n,False,355.77,0.02
+mantis,http://example.org/wordnet.owl#C_02236044-n,02236044-n,02236044-n,True,75.14,0.01
+mantid,http://example.org/wordnet.owl#C_02236044-n,02236044-n,02236044-n,True,57.41,0.0
+cicada,http://example.org/wordnet.owl#C_02256656-n,02256656-n,02256656-n,True,75.1,0.01
+cicala,http://example.org/wordnet.owl#C_02256656-n,02256656-n,02256656-n,True,57.48,0.0
+leafhopper,http://example.org/wordnet.owl#C_02259212-n,02259212-n,02259212-n,True,63.69,0.01
+lacewing,http://example.org/wordnet.owl#C_02264363-n,02264363-n,02264363-n,True,74.78,0.01
+lacewing fly,http://example.org/wordnet.owl#C_02264363-n,02264363-n,02264363-n,True,63.69,0.0
+dragonfly,http://example.org/wordnet.owl#C_03162556-n,02268443-n,03162556-n,False,75.15,0.01
+darning needle,http://example.org/wordnet.owl#C_03162556-n,02268443-n,03162556-n,False,120.76,0.01
+devil's darning needle,N/A,02268443-n,N/A,False,121.69,0.0
+sewing needle,http://example.org/wordnet.owl#C_04180063-n,02268443-n,04180063-n,False,121.65,0.01
+snake feeder,N/A,02268443-n,N/A,False,74.39,0.0
+snake doctor,N/A,02268443-n,N/A,False,75.05,0.0
+mosquito hawk,http://example.org/wordnet.owl#C_01836384-n,02268443-n,01836384-n,False,122.17,0.0
+skeeter hawk,N/A,02268443-n,N/A,False,75.02,0.0
+damselfly,http://example.org/wordnet.owl#C_02268853-n,02268853-n,02268853-n,True,64.09,0.01
+admiral,http://example.org/wordnet.owl#C_09771204-n,02276258-n,09771204-n,False,121.08,0.02
+ringlet,http://example.org/wordnet.owl#C_04093157-n,02277742-n,04093157-n,False,215.09,0.02
+ringlet butterfly,http://example.org/wordnet.owl#C_04093157-n,02277742-n,04093157-n,False,63.51,0.01
+monarch,http://example.org/wordnet.owl#C_02279972-n,02279972-n,02279972-n,True,121.47,0.01
+monarch butterfly,http://example.org/wordnet.owl#C_02279972-n,02279972-n,02279972-n,True,75.75,0.0
+milkweed butterfly,http://example.org/wordnet.owl#C_02279972-n,02279972-n,02279972-n,True,73.77,0.0
+Danaus plexippus,http://example.org/wordnet.owl#C_02279972-n,02279972-n,02279972-n,True,74.22,0.0
+cabbage butterfly,http://example.org/wordnet.owl#C_02280649-n,02280649-n,02280649-n,True,69.33,0.01
+sulphur butterfly,http://example.org/wordnet.owl#C_02281406-n,02281406-n,02281406-n,True,74.41,0.01
+sulfur butterfly,N/A,02281406-n,N/A,False,63.0,0.0
+lycaenid,http://example.org/wordnet.owl#C_02281787-n,02281787-n,02281787-n,True,75.6,0.01
+lycaenid butterfly,http://example.org/wordnet.owl#C_02281787-n,02281787-n,02281787-n,True,63.19,0.0
+starfish,http://example.org/wordnet.owl#C_02317335-n,02317335-n,02317335-n,True,74.67,0.01
+sea star,http://example.org/wordnet.owl#C_02317335-n,02317335-n,02317335-n,True,63.8,0.0
+sea urchin,http://example.org/wordnet.owl#C_02319095-n,02319095-n,02319095-n,True,69.16,0.01
+sea cucumber,http://example.org/wordnet.owl#C_02321529-n,02321529-n,02321529-n,True,74.49,0.01
+holothurian,N/A,02321529-n,N/A,False,57.97,0.0
+wood rabbit,http://example.org/wordnet.owl#C_02325366-n,02325366-n,02325366-n,True,74.65,0.01
+cottontail,N/A,02325366-n,N/A,False,63.2,0.0
+cottontail rabbit,N/A,02325366-n,N/A,False,69.88,0.0
+hare,http://example.org/wordnet.owl#C_02326432-n,02326432-n,02326432-n,True,168.17,0.02
+Angora,http://example.org/wordnet.owl#C_02417387-n,02328150-n,02417387-n,False,215.02,0.01
+Angora rabbit,http://example.org/wordnet.owl#C_02417387-n,02328150-n,02417387-n,False,63.34,0.01
+hamster,http://example.org/wordnet.owl#C_02342885-n,02342885-n,02342885-n,True,63.15,0.01
+porcupine,http://example.org/wordnet.owl#C_02346627-n,02346627-n,02346627-n,True,74.51,0.01
+hedgehog,http://example.org/wordnet.owl#C_01893825-n,02346627-n,01893825-n,False,121.78,0.01
+fox squirrel,http://example.org/wordnet.owl#C_02356798-n,02356798-n,02356798-n,True,75.08,0.01
+eastern fox squirrel,N/A,02356798-n,N/A,False,69.79,0.0
+Sciurus niger,N/A,02356798-n,N/A,False,68.76,0.0
+marmot,http://example.org/wordnet.owl#C_02361337-n,02361337-n,02361337-n,True,62.92,0.01
+beaver,http://example.org/wordnet.owl#C_14764617-n,02363005-n,14764617-n,False,403.77,0.01
+guinea pig,http://example.org/wordnet.owl#C_02364673-n,02364673-n,02364673-n,True,121.59,0.01
+Cavia cobaya,N/A,02364673-n,N/A,False,63.95,0.0
+sorrel,http://example.org/wordnet.owl#C_07736371-n,02389026-n,07736371-n,False,308.42,0.01
+zebra,http://example.org/wordnet.owl#C_02391049-n,02391049-n,02391049-n,True,63.16,0.01
+hog,http://example.org/wordnet.owl#C_10179649-n,02395406-n,10179649-n,False,215.93,0.02
+pig,http://example.org/wordnet.owl#C_03934998-n,02395406-n,03934998-n,False,449.08,0.03
+grunter,http://example.org/wordnet.owl#C_10149436-n,02395406-n,10149436-n,False,121.28,0.01
+squealer,http://example.org/wordnet.owl#C_10149436-n,02395406-n,10149436-n,False,120.33,0.0
+Sus scrofa,http://example.org/wordnet.owl#C_02396014-n,02395406-n,02396014-n,False,121.75,0.0
+wild boar,http://example.org/wordnet.owl#C_02396427-n,02396427-n,02396427-n,True,74.63,0.01
+boar,http://example.org/wordnet.owl#C_02396014-n,02396427-n,02396014-n,False,121.43,0.01
+Sus scrofa,http://example.org/wordnet.owl#C_02396014-n,02396427-n,02396014-n,False,120.63,0.0
+warthog,http://example.org/wordnet.owl#C_02397096-n,02397096-n,02397096-n,True,63.99,0.01
+hippopotamus,http://example.org/wordnet.owl#C_02398521-n,02398521-n,02398521-n,True,75.59,0.01
+hippo,http://example.org/wordnet.owl#C_08707145-n,02398521-n,08707145-n,False,121.69,0.01
+river horse,http://example.org/wordnet.owl#C_08707145-n,02398521-n,08707145-n,False,75.39,0.01
+Hippopotamus amphibius,http://example.org/wordnet.owl#C_08707145-n,02398521-n,08707145-n,False,74.35,0.01
+ox,http://example.org/wordnet.owl#C_02403003-n,02403003-n,02403003-n,True,122.64,0.02
+water buffalo,http://example.org/wordnet.owl#C_02408429-n,02408429-n,02408429-n,True,75.96,0.01
+water ox,N/A,02408429-n,N/A,False,75.69,0.0
+Asiatic buffalo,N/A,02408429-n,N/A,False,74.47,0.0
+Bubalus bubalis,N/A,02408429-n,N/A,False,74.85,0.0
+bison,http://example.org/wordnet.owl#C_02410509-n,02410509-n,02410509-n,True,64.15,0.01
+ram,http://example.org/wordnet.owl#C_04050410-n,02412080-n,04050410-n,False,451.63,0.02
+tup,http://example.org/wordnet.owl#C_04050410-n,02412080-n,04050410-n,False,58.15,0.01
+bighorn,http://example.org/wordnet.owl#C_09220046-n,02415577-n,09220046-n,False,122.5,0.01
+bighorn sheep,http://example.org/wordnet.owl#C_09220046-n,02415577-n,09220046-n,False,75.1,0.01
+cimarron,http://example.org/wordnet.owl#C_09244972-n,02415577-n,09244972-n,False,122.61,0.01
+Rocky Mountain bighorn,http://example.org/wordnet.owl#C_09220046-n,02415577-n,09220046-n,False,74.95,0.01
+Rocky Mountain sheep,N/A,02415577-n,N/A,False,75.5,0.0
+Ovis canadensis,http://example.org/wordnet.owl#C_09244972-n,02415577-n,09244972-n,False,74.29,0.0
+ibex,http://example.org/wordnet.owl#C_02417914-n,02417914-n,02417914-n,True,75.34,0.01
+Capra ibex,http://example.org/wordnet.owl#C_02417914-n,02417914-n,02417914-n,True,64.04,0.0
+hartebeest,http://example.org/wordnet.owl#C_02422106-n,02422106-n,02422106-n,True,63.92,0.01
+impala,http://example.org/wordnet.owl#C_02422699-n,02422699-n,02422699-n,True,75.12,0.01
+Aepyceros melampus,http://example.org/wordnet.owl#C_02422699-n,02422699-n,02422699-n,True,63.5,0.0
+gazelle,http://example.org/wordnet.owl#C_02423022-n,02423022-n,02423022-n,True,64.02,0.01
+Arabian camel,http://example.org/wordnet.owl#C_02437312-n,02437312-n,02437312-n,True,74.63,0.01
+dromedary,N/A,02437312-n,N/A,False,64.34,0.0
+Camelus dromedarius,N/A,02437312-n,N/A,False,69.9,0.0
+llama,http://example.org/wordnet.owl#C_02437616-n,02437616-n,02437616-n,True,63.81,0.01
+weasel,http://example.org/wordnet.owl#C_10771990-n,02441942-n,10771990-n,False,122.13,0.01
+mink,http://example.org/wordnet.owl#C_14765497-n,02442845-n,14765497-n,False,169.77,0.01
+polecat,http://example.org/wordnet.owl#C_02443114-n,02443114-n,02443114-n,True,121.66,0.01
+fitch,http://example.org/wordnet.owl#C_02443114-n,02443114-n,02443114-n,True,74.47,0.0
+foulmart,http://example.org/wordnet.owl#C_02443114-n,02443114-n,02443114-n,True,75.45,0.0
+foumart,http://example.org/wordnet.owl#C_02443114-n,02443114-n,02443114-n,True,74.44,0.0
+Mustela putorius,http://example.org/wordnet.owl#C_02443114-n,02443114-n,02443114-n,True,74.62,0.0
+black-footed ferret,http://example.org/wordnet.owl#C_02443484-n,02443484-n,02443484-n,True,74.94,0.01
+ferret,http://example.org/wordnet.owl#C_02443346-n,02443484-n,02443346-n,False,262.5,0.02
+Mustela nigripes,http://example.org/wordnet.owl#C_02443346-n,02443484-n,02443346-n,False,69.59,0.01
+otter,http://example.org/wordnet.owl#C_14765785-n,02444819-n,14765785-n,False,120.34,0.01
+skunk,http://example.org/wordnet.owl#C_02445715-n,02445715-n,02445715-n,True,261.81,0.01
+polecat,http://example.org/wordnet.owl#C_02443114-n,02445715-n,02443114-n,False,121.23,0.01
+wood pussy,http://example.org/wordnet.owl#C_02445715-n,02445715-n,02445715-n,True,68.42,0.01
+badger,http://example.org/wordnet.owl#C_02447366-n,02447366-n,02447366-n,True,214.0,0.01
+armadillo,http://example.org/wordnet.owl#C_02454379-n,02454379-n,02454379-n,True,62.82,0.01
+three-toed sloth,http://example.org/wordnet.owl#C_02457408-n,02457408-n,02457408-n,True,74.46,0.01
+ai,N/A,02457408-n,N/A,False,214.76,0.0
+Bradypus tridactylus,N/A,02457408-n,N/A,False,69.43,0.0
+orangutan,http://example.org/wordnet.owl#C_02480495-n,02480495-n,02480495-n,True,75.0,0.01
+orang,http://example.org/wordnet.owl#C_02480495-n,02480495-n,02480495-n,True,68.79,0.0
+orangutang,http://example.org/wordnet.owl#C_02480495-n,02480495-n,02480495-n,True,68.9,0.0
+Pongo pygmaeus,http://example.org/wordnet.owl#C_02480495-n,02480495-n,02480495-n,True,75.14,0.0
+gorilla,http://example.org/wordnet.owl#C_02480855-n,02480855-n,02480855-n,True,74.58,0.01
+Gorilla gorilla,http://example.org/wordnet.owl#C_02480855-n,02480855-n,02480855-n,True,63.2,0.0
+chimpanzee,http://example.org/wordnet.owl#C_02481823-n,02481823-n,02481823-n,True,74.59,0.01
+chimp,http://example.org/wordnet.owl#C_02481823-n,02481823-n,02481823-n,True,63.51,0.0
+Pan troglodytes,http://example.org/wordnet.owl#C_02481823-n,02481823-n,02481823-n,True,69.15,0.0
+gibbon,http://example.org/wordnet.owl#C_10997742-n,02483362-n,10997742-n,False,121.23,0.01
+Hylobates lar,http://example.org/wordnet.owl#C_10997742-n,02483362-n,10997742-n,False,63.39,0.01
+siamang,http://example.org/wordnet.owl#C_02483708-n,02483708-n,02483708-n,True,74.65,0.01
+Hylobates syndactylus,http://example.org/wordnet.owl#C_02483708-n,02483708-n,02483708-n,True,68.51,0.0
+Symphalangus syndactylus,http://example.org/wordnet.owl#C_02483708-n,02483708-n,02483708-n,True,68.95,0.0
+guenon,http://example.org/wordnet.owl#C_02484975-n,02484975-n,02484975-n,True,74.62,0.01
+guenon monkey,http://example.org/wordnet.owl#C_02484975-n,02484975-n,02484975-n,True,64.27,0.0
+patas,http://example.org/wordnet.owl#C_02486261-n,02486261-n,02486261-n,True,74.3,0.01
+hussar monkey,http://example.org/wordnet.owl#C_02486261-n,02486261-n,02486261-n,True,70.19,0.0
+Erythrocebus patas,http://example.org/wordnet.owl#C_02486261-n,02486261-n,02486261-n,True,68.13,0.0
+baboon,http://example.org/wordnet.owl#C_02486410-n,02486410-n,02486410-n,True,63.44,0.01
+macaque,http://example.org/wordnet.owl#C_02487347-n,02487347-n,02487347-n,True,63.61,0.01
+langur,http://example.org/wordnet.owl#C_02488291-n,02488291-n,02488291-n,True,63.65,0.01
+colobus,http://example.org/wordnet.owl#C_02488702-n,02488702-n,02488702-n,True,74.8,0.01
+colobus monkey,http://example.org/wordnet.owl#C_02488702-n,02488702-n,02488702-n,True,63.14,0.0
+proboscis monkey,http://example.org/wordnet.owl#C_02489166-n,02489166-n,02489166-n,True,75.68,0.01
+Nasalis larvatus,N/A,02489166-n,N/A,False,63.95,0.0
+marmoset,http://example.org/wordnet.owl#C_02490219-n,02490219-n,02490219-n,True,64.54,0.01
+capuchin,http://example.org/wordnet.owl#C_02958264-n,02492035-n,02958264-n,False,123.42,0.01
+ringtail,http://example.org/wordnet.owl#C_01614690-n,02492035-n,01614690-n,False,219.96,0.02
+Cebus capucinus,http://example.org/wordnet.owl#C_02958264-n,02492035-n,02958264-n,False,72.0,0.01
+howler monkey,http://example.org/wordnet.owl#C_02492660-n,02492660-n,02492660-n,True,79.04,0.01
+howler,http://example.org/wordnet.owl#C_00076323-n,02492660-n,00076323-n,False,171.75,0.01
+titi,http://example.org/wordnet.owl#C_12751172-n,02493509-n,12751172-n,False,174.01,0.02
+titi monkey,http://example.org/wordnet.owl#C_12751172-n,02493509-n,12751172-n,False,64.73,0.01
+spider monkey,http://example.org/wordnet.owl#C_02493793-n,02493793-n,02493793-n,True,82.01,0.01
+Ateles geoffroyi,N/A,02493793-n,N/A,False,66.56,0.0
+squirrel monkey,http://example.org/wordnet.owl#C_02494079-n,02494079-n,02494079-n,True,78.13,0.01
+Saimiri sciureus,N/A,02494079-n,N/A,False,65.3,0.0
+Madagascar cat,http://example.org/wordnet.owl#C_02497673-n,02497673-n,02497673-n,True,75.26,0.01
+ring-tailed lemur,N/A,02497673-n,N/A,False,70.21,0.0
+Lemur catta,N/A,02497673-n,N/A,False,69.1,0.0
+indri,http://example.org/wordnet.owl#C_02500267-n,02500267-n,02500267-n,True,75.4,0.01
+indris,http://example.org/wordnet.owl#C_02500267-n,02500267-n,02500267-n,True,129.39,0.01
+Indri indri,http://example.org/wordnet.owl#C_02500267-n,02500267-n,02500267-n,True,79.19,0.0
+Indri brevicaudatus,http://example.org/wordnet.owl#C_02500267-n,02500267-n,02500267-n,True,80.08,0.0
+Indian elephant,http://example.org/wordnet.owl#C_02504013-n,02504013-n,02504013-n,True,86.41,0.01
+Elephas maximus,N/A,02504013-n,N/A,False,71.89,0.0
+African elephant,http://example.org/wordnet.owl#C_02504458-n,02504458-n,02504458-n,True,77.22,0.01
+Loxodonta africana,N/A,02504458-n,N/A,False,68.68,0.0
+lesser panda,http://example.org/wordnet.owl#C_02509815-n,02509815-n,02509815-n,True,82.3,0.01
+red panda,N/A,02509815-n,N/A,False,77.39,0.0
+panda,N/A,02509815-n,N/A,False,134.59,0.0
+bear cat,N/A,02509815-n,N/A,False,79.34,0.0
+cat bear,N/A,02509815-n,N/A,False,76.98,0.0
+Ailurus fulgens,N/A,02509815-n,N/A,False,75.94,0.0
+giant panda,http://example.org/wordnet.owl#C_02510455-n,02510455-n,02510455-n,True,75.6,0.01
+panda,N/A,02510455-n,N/A,False,127.36,0.0
+panda bear,N/A,02510455-n,N/A,False,79.65,0.0
+coon bear,N/A,02510455-n,N/A,False,77.13,0.0
+Ailuropoda melanoleuca,N/A,02510455-n,N/A,False,76.39,0.0
+barracouta,http://example.org/wordnet.owl#C_02514041-n,02514041-n,02514041-n,True,80.51,0.01
+snoek,http://example.org/wordnet.owl#C_02514041-n,02514041-n,02514041-n,True,59.71,0.0
+eel,http://example.org/wordnet.owl#C_07783967-n,02526121-n,07783967-n,False,124.35,0.02
+coho,http://example.org/wordnet.owl#C_02536864-n,02536864-n,02536864-n,True,131.38,0.01
+cohoe,http://example.org/wordnet.owl#C_02536864-n,02536864-n,02536864-n,True,127.86,0.01
+coho salmon,http://example.org/wordnet.owl#C_02536864-n,02536864-n,02536864-n,True,123.34,0.0
+blue jack,http://example.org/wordnet.owl#C_02536864-n,02536864-n,02536864-n,True,75.9,0.0
+silver salmon,http://example.org/wordnet.owl#C_07796468-n,02536864-n,07796468-n,False,121.77,0.01
+Oncorhynchus kisutch,http://example.org/wordnet.owl#C_02536864-n,02536864-n,02536864-n,True,75.99,0.0
+rock beauty,http://example.org/wordnet.owl#C_02606052-n,02606052-n,02606052-n,True,74.85,0.01
+Holocanthus tricolor,N/A,02606052-n,N/A,False,63.35,0.0
+anemone fish,http://example.org/wordnet.owl#C_02607072-n,02607072-n,02607072-n,True,69.77,0.01
+sturgeon,http://example.org/wordnet.owl#C_02640242-n,02640242-n,02640242-n,True,64.4,0.01
+gar,http://example.org/wordnet.owl#C_02641379-n,02641379-n,02641379-n,True,122.19,0.01
+garfish,http://example.org/wordnet.owl#C_02641379-n,02641379-n,02641379-n,True,75.12,0.01
+garpike,http://example.org/wordnet.owl#C_02641379-n,02641379-n,02641379-n,True,75.34,0.01
+billfish,http://example.org/wordnet.owl#C_02630739-n,02641379-n,02630739-n,False,216.47,0.02
+Lepisosteus osseus,http://example.org/wordnet.owl#C_02630739-n,02641379-n,02630739-n,False,75.17,0.0
+lionfish,http://example.org/wordnet.owl#C_02643566-n,02643566-n,02643566-n,True,63.18,0.01
+puffer,http://example.org/wordnet.owl#C_02655020-n,02655020-n,02655020-n,True,120.59,0.01
+pufferfish,http://example.org/wordnet.owl#C_02655020-n,02655020-n,02655020-n,True,123.25,0.01
+blowfish,http://example.org/wordnet.owl#C_07781972-n,02655020-n,07781972-n,False,124.3,0.01
+globefish,http://example.org/wordnet.owl#C_07781972-n,02655020-n,07781972-n,False,70.69,0.01
+abacus,http://example.org/wordnet.owl#C_02666347-n,02666196-n,02666347-n,False,124.54,0.01
+abaya,http://example.org/wordnet.owl#C_02667093-n,02667093-n,02667093-n,True,65.28,0.01
+academic gown,http://example.org/wordnet.owl#C_02669723-n,02669723-n,02669723-n,True,76.7,0.01
+academic robe,N/A,02669723-n,N/A,False,71.18,0.0
+judge's robe,N/A,02669723-n,N/A,False,71.0,0.0
+accordion,http://example.org/wordnet.owl#C_02672831-n,02672831-n,02672831-n,True,76.91,0.01
+piano accordion,http://example.org/wordnet.owl#C_02672831-n,02672831-n,02672831-n,True,70.71,0.0
+squeeze box,http://example.org/wordnet.owl#C_02672831-n,02672831-n,02672831-n,True,71.12,0.0
+acoustic guitar,http://example.org/wordnet.owl#C_02676566-n,02676566-n,02676566-n,True,70.74,0.01
+aircraft carrier,http://example.org/wordnet.owl#C_02687172-n,02687172-n,02687172-n,True,76.64,0.01
+carrier,http://example.org/wordnet.owl#C_09897350-n,02687172-n,09897350-n,False,557.0,0.02
+flattop,http://example.org/wordnet.owl#C_09897350-n,02687172-n,09897350-n,False,125.0,0.02
+attack aircraft carrier,http://example.org/wordnet.owl#C_09897350-n,02687172-n,09897350-n,False,77.45,0.02
+airliner,http://example.org/wordnet.owl#C_02690373-n,02690373-n,02690373-n,True,65.75,0.01
+airship,http://example.org/wordnet.owl#C_02692877-n,02692877-n,02692877-n,True,76.85,0.01
+dirigible,http://example.org/wordnet.owl#C_02692877-n,02692877-n,02692877-n,True,119.06,0.01
+altar,http://example.org/wordnet.owl#C_02699629-n,02699494-n,02699629-n,False,123.3,0.01
+ambulance,http://example.org/wordnet.owl#C_02701002-n,02701002-n,02701002-n,True,65.36,0.01
+amphibian,http://example.org/wordnet.owl#C_02704792-n,02704792-n,02704792-n,True,219.21,0.03
+amphibious vehicle,http://example.org/wordnet.owl#C_02704792-n,02704792-n,02704792-n,True,63.95,0.01
+analog clock,http://example.org/wordnet.owl#C_02708093-n,02708093-n,02708093-n,True,69.97,0.01
+apiary,http://example.org/wordnet.owl#C_02727426-n,02727426-n,02727426-n,True,76.17,0.01
+bee house,http://example.org/wordnet.owl#C_02727426-n,02727426-n,02727426-n,True,65.33,0.0
+apron,http://example.org/wordnet.owl#C_08496334-n,02730930-n,08496334-n,False,221.07,0.02
+ashcan,http://example.org/wordnet.owl#C_02747177-n,02747177-n,02747177-n,True,76.54,0.01
+trash can,http://example.org/wordnet.owl#C_02747177-n,02747177-n,02747177-n,True,76.85,0.0
+garbage can,http://example.org/wordnet.owl#C_02747177-n,02747177-n,02747177-n,True,76.14,0.0
+wastebin,N/A,02747177-n,N/A,False,76.16,0.0
+ash bin,N/A,02747177-n,N/A,False,75.64,0.0
+ash-bin,N/A,02747177-n,N/A,False,76.66,0.0
+ashbin,N/A,02747177-n,N/A,False,77.4,0.0
+dustbin,N/A,02747177-n,N/A,False,76.12,0.0
+trash barrel,N/A,02747177-n,N/A,False,76.89,0.0
+trash bin,N/A,02747177-n,N/A,False,76.59,0.0
+assault rifle,http://example.org/wordnet.owl#C_02749479-n,02749479-n,02749479-n,True,77.32,0.01
+assault gun,http://example.org/wordnet.owl#C_02749292-n,02749479-n,02749292-n,False,123.94,0.01
+backpack,http://example.org/wordnet.owl#C_02769748-n,02769748-n,02769748-n,True,126.83,0.01
+back pack,http://example.org/wordnet.owl#C_02769748-n,02769748-n,02769748-n,True,77.12,0.01
+knapsack,http://example.org/wordnet.owl#C_02769748-n,02769748-n,02769748-n,True,78.47,0.01
+packsack,http://example.org/wordnet.owl#C_02769748-n,02769748-n,02769748-n,True,77.71,0.01
+rucksack,http://example.org/wordnet.owl#C_02769748-n,02769748-n,02769748-n,True,76.33,0.01
+haversack,http://example.org/wordnet.owl#C_02769748-n,02769748-n,02769748-n,True,76.43,0.01
+bakery,http://example.org/wordnet.owl#C_02776631-n,02776631-n,02776631-n,True,76.48,0.01
+bakeshop,http://example.org/wordnet.owl#C_02776631-n,02776631-n,02776631-n,True,67.05,0.01
+bakehouse,http://example.org/wordnet.owl#C_02776631-n,02776631-n,02776631-n,True,67.14,0.0
+balance beam,http://example.org/wordnet.owl#C_05136546-n,02777292-n,05136546-n,False,79.1,0.02
+beam,http://example.org/wordnet.owl#C_11428379-n,02777292-n,11428379-n,False,677.2,0.02
+balloon,http://example.org/wordnet.owl#C_02782329-n,02782093-n,02782329-n,False,235.63,0.01
+ballpoint,http://example.org/wordnet.owl#C_02783161-n,02783161-n,02783161-n,True,76.72,0.01
+ballpoint pen,http://example.org/wordnet.owl#C_02783161-n,02783161-n,02783161-n,True,77.1,0.0
+ballpen,http://example.org/wordnet.owl#C_02783161-n,02783161-n,02783161-n,True,71.96,0.0
+Biro,http://example.org/wordnet.owl#C_02783161-n,02783161-n,02783161-n,True,70.95,0.0
+Band Aid,http://example.org/wordnet.owl#C_02786058-n,02786058-n,02786058-n,True,125.06,0.01
+banjo,http://example.org/wordnet.owl#C_02787622-n,02787622-n,02787622-n,True,66.05,0.01
+bannister,http://example.org/wordnet.owl#C_10833595-n,02788148-n,10833595-n,False,125.26,0.01
+banister,http://example.org/wordnet.owl#C_10833595-n,02788148-n,10833595-n,False,77.78,0.01
+balustrade,http://example.org/wordnet.owl#C_10833595-n,02788148-n,10833595-n,False,76.71,0.01
+balusters,http://example.org/wordnet.owl#C_02783994-n,02788148-n,02783994-n,False,124.47,0.0
+handrail,http://example.org/wordnet.owl#C_10833595-n,02788148-n,10833595-n,False,76.71,0.01
+barbell,http://example.org/wordnet.owl#C_02790996-n,02790996-n,02790996-n,True,65.13,0.01
+barber chair,http://example.org/wordnet.owl#C_02791124-n,02791124-n,02791124-n,True,70.96,0.01
+barbershop,http://example.org/wordnet.owl#C_02791270-n,02791270-n,02791270-n,True,66.33,0.01
+barn,http://example.org/wordnet.owl#C_13614256-n,02793495-n,13614256-n,False,124.72,0.01
+barometer,http://example.org/wordnet.owl#C_02794156-n,02794156-n,02794156-n,True,64.74,0.01
+barrel,http://example.org/wordnet.owl#C_13901211-n,02795169-n,13901211-n,False,318.32,0.02
+cask,http://example.org/wordnet.owl#C_13766547-n,02795169-n,13766547-n,False,123.71,0.01
+barrow,http://example.org/wordnet.owl#C_13764897-n,02797295-n,13764897-n,False,173.69,0.01
+garden cart,http://example.org/wordnet.owl#C_13764897-n,02797295-n,13764897-n,False,77.29,0.01
+lawn cart,http://example.org/wordnet.owl#C_13764897-n,02797295-n,13764897-n,False,76.49,0.01
+wheelbarrow,http://example.org/wordnet.owl#C_02797295-n,02797295-n,02797295-n,True,126.38,0.01
+baseball,http://example.org/wordnet.owl#C_02799071-n,02799071-n,02799071-n,True,125.04,0.02
+basketball,http://example.org/wordnet.owl#C_02802426-n,02802426-n,02802426-n,True,125.54,0.02
+bassinet,http://example.org/wordnet.owl#C_02804515-n,02804414-n,02804515-n,False,125.18,0.01
+bassoon,http://example.org/wordnet.owl#C_02804610-n,02804610-n,02804610-n,True,65.5,0.01
+bathing cap,http://example.org/wordnet.owl#C_02807133-n,02807133-n,02807133-n,True,77.4,0.01
+swimming cap,N/A,02807133-n,N/A,False,64.31,0.0
+bath towel,http://example.org/wordnet.owl#C_02808304-n,02808304-n,02808304-n,True,70.61,0.01
+bathtub,http://example.org/wordnet.owl#C_13616560-n,02808440-n,13616560-n,False,76.84,0.01
+bathing tub,http://example.org/wordnet.owl#C_13616560-n,02808440-n,13616560-n,False,76.9,0.01
+bath,http://example.org/wordnet.owl#C_13616560-n,02808440-n,13616560-n,False,363.9,0.02
+tub,http://example.org/wordnet.owl#C_13770926-n,02808440-n,13770926-n,False,173.17,0.01
+beach wagon,http://example.org/wordnet.owl#C_02814533-n,02814533-n,02814533-n,True,76.77,0.01
+station wagon,http://example.org/wordnet.owl#C_04543509-n,02814533-n,04543509-n,False,76.47,0.01
+wagon,http://example.org/wordnet.owl#C_04543509-n,02814533-n,04543509-n,False,268.25,0.01
+estate car,N/A,02814533-n,N/A,False,77.73,0.0
+beach waggon,http://example.org/wordnet.owl#C_04543509-n,02814533-n,04543509-n,False,76.65,0.01
+station waggon,N/A,02814533-n,N/A,False,74.04,0.0
+waggon,http://example.org/wordnet.owl#C_04543509-n,02814533-n,04543509-n,False,119.94,0.01
+beacon,http://example.org/wordnet.owl#C_07264213-n,02814860-n,07264213-n,False,263.36,0.01
+lighthouse,http://example.org/wordnet.owl#C_07264213-n,02814860-n,07264213-n,False,69.73,0.01
+beacon light,http://example.org/wordnet.owl#C_07264213-n,02814860-n,07264213-n,False,76.36,0.01
+pharos,http://example.org/wordnet.owl#C_07264213-n,02814860-n,07264213-n,False,70.22,0.01
+beaker,http://example.org/wordnet.owl#C_02815834-n,02815834-n,02815834-n,True,123.38,0.01
+bearskin,http://example.org/wordnet.owl#C_14764518-n,02817516-n,14764518-n,False,123.01,0.01
+busby,http://example.org/wordnet.owl#C_14764518-n,02817516-n,14764518-n,False,64.05,0.01
+shako,http://example.org/wordnet.owl#C_14764518-n,02817516-n,14764518-n,False,65.08,0.01
+beer bottle,http://example.org/wordnet.owl#C_02823428-n,02823428-n,02823428-n,True,69.66,0.01
+beer glass,http://example.org/wordnet.owl#C_02823750-n,02823750-n,02823750-n,True,68.86,0.01
+bell cote,http://example.org/wordnet.owl#C_02825657-n,02825657-n,02825657-n,True,75.1,0.01
+bell cot,N/A,02825657-n,N/A,False,63.32,0.0
+bib,http://example.org/wordnet.owl#C_02834397-n,02834397-n,02834397-n,True,168.92,0.01
+bicycle-built-for-two,http://example.org/wordnet.owl#C_02835271-n,02835271-n,02835271-n,True,76.05,0.01
+tandem bicycle,http://example.org/wordnet.owl#C_05083567-n,02835271-n,05083567-n,False,70.17,0.01
+tandem,http://example.org/wordnet.owl#C_05083567-n,02835271-n,05083567-n,False,171.04,0.01
+bikini,http://example.org/wordnet.owl#C_08839296-n,02837789-n,08839296-n,False,124.0,0.01
+two-piece,http://example.org/wordnet.owl#C_04504141-n,02837789-n,04504141-n,False,170.1,0.01
+binder,http://example.org/wordnet.owl#C_14704465-n,02840245-n,14704465-n,False,216.81,0.01
+ring-binder,http://example.org/wordnet.owl#C_14704465-n,02840245-n,14704465-n,False,58.92,0.01
+binoculars,http://example.org/wordnet.owl#C_02841315-n,02841315-n,02841315-n,True,75.62,0.01
+field glasses,N/A,02841315-n,N/A,False,122.77,0.0
+opera glasses,http://example.org/wordnet.owl#C_02841315-n,02841315-n,02841315-n,True,69.75,0.0
+birdhouse,http://example.org/wordnet.owl#C_02843684-n,02843684-n,02843684-n,True,64.61,0.01
+boathouse,http://example.org/wordnet.owl#C_02859443-n,02859443-n,02859443-n,True,63.71,0.01
+bobsled,http://example.org/wordnet.owl#C_02861022-n,02860847-n,02861022-n,False,169.68,0.01
+bobsleigh,http://example.org/wordnet.owl#C_02861022-n,02860847-n,02861022-n,False,123.18,0.01
+bob,http://example.org/wordnet.owl#C_05259109-n,02860847-n,05259109-n,False,595.98,0.02
+bolo tie,http://example.org/wordnet.owl#C_02865351-n,02865351-n,02865351-n,True,74.77,0.01
+bolo,http://example.org/wordnet.owl#C_02864987-n,02865351-n,02864987-n,False,121.08,0.01
+bola tie,http://example.org/wordnet.owl#C_02864987-n,02865351-n,02864987-n,False,74.4,0.01
+bola,http://example.org/wordnet.owl#C_02864987-n,02865351-n,02864987-n,False,121.12,0.01
+bonnet,http://example.org/wordnet.owl#C_02869837-n,02869837-n,02869837-n,True,169.29,0.01
+poke bonnet,http://example.org/wordnet.owl#C_02869837-n,02869837-n,02869837-n,True,64.19,0.01
+bookcase,http://example.org/wordnet.owl#C_02870880-n,02870880-n,02870880-n,True,63.65,0.01
+bookshop,http://example.org/wordnet.owl#C_02871525-n,02871525-n,02871525-n,True,75.17,0.01
+bookstore,http://example.org/wordnet.owl#C_02871525-n,02871525-n,02871525-n,True,63.39,0.0
+bookstall,http://example.org/wordnet.owl#C_02871525-n,02871525-n,02871525-n,True,64.29,0.0
+bottlecap,http://example.org/wordnet.owl#C_02877765-n,02877765-n,02877765-n,True,64.96,0.01
+bow,http://example.org/wordnet.owl#C_02880189-n,02879718-n,02880189-n,False,687.87,0.02
+bow tie,http://example.org/wordnet.owl#C_02883205-n,02883205-n,02883205-n,True,75.99,0.01
+bow-tie,N/A,02883205-n,N/A,False,64.26,0.0
+bowtie,N/A,02883205-n,N/A,False,64.87,0.0
+brass,http://example.org/wordnet.owl#C_14716997-n,02892201-n,14716997-n,False,359.13,0.01
+memorial tablet,http://example.org/wordnet.owl#C_14716997-n,02892201-n,14716997-n,False,69.93,0.01
+plaque,http://example.org/wordnet.owl#C_05244239-n,02892201-n,05244239-n,False,122.2,0.01
+brassiere,http://example.org/wordnet.owl#C_02892767-n,02892767-n,02892767-n,True,74.61,0.01
+bra,http://example.org/wordnet.owl#C_02892767-n,02892767-n,02892767-n,True,63.35,0.0
+bandeau,http://example.org/wordnet.owl#C_02892767-n,02892767-n,02892767-n,True,63.42,0.0
+breakwater,http://example.org/wordnet.owl#C_02918330-n,02894605-n,02918330-n,False,75.41,0.01
+groin,http://example.org/wordnet.owl#C_05597734-n,02894605-n,05597734-n,False,214.77,0.01
+groyne,http://example.org/wordnet.owl#C_05597734-n,02894605-n,05597734-n,False,74.93,0.02
+mole,http://example.org/wordnet.owl#C_07838551-n,02894605-n,07838551-n,False,309.35,0.01
+bulwark,http://example.org/wordnet.owl#C_02918330-n,02894605-n,02918330-n,False,217.67,0.01
+seawall,http://example.org/wordnet.owl#C_04693804-n,02894605-n,04693804-n,False,75.0,0.01
+jetty,http://example.org/wordnet.owl#C_07838551-n,02894605-n,07838551-n,False,75.63,0.01
+breastplate,http://example.org/wordnet.owl#C_02895154-n,02895154-n,02895154-n,True,75.71,0.01
+aegis,http://example.org/wordnet.owl#C_14539960-n,02895154-n,14539960-n,False,123.0,0.01
+egis,http://example.org/wordnet.owl#C_02895154-n,02895154-n,02895154-n,True,64.05,0.0
+broom,http://example.org/wordnet.owl#C_12520864-n,02906734-n,12520864-n,False,266.82,0.01
+bucket,http://example.org/wordnet.owl#C_13765749-n,02909870-n,13765749-n,False,219.54,0.01
+pail,http://example.org/wordnet.owl#C_13768537-n,02909870-n,13768537-n,False,122.94,0.01
+buckle,http://example.org/wordnet.owl#C_02910353-n,02910353-n,02910353-n,True,270.41,0.01
+bulletproof vest,http://example.org/wordnet.owl#C_02916936-n,02916936-n,02916936-n,True,70.08,0.01
+bullet train,http://example.org/wordnet.owl#C_02917067-n,02917067-n,02917067-n,True,76.07,0.01
+bullet,http://example.org/wordnet.owl#C_02916350-n,02917067-n,02916350-n,False,169.76,0.01
+butcher shop,http://example.org/wordnet.owl#C_02927161-n,02927161-n,02927161-n,True,76.29,0.01
+meat market,N/A,02927161-n,N/A,False,64.78,0.0
+cab,http://example.org/wordnet.owl#C_02931148-n,02930766-n,02931148-n,False,218.9,0.01
+hack,http://example.org/wordnet.owl#C_10154601-n,02930766-n,10154601-n,False,790.49,0.01
+taxi,http://example.org/wordnet.owl#C_01949007-v,02930766-n,01949007-v,False,169.54,0.01
+taxicab,http://example.org/wordnet.owl#C_02931148-n,02930766-n,02931148-n,False,70.91,0.01
+caldron,http://example.org/wordnet.owl#C_02939185-n,02939185-n,02939185-n,True,75.23,0.01
+cauldron,http://example.org/wordnet.owl#C_02939185-n,02939185-n,02939185-n,True,58.85,0.0
+candle,http://example.org/wordnet.owl#C_13641534-n,02948072-n,13641534-n,False,170.53,0.01
+taper,http://example.org/wordnet.owl#C_13902793-n,02948072-n,13902793-n,False,312.62,0.01
+wax light,http://example.org/wordnet.owl#C_13902793-n,02948072-n,13902793-n,False,69.86,0.01
+cannon,http://example.org/wordnet.owl#C_02950826-n,02950826-n,02950826-n,True,405.64,0.01
+canoe,http://example.org/wordnet.owl#C_02951358-n,02951358-n,02951358-n,True,123.42,0.01
+can opener,http://example.org/wordnet.owl#C_02951585-n,02951585-n,02951585-n,True,74.71,0.01
+tin opener,N/A,02951585-n,N/A,False,64.81,0.0
+cardigan,http://example.org/wordnet.owl#C_02963159-n,02963159-n,02963159-n,True,121.74,0.01
+car mirror,http://example.org/wordnet.owl#C_02965783-n,02965783-n,02965783-n,True,69.4,0.01
+carousel,http://example.org/wordnet.owl#C_02966372-n,02966193-n,02966372-n,False,122.0,0.01
+carrousel,http://example.org/wordnet.owl#C_02966372-n,02966193-n,02966372-n,False,121.99,0.01
+merry-go-round,http://example.org/wordnet.owl#C_07342772-n,02966193-n,07342772-n,False,123.12,0.01
+roundabout,http://example.org/wordnet.owl#C_07342772-n,02966193-n,07342772-n,False,214.9,0.0
+whirligig,http://example.org/wordnet.owl#C_02047148-v,02966193-n,02047148-v,False,170.28,0.01
+carpenter's kit,http://example.org/wordnet.owl#C_02966687-n,02966687-n,02966687-n,True,75.56,0.01
+tool kit,N/A,02966687-n,N/A,False,64.05,0.0
+carton,http://example.org/wordnet.owl#C_13766337-n,02971356-n,13766337-n,False,124.47,0.01
+car wheel,http://example.org/wordnet.owl#C_02974003-n,02974003-n,02974003-n,True,70.37,0.01
+cash machine,http://example.org/wordnet.owl#C_02977058-n,02977058-n,02977058-n,True,76.25,0.01
+cash dispenser,N/A,02977058-n,N/A,False,76.22,0.0
+automated teller machine,N/A,02977058-n,N/A,False,75.89,0.0
+automatic teller machine,N/A,02977058-n,N/A,False,74.29,0.0
+automated teller,N/A,02977058-n,N/A,False,77.26,0.0
+automatic teller,N/A,02977058-n,N/A,False,75.08,0.0
+ATM,http://example.org/wordnet.owl#C_14524849-n,02977058-n,14524849-n,False,169.43,0.01
+cassette,http://example.org/wordnet.owl#C_02978881-n,02978881-n,02978881-n,True,63.56,0.01
+cassette player,http://example.org/wordnet.owl#C_02979186-n,02979186-n,02979186-n,True,70.43,0.01
+castle,http://example.org/wordnet.owl#C_02980625-n,02980441-n,02980625-n,False,261.69,0.02
+catamaran,http://example.org/wordnet.owl#C_02981792-n,02981792-n,02981792-n,True,63.95,0.01
+CD player,http://example.org/wordnet.owl#C_02988304-n,02988304-n,02988304-n,True,75.38,0.01
+cello,http://example.org/wordnet.owl#C_02992211-n,02992211-n,02992211-n,True,75.23,0.01
+violoncello,http://example.org/wordnet.owl#C_02992211-n,02992211-n,02992211-n,True,58.27,0.0
+cellular telephone,http://example.org/wordnet.owl#C_02992529-n,02992529-n,02992529-n,True,75.16,0.01
+cellular phone,N/A,02992529-n,N/A,False,76.38,0.0
+cellphone,http://example.org/wordnet.owl#C_02991711-n,02992529-n,02991711-n,False,75.01,0.01
+cell,http://example.org/wordnet.owl#C_02991711-n,02992529-n,02991711-n,False,356.2,0.01
+mobile phone,N/A,02992529-n,N/A,False,75.32,0.0
+chain,http://example.org/wordnet.owl#C_08057816-n,02999410-n,08057816-n,False,597.3,0.01
+chainlink fence,http://example.org/wordnet.owl#C_03000134-n,03000134-n,03000134-n,True,69.3,0.01
+chain mail,http://example.org/wordnet.owl#C_03000247-n,03000247-n,03000247-n,True,75.68,0.01
+ring mail,http://example.org/wordnet.owl#C_08463063-n,03000247-n,08463063-n,False,74.74,0.02
+mail,http://example.org/wordnet.owl#C_08463063-n,03000247-n,08463063-n,False,357.89,0.01
+chain armor,N/A,03000247-n,N/A,False,75.63,0.0
+chain armour,N/A,03000247-n,N/A,False,76.09,0.0
+ring armor,N/A,03000247-n,N/A,False,75.15,0.0
+ring armour,N/A,03000247-n,N/A,False,75.57,0.0
+chain saw,http://example.org/wordnet.owl#C_03000684-n,03000684-n,03000684-n,True,75.87,0.01
+chainsaw,N/A,03000684-n,N/A,False,58.02,0.0
+chest,http://example.org/wordnet.owl#C_03014705-n,03014705-n,03014705-n,True,215.37,0.01
+chiffonier,http://example.org/wordnet.owl#C_03016953-n,03016953-n,03016953-n,True,75.36,0.01
+commode,http://example.org/wordnet.owl#C_13111700-n,03016953-n,13111700-n,False,122.0,0.01
+chime,http://example.org/wordnet.owl#C_03017168-n,03017168-n,03017168-n,True,122.41,0.01
+bell,http://example.org/wordnet.owl#C_15227593-n,03017168-n,15227593-n,False,548.4,0.02
+gong,http://example.org/wordnet.owl#C_03447721-n,03017168-n,03447721-n,False,167.76,0.01
+china cabinet,http://example.org/wordnet.owl#C_03018349-n,03018349-n,03018349-n,True,75.46,0.01
+china closet,N/A,03018349-n,N/A,False,63.55,0.0
+Christmas stocking,http://example.org/wordnet.owl#C_03026506-n,03026506-n,03026506-n,True,71.47,0.01
+church,http://example.org/wordnet.owl#C_08082899-n,03028079-n,08082899-n,False,263.81,0.02
+church building,http://example.org/wordnet.owl#C_08082899-n,03028079-n,08082899-n,False,64.59,0.01
+cinema,http://example.org/wordnet.owl#C_03338648-n,03032252-n,03338648-n,False,123.03,0.01
+movie theater,N/A,03032252-n,N/A,False,76.34,0.0
+movie theatre,N/A,03032252-n,N/A,False,76.08,0.0
+movie house,N/A,03032252-n,N/A,False,74.93,0.0
+picture palace,http://example.org/wordnet.owl#C_03032252-n,03032252-n,03032252-n,True,73.99,0.0
+cleaver,http://example.org/wordnet.owl#C_03041632-n,03041632-n,03041632-n,True,75.51,0.01
+meat cleaver,http://example.org/wordnet.owl#C_05283498-n,03041632-n,05283498-n,False,69.71,0.01
+chopper,http://example.org/wordnet.owl#C_05283498-n,03041632-n,05283498-n,False,216.01,0.01
+cliff dwelling,http://example.org/wordnet.owl#C_03042490-n,03042490-n,03042490-n,True,70.85,0.01
+cloak,http://example.org/wordnet.owl#C_03045698-n,03045698-n,03045698-n,True,262.98,0.02
+clog,http://example.org/wordnet.owl#C_03047690-n,03047690-n,03047690-n,True,450.06,0.01
+geta,http://example.org/wordnet.owl#C_03047690-n,03047690-n,03047690-n,True,69.63,0.01
+patten,http://example.org/wordnet.owl#C_04122578-n,03047690-n,04122578-n,False,69.92,0.01
+sabot,http://example.org/wordnet.owl#C_04122578-n,03047690-n,04122578-n,False,122.4,0.01
+cocktail shaker,http://example.org/wordnet.owl#C_03062245-n,03062245-n,03062245-n,True,69.34,0.01
+coffee mug,http://example.org/wordnet.owl#C_03063599-n,03063599-n,03063599-n,True,69.67,0.01
+coffeepot,http://example.org/wordnet.owl#C_03063689-n,03063689-n,03063689-n,True,64.33,0.01
+coil,http://example.org/wordnet.owl#C_03066232-n,03065424-n,03066232-n,False,452.25,0.01
+spiral,http://example.org/wordnet.owl#C_13876371-n,03065424-n,13876371-n,False,499.28,0.01
+volute,N/A,03065424-n,N/A,False,169.81,0.0
+whorl,http://example.org/wordnet.owl#C_03066232-n,03065424-n,03066232-n,False,169.82,0.01
+helix,http://example.org/wordnet.owl#C_13876561-n,03065424-n,13876561-n,False,169.84,0.01
+combination lock,http://example.org/wordnet.owl#C_03075370-n,03075370-n,03075370-n,True,69.51,0.01
+computer keyboard,http://example.org/wordnet.owl#C_03085013-n,03085013-n,03085013-n,True,75.11,0.01
+keypad,N/A,03085013-n,N/A,False,57.87,0.0
+confectionery,http://example.org/wordnet.owl#C_07596967-n,03089624-n,07596967-n,False,168.54,0.02
+confectionary,http://example.org/wordnet.owl#C_07596967-n,03089624-n,07596967-n,False,64.2,0.01
+candy store,http://example.org/wordnet.owl#C_07596967-n,03089624-n,07596967-n,False,70.33,0.01
+container ship,http://example.org/wordnet.owl#C_03095699-n,03095699-n,03095699-n,True,74.47,0.01
+containership,N/A,03095699-n,N/A,False,63.29,0.0
+container vessel,N/A,03095699-n,N/A,False,70.5,0.0
+convertible,http://example.org/wordnet.owl#C_03100346-n,03100240-n,03100346-n,False,312.09,0.01
+corkscrew,http://example.org/wordnet.owl#C_03109150-n,03109150-n,03109150-n,True,122.56,0.01
+bottle screw,http://example.org/wordnet.owl#C_03109150-n,03109150-n,03109150-n,True,63.58,0.01
+cornet,http://example.org/wordnet.owl#C_03536761-n,03110669-n,03536761-n,False,75.39,0.01
+horn,http://example.org/wordnet.owl#C_03537085-n,03110669-n,03537085-n,False,596.05,0.01
+trumpet,http://example.org/wordnet.owl#C_01733829-v,03110669-n,01733829-v,False,216.78,0.01
+trump,http://example.org/wordnet.owl#C_04491135-n,03110669-n,04491135-n,False,360.69,0.01
+cowboy boot,http://example.org/wordnet.owl#C_03124043-n,03124043-n,03124043-n,True,69.46,0.01
+cowboy hat,http://example.org/wordnet.owl#C_03124170-n,03124170-n,03124170-n,True,75.4,0.01
+ten-gallon hat,N/A,03124170-n,N/A,False,64.45,0.0
+cradle,http://example.org/wordnet.owl#C_15142452-n,03125729-n,15142452-n,False,498.86,0.02
+crane,http://example.org/wordnet.owl#C_10914447-n,03126707-n,10914447-n,False,312.56,0.01
+crash helmet,http://example.org/wordnet.owl#C_03127747-n,03127747-n,03127747-n,True,70.17,0.01
+crate,http://example.org/wordnet.owl#C_13766637-n,03127925-n,13766637-n,False,171.09,0.01
+crib,http://example.org/wordnet.owl#C_03131669-n,03131574-n,03131669-n,False,408.41,0.01
+cot,http://example.org/wordnet.owl#C_03114504-n,03131574-n,03114504-n,False,170.34,0.01
+Crock Pot,http://example.org/wordnet.owl#C_03133878-n,03133878-n,03133878-n,True,75.93,0.01
+croquet ball,http://example.org/wordnet.owl#C_03134739-n,03134739-n,03134739-n,True,69.62,0.01
+crutch,http://example.org/wordnet.owl#C_03141823-n,03141823-n,03141823-n,True,121.51,0.01
+cuirass,http://example.org/wordnet.owl#C_03146219-n,03146219-n,03146219-n,True,64.03,0.01
+dam,http://example.org/wordnet.owl#C_03160309-n,03160309-n,03160309-n,True,217.61,0.01
+dike,http://example.org/wordnet.owl#C_01587818-v,03160309-n,01587818-v,False,169.03,0.01
+dyke,http://example.org/wordnet.owl#C_01587818-v,03160309-n,01587818-v,False,170.0,0.01
+desk,http://example.org/wordnet.owl#C_03179701-n,03179701-n,03179701-n,True,64.69,0.01
+desktop computer,http://example.org/wordnet.owl#C_03180011-n,03180011-n,03180011-n,True,70.32,0.01
+dial telephone,http://example.org/wordnet.owl#C_03187595-n,03187595-n,03187595-n,True,76.57,0.01
+dial phone,N/A,03187595-n,N/A,False,64.96,0.0
+diaper,http://example.org/wordnet.owl#C_03188725-n,03188531-n,03188725-n,False,123.09,0.01
+nappy,http://example.org/wordnet.owl#C_03807537-n,03188531-n,03807537-n,False,122.66,0.01
+napkin,http://example.org/wordnet.owl#C_03807537-n,03188531-n,03807537-n,False,124.23,0.01
+digital clock,http://example.org/wordnet.owl#C_03196217-n,03196217-n,03196217-n,True,71.89,0.01
+digital watch,http://example.org/wordnet.owl#C_03197337-n,03197337-n,03197337-n,True,69.56,0.01
+dining table,http://example.org/wordnet.owl#C_15101854-n,03201208-n,15101854-n,False,75.28,0.01
+board,http://example.org/wordnet.owl#C_15101854-n,03201208-n,15101854-n,False,638.33,0.02
+dishrag,http://example.org/wordnet.owl#C_03207743-n,03207743-n,03207743-n,True,75.1,0.01
+dishcloth,http://example.org/wordnet.owl#C_03207743-n,03207743-n,03207743-n,True,58.39,0.0
+dishwasher,http://example.org/wordnet.owl#C_10017190-n,03207941-n,10017190-n,False,121.76,0.01
+dish washer,http://example.org/wordnet.owl#C_10017190-n,03207941-n,10017190-n,False,71.83,0.01
+dishwashing machine,http://example.org/wordnet.owl#C_10017190-n,03207941-n,10017190-n,False,69.41,0.01
+disk brake,http://example.org/wordnet.owl#C_03208938-n,03208938-n,03208938-n,True,75.63,0.01
+disc brake,N/A,03208938-n,N/A,False,64.06,0.0
+dock,http://example.org/wordnet.owl#C_12603959-n,03216828-n,12603959-n,False,595.21,0.01
+dockage,http://example.org/wordnet.owl#C_13321230-n,03216828-n,13321230-n,False,169.36,0.01
+docking facility,http://example.org/wordnet.owl#C_13321230-n,03216828-n,13321230-n,False,70.6,0.01
+dogsled,http://example.org/wordnet.owl#C_03218198-n,03218198-n,03218198-n,True,123.66,0.01
+dog sled,http://example.org/wordnet.owl#C_03218198-n,03218198-n,03218198-n,True,69.53,0.01
+dog sleigh,http://example.org/wordnet.owl#C_03218198-n,03218198-n,03218198-n,True,71.01,0.01
+dome,http://example.org/wordnet.owl#C_13872072-n,03220513-n,13872072-n,False,216.16,0.01
+doormat,http://example.org/wordnet.owl#C_03223299-n,03223299-n,03223299-n,True,122.15,0.01
+welcome mat,http://example.org/wordnet.owl#C_03223299-n,03223299-n,03223299-n,True,63.88,0.0
+drilling platform,http://example.org/wordnet.owl#C_03240683-n,03240683-n,03240683-n,True,75.49,0.01
+offshore rig,N/A,03240683-n,N/A,False,64.59,0.0
+drum,http://example.org/wordnet.owl#C_07383475-n,03249569-n,07383475-n,False,454.38,0.01
+membranophone,http://example.org/wordnet.owl#C_07383475-n,03249569-n,07383475-n,False,62.97,0.01
+tympan,http://example.org/wordnet.owl#C_07383475-n,03249569-n,07383475-n,False,63.13,0.01
+drumstick,http://example.org/wordnet.owl#C_07647870-n,03250847-n,07647870-n,False,121.32,0.01
+dumbbell,http://example.org/wordnet.owl#C_10039391-n,03255030-n,10039391-n,False,122.09,0.01
+Dutch oven,http://example.org/wordnet.owl#C_03259401-n,03259280-n,03259401-n,False,122.15,0.01
+electric fan,http://example.org/wordnet.owl#C_03271574-n,03271574-n,03271574-n,True,75.87,0.01
+blower,http://example.org/wordnet.owl#C_02855089-n,03271574-n,02855089-n,False,169.38,0.01
+electric guitar,http://example.org/wordnet.owl#C_03272010-n,03272010-n,03272010-n,True,69.67,0.01
+electric locomotive,http://example.org/wordnet.owl#C_03272562-n,03272562-n,03272562-n,True,69.99,0.01
+entertainment center,http://example.org/wordnet.owl#C_03290653-n,03290653-n,03290653-n,True,69.64,0.01
+envelope,http://example.org/wordnet.owl#C_09273776-n,03291819-n,09273776-n,False,312.45,0.01
+espresso maker,http://example.org/wordnet.owl#C_03297495-n,03297495-n,03297495-n,True,70.14,0.01
+face powder,http://example.org/wordnet.owl#C_03314780-n,03314780-n,03314780-n,True,69.62,0.01
+feather boa,http://example.org/wordnet.owl#C_03325584-n,03325584-n,03325584-n,True,75.58,0.01
+boa,http://example.org/wordnet.owl#C_01741943-n,03325584-n,01741943-n,False,123.05,0.01
+file,http://example.org/wordnet.owl#C_08428756-n,03337140-n,08428756-n,False,454.75,0.01
+file cabinet,http://example.org/wordnet.owl#C_08428756-n,03337140-n,08428756-n,False,69.41,0.01
+filing cabinet,http://example.org/wordnet.owl#C_08428756-n,03337140-n,08428756-n,False,69.57,0.01
+fireboat,http://example.org/wordnet.owl#C_03344393-n,03344393-n,03344393-n,True,65.21,0.01
+fire engine,http://example.org/wordnet.owl#C_03345487-n,03345487-n,03345487-n,True,76.04,0.01
+fire truck,N/A,03345487-n,N/A,False,64.76,0.0
+fire screen,http://example.org/wordnet.owl#C_03347037-n,03347037-n,03347037-n,True,74.99,0.01
+fireguard,http://example.org/wordnet.owl#C_08571642-n,03347037-n,08571642-n,False,115.9,0.0
+flagpole,http://example.org/wordnet.owl#C_03355925-n,03355925-n,03355925-n,True,122.73,0.01
+flagstaff,http://example.org/wordnet.owl#C_09057930-n,03355925-n,09057930-n,False,121.89,0.01
+flute,http://example.org/wordnet.owl#C_03372549-n,03372029-n,03372549-n,False,216.02,0.01
+transverse flute,http://example.org/wordnet.owl#C_03372549-n,03372029-n,03372549-n,False,64.08,0.01
+folding chair,http://example.org/wordnet.owl#C_03376595-n,03376595-n,03376595-n,True,70.14,0.01
+football helmet,http://example.org/wordnet.owl#C_03379051-n,03379051-n,03379051-n,True,70.97,0.01
+forklift,http://example.org/wordnet.owl#C_03384352-n,03384352-n,03384352-n,True,63.92,0.01
+fountain,http://example.org/wordnet.owl#C_03388043-n,03388043-n,03388043-n,True,215.78,0.01
+fountain pen,http://example.org/wordnet.owl#C_03388183-n,03388183-n,03388183-n,True,68.77,0.01
+four-poster,http://example.org/wordnet.owl#C_03388549-n,03388549-n,03388549-n,True,64.01,0.01
+freight car,http://example.org/wordnet.owl#C_03393912-n,03393912-n,03393912-n,True,70.09,0.01
+French horn,http://example.org/wordnet.owl#C_03536761-n,03394916-n,03536761-n,False,75.57,0.01
+horn,http://example.org/wordnet.owl#C_03537085-n,03394916-n,03537085-n,False,596.16,0.01
+frying pan,http://example.org/wordnet.owl#C_03400231-n,03400231-n,03400231-n,True,75.23,0.01
+frypan,N/A,03400231-n,N/A,False,63.53,0.0
+skillet,N/A,03400231-n,N/A,False,63.26,0.0
+fur coat,http://example.org/wordnet.owl#C_03404251-n,03404251-n,03404251-n,True,69.23,0.01
+garbage truck,http://example.org/wordnet.owl#C_03417042-n,03417042-n,03417042-n,True,74.66,0.01
+dustcart,N/A,03417042-n,N/A,False,58.87,0.0
+gasmask,http://example.org/wordnet.owl#C_03424325-n,03424325-n,03424325-n,True,75.15,0.01
+respirator,http://example.org/wordnet.owl#C_04080833-n,03424325-n,04080833-n,False,122.19,0.01
+gas helmet,http://example.org/wordnet.owl#C_04080833-n,03424325-n,04080833-n,False,68.94,0.01
+gas pump,http://example.org/wordnet.owl#C_03425413-n,03425413-n,03425413-n,True,75.48,0.01
+gasoline pump,N/A,03425413-n,N/A,False,75.98,0.0
+petrol pump,N/A,03425413-n,N/A,False,74.78,0.0
+island dispenser,N/A,03425413-n,N/A,False,75.0,0.0
+goblet,http://example.org/wordnet.owl#C_03443371-n,03443371-n,03443371-n,True,122.45,0.01
+go-kart,http://example.org/wordnet.owl#C_03444034-n,03444034-n,03444034-n,True,63.82,0.01
+golf ball,http://example.org/wordnet.owl#C_03445777-n,03445777-n,03445777-n,True,69.47,0.01
+golfcart,http://example.org/wordnet.owl#C_03445924-n,03445924-n,03445924-n,True,74.75,0.01
+golf cart,http://example.org/wordnet.owl#C_03445924-n,03445924-n,03445924-n,True,64.87,0.0
+gondola,http://example.org/wordnet.owl#C_03447447-n,03447447-n,03447447-n,True,170.19,0.01
+gong,http://example.org/wordnet.owl#C_03447721-n,03447721-n,03447721-n,True,171.7,0.01
+tam-tam,http://example.org/wordnet.owl#C_03447721-n,03447721-n,03447721-n,True,58.07,0.01
+gown,http://example.org/wordnet.owl#C_08286342-n,03450230-n,08286342-n,False,310.21,0.01
+grand piano,http://example.org/wordnet.owl#C_03452741-n,03452741-n,03452741-n,True,75.36,0.01
+grand,http://example.org/wordnet.owl#C_01387149-s,03452741-n,01387149-s,False,498.5,0.01
+greenhouse,http://example.org/wordnet.owl#C_03457902-n,03457902-n,03457902-n,True,122.98,0.01
+nursery,http://example.org/wordnet.owl#C_03836062-n,03457902-n,03836062-n,False,121.6,0.01
+glasshouse,http://example.org/wordnet.owl#C_03836062-n,03457902-n,03836062-n,False,63.97,0.01
+grille,http://example.org/wordnet.owl#C_03459775-n,03459775-n,03459775-n,True,169.08,0.01
+radiator grille,http://example.org/wordnet.owl#C_03459775-n,03459775-n,03459775-n,True,64.41,0.0
+grocery store,http://example.org/wordnet.owl#C_03461385-n,03461385-n,03461385-n,True,75.13,0.01
+grocery,http://example.org/wordnet.owl#C_03461119-n,03461385-n,03461119-n,False,123.42,0.01
+food market,http://example.org/wordnet.owl#C_08424951-n,03461385-n,08424951-n,False,76.94,0.02
+market,http://example.org/wordnet.owl#C_08424951-n,03461385-n,08424951-n,False,450.85,0.01
+guillotine,http://example.org/wordnet.owl#C_03467068-n,03467068-n,03467068-n,True,170.32,0.01
+hair slide,http://example.org/wordnet.owl#C_03476684-n,03476684-n,03476684-n,True,69.43,0.01
+hair spray,http://example.org/wordnet.owl#C_03476991-n,03476991-n,03476991-n,True,69.36,0.01
+half track,http://example.org/wordnet.owl#C_03478589-n,03478589-n,03478589-n,True,121.49,0.01
+hammer,http://example.org/wordnet.owl#C_03481824-n,03481172-n,03481824-n,False,503.25,0.02
+hamper,http://example.org/wordnet.owl#C_03482405-n,03482405-n,03482405-n,True,217.46,0.02
+hand blower,http://example.org/wordnet.owl#C_03483316-n,03483316-n,03483316-n,True,76.78,0.01
+blow dryer,N/A,03483316-n,N/A,False,77.63,0.0
+blow drier,N/A,03483316-n,N/A,False,75.3,0.0
+hair dryer,N/A,03483316-n,N/A,False,75.28,0.0
+hair drier,N/A,03483316-n,N/A,False,75.74,0.0
+hand-held computer,http://example.org/wordnet.owl#C_03485407-n,03485407-n,03485407-n,True,75.47,0.01
+hand-held microcomputer,N/A,03485407-n,N/A,False,63.41,0.0
+handkerchief,http://example.org/wordnet.owl#C_03485794-n,03485794-n,03485794-n,True,75.92,0.01
+hankie,http://example.org/wordnet.owl#C_03485794-n,03485794-n,03485794-n,True,69.65,0.0
+hanky,http://example.org/wordnet.owl#C_03485794-n,03485794-n,03485794-n,True,69.71,0.0
+hankey,http://example.org/wordnet.owl#C_03485794-n,03485794-n,03485794-n,True,69.47,0.0
+hard disc,http://example.org/wordnet.owl#C_03492542-n,03492542-n,03492542-n,True,76.56,0.01
+hard disk,N/A,03492542-n,N/A,False,69.48,0.0
+fixed disk,N/A,03492542-n,N/A,False,70.52,0.0
+harmonica,http://example.org/wordnet.owl#C_03495570-n,03494278-n,03495570-n,False,74.95,0.01
+mouth organ,http://example.org/wordnet.owl#C_03495570-n,03494278-n,03495570-n,False,75.47,0.01
+harp,http://example.org/wordnet.owl#C_03495570-n,03494278-n,03495570-n,False,264.49,0.02
+mouth harp,http://example.org/wordnet.owl#C_03495570-n,03494278-n,03495570-n,False,75.64,0.01
+harp,http://example.org/wordnet.owl#C_03495570-n,03495258-n,03495570-n,False,266.28,0.01
+harvester,http://example.org/wordnet.owl#C_10161363-n,03496892-n,10161363-n,False,123.53,0.01
+reaper,N/A,03496892-n,N/A,False,169.87,0.0
+hatchet,http://example.org/wordnet.owl#C_04449966-n,03498962-n,04449966-n,False,123.45,0.01
+holster,http://example.org/wordnet.owl#C_03527565-n,03527444-n,03527565-n,False,123.18,0.01
+home theater,http://example.org/wordnet.owl#C_03529860-n,03529860-n,03529860-n,True,75.44,0.01
+home theatre,N/A,03529860-n,N/A,False,64.14,0.0
+honeycomb,http://example.org/wordnet.owl#C_09218315-n,03530642-n,09218315-n,False,264.99,0.02
+hook,http://example.org/wordnet.owl#C_03532919-n,03532672-n,03532919-n,False,975.37,0.02
+claw,http://example.org/wordnet.owl#C_02156532-n,03532672-n,02156532-n,False,401.92,0.01
+hoopskirt,http://example.org/wordnet.owl#C_03534580-n,03534580-n,03534580-n,True,74.51,0.01
+crinoline,http://example.org/wordnet.owl#C_03132776-n,03534580-n,03132776-n,False,170.46,0.01
+horizontal bar,http://example.org/wordnet.owl#C_03535780-n,03535780-n,03535780-n,True,75.64,0.01
+high bar,N/A,03535780-n,N/A,False,63.5,0.0
+horse cart,http://example.org/wordnet.owl#C_03538406-n,03538406-n,03538406-n,True,74.9,0.01
+horse-cart,N/A,03538406-n,N/A,False,57.93,0.0
+hourglass,http://example.org/wordnet.owl#C_03544143-n,03544143-n,03544143-n,True,64.41,0.01
+iPod,http://example.org/wordnet.owl#C_03584254-n,03584254-n,03584254-n,True,70.19,0.01
+iron,http://example.org/wordnet.owl#C_14642417-n,03584829-n,14642417-n,False,313.34,0.01
+smoothing iron,http://example.org/wordnet.owl#C_14642417-n,03584829-n,14642417-n,False,64.17,0.01
+jack-o'-lantern,http://example.org/wordnet.owl#C_03590841-n,03590841-n,03590841-n,True,121.69,0.01
+jean,http://example.org/wordnet.owl#C_03594734-n,03594734-n,03594734-n,True,121.28,0.01
+blue jean,http://example.org/wordnet.owl#C_03594734-n,03594734-n,03594734-n,True,68.84,0.01
+denim,http://example.org/wordnet.owl#C_03594734-n,03594734-n,03594734-n,True,122.07,0.01
+jeep,http://example.org/wordnet.owl#C_03594945-n,03594945-n,03594945-n,True,75.09,0.01
+landrover,http://example.org/wordnet.owl#C_03594945-n,03594945-n,03594945-n,True,57.89,0.0
+jersey,http://example.org/wordnet.owl#C_08887238-n,03595614-n,08887238-n,False,263.9,0.01
+T-shirt,http://example.org/wordnet.owl#C_08887238-n,03595614-n,08887238-n,False,64.32,0.01
+tee shirt,http://example.org/wordnet.owl#C_08887238-n,03595614-n,08887238-n,False,68.64,0.01
+jigsaw puzzle,http://example.org/wordnet.owl#C_03598930-n,03598930-n,03598930-n,True,68.93,0.01
+jinrikisha,http://example.org/wordnet.owl#C_03599486-n,03599486-n,03599486-n,True,74.97,0.01
+ricksha,http://example.org/wordnet.owl#C_03599486-n,03599486-n,03599486-n,True,63.76,0.0
+rickshaw,http://example.org/wordnet.owl#C_03599486-n,03599486-n,03599486-n,True,63.99,0.0
+joystick,http://example.org/wordnet.owl#C_03602883-n,03602883-n,03602883-n,True,121.7,0.01
+kimono,http://example.org/wordnet.owl#C_03617480-n,03617480-n,03617480-n,True,63.43,0.01
+knee pad,http://example.org/wordnet.owl#C_03623198-n,03623198-n,03623198-n,True,69.25,0.01
+knot,http://example.org/wordnet.owl#C_15102712-n,03627232-n,15102712-n,False,499.54,0.01
+lab coat,http://example.org/wordnet.owl#C_03630383-n,03630383-n,03630383-n,True,75.05,0.01
+laboratory coat,N/A,03630383-n,N/A,False,64.79,0.0
+ladle,http://example.org/wordnet.owl#C_03633091-n,03633091-n,03633091-n,True,169.59,0.01
+lampshade,http://example.org/wordnet.owl#C_03637318-n,03637318-n,03637318-n,True,75.11,0.01
+lamp shade,http://example.org/wordnet.owl#C_03637318-n,03637318-n,03637318-n,True,64.13,0.0
+laptop,http://example.org/wordnet.owl#C_03642806-n,03642806-n,03642806-n,True,75.04,0.01
+laptop computer,http://example.org/wordnet.owl#C_03642806-n,03642806-n,03642806-n,True,63.55,0.0
+lawn mower,http://example.org/wordnet.owl#C_03649909-n,03649909-n,03649909-n,True,74.22,0.01
+mower,N/A,03649909-n,N/A,False,58.99,0.0
+lens cap,http://example.org/wordnet.owl#C_03657121-n,03657121-n,03657121-n,True,74.26,0.01
+lens cover,N/A,03657121-n,N/A,False,64.34,0.0
+letter opener,http://example.org/wordnet.owl#C_03658185-n,03658185-n,03658185-n,True,75.35,0.01
+paper knife,N/A,03658185-n,N/A,False,69.84,0.0
+paperknife,N/A,03658185-n,N/A,False,63.55,0.0
+library,http://example.org/wordnet.owl#C_07977870-n,03661043-n,07977870-n,False,264.42,0.01
+lifeboat,http://example.org/wordnet.owl#C_03662601-n,03662601-n,03662601-n,True,63.5,0.01
+lighter,http://example.org/wordnet.owl#C_03666591-n,03666591-n,03666591-n,True,1391.47,0.01
+light,http://example.org/wordnet.owl#C_00712186-s,03666591-n,00712186-s,False,2252.96,0.01
+igniter,http://example.org/wordnet.owl#C_15101361-n,03666591-n,15101361-n,False,122.81,0.01
+ignitor,http://example.org/wordnet.owl#C_15101361-n,03666591-n,15101361-n,False,121.05,0.01
+limousine,http://example.org/wordnet.owl#C_03670208-n,03670208-n,03670208-n,True,75.14,0.01
+limo,http://example.org/wordnet.owl#C_03670208-n,03670208-n,03670208-n,True,58.13,0.0
+liner,http://example.org/wordnet.owl#C_03673270-n,03673027-n,03673270-n,False,217.34,0.01
+ocean liner,http://example.org/wordnet.owl#C_03673270-n,03673027-n,03673270-n,False,63.78,0.01
+lipstick,http://example.org/wordnet.owl#C_03676483-n,03676483-n,03676483-n,True,169.89,0.01
+lip rouge,http://example.org/wordnet.owl#C_03676483-n,03676483-n,03676483-n,True,64.12,0.01
+Loafer,http://example.org/wordnet.owl#C_10197967-n,03680355-n,10197967-n,False,122.1,0.01
+lotion,http://example.org/wordnet.owl#C_03691128-n,03690938-n,03691128-n,False,123.0,0.01
+loudspeaker,http://example.org/wordnet.owl#C_10631309-n,03691459-n,10631309-n,False,76.06,0.01
+speaker,http://example.org/wordnet.owl#C_10631309-n,03691459-n,10631309-n,False,169.33,0.01
+speaker unit,http://example.org/wordnet.owl#C_10631309-n,03691459-n,10631309-n,False,75.08,0.01
+loudspeaker system,http://example.org/wordnet.owl#C_10631309-n,03691459-n,10631309-n,False,75.04,0.01
+speaker system,http://example.org/wordnet.owl#C_10631309-n,03691459-n,10631309-n,False,75.63,0.01
+loupe,http://example.org/wordnet.owl#C_03692522-n,03692522-n,03692522-n,True,75.04,0.01
+jeweler's loupe,http://example.org/wordnet.owl#C_03692522-n,03692522-n,03692522-n,True,65.61,0.0
+lumbermill,http://example.org/wordnet.owl#C_04140777-n,03697007-n,04140777-n,False,75.86,0.01
+sawmill,http://example.org/wordnet.owl#C_04140777-n,03697007-n,04140777-n,False,122.85,0.01
+magnetic compass,http://example.org/wordnet.owl#C_03706229-n,03706229-n,03706229-n,True,69.57,0.01
+mailbag,http://example.org/wordnet.owl#C_03709960-n,03709823-n,03709960-n,False,122.6,0.01
+postbag,http://example.org/wordnet.owl#C_03709960-n,03709823-n,03709960-n,False,58.42,0.01
+mailbox,http://example.org/wordnet.owl#C_03710193-n,03710193-n,03710193-n,True,122.83,0.01
+letter box,N/A,03710193-n,N/A,False,170.4,0.0
+maillot,http://example.org/wordnet.owl#C_03710721-n,03710637-n,03710721-n,False,122.32,0.01
+maillot,http://example.org/wordnet.owl#C_03710721-n,03710721-n,03710721-n,True,123.39,0.01
+tank suit,http://example.org/wordnet.owl#C_03710721-n,03710721-n,03710721-n,True,63.58,0.01
+manhole cover,http://example.org/wordnet.owl#C_03717622-n,03717622-n,03717622-n,True,69.44,0.01
+maraca,http://example.org/wordnet.owl#C_03720891-n,03720891-n,03720891-n,True,63.82,0.01
+marimba,http://example.org/wordnet.owl#C_03721384-n,03721384-n,03721384-n,True,75.7,0.01
+xylophone,http://example.org/wordnet.owl#C_03721384-n,03721384-n,03721384-n,True,57.63,0.0
+mask,http://example.org/wordnet.owl#C_03725035-n,03724870-n,03725035-n,False,452.98,0.01
+matchstick,http://example.org/wordnet.owl#C_03729826-n,03729826-n,03729826-n,True,63.63,0.01
+maypole,http://example.org/wordnet.owl#C_03733131-n,03733131-n,03733131-n,True,63.88,0.01
+maze,http://example.org/wordnet.owl#C_05685879-n,03733281-n,05685879-n,False,121.11,0.01
+labyrinth,http://example.org/wordnet.owl#C_03733281-n,03733281-n,03733281-n,True,121.46,0.0
+measuring cup,http://example.org/wordnet.owl#C_03733805-n,03733805-n,03733805-n,True,69.01,0.01
+medicine chest,http://example.org/wordnet.owl#C_03742115-n,03742115-n,03742115-n,True,75.9,0.01
+medicine cabinet,N/A,03742115-n,N/A,False,64.24,0.0
+megalith,http://example.org/wordnet.owl#C_03743016-n,03743016-n,03743016-n,True,75.56,0.01
+megalithic structure,http://example.org/wordnet.owl#C_03743016-n,03743016-n,03743016-n,True,64.06,0.0
+microphone,http://example.org/wordnet.owl#C_03759954-n,03759954-n,03759954-n,True,76.95,0.01
+mike,http://example.org/wordnet.owl#C_03759954-n,03759954-n,03759954-n,True,58.52,0.0
+microwave,http://example.org/wordnet.owl#C_11482312-n,03761084-n,11482312-n,False,172.5,0.01
+microwave oven,http://example.org/wordnet.owl#C_11482312-n,03761084-n,11482312-n,False,65.03,0.01
+military uniform,http://example.org/wordnet.owl#C_03763968-n,03763968-n,03763968-n,True,69.35,0.01
+milk can,http://example.org/wordnet.owl#C_03764736-n,03764736-n,03764736-n,True,69.77,0.01
+minibus,http://example.org/wordnet.owl#C_03769881-n,03769881-n,03769881-n,True,63.89,0.01
+miniskirt,http://example.org/wordnet.owl#C_03770439-n,03770439-n,03770439-n,True,75.39,0.01
+mini,http://example.org/wordnet.owl#C_03770439-n,03770439-n,03770439-n,True,123.46,0.01
+minivan,http://example.org/wordnet.owl#C_03770679-n,03770679-n,03770679-n,True,64.27,0.01
+missile,http://example.org/wordnet.owl#C_03773504-n,03773504-n,03773504-n,True,122.17,0.01
+mitten,http://example.org/wordnet.owl#C_03775071-n,03775071-n,03775071-n,True,64.29,0.01
+mixing bowl,http://example.org/wordnet.owl#C_03775546-n,03775546-n,03775546-n,True,70.05,0.01
+mobile home,http://example.org/wordnet.owl#C_03776460-n,03776460-n,03776460-n,True,75.27,0.01
+manufactured home,N/A,03776460-n,N/A,False,63.81,0.0
+Model T,http://example.org/wordnet.owl#C_03777568-n,03777568-n,03777568-n,True,74.66,0.01
+modem,http://example.org/wordnet.owl#C_03777754-n,03777754-n,03777754-n,True,63.87,0.01
+monastery,http://example.org/wordnet.owl#C_03781244-n,03781244-n,03781244-n,True,63.62,0.01
+monitor,http://example.org/wordnet.owl#C_03782190-n,03782006-n,03782190-n,False,454.83,0.01
+moped,http://example.org/wordnet.owl#C_03785016-n,03785016-n,03785016-n,True,264.09,0.01
+mortar,http://example.org/wordnet.owl#C_14955889-n,03786901-n,14955889-n,False,217.08,0.01
+mortarboard,http://example.org/wordnet.owl#C_03787164-n,03787032-n,03787164-n,False,122.65,0.01
+mosque,http://example.org/wordnet.owl#C_03788195-n,03788195-n,03788195-n,True,63.97,0.01
+mosquito net,http://example.org/wordnet.owl#C_03788365-n,03788365-n,03788365-n,True,69.95,0.01
+motor scooter,http://example.org/wordnet.owl#C_04149374-n,03791053-n,04149374-n,False,75.33,0.01
+scooter,http://example.org/wordnet.owl#C_04149374-n,03791053-n,04149374-n,False,264.05,0.01
+mountain bike,http://example.org/wordnet.owl#C_03792782-n,03792782-n,03792782-n,True,75.77,0.01
+all-terrain bike,N/A,03792782-n,N/A,False,68.97,0.0
+off-roader,N/A,03792782-n,N/A,False,64.44,0.0
+mountain tent,http://example.org/wordnet.owl#C_03792972-n,03792972-n,03792972-n,True,70.68,0.01
+mouse,http://example.org/wordnet.owl#C_10335563-n,03793489-n,10335563-n,False,313.04,0.01
+computer mouse,http://example.org/wordnet.owl#C_10335563-n,03793489-n,10335563-n,False,64.17,0.01
+mousetrap,http://example.org/wordnet.owl#C_03794056-n,03794056-n,03794056-n,True,121.27,0.01
+moving van,http://example.org/wordnet.owl#C_03796401-n,03796401-n,03796401-n,True,71.57,0.01
+muzzle,http://example.org/wordnet.owl#C_03803284-n,03803284-n,03803284-n,True,360.34,0.01
+nail,http://example.org/wordnet.owl#C_13652335-n,03804744-n,13652335-n,False,500.13,0.01
+neck brace,http://example.org/wordnet.owl#C_03814639-n,03814639-n,03814639-n,True,69.74,0.01
+necklace,http://example.org/wordnet.owl#C_03814906-n,03814906-n,03814906-n,True,63.94,0.01
+nipple,http://example.org/wordnet.owl#C_05554653-n,03825788-n,05554653-n,False,123.38,0.01
+notebook,http://example.org/wordnet.owl#C_06415419-n,03832673-n,06415419-n,False,123.0,0.01
+notebook computer,http://example.org/wordnet.owl#C_06415419-n,03832673-n,06415419-n,False,64.48,0.01
+obelisk,http://example.org/wordnet.owl#C_03837869-n,03837869-n,03837869-n,True,122.16,0.01
+oboe,http://example.org/wordnet.owl#C_03838899-n,03838899-n,03838899-n,True,76.44,0.01
+hautboy,http://example.org/wordnet.owl#C_03838899-n,03838899-n,03838899-n,True,64.51,0.0
+hautbois,http://example.org/wordnet.owl#C_03838899-n,03838899-n,03838899-n,True,64.01,0.0
+ocarina,http://example.org/wordnet.owl#C_12827684-n,03840681-n,12827684-n,False,75.88,0.01
+sweet potato,http://example.org/wordnet.owl#C_12827684-n,03840681-n,12827684-n,False,168.25,0.01
+odometer,http://example.org/wordnet.owl#C_03841143-n,03841143-n,03841143-n,True,74.88,0.01
+hodometer,http://example.org/wordnet.owl#C_03841143-n,03841143-n,03841143-n,True,70.22,0.0
+mileometer,http://example.org/wordnet.owl#C_03841143-n,03841143-n,03841143-n,True,69.7,0.0
+milometer,http://example.org/wordnet.owl#C_03841143-n,03841143-n,03841143-n,True,69.68,0.0
+oil filter,http://example.org/wordnet.owl#C_03843555-n,03843555-n,03843555-n,True,69.5,0.01
+organ,http://example.org/wordnet.owl#C_08349350-n,03854065-n,08349350-n,False,317.55,0.01
+pipe organ,http://example.org/wordnet.owl#C_08349350-n,03854065-n,08349350-n,False,66.09,0.01
+oscilloscope,http://example.org/wordnet.owl#C_03857828-n,03857828-n,03857828-n,True,76.85,0.01
+scope,http://example.org/wordnet.owl#C_05125377-n,03857828-n,05125377-n,False,217.14,0.01
+cathode-ray oscilloscope,http://example.org/wordnet.owl#C_05125377-n,03857828-n,05125377-n,False,75.11,0.01
+CRO,http://example.org/wordnet.owl#C_05125377-n,03857828-n,05125377-n,False,70.29,0.01
+overskirt,http://example.org/wordnet.owl#C_03866082-n,03866082-n,03866082-n,True,64.72,0.01
+oxcart,http://example.org/wordnet.owl#C_03868242-n,03868242-n,03868242-n,True,65.41,0.01
+oxygen mask,http://example.org/wordnet.owl#C_03868863-n,03868863-n,03868863-n,True,70.56,0.01
+packet,http://example.org/wordnet.owl#C_07281099-n,03871628-n,07281099-n,False,216.87,0.01
+paddle,http://example.org/wordnet.owl#C_03873848-n,03873416-n,03873848-n,False,499.13,0.01
+boat paddle,http://example.org/wordnet.owl#C_03873848-n,03873416-n,03873848-n,False,63.82,0.01
+paddlewheel,http://example.org/wordnet.owl#C_03874293-n,03874293-n,03874293-n,True,75.98,0.01
+paddle wheel,http://example.org/wordnet.owl#C_03874293-n,03874293-n,03874293-n,True,63.03,0.0
+padlock,http://example.org/wordnet.owl#C_03874599-n,03874599-n,03874599-n,True,122.55,0.01
+paintbrush,http://example.org/wordnet.owl#C_03876231-n,03876231-n,03876231-n,True,64.25,0.01
+pajama,http://example.org/wordnet.owl#C_03877674-n,03877472-n,03877674-n,False,122.8,0.01
+pyjama,http://example.org/wordnet.owl#C_03877674-n,03877472-n,03877674-n,False,122.76,0.01
+pj's,http://example.org/wordnet.owl#C_03877674-n,03877472-n,03877674-n,False,69.74,0.01
+jammies,http://example.org/wordnet.owl#C_03877674-n,03877472-n,03877674-n,False,69.88,0.01
+palace,http://example.org/wordnet.owl#C_08053121-n,03877845-n,08053121-n,False,218.47,0.01
+panpipe,http://example.org/wordnet.owl#C_03884397-n,03884397-n,03884397-n,True,75.74,0.01
+pandean pipe,http://example.org/wordnet.owl#C_03884397-n,03884397-n,03884397-n,True,70.27,0.01
+syrinx,http://example.org/wordnet.owl#C_03884397-n,03884397-n,03884397-n,True,121.69,0.01
+paper towel,http://example.org/wordnet.owl#C_03887697-n,03887697-n,03887697-n,True,69.46,0.01
+parachute,http://example.org/wordnet.owl#C_03888257-n,03888257-n,03888257-n,True,121.82,0.01
+chute,http://example.org/wordnet.owl#C_03029603-n,03888257-n,03029603-n,False,169.78,0.01
+parallel bars,http://example.org/wordnet.owl#C_03888605-n,03888605-n,03888605-n,True,74.9,0.01
+bars,N/A,03888605-n,N/A,False,968.66,0.0
+park bench,http://example.org/wordnet.owl#C_03891251-n,03891251-n,03891251-n,True,70.38,0.01
+parking meter,http://example.org/wordnet.owl#C_03891332-n,03891332-n,03891332-n,True,68.77,0.01
+passenger car,http://example.org/wordnet.owl#C_05002822-n,03895866-n,05002822-n,False,75.46,0.01
+coach,http://example.org/wordnet.owl#C_09931640-n,03895866-n,09931640-n,False,360.74,0.02
+carriage,http://example.org/wordnet.owl#C_05002822-n,03895866-n,05002822-n,False,264.41,0.01
+patio,http://example.org/wordnet.owl#C_09456207-n,03899768-n,09456207-n,False,75.24,0.01
+terrace,http://example.org/wordnet.owl#C_09456207-n,03899768-n,09456207-n,False,264.85,0.01
+pay-phone,http://example.org/wordnet.owl#C_03902125-n,03902125-n,03902125-n,True,74.46,0.01
+pay-station,http://example.org/wordnet.owl#C_03902125-n,03902125-n,03902125-n,True,57.98,0.0
+pedestal,http://example.org/wordnet.owl#C_14432389-n,03903868-n,14432389-n,False,169.93,0.01
+plinth,http://example.org/wordnet.owl#C_14432389-n,03903868-n,14432389-n,False,64.31,0.01
+footstall,http://example.org/wordnet.owl#C_14432389-n,03903868-n,14432389-n,False,63.43,0.01
+pencil box,http://example.org/wordnet.owl#C_03908618-n,03908618-n,03908618-n,True,75.29,0.01
+pencil case,N/A,03908618-n,N/A,False,63.61,0.0
+pencil sharpener,http://example.org/wordnet.owl#C_03908714-n,03908714-n,03908714-n,True,69.55,0.01
+perfume,http://example.org/wordnet.owl#C_03916031-n,03916031-n,03916031-n,True,218.46,0.01
+essence,http://example.org/wordnet.owl#C_15110096-n,03916031-n,15110096-n,False,215.41,0.01
+Petri dish,http://example.org/wordnet.owl#C_03920288-n,03920288-n,03920288-n,True,70.44,0.01
+photocopier,http://example.org/wordnet.owl#C_03924679-n,03924679-n,03924679-n,True,63.47,0.01
+pick,http://example.org/wordnet.owl#C_03929660-n,03929660-n,03929660-n,True,1025.14,0.01
+plectrum,http://example.org/wordnet.owl#C_03929660-n,03929660-n,03929660-n,True,64.09,0.01
+plectron,http://example.org/wordnet.owl#C_03929660-n,03929660-n,03929660-n,True,62.94,0.01
+pickelhaube,http://example.org/wordnet.owl#C_03929855-n,03929855-n,03929855-n,True,63.66,0.01
+picket fence,http://example.org/wordnet.owl#C_03930313-n,03930313-n,03930313-n,True,75.51,0.01
+paling,http://example.org/wordnet.owl#C_02588871-v,03930313-n,02588871-v,False,170.12,0.01
+pickup,http://example.org/wordnet.owl#C_05061003-n,03930630-n,05061003-n,False,452.53,0.02
+pickup truck,http://example.org/wordnet.owl#C_05061003-n,03930630-n,05061003-n,False,63.22,0.01
+pier,http://example.org/wordnet.owl#C_03934042-n,03933933-n,03934042-n,False,171.02,0.01
+piggy bank,http://example.org/wordnet.owl#C_03935335-n,03935335-n,03935335-n,True,75.97,0.01
+penny bank,N/A,03935335-n,N/A,False,64.09,0.0
+pill bottle,http://example.org/wordnet.owl#C_03937543-n,03937543-n,03937543-n,True,69.97,0.01
+pillow,http://example.org/wordnet.owl#C_03938244-n,03938244-n,03938244-n,True,122.31,0.01
+ping-pong ball,http://example.org/wordnet.owl#C_03942813-n,03942813-n,03942813-n,True,69.83,0.01
+pinwheel,http://example.org/wordnet.owl#C_12786836-n,03944341-n,12786836-n,False,216.04,0.01
+pirate,http://example.org/wordnet.owl#C_10435367-n,03947888-n,10435367-n,False,262.57,0.01
+pirate ship,http://example.org/wordnet.owl#C_10435367-n,03947888-n,10435367-n,False,64.29,0.01
+pitcher,http://example.org/wordnet.owl#C_13768748-n,03950228-n,13768748-n,False,268.05,0.01
+ewer,http://example.org/wordnet.owl#C_13768748-n,03950228-n,13768748-n,False,60.47,0.01
+plane,http://example.org/wordnet.owl#C_13941806-n,03954731-n,13941806-n,False,454.38,0.02
+carpenter's plane,http://example.org/wordnet.owl#C_13941806-n,03954731-n,13941806-n,False,69.7,0.01
+woodworking plane,http://example.org/wordnet.owl#C_13941806-n,03954731-n,13941806-n,False,70.0,0.02
+planetarium,http://example.org/wordnet.owl#C_03956157-n,03956157-n,03956157-n,True,167.85,0.01
+plastic bag,http://example.org/wordnet.owl#C_03958227-n,03958227-n,03958227-n,True,69.12,0.01
+plate rack,http://example.org/wordnet.owl#C_03961711-n,03961711-n,03961711-n,True,68.92,0.01
+plow,http://example.org/wordnet.owl#C_03967562-n,03967562-n,03967562-n,True,218.35,0.01
+plough,N/A,03967562-n,N/A,False,216.18,0.0
+plunger,http://example.org/wordnet.owl#C_03970156-n,03970156-n,03970156-n,True,217.07,0.01
+plumber's helper,http://example.org/wordnet.owl#C_03970156-n,03970156-n,03970156-n,True,64.26,0.0
+Polaroid camera,http://example.org/wordnet.owl#C_03976467-n,03976467-n,03976467-n,True,75.77,0.01
+Polaroid Land camera,N/A,03976467-n,N/A,False,65.88,0.0
+pole,http://example.org/wordnet.owl#C_08620881-n,03976657-n,08620881-n,False,641.86,0.02
+police van,http://example.org/wordnet.owl#C_03977966-n,03977966-n,03977966-n,True,75.09,0.01
+police wagon,http://example.org/wordnet.owl#C_04543509-n,03977966-n,04543509-n,False,75.51,0.01
+paddy wagon,http://example.org/wordnet.owl#C_04543509-n,03977966-n,04543509-n,False,75.55,0.01
+patrol wagon,http://example.org/wordnet.owl#C_04543509-n,03977966-n,04543509-n,False,75.77,0.01
+wagon,http://example.org/wordnet.owl#C_04543509-n,03977966-n,04543509-n,False,264.18,0.01
+black Maria,N/A,03977966-n,N/A,False,122.46,0.0
+poncho,http://example.org/wordnet.owl#C_03980874-n,03980874-n,03980874-n,True,63.53,0.01
+pool table,http://example.org/wordnet.owl#C_03982430-n,03982430-n,03982430-n,True,76.13,0.01
+billiard table,N/A,03982430-n,N/A,False,69.0,0.0
+snooker table,N/A,03982430-n,N/A,False,69.71,0.0
+pop bottle,http://example.org/wordnet.owl#C_03983396-n,03983396-n,03983396-n,True,75.01,0.01
+soda bottle,N/A,03983396-n,N/A,False,64.55,0.0
+pot,http://example.org/wordnet.owl#C_13343774-n,03991062-n,13343774-n,False,499.89,0.01
+flowerpot,http://example.org/wordnet.owl#C_13343774-n,03991062-n,13343774-n,False,58.48,0.01
+potter's wheel,http://example.org/wordnet.owl#C_03992509-n,03992509-n,03992509-n,True,69.81,0.01
+power drill,http://example.org/wordnet.owl#C_03995372-n,03995372-n,03995372-n,True,70.65,0.01
+prayer rug,http://example.org/wordnet.owl#C_03998194-n,03998194-n,03998194-n,True,76.46,0.01
+prayer mat,N/A,03998194-n,N/A,False,63.68,0.0
+printer,http://example.org/wordnet.owl#C_10475297-n,04004767-n,10475297-n,False,168.83,0.01
+prison,http://example.org/wordnet.owl#C_13937284-n,04005630-n,13937284-n,False,123.58,0.01
+prison house,http://example.org/wordnet.owl#C_13937284-n,04005630-n,13937284-n,False,122.26,0.01
+projectile,http://example.org/wordnet.owl#C_04008634-n,04008634-n,04008634-n,True,169.52,0.01
+missile,http://example.org/wordnet.owl#C_03773504-n,04008634-n,03773504-n,False,121.91,0.01
+projector,http://example.org/wordnet.owl#C_04009801-n,04009552-n,04009801-n,False,123.13,0.02
+puck,http://example.org/wordnet.owl#C_09541809-n,04019541-n,09541809-n,False,122.79,0.01
+hockey puck,http://example.org/wordnet.owl#C_09541809-n,04019541-n,09541809-n,False,63.62,0.01
+punching bag,http://example.org/wordnet.owl#C_10492727-n,04023962-n,10492727-n,False,125.66,0.01
+punch bag,N/A,04023962-n,N/A,False,75.11,0.0
+punching ball,N/A,04023962-n,N/A,False,75.21,0.0
+punchball,N/A,04023962-n,N/A,False,69.98,0.0
+purse,http://example.org/wordnet.owl#C_13413294-n,04026417-n,13413294-n,False,311.74,0.01
+quill,http://example.org/wordnet.owl#C_04033901-n,04033901-n,04033901-n,True,220.02,0.01
+quill pen,http://example.org/wordnet.owl#C_04033901-n,04033901-n,04033901-n,True,65.12,0.01
+quilt,http://example.org/wordnet.owl#C_04033995-n,04033995-n,04033995-n,True,170.15,0.01
+comforter,http://example.org/wordnet.owl#C_03075768-n,04033995-n,03075768-n,False,215.64,0.01
+comfort,http://example.org/wordnet.owl#C_14445379-n,04033995-n,14445379-n,False,451.82,0.01
+puff,http://example.org/wordnet.owl#C_11497888-n,04033995-n,11497888-n,False,831.88,0.01
+racer,http://example.org/wordnet.owl#C_10502576-n,04037443-n,10502576-n,False,219.79,0.01
+race car,http://example.org/wordnet.owl#C_10502576-n,04037443-n,10502576-n,False,69.13,0.01
+racing car,http://example.org/wordnet.owl#C_10502576-n,04037443-n,10502576-n,False,69.74,0.01
+racket,http://example.org/wordnet.owl#C_07390945-n,04039381-n,07390945-n,False,359.18,0.01
+racquet,http://example.org/wordnet.owl#C_07390945-n,04039381-n,07390945-n,False,58.26,0.01
+radiator,http://example.org/wordnet.owl#C_09403211-n,04040759-n,09403211-n,False,167.9,0.01
+radio,http://example.org/wordnet.owl#C_06277135-n,04041544-n,06277135-n,False,263.24,0.01
+wireless,http://example.org/wordnet.owl#C_06275353-n,04041544-n,06275353-n,False,264.61,0.01
+radio telescope,http://example.org/wordnet.owl#C_04044716-n,04044716-n,04044716-n,True,75.5,0.01
+radio reflector,N/A,04044716-n,N/A,False,64.77,0.0
+rain barrel,http://example.org/wordnet.owl#C_04049303-n,04049303-n,04049303-n,True,70.24,0.01
+recreational vehicle,http://example.org/wordnet.owl#C_04065272-n,04065272-n,04065272-n,True,75.59,0.01
+RV,N/A,04065272-n,N/A,False,64.31,0.0
+R.V.,N/A,04065272-n,N/A,False,63.89,0.0
+reel,http://example.org/wordnet.owl#C_07056680-n,04067472-n,07056680-n,False,452.84,0.01
+reflex camera,http://example.org/wordnet.owl#C_04069434-n,04069434-n,04069434-n,True,69.46,0.01
+refrigerator,http://example.org/wordnet.owl#C_04070727-n,04070727-n,04070727-n,True,77.26,0.01
+icebox,http://example.org/wordnet.owl#C_04070727-n,04070727-n,04070727-n,True,57.65,0.0
+remote control,http://example.org/wordnet.owl#C_04074963-n,04074963-n,04074963-n,True,74.85,0.01
+remote,N/A,04074963-n,N/A,False,309.23,0.0
+restaurant,http://example.org/wordnet.owl#C_04081281-n,04081281-n,04081281-n,True,74.99,0.01
+eating house,http://example.org/wordnet.owl#C_04081281-n,04081281-n,04081281-n,True,75.65,0.0
+eating place,http://example.org/wordnet.owl#C_04081281-n,04081281-n,04081281-n,True,74.81,0.0
+eatery,http://example.org/wordnet.owl#C_04081281-n,04081281-n,04081281-n,True,69.62,0.0
+revolver,http://example.org/wordnet.owl#C_04086273-n,04086273-n,04086273-n,True,122.37,0.01
+six-gun,http://example.org/wordnet.owl#C_04086273-n,04086273-n,04086273-n,True,63.85,0.0
+six-shooter,http://example.org/wordnet.owl#C_04086273-n,04086273-n,04086273-n,True,63.22,0.0
+rifle,http://example.org/wordnet.owl#C_04090263-n,04090263-n,04090263-n,True,168.96,0.01
+rocking chair,http://example.org/wordnet.owl#C_04099969-n,04099969-n,04099969-n,True,74.84,0.01
+rocker,http://example.org/wordnet.owl#C_10535881-n,04099969-n,10535881-n,False,360.56,0.01
+rotisserie,http://example.org/wordnet.owl#C_04111531-n,04111531-n,04111531-n,True,122.96,0.01
+rubber eraser,http://example.org/wordnet.owl#C_15006789-n,04116512-n,15006789-n,False,76.98,0.01
+rubber,http://example.org/wordnet.owl#C_15006789-n,04116512-n,15006789-n,False,358.93,0.01
+pencil eraser,http://example.org/wordnet.owl#C_15006789-n,04116512-n,15006789-n,False,69.62,0.01
+rugby ball,http://example.org/wordnet.owl#C_04118538-n,04118538-n,04118538-n,True,69.64,0.01
+rule,http://example.org/wordnet.owl#C_06652242-n,04118776-n,06652242-n,False,925.57,0.01
+ruler,http://example.org/wordnet.owl#C_10541229-n,04118776-n,10541229-n,False,122.48,0.01
+running shoe,http://example.org/wordnet.owl#C_04120489-n,04120489-n,04120489-n,True,69.62,0.01
+safe,http://example.org/wordnet.owl#C_04125116-n,04125021-n,04125116-n,False,359.08,0.01
+safety pin,http://example.org/wordnet.owl#C_04127249-n,04127249-n,04127249-n,True,69.35,0.01
+saltshaker,http://example.org/wordnet.owl#C_04131690-n,04131690-n,04131690-n,True,75.4,0.01
+salt shaker,http://example.org/wordnet.owl#C_04131690-n,04131690-n,04131690-n,True,63.4,0.0
+sandal,http://example.org/wordnet.owl#C_04133789-n,04133789-n,04133789-n,True,64.16,0.01
+sarong,http://example.org/wordnet.owl#C_04136333-n,04136333-n,04136333-n,True,63.87,0.01
+sax,http://example.org/wordnet.owl#C_11283158-n,04141076-n,11283158-n,False,123.95,0.01
+saxophone,http://example.org/wordnet.owl#C_11283158-n,04141076-n,11283158-n,False,58.58,0.01
+scabbard,http://example.org/wordnet.owl#C_04141327-n,04141327-n,04141327-n,True,64.18,0.01
+scale,http://example.org/wordnet.owl#C_09425607-n,04141975-n,09425607-n,False,881.13,0.01
+weighing machine,http://example.org/wordnet.owl#C_09425607-n,04141975-n,09425607-n,False,63.61,0.01
+school bus,http://example.org/wordnet.owl#C_04146614-n,04146614-n,04146614-n,True,69.59,0.01
+schooner,http://example.org/wordnet.owl#C_04147291-n,04147183-n,04147291-n,False,121.51,0.01
+scoreboard,http://example.org/wordnet.owl#C_04149813-n,04149813-n,04149813-n,True,64.16,0.01
+screen,http://example.org/wordnet.owl#C_04152829-n,04152593-n,04152829-n,False,783.54,0.01
+CRT screen,http://example.org/wordnet.owl#C_04152829-n,04152593-n,04152829-n,False,63.89,0.01
+screw,http://example.org/wordnet.owl#C_04154340-n,04153751-n,04154340-n,False,500.79,0.01
+screwdriver,http://example.org/wordnet.owl#C_07917272-n,04154565-n,07917272-n,False,123.37,0.01
+seat belt,http://example.org/wordnet.owl#C_04162706-n,04162706-n,04162706-n,True,75.65,0.01
+seatbelt,N/A,04162706-n,N/A,False,57.53,0.0
+sewing machine,http://example.org/wordnet.owl#C_04179913-n,04179913-n,04179913-n,True,70.33,0.01
+shield,http://example.org/wordnet.owl#C_04192858-n,04192698-n,04192858-n,False,264.63,0.01
+buckler,http://example.org/wordnet.owl#C_04192858-n,04192698-n,04192858-n,False,57.97,0.01
+shoe shop,http://example.org/wordnet.owl#C_04200800-n,04200800-n,04200800-n,True,75.11,0.01
+shoe-shop,N/A,04200800-n,N/A,False,64.0,0.0
+shoe store,N/A,04200800-n,N/A,False,69.41,0.0
+shoji,http://example.org/wordnet.owl#C_04201297-n,04201297-n,04201297-n,True,64.82,0.01
+shopping basket,http://example.org/wordnet.owl#C_04204238-n,04204238-n,04204238-n,True,68.95,0.01
+shopping cart,http://example.org/wordnet.owl#C_04204347-n,04204347-n,04204347-n,True,69.56,0.01
+shovel,http://example.org/wordnet.owl#C_13769870-n,04208210-n,13769870-n,False,264.61,0.01
+shower cap,http://example.org/wordnet.owl#C_04209133-n,04209133-n,04209133-n,True,69.3,0.01
+shower curtain,http://example.org/wordnet.owl#C_04209239-n,04209239-n,04209239-n,True,69.65,0.01
+ski,http://example.org/wordnet.owl#C_04228054-n,04228054-n,04228054-n,True,122.53,0.02
+ski mask,http://example.org/wordnet.owl#C_04229816-n,04229816-n,04229816-n,True,69.36,0.01
+sleeping bag,http://example.org/wordnet.owl#C_04235860-n,04235860-n,04235860-n,True,69.01,0.01
+slide rule,http://example.org/wordnet.owl#C_04238763-n,04238763-n,04238763-n,True,75.42,0.01
+slipstick,N/A,04238763-n,N/A,False,57.51,0.0
+sliding door,http://example.org/wordnet.owl#C_04239074-n,04239074-n,04239074-n,True,70.72,0.01
+slot,http://example.org/wordnet.owl#C_09437887-n,04243546-n,09437887-n,False,408.91,0.01
+one-armed bandit,http://example.org/wordnet.owl#C_09437887-n,04243546-n,09437887-n,False,63.67,0.01
+snorkel,http://example.org/wordnet.owl#C_04251144-n,04251144-n,04251144-n,True,170.76,0.01
+snowmobile,http://example.org/wordnet.owl#C_04252077-n,04252077-n,04252077-n,True,122.71,0.01
+snowplow,http://example.org/wordnet.owl#C_04252225-n,04252225-n,04252225-n,True,76.05,0.01
+snowplough,http://example.org/wordnet.owl#C_04252225-n,04252225-n,04252225-n,True,58.21,0.0
+soap dispenser,http://example.org/wordnet.owl#C_04254120-n,04254120-n,04254120-n,True,68.92,0.01
+soccer ball,http://example.org/wordnet.owl#C_04254680-n,04254680-n,04254680-n,True,69.07,0.01
+sock,http://example.org/wordnet.owl#C_04254777-n,04254777-n,04254777-n,True,170.09,0.01
+solar dish,http://example.org/wordnet.owl#C_04258138-n,04258138-n,04258138-n,True,75.71,0.01
+solar collector,N/A,04258138-n,N/A,False,70.54,0.0
+solar furnace,N/A,04258138-n,N/A,False,70.3,0.0
+sombrero,http://example.org/wordnet.owl#C_08988333-n,04259630-n,08988333-n,False,121.52,0.01
+soup bowl,http://example.org/wordnet.owl#C_04263257-n,04263257-n,04263257-n,True,69.87,0.01
+space bar,http://example.org/wordnet.owl#C_04264628-n,04264628-n,04264628-n,True,70.0,0.01
+space heater,http://example.org/wordnet.owl#C_04265275-n,04265275-n,04265275-n,True,69.65,0.01
+space shuttle,http://example.org/wordnet.owl#C_04266014-n,04266014-n,04266014-n,True,69.71,0.01
+spatula,http://example.org/wordnet.owl#C_04270147-n,04270147-n,04270147-n,True,122.17,0.01
+speedboat,http://example.org/wordnet.owl#C_04273569-n,04273569-n,04273569-n,True,63.88,0.01
+spider web,http://example.org/wordnet.owl#C_04275548-n,04275548-n,04275548-n,True,122.77,0.01
+spider's web,N/A,04275548-n,N/A,False,123.8,0.0
+spindle,http://example.org/wordnet.owl#C_05605498-n,04277352-n,05605498-n,False,263.2,0.01
+sports car,http://example.org/wordnet.owl#C_04285008-n,04285008-n,04285008-n,True,76.18,0.01
+sport car,N/A,04285008-n,N/A,False,63.64,0.0
+spotlight,http://example.org/wordnet.owl#C_04286575-n,04286575-n,04286575-n,True,217.31,0.01
+spot,http://example.org/wordnet.owl#C_06396644-n,04286575-n,06396644-n,False,975.72,0.01
+stage,http://example.org/wordnet.owl#C_08646566-n,04296562-n,08646566-n,False,503.31,0.01
+steam locomotive,http://example.org/wordnet.owl#C_04310018-n,04310018-n,04310018-n,True,69.72,0.01
+steel arch bridge,http://example.org/wordnet.owl#C_04311004-n,04311004-n,04311004-n,True,69.46,0.01
+steel drum,http://example.org/wordnet.owl#C_04311174-n,04311174-n,04311174-n,True,69.15,0.01
+stethoscope,http://example.org/wordnet.owl#C_04317175-n,04317175-n,04317175-n,True,64.28,0.01
+stole,http://example.org/wordnet.owl#C_04325704-n,04325704-n,04325704-n,True,220.98,0.01
+stone wall,http://example.org/wordnet.owl#C_04326547-n,04326547-n,04326547-n,True,71.36,0.01
+stopwatch,http://example.org/wordnet.owl#C_04328186-n,04328186-n,04328186-n,True,75.86,0.01
+stop watch,http://example.org/wordnet.owl#C_04328186-n,04328186-n,04328186-n,True,63.27,0.0
+stove,http://example.org/wordnet.owl#C_04330340-n,04330267-n,04330340-n,False,217.33,0.01
+strainer,http://example.org/wordnet.owl#C_04332243-n,04332243-n,04332243-n,True,64.47,0.01
+streetcar,http://example.org/wordnet.owl#C_04468847-n,04335435-n,04468847-n,False,75.17,0.01
+tram,http://example.org/wordnet.owl#C_01945183-v,04335435-n,01945183-v,False,216.61,0.01
+tramcar,http://example.org/wordnet.owl#C_04468847-n,04335435-n,04468847-n,False,122.5,0.01
+trolley,http://example.org/wordnet.owl#C_04468847-n,04335435-n,04468847-n,False,76.59,0.01
+trolley car,http://example.org/wordnet.owl#C_04468847-n,04335435-n,04468847-n,False,75.48,0.01
+stretcher,http://example.org/wordnet.owl#C_04337157-n,04336792-n,04337157-n,False,217.02,0.02
+studio couch,http://example.org/wordnet.owl#C_04344873-n,04344873-n,04344873-n,True,76.0,0.01
+day bed,N/A,04344873-n,N/A,False,63.9,0.0
+stupa,http://example.org/wordnet.owl#C_04346328-n,04346328-n,04346328-n,True,76.74,0.01
+tope,http://example.org/wordnet.owl#C_09270508-n,04346328-n,09270508-n,False,116.55,0.01
+submarine,http://example.org/wordnet.owl#C_04347754-n,04347754-n,04347754-n,True,405.38,0.01
+pigboat,http://example.org/wordnet.owl#C_04347754-n,04347754-n,04347754-n,True,70.11,0.01
+sub,http://example.org/wordnet.owl#C_04347754-n,04347754-n,04347754-n,True,170.0,0.01
+U-boat,http://example.org/wordnet.owl#C_04347754-n,04347754-n,04347754-n,True,68.74,0.01
+suit,http://example.org/wordnet.owl#C_10673946-n,04350905-n,10673946-n,False,500.72,0.01
+suit of clothes,http://example.org/wordnet.owl#C_10673946-n,04350905-n,10673946-n,False,63.93,0.01
+sundial,http://example.org/wordnet.owl#C_04355338-n,04355338-n,04355338-n,True,63.63,0.01
+sunglass,http://example.org/wordnet.owl#C_04355933-n,04355933-n,04355933-n,True,63.68,0.01
+sunglasses,http://example.org/wordnet.owl#C_04356056-n,04356056-n,04356056-n,True,123.86,0.01
+dark glasses,http://example.org/wordnet.owl#C_04356056-n,04356056-n,04356056-n,True,70.83,0.0
+shades,N/A,04356056-n,N/A,False,686.57,0.0
+sunscreen,http://example.org/wordnet.owl#C_04357314-n,04357314-n,04357314-n,True,75.42,0.01
+sunblock,http://example.org/wordnet.owl#C_04357314-n,04357314-n,04357314-n,True,63.12,0.0
+sun blocker,http://example.org/wordnet.owl#C_04357314-n,04357314-n,04357314-n,True,68.91,0.0
+suspension bridge,http://example.org/wordnet.owl#C_04366367-n,04366367-n,04366367-n,True,69.79,0.01
+swab,http://example.org/wordnet.owl#C_04367746-n,04367480-n,04367746-n,False,218.02,0.01
+swob,http://example.org/wordnet.owl#C_04367746-n,04367480-n,04367746-n,False,171.09,0.01
+mop,http://example.org/wordnet.owl#C_01319562-v,04367480-n,01319562-v,False,169.77,0.0
+sweatshirt,http://example.org/wordnet.owl#C_04370456-n,04370456-n,04370456-n,True,64.01,0.01
+swimming trunks,http://example.org/wordnet.owl#C_04371430-n,04371430-n,04371430-n,True,75.16,0.01
+bathing trunks,N/A,04371430-n,N/A,False,63.68,0.0
+swing,http://example.org/wordnet.owl#C_07066042-n,04371774-n,07066042-n,False,1081.57,0.01
+switch,http://example.org/wordnet.owl#C_04372756-n,04372370-n,04372756-n,False,701.0,0.01
+electric switch,http://example.org/wordnet.owl#C_04372756-n,04372370-n,04372756-n,False,71.6,0.01
+electrical switch,http://example.org/wordnet.owl#C_04372756-n,04372370-n,04372756-n,False,71.38,0.01
+syringe,http://example.org/wordnet.owl#C_04376876-n,04376876-n,04376876-n,True,125.02,0.01
+table lamp,http://example.org/wordnet.owl#C_04380533-n,04380533-n,04380533-n,True,70.74,0.01
+tank,http://example.org/wordnet.owl#C_13770529-n,04389033-n,13770529-n,False,410.34,0.01
+army tank,http://example.org/wordnet.owl#C_13770529-n,04389033-n,13770529-n,False,76.43,0.01
+armored combat vehicle,http://example.org/wordnet.owl#C_13770529-n,04389033-n,13770529-n,False,76.02,0.01
+armoured combat vehicle,http://example.org/wordnet.owl#C_13770529-n,04389033-n,13770529-n,False,76.38,0.01
+tape player,http://example.org/wordnet.owl#C_04392985-n,04392985-n,04392985-n,True,70.88,0.01
+teapot,http://example.org/wordnet.owl#C_04398044-n,04398044-n,04398044-n,True,65.34,0.01
+teddy,http://example.org/wordnet.owl#C_04399382-n,04399382-n,04399382-n,True,124.95,0.01
+teddy bear,http://example.org/wordnet.owl#C_04399382-n,04399382-n,04399382-n,True,65.04,0.0
+television,http://example.org/wordnet.owl#C_06277280-n,04404412-n,06277280-n,False,175.87,0.02
+television system,http://example.org/wordnet.owl#C_06277280-n,04404412-n,06277280-n,False,64.79,0.01
+tennis ball,http://example.org/wordnet.owl#C_04409515-n,04409515-n,04409515-n,True,70.7,0.01
+thatch,http://example.org/wordnet.owl#C_15069712-n,04417672-n,15069712-n,False,267.4,0.02
+thatched roof,http://example.org/wordnet.owl#C_15069712-n,04417672-n,15069712-n,False,65.02,0.01
+theater curtain,http://example.org/wordnet.owl#C_04418357-n,04418357-n,04418357-n,True,76.49,0.01
+theatre curtain,N/A,04418357-n,N/A,False,65.24,0.0
+thimble,http://example.org/wordnet.owl#C_13770829-n,04423845-n,13770829-n,False,125.4,0.01
+thresher,http://example.org/wordnet.owl#C_04428191-n,04428191-n,04428191-n,True,125.41,0.01
+thrasher,http://example.org/wordnet.owl#C_01587834-n,04428191-n,01587834-n,False,173.11,0.02
+threshing machine,http://example.org/wordnet.owl#C_04428191-n,04428191-n,04428191-n,True,71.06,0.01
+throne,http://example.org/wordnet.owl#C_04429376-n,04429376-n,04429376-n,True,267.96,0.01
+tile roof,http://example.org/wordnet.owl#C_04435653-n,04435653-n,04435653-n,True,70.22,0.01
+toaster,http://example.org/wordnet.owl#C_10713502-n,04442312-n,10713502-n,False,125.23,0.01
+tobacco shop,http://example.org/wordnet.owl#C_04443257-n,04443257-n,04443257-n,True,76.75,0.01
+tobacconist shop,http://example.org/wordnet.owl#C_10713923-n,04443257-n,10713923-n,False,71.67,0.0
+tobacconist,http://example.org/wordnet.owl#C_10713923-n,04443257-n,10713923-n,False,124.87,0.01
+toilet seat,http://example.org/wordnet.owl#C_04447861-n,04447861-n,04447861-n,True,70.33,0.01
+torch,http://example.org/wordnet.owl#C_04456115-n,04456115-n,04456115-n,True,268.94,0.02
+totem pole,http://example.org/wordnet.owl#C_04458633-n,04458633-n,04458633-n,True,70.79,0.01
+tow truck,http://example.org/wordnet.owl#C_04461696-n,04461696-n,04461696-n,True,76.82,0.01
+tow car,http://example.org/wordnet.owl#C_10792856-n,04461696-n,10792856-n,False,70.48,0.0
+wrecker,http://example.org/wordnet.owl#C_10792856-n,04461696-n,10792856-n,False,175.48,0.01
+toyshop,http://example.org/wordnet.owl#C_04462240-n,04462240-n,04462240-n,True,64.25,0.01
+tractor,http://example.org/wordnet.owl#C_04465666-n,04465501-n,04465666-n,False,124.88,0.01
+trailer truck,http://example.org/wordnet.owl#C_04467665-n,04467665-n,04467665-n,True,77.27,0.01
+tractor trailer,N/A,04467665-n,N/A,False,77.31,0.0
+trucking rig,http://example.org/wordnet.owl#C_04091247-n,04467665-n,04091247-n,False,76.96,0.01
+rig,http://example.org/wordnet.owl#C_04091247-n,04467665-n,04091247-n,False,559.32,0.01
+articulated lorry,N/A,04467665-n,N/A,False,76.9,0.0
+semi,http://example.org/wordnet.owl#C_07467393-n,04467665-n,07467393-n,False,172.93,0.01
+tray,http://example.org/wordnet.owl#C_04476259-n,04476259-n,04476259-n,True,65.47,0.01
+trench coat,http://example.org/wordnet.owl#C_04479046-n,04479046-n,04479046-n,True,70.93,0.01
+tricycle,http://example.org/wordnet.owl#C_04524716-n,04482393-n,04524716-n,False,77.34,0.01
+trike,http://example.org/wordnet.owl#C_04524716-n,04482393-n,04524716-n,False,65.7,0.01
+velocipede,http://example.org/wordnet.owl#C_04524716-n,04482393-n,04524716-n,False,125.29,0.01
+trimaran,http://example.org/wordnet.owl#C_04483307-n,04483307-n,04483307-n,True,65.79,0.01
+tripod,http://example.org/wordnet.owl#C_04485082-n,04485082-n,04485082-n,True,64.49,0.01
+triumphal arch,http://example.org/wordnet.owl#C_04486054-n,04486054-n,04486054-n,True,70.75,0.02
+trolleybus,http://example.org/wordnet.owl#C_04487081-n,04487081-n,04487081-n,True,77.61,0.01
+trolley coach,http://example.org/wordnet.owl#C_04487081-n,04487081-n,04487081-n,True,70.46,0.0
+trackless trolley,http://example.org/wordnet.owl#C_04487081-n,04487081-n,04487081-n,True,70.69,0.0
+trombone,http://example.org/wordnet.owl#C_04487394-n,04487394-n,04487394-n,True,65.11,0.01
+tub,http://example.org/wordnet.owl#C_13770926-n,04493381-n,13770926-n,False,171.75,0.01
+vat,http://example.org/wordnet.owl#C_13316722-n,04493381-n,13316722-n,False,125.07,0.01
+turnstile,http://example.org/wordnet.owl#C_04501370-n,04501370-n,04501370-n,True,64.87,0.01
+typewriter keyboard,http://example.org/wordnet.owl#C_04505470-n,04505470-n,04505470-n,True,70.45,0.01
+umbrella,http://example.org/wordnet.owl#C_04507155-n,04507155-n,04507155-n,True,220.54,0.01
+unicycle,http://example.org/wordnet.owl#C_04509417-n,04509417-n,04509417-n,True,125.78,0.01
+monocycle,http://example.org/wordnet.owl#C_04509417-n,04509417-n,04509417-n,True,59.23,0.01
+upright,http://example.org/wordnet.owl#C_04515129-n,04515003-n,04515129-n,False,270.52,0.01
+upright piano,http://example.org/wordnet.owl#C_04515129-n,04515003-n,04515129-n,False,65.06,0.01
+vacuum,http://example.org/wordnet.owl#C_14456054-n,04517823-n,14456054-n,False,268.57,0.02
+vacuum cleaner,http://example.org/wordnet.owl#C_14456054-n,04517823-n,14456054-n,False,64.99,0.01
+vase,http://example.org/wordnet.owl#C_04522168-n,04522168-n,04522168-n,True,65.55,0.01
+vault,http://example.org/wordnet.owl#C_04523831-n,04523525-n,04523831-n,False,319.22,0.01
+velvet,http://example.org/wordnet.owl#C_04525038-n,04525038-n,04525038-n,True,173.61,0.01
+vending machine,http://example.org/wordnet.owl#C_04525305-n,04525305-n,04525305-n,True,71.13,0.01
+vestment,http://example.org/wordnet.owl#C_04532106-n,04532106-n,04532106-n,True,65.96,0.01
+viaduct,http://example.org/wordnet.owl#C_04532670-n,04532670-n,04532670-n,True,64.4,0.01
+violin,http://example.org/wordnet.owl#C_04536866-n,04536866-n,04536866-n,True,76.43,0.01
+fiddle,http://example.org/wordnet.owl#C_02463704-v,04536866-n,02463704-v,False,413.38,0.01
+volleyball,http://example.org/wordnet.owl#C_04540053-n,04540053-n,04540053-n,True,124.9,0.01
+waffle iron,http://example.org/wordnet.owl#C_04542943-n,04542943-n,04542943-n,True,71.82,0.01
+wall clock,http://example.org/wordnet.owl#C_04548280-n,04548280-n,04548280-n,True,71.13,0.01
+wallet,http://example.org/wordnet.owl#C_04548362-n,04548362-n,04548362-n,True,77.7,0.01
+billfold,http://example.org/wordnet.owl#C_13354021-n,04548362-n,13354021-n,False,70.56,0.01
+notecase,http://example.org/wordnet.owl#C_13354021-n,04548362-n,13354021-n,False,71.22,0.01
+pocketbook,http://example.org/wordnet.owl#C_13354021-n,04548362-n,13354021-n,False,221.26,0.01
+wardrobe,http://example.org/wordnet.owl#C_04550546-n,04550184-n,04550546-n,False,172.51,0.01
+closet,http://example.org/wordnet.owl#C_03049457-n,04550184-n,03049457-n,False,268.69,0.01
+press,http://example.org/wordnet.owl#C_04000480-n,04550184-n,04000480-n,False,1131.64,0.01
+warplane,http://example.org/wordnet.owl#C_04552348-n,04552348-n,04552348-n,True,76.9,0.01
+military plane,http://example.org/wordnet.owl#C_04552348-n,04552348-n,04552348-n,True,64.73,0.0
+washbasin,http://example.org/wordnet.owl#C_04553920-n,04553703-n,04553920-n,False,124.41,0.02
+handbasin,http://example.org/wordnet.owl#C_04553920-n,04553703-n,04553920-n,False,76.77,0.01
+washbowl,http://example.org/wordnet.owl#C_04555400-n,04553703-n,04555400-n,False,123.64,0.01
+lavabo,http://example.org/wordnet.owl#C_04553920-n,04553703-n,04553920-n,False,76.67,0.01
+wash-hand basin,http://example.org/wordnet.owl#C_04553920-n,04553703-n,04553920-n,False,76.02,0.01
+washer,http://example.org/wordnet.owl#C_10768903-n,04554684-n,10768903-n,False,173.8,0.01
+automatic washer,http://example.org/wordnet.owl#C_10768903-n,04554684-n,10768903-n,False,71.64,0.01
+washing machine,http://example.org/wordnet.owl#C_10768903-n,04554684-n,10768903-n,False,72.03,0.01
+water bottle,http://example.org/wordnet.owl#C_04557648-n,04557648-n,04557648-n,True,69.87,0.01
+water jug,http://example.org/wordnet.owl#C_04560804-n,04560804-n,04560804-n,True,70.81,0.01
+water tower,http://example.org/wordnet.owl#C_04562935-n,04562935-n,04562935-n,True,70.99,0.01
+whiskey jug,http://example.org/wordnet.owl#C_04579145-n,04579145-n,04579145-n,True,71.2,0.01
+whistle,http://example.org/wordnet.owl#C_07400156-n,04579432-n,07400156-n,False,557.75,0.01
+wig,http://example.org/wordnet.owl#C_06713099-n,04584207-n,06713099-n,False,123.82,0.01
+window screen,http://example.org/wordnet.owl#C_04589890-n,04589890-n,04589890-n,True,71.72,0.01
+window shade,http://example.org/wordnet.owl#C_04590129-n,04590129-n,04590129-n,True,70.75,0.01
+Windsor tie,http://example.org/wordnet.owl#C_04591157-n,04591157-n,04591157-n,True,71.37,0.01
+wine bottle,http://example.org/wordnet.owl#C_04591713-n,04591713-n,04591713-n,True,70.25,0.01
+wing,http://example.org/wordnet.owl#C_08219493-n,04592741-n,08219493-n,False,603.93,0.01
+wok,http://example.org/wordnet.owl#C_04596742-n,04596742-n,04596742-n,True,64.3,0.01
+wooden spoon,http://example.org/wordnet.owl#C_04598010-n,04597913-n,04598010-n,False,124.48,0.01
+wool,http://example.org/wordnet.owl#C_15104217-n,04599235-n,15104217-n,False,173.6,0.01
+woolen,http://example.org/wordnet.owl#C_03130689-a,04599235-n,03130689-a,False,123.85,0.01
+woollen,http://example.org/wordnet.owl#C_15104217-n,04599235-n,15104217-n,False,124.6,0.01
+worm fence,http://example.org/wordnet.owl#C_04604644-n,04604644-n,04604644-n,True,76.82,0.01
+snake fence,N/A,04604644-n,N/A,False,76.69,0.0
+snake-rail fence,N/A,04604644-n,N/A,False,77.03,0.0
+Virginia fence,N/A,04604644-n,N/A,False,75.72,0.0
+wreck,http://example.org/wordnet.owl#C_14423870-n,04606251-n,14423870-n,False,270.87,0.01
+yawl,http://example.org/wordnet.owl#C_04612504-n,04612504-n,04612504-n,True,172.63,0.01
+yurt,http://example.org/wordnet.owl#C_04613696-n,04613696-n,04613696-n,True,66.35,0.01
+web site,http://example.org/wordnet.owl#C_06359193-n,06359193-n,06359193-n,True,76.82,0.01
+website,http://example.org/wordnet.owl#C_08651247-n,06359193-n,08651247-n,False,71.31,0.01
+internet site,http://example.org/wordnet.owl#C_08651247-n,06359193-n,08651247-n,False,76.46,0.01
+site,http://example.org/wordnet.owl#C_08651247-n,06359193-n,08651247-n,False,219.23,0.01
+comic book,http://example.org/wordnet.owl#C_06596364-n,06596364-n,06596364-n,True,70.25,0.01
+crossword puzzle,http://example.org/wordnet.owl#C_06785654-n,06785654-n,06785654-n,True,77.12,0.01
+crossword,N/A,06785654-n,N/A,False,60.32,0.0
+street sign,http://example.org/wordnet.owl#C_06794110-n,06794110-n,06794110-n,True,69.99,0.01
+traffic light,http://example.org/wordnet.owl#C_06874185-n,06874185-n,06874185-n,True,76.38,0.01
+traffic signal,http://example.org/wordnet.owl#C_07265990-n,06874185-n,07265990-n,False,70.72,0.0
+stoplight,http://example.org/wordnet.owl#C_07265990-n,06874185-n,07265990-n,False,124.19,0.01
+book jacket,http://example.org/wordnet.owl#C_07248320-n,07248320-n,07248320-n,True,77.12,0.01
+dust cover,http://example.org/wordnet.owl#C_03258577-n,07248320-n,03258577-n,False,173.66,0.01
+dust jacket,N/A,07248320-n,N/A,False,76.96,0.0
+dust wrapper,N/A,07248320-n,N/A,False,76.38,0.0
+menu,http://example.org/wordnet.owl#C_07565083-n,07565083-n,07565083-n,True,221.42,0.01
+plate,http://example.org/wordnet.owl#C_05581349-n,07579787-n,05581349-n,False,797.26,0.01
+guacamole,http://example.org/wordnet.owl#C_07583066-n,07583066-n,07583066-n,True,64.87,0.01
+consomme,http://example.org/wordnet.owl#C_07584110-n,07584110-n,07584110-n,True,65.64,0.01
+hot pot,http://example.org/wordnet.owl#C_07590611-n,07590611-n,07590611-n,True,76.75,0.01
+hotpot,N/A,07590611-n,N/A,False,59.4,0.0
+trifle,http://example.org/wordnet.owl#C_07613480-n,07613480-n,07613480-n,True,319.31,0.01
+ice cream,http://example.org/wordnet.owl#C_07614500-n,07614500-n,07614500-n,True,76.76,0.01
+icecream,N/A,07614500-n,N/A,False,60.21,0.0
+ice lolly,http://example.org/wordnet.owl#C_07615774-n,07615774-n,07615774-n,True,76.81,0.01
+lolly,http://example.org/wordnet.owl#C_13262663-n,07615774-n,13262663-n,False,125.64,0.01
+lollipop,http://example.org/wordnet.owl#C_07607605-n,07615774-n,07607605-n,False,124.09,0.01
+popsicle,http://example.org/wordnet.owl#C_07607605-n,07615774-n,07607605-n,False,71.3,0.0
+French loaf,http://example.org/wordnet.owl#C_07684084-n,07684084-n,07684084-n,True,69.77,0.01
+bagel,http://example.org/wordnet.owl#C_07693725-n,07693725-n,07693725-n,True,76.44,0.01
+beigel,http://example.org/wordnet.owl#C_07693725-n,07693725-n,07693725-n,True,59.0,0.0
+pretzel,http://example.org/wordnet.owl#C_07695742-n,07695742-n,07695742-n,True,65.16,0.01
+cheeseburger,http://example.org/wordnet.owl#C_07697313-n,07697313-n,07697313-n,True,64.94,0.01
+hotdog,http://example.org/wordnet.owl#C_10187710-n,07697537-n,10187710-n,False,172.99,0.01
+hot dog,http://example.org/wordnet.owl#C_10187710-n,07697537-n,10187710-n,False,172.73,0.01
+red hot,http://example.org/wordnet.owl#C_10187710-n,07697537-n,10187710-n,False,70.94,0.01
+mashed potato,http://example.org/wordnet.owl#C_07711569-n,07711569-n,07711569-n,True,71.39,0.01
+head cabbage,http://example.org/wordnet.owl#C_11875938-n,07714571-n,11875938-n,False,124.61,0.01
+broccoli,http://example.org/wordnet.owl#C_11876803-n,07714990-n,11876803-n,False,125.79,0.01
+cauliflower,http://example.org/wordnet.owl#C_11876634-n,07715103-n,11876634-n,False,123.75,0.01
+zucchini,http://example.org/wordnet.owl#C_12159804-n,07716358-n,12159804-n,False,123.4,0.02
+courgette,http://example.org/wordnet.owl#C_12159804-n,07716358-n,12159804-n,False,118.87,0.01
+spaghetti squash,http://example.org/wordnet.owl#C_12160303-n,07716906-n,12160303-n,False,125.38,0.01
+acorn squash,http://example.org/wordnet.owl#C_12160857-n,07717410-n,12160857-n,False,125.87,0.01
+butternut squash,http://example.org/wordnet.owl#C_12161744-n,07717556-n,12161744-n,False,124.97,0.01
+cucumber,http://example.org/wordnet.owl#C_12165384-n,07718472-n,12165384-n,False,124.17,0.01
+cuke,http://example.org/wordnet.owl#C_12165384-n,07718472-n,12165384-n,False,58.61,0.01
+artichoke,http://example.org/wordnet.owl#C_11959632-n,07718747-n,11959632-n,False,124.02,0.01
+globe artichoke,http://example.org/wordnet.owl#C_11959632-n,07718747-n,11959632-n,False,124.09,0.01
+bell pepper,http://example.org/wordnet.owl#C_07720875-n,07720875-n,07720875-n,True,123.66,0.01
+cardoon,http://example.org/wordnet.owl#C_11959862-n,07730033-n,11959862-n,False,123.84,0.01
+mushroom,http://example.org/wordnet.owl#C_13001041-n,07734744-n,13001041-n,False,363.22,0.01
+Granny Smith,http://example.org/wordnet.owl#C_07742313-n,07742313-n,07742313-n,True,76.81,0.01
+strawberry,http://example.org/wordnet.owl#C_12630144-n,07745940-n,12630144-n,False,171.6,0.01
+orange,http://example.org/wordnet.owl#C_14991210-n,07747607-n,14991210-n,False,316.75,0.01
+lemon,http://example.org/wordnet.owl#C_12711596-n,07749582-n,12711596-n,False,268.44,0.01
+fig,http://example.org/wordnet.owl#C_12401684-n,07753113-n,12401684-n,False,222.11,0.01
+pineapple,http://example.org/wordnet.owl#C_12607456-n,07753275-n,12607456-n,False,123.93,0.01
+ananas,http://example.org/wordnet.owl#C_12607198-n,07753275-n,12607198-n,False,124.14,0.01
+banana,http://example.org/wordnet.owl#C_12352287-n,07753592-n,12352287-n,False,123.25,0.01
+jackfruit,http://example.org/wordnet.owl#C_12400720-n,07754684-n,12400720-n,False,124.9,0.01
+jak,http://example.org/wordnet.owl#C_03589220-n,07754684-n,03589220-n,False,64.83,0.01
+jack,http://example.org/wordnet.owl#C_03589220-n,07754684-n,03589220-n,False,700.7,0.01
+custard apple,http://example.org/wordnet.owl#C_11693981-n,07760859-n,11693981-n,False,124.12,0.01
+pomegranate,http://example.org/wordnet.owl#C_12345280-n,07768694-n,12345280-n,False,124.23,0.01
+hay,http://example.org/wordnet.owl#C_07802026-n,07802026-n,07802026-n,True,124.36,0.01
+carbonara,http://example.org/wordnet.owl#C_07831146-n,07831146-n,07831146-n,True,65.44,0.02
+chocolate sauce,http://example.org/wordnet.owl#C_07836838-n,07836838-n,07836838-n,True,76.26,0.01
+chocolate syrup,N/A,07836838-n,N/A,False,65.01,0.0
+dough,http://example.org/wordnet.owl#C_07860988-n,07860988-n,07860988-n,True,125.5,0.01
+meat loaf,http://example.org/wordnet.owl#C_07871810-n,07871810-n,07871810-n,True,77.46,0.01
+meatloaf,N/A,07871810-n,N/A,False,60.06,0.0
+pizza,http://example.org/wordnet.owl#C_07873807-n,07873807-n,07873807-n,True,77.6,0.01
+pizza pie,http://example.org/wordnet.owl#C_07873807-n,07873807-n,07873807-n,True,65.79,0.0
+potpie,http://example.org/wordnet.owl#C_07875152-n,07875152-n,07875152-n,True,64.78,0.01
+burrito,http://example.org/wordnet.owl#C_07880968-n,07880968-n,07880968-n,True,64.94,0.01
+red wine,http://example.org/wordnet.owl#C_07892512-n,07892512-n,07892512-n,True,71.31,0.01
+espresso,http://example.org/wordnet.owl#C_07920052-n,07920052-n,07920052-n,True,64.97,0.01
+cup,http://example.org/wordnet.owl#C_12267841-n,07930864-n,12267841-n,False,558.11,0.01
+eggnog,http://example.org/wordnet.owl#C_07932039-n,07932039-n,07932039-n,True,65.11,0.01
+alp,http://example.org/wordnet.owl#C_09193705-n,09193705-n,09193705-n,True,65.18,0.02
+bubble,http://example.org/wordnet.owl#C_09229709-n,09229709-n,09229709-n,True,465.11,0.01
+cliff,http://example.org/wordnet.owl#C_09246464-n,09246464-n,09246464-n,True,76.84,0.01
+drop,http://example.org/wordnet.owl#C_13771404-n,09246464-n,13771404-n,False,1572.97,0.01
+drop-off,http://example.org/wordnet.owl#C_13771404-n,09246464-n,13771404-n,False,173.42,0.01
+coral reef,http://example.org/wordnet.owl#C_09256479-n,09256479-n,09256479-n,True,71.0,0.01
+geyser,http://example.org/wordnet.owl#C_09288635-n,09288635-n,09288635-n,True,125.1,0.01
+lakeside,http://example.org/wordnet.owl#C_09332890-n,09332890-n,09332890-n,True,77.75,0.01
+lakeshore,http://example.org/wordnet.owl#C_09332890-n,09332890-n,09332890-n,True,59.18,0.0
+promontory,http://example.org/wordnet.owl#C_09399592-n,09399592-n,09399592-n,True,76.98,0.01
+headland,http://example.org/wordnet.owl#C_03501811-n,09399592-n,03501811-n,False,70.94,0.01
+head,http://example.org/wordnet.owl#C_03501811-n,09399592-n,03501811-n,False,2053.14,0.01
+foreland,http://example.org/wordnet.owl#C_09283767-n,09399592-n,09283767-n,False,123.93,0.01
+sandbar,http://example.org/wordnet.owl#C_09421951-n,09421951-n,09421951-n,True,77.54,0.01
+sand bar,http://example.org/wordnet.owl#C_09421951-n,09421951-n,09421951-n,True,65.79,0.0
+seashore,http://example.org/wordnet.owl#C_09428293-n,09428293-n,09428293-n,True,77.69,0.01
+coast,http://example.org/wordnet.owl#C_09248153-n,09428293-n,09248153-n,False,270.62,0.01
+seacoast,http://example.org/wordnet.owl#C_09428293-n,09428293-n,09428293-n,True,72.12,0.01
+sea-coast,http://example.org/wordnet.owl#C_09428293-n,09428293-n,09428293-n,True,71.66,0.01
+valley,http://example.org/wordnet.owl#C_09468604-n,09468604-n,09468604-n,True,76.99,0.01
+vale,http://example.org/wordnet.owl#C_09468604-n,09468604-n,09468604-n,True,59.94,0.0
+volcano,http://example.org/wordnet.owl#C_09472597-n,09472597-n,09472597-n,True,125.37,0.01
+ballplayer,http://example.org/wordnet.owl#C_09835506-n,09835506-n,09835506-n,True,77.21,0.01
+baseball player,http://example.org/wordnet.owl#C_09835506-n,09835506-n,09835506-n,True,65.28,0.0
+groom,http://example.org/wordnet.owl#C_10148035-n,10148035-n,10148035-n,True,316.61,0.01
+bridegroom,http://example.org/wordnet.owl#C_10148035-n,10148035-n,10148035-n,True,120.03,0.01
+scuba diver,http://example.org/wordnet.owl#C_10565667-n,10565667-n,10565667-n,True,71.01,0.01
+rapeseed,http://example.org/wordnet.owl#C_11879895-n,11879895-n,11879895-n,True,64.33,0.01
+daisy,http://example.org/wordnet.owl#C_11939491-n,11939491-n,11939491-n,True,64.51,0.01
+yellow lady's slipper,http://example.org/wordnet.owl#C_12057211-n,12057211-n,12057211-n,True,77.37,0.01
+yellow lady-slipper,N/A,12057211-n,N/A,False,77.76,0.0
+Cypripedium calceolus,N/A,12057211-n,N/A,False,77.6,0.0
+Cypripedium parviflorum,N/A,12057211-n,N/A,False,76.26,0.0
+corn,http://example.org/wordnet.owl#C_12144580-n,12144580-n,12144580-n,True,462.8,0.01
+acorn,http://example.org/wordnet.owl#C_12267677-n,12267677-n,12267677-n,True,66.16,0.01
+hip,http://example.org/wordnet.owl#C_13890679-n,12620546-n,13890679-n,False,316.61,0.01
+rose hip,http://example.org/wordnet.owl#C_13890679-n,12620546-n,13890679-n,False,70.43,0.01
+rosehip,http://example.org/wordnet.owl#C_13890679-n,12620546-n,13890679-n,False,66.1,0.01
+buckeye,http://example.org/wordnet.owl#C_12768682-n,12768682-n,12768682-n,True,171.5,0.01
+horse chestnut,http://example.org/wordnet.owl#C_12768369-n,12768682-n,12768369-n,False,125.05,0.01
+conker,http://example.org/wordnet.owl#C_12768682-n,12768682-n,12768682-n,True,65.75,0.0
+coral fungus,http://example.org/wordnet.owl#C_12985857-n,12985857-n,12985857-n,True,70.74,0.01
+agaric,http://example.org/wordnet.owl#C_13054073-n,12998815-n,13054073-n,False,123.97,0.01
+gyromitra,http://example.org/wordnet.owl#C_13037406-n,13037406-n,13037406-n,True,65.36,0.01
+stinkhorn,http://example.org/wordnet.owl#C_13040303-n,13040303-n,13040303-n,True,76.54,0.01
+carrion fungus,http://example.org/wordnet.owl#C_13040303-n,13040303-n,13040303-n,True,64.8,0.0
+earthstar,http://example.org/wordnet.owl#C_13044778-n,13044778-n,13044778-n,True,65.47,0.01
+hen-of-the-woods,http://example.org/wordnet.owl#C_13052670-n,13052670-n,13052670-n,True,76.4,0.01
+hen of the woods,http://example.org/wordnet.owl#C_13052670-n,13052670-n,13052670-n,True,76.81,0.0
+Polyporus frondosus,http://example.org/wordnet.owl#C_13052670-n,13052670-n,13052670-n,True,76.13,0.0
+Grifola frondosa,http://example.org/wordnet.owl#C_13052670-n,13052670-n,13052670-n,True,76.59,0.0
+bolete,http://example.org/wordnet.owl#C_13054560-n,13054560-n,13054560-n,True,65.19,0.01
+ear,http://example.org/wordnet.owl#C_13133613-n,13133613-n,13133613-n,True,268.91,0.02
+spike,http://example.org/wordnet.owl#C_04276531-n,13133613-n,04276531-n,False,846.66,0.01
+capitulum,http://example.org/wordnet.owl#C_13133786-n,13133613-n,13133786-n,False,173.36,0.01
+toilet tissue,http://example.org/wordnet.owl#C_15075141-n,15075141-n,15075141-n,True,76.53,0.01
+toilet paper,N/A,15075141-n,N/A,False,71.91,0.0
+bathroom tissue,N/A,15075141-n,N/A,False,71.82,0.0
