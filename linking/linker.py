@@ -247,31 +247,25 @@ class AblatedPerceivedEntityLinker:
         self.label_to_id = {v: k for k, v in self.id_to_label.items()}
         self.physical_descendants = self.get_descendants(EX["C_00001930-n"])
         self.target_emb = None
-
+        self.ALT   = URIRef(self.altlabel_iri)
+        self.altlabels    : dict[str,set] = {}
         if Path("embedded_kg.npz").exists():
             self.embedded_kg = self.load_embedded_kg()
         else:
             self.embedded_kg = self.embed_knowledgegraph(self.concepts)
             self.save_embedded_kg()
-            
+        for s, p, o in self.kg.triples((None, None, None)):
+            s_str = str(s)
+        if p == self.ALT:
+                self.altlabels.setdefault(s_str, set()).add(str(o))            
         logging.info("PerceivedEntityLinker initialized and ready.")
 
     def get_altlabels_by_label(self, label):
-        q = f"""
-        SELECT DISTINCT ?l ?altlabel WHERE {{
-            ?entity rdfs:label ?l .
-            FILTER (lcase(str(?l)) = lcase("{label}"))
-            OPTIONAL {{ ?entity <{self.altlabel_iri}> ?altlabel . }}
-        }}
-        """
-        results = list(self.kg.query(q))
-
-        if not results:
-            logging.debug(f"No entity found for label: {label}")
+        # Resolve rdfs:label -> IRI -> altLabels; include the input label itself; dedup via set.
+        iri = self.label_to_iri.get(label.lower())
+        if not iri:
             return [label]
-        altlabels = {str(r["altlabel"]) for r in results if r["altlabel"]}
-
-        return list(altlabels).append(label)
+        return list(self.altlabels.get(iri, set()) | {label})
     
     def load_knowledgegraph(self):
         logging.info("Loading knowledge graph via SPARQL...")
@@ -393,26 +387,33 @@ class AblatedPerceivedEntityLinker:
         scores = []
         start = time.time()
         for desc, base_score in candidates:
+            iri = self.label_to_iri[desc]
             # --- Type filters ---
             if self.condition == 'no-physical':
-                delt_noun = 1 if self.label_to_id.get(desc)[-1] == 'n' else 0
-                iri = self.label_to_iri[desc]
-                mask = delt_noun          
+                mask = 1 if self.label_to_id.get(desc)[-1] == 'n' else 0        
             if self.condition == 'no-noun':
-                iri = self.label_to_iri[desc]
-                delt_phys = 1 if str(iri) in self.physical_descendants else 0
-                mask =  delt_phys     
+                mask = 1 if str(iri) in self.physical_descendants else 0  
             else:
                 delt_noun = 1 if self.label_to_id.get(desc)[-1] == 'n' else 0
-                iri = self.label_to_iri[desc]
                 delt_phys = 1 if str(iri) in self.physical_descendants else 0
                 mask = delt_noun * delt_phys
 
             if self.condition != 'no-context':
                 # --- Hierarchical context ---
-                descendants = self.get_hierarchy(iri, depth=depth)
-                combined_text = desc + " " + descendants
-                vec = self.embedder.encode(combined_text)
+                if self.condition == 'altlabel-context':
+                    altlabels = self.get_altlabels_by_label(desc)
+                    print(f"Concept {desc} has alternative labels: {altlabels}\n{'*'*100}")
+                    
+                    # --- collect embeddings ---
+                    all_labels = [desc] + altlabels
+                    all_embeddings = [self.embed_single_entity(lbl) for lbl in set(all_labels)]
+
+                    # --- average embeddings along axis 0 ---
+                    vec = sum(all_embeddings) / len(all_embeddings)
+                else:
+                    descendants = self.get_hierarchy(iri, depth=depth)
+                    combined_text = desc + " " + descendants
+                    vec = self.embedder.encode(combined_text)
 
                 # --- Similarity computation ---
                 sim = util.cos_sim(self.target_emb, vec).item()  # scalar
@@ -582,9 +583,9 @@ class BaseLinePerceivedEntityLinker:
         return scores, round(time.time() - start, 2)
 
 
-# ==================
+# ========================================================================================
 # EXPERIMENTS
-# ------------------
+# ----------------------------------------------------------------------------------------
 
 def experiment_baseline(groundtruth, source_name):
     
@@ -628,14 +629,14 @@ def experiment_baseline(groundtruth, source_name):
         writer.writerows(rows)
     logging.info(f"Results saved → {RESULTS_PATH}")
 
-def experiment_orvis_linker(groundtruth, source_name):
+def experiment_orvis_linker(groundtruth, source_name, depth=1):
     linker = PerceivedEntityLinker()
     rows = []
     for i, target_id in enumerate(list(groundtruth.keys())):
         names = groundtruth[target_id]
         for name in names:
             closests, elapsed_cand = linker.candidate_selection(name)
-            closests_ordered, elapsed_disamb = linker.disambiguate(closests)
+            closests_ordered, elapsed_disamb = linker.disambiguate(closests, depth)
             
             if closests_ordered:
                 closest = closests_ordered[0][0]
@@ -660,7 +661,7 @@ def experiment_orvis_linker(groundtruth, source_name):
                 "time_sec_disambiguation": elapsed_disamb
             })
     
-    RESULTS_PATH = Path(f'experiments/perceived-entity-linking/results-complete-{source_name}.csv')
+    RESULTS_PATH = Path(f'experiments/perceived-entity-linking/results-complete-depth{depth}-{source_name}.csv')
     RESULTS_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(RESULTS_PATH, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=rows[0].keys())
@@ -831,12 +832,56 @@ def experiment_orvis_linker_no_physical_filter(groundtruth, source_name):
         writer.writerows(rows)
     logging.info(f"Results saved → {RESULTS_PATH}")
 
+
+def experiment_orvis_linker_altlabel_context(groundtruth, source_name):
+    condition = 'altlabel-context'
+    linker = AblatedPerceivedEntityLinker(condition=condition)
+    rows = []
+    for i, target_id in enumerate(list(groundtruth.keys())):
+        names = groundtruth[target_id]
+        for name in names:
+            closests, elapsed_cand = linker.candidate_selection(name)
+            closests_ordered, elapsed_disamb = linker.disambiguate(closests)
+            
+            if closests_ordered:
+                closest = closests_ordered[0][0]
+                clean_result = closest.split('. Definition')[0].strip()
+                print(closest[0])
+                result_id = linker.label_to_id.get(closest, 'N/A')
+            else:
+                clean_result = 'N/A'
+                result_id = 'N/A'
+            correct = (target_id == result_id)
+            logging.info(
+                f"[{i+1}] {name}: Target={target_id}, Result={result_id}, "
+                f"LabelMatch={clean_result}, Match={correct}"
+            )
+            rows.append({
+                "query": name,
+                "closest_label": clean_result,
+                "target_id": target_id,
+                "result_id": result_id,
+                "correct": correct,
+                "time_sec_candidate_selection": elapsed_cand,
+                "time_sec_disambiguation": elapsed_disamb
+            })
+    
+    RESULTS_PATH = Path(f'experiments/perceived-entity-linking/results-{condition}-{source_name}.csv')
+    RESULTS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with open(RESULTS_PATH, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=rows[0].keys())
+        writer.writeheader()
+        writer.writerows(rows)
+    logging.info(f"Results saved → {RESULTS_PATH}")
+
+
 def main():
-    for source in [VGENOME_SOURCE_PATH]:
+    for source in [IMGNET_SOURCE_PATH,VGENOME_SOURCE_PATH]:
         groundtruth = load_groundtruth(source)
         source_name = source.split('/')[-1].split('.')[0]
-        # experiment_orvis_linker(groundtruth, source_name)
-        experiment_baseline(groundtruth, source_name)
+        #experiment_orvis_linker(groundtruth, source_name)
+        experiment_orvis_linker_altlabel_context(groundtruth, source_name)
+        #experiment_baseline(groundtruth, source_name)
         # experiment_orvis_linker_no_context(groundtruth, source_name)
         # experiment_orvis_linker_no_physical_filter(groundtruth, source_name)
         # experiment_orvis_linker_no_noun_filter(groundtruth, source_name)
