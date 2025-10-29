@@ -6,7 +6,8 @@ from sentence_transformers import SentenceTransformer, util
 import os
 from nltk.corpus import wordnet as wn
 import Levenshtein
-
+from rapidfuzz import process, fuzz
+from functools import lru_cache
 logging.basicConfig(level=logging.DEBUG, format='[%(levelname)s] %(message)s')
 kg_path = Path('linking/wn_full.owl')
 definition_iri = "http://example.org/wordnet.owl#definition"
@@ -432,219 +433,154 @@ class AblatedPerceivedEntityLinker:
 #  BaseLine Perceived-Entity Linker
 # ---------------------------------
 
+
 class BaseLinePerceivedEntityLinker:
-    def __init__(self, kg_path='linking/wn_full.owl', model="all-MiniLM-L6-v2"):
+    def __init__(self, kg_path="linking/wn_full.owl"):
+        # --- config + well-typed URIs (use URIRef; string equality fails for rdflib terms) ---
         self.kg_path = Path(kg_path)
-        self.definition_iri = "http://example.org/wordnet.owl#definition"
-        self.altlabel_iri = "http://example.org/wordnet.owl#altLabel"
-        self.concepts, self.kg, self.id_to_label, self.label_to_iri, self.iri_to_id = self.load_knowledgegraph()
-        self.label_to_id = {v: k for k, v in self.id_to_label.items()}
-        self.target_concept = None
-        logging.info("BaseLine PerceivedEntityLinker initialized and ready.")
+        self.definition_iri  = "http://example.org/wordnet.owl#definition"
+        self.identifier_iri  = "http://example.org/wordnet.owl#identifier"
+        self.altlabel_iri    = "http://example.org/wordnet.owl#altLabel"
+        self.target_concept  = None
 
-    def load_knowledgegraph(self):
-        logging.info("Loading knowledge graph via SPARQL...")
-        g = Graph()
-        g.parse(str(self.kg_path))
+        self.ALT   = URIRef(self.altlabel_iri)          # altLabel predicate
+        self.IDENT = URIRef(self.identifier_iri)        # identifier predicate
 
-        q = f"""
-        SELECT ?label ?id ?def ?c WHERE {{
-            ?c rdfs:label ?label .
-            OPTIONAL {{ ?c <{identifier_iri}> ?id . }}
-            OPTIONAL {{ ?c <{definition_iri}> ?def . }}
-        }}
-        """
-        results = list(g.query(q))  # materialize once
-        logging.debug("Loaded graph...")
-        concept_id_lookup = {
-            str(r['id']): f"{r['label']}. Definition: {r['def'] if r['def'] else ''}"
-            for r in results
-            if r['id'] is not None
-        }
-        iri_id_lookup = {
-            str(r['c']): f"{r['id']}"
-            for r in results
-            if r['id'] is not None
-        }
-        concept_iri_lookup = {
-            f"{r['label']}. Definition: {r['def'] if r['def'] else ''}": str(r['c'])
-            for r in results
-        }
-        concepts = list(concept_iri_lookup.keys())
-        logging.debug(f"Loaded {len(concepts)} concepts. Example: {concepts[:3]}")
-        return concepts, g, concept_id_lookup, concept_iri_lookup, iri_id_lookup
+        # --- load KG once ---
+        self.kg = Graph()
+        self.kg.parse(str(self.kg_path))
+
+        # --- precompute in-memory indices for O(1) lookups ---
+        # Note: use IRIs (stringified) as canonical keys to avoid term-type surprises.
+        self.label_to_iri : dict[str,str] = {}          # "apple" -> "http://.../Apple_iri"
+        self.iri_to_label : dict[str,str] = {}          # "http://.../Apple_iri" -> "Apple"
+        self.altlabels    : dict[str,set] = {}          # "http://.../Apple_iri" -> {"pome", "malus domestica", ...}
+        self.subclasses   : dict[str,set] = {}          # "child_iri" -> {"parent_iri1", "parent_iri2", ...}
+        self.iri_to_id    : dict[str,str] = {}          # "http://.../Apple_iri" -> "wn:01234567-n"
+        self.id_to_label  : dict[str,str] = {}          # "wn:01234567-n" -> "Apple"
+
+        # --- single pass over triples; compare predicates to RDFS/URIRef (not str) ---
+        for s, p, o in self.kg.triples((None, None, None)):
+            s_str = str(s)
+
+            # rdfs:label
+            if p == RDFS.label:
+                lbl = str(o)
+                self.iri_to_label[s_str] = lbl
+                self.label_to_iri[lbl.lower()] = s_str
+
+            # altLabel
+            elif p == self.ALT:
+                self.altlabels.setdefault(s_str, set()).add(str(o))
+
+            # rdfs:subClassOf
+            elif p == RDFS.subClassOf:
+                self.subclasses.setdefault(s_str, set()).add(str(o))
+
+            # identifier
+            elif p == self.IDENT:
+                self.iri_to_id[s_str] = str(o)
+
+        # --- backfill id -> label once labels are known (2nd pass to avoid order dependency) ---
+        for iri, _id in self.iri_to_id.items():
+            lbl = self.iri_to_label.get(iri)
+            if lbl is not None:
+                self.id_to_label[_id] = lbl
+
+        # --- optional convenience map (label -> id); safe only when both exist ---
+        self.label_to_id = {}
+        for _id, lbl in self.id_to_label.items():
+            self.label_to_id[lbl] = _id
+
+        logging.info(f"Preloaded {len(self.label_to_iri)} labels, "
+                     f"{sum(len(v) for v in self.altlabels.values())} altlabels, "
+                     f"{sum(len(v) for v in self.subclasses.values())} subclass links, "
+                     f"{len(self.iri_to_id)} identifiers")
+
+    # --- caching + fast helpers (unchanged logic; comments explain intent) ---
+    @lru_cache(maxsize=None)
+    def get_synset(self, name):
+        # Normalize for WN lookup; cache to avoid repeated I/O-bound calls.
+        query = name.strip().replace(" ", "_").lower()
+        return wn.synsets(query)
+
+    @lru_cache(maxsize=None)
+    def get_names(self, synset):
+        # Lemma names of a synset; cached because we may revisit same synsets.
+        return synset.lemma_names() if synset else []
 
     def get_altlabels_by_label(self, label):
-        
-        logging.debug(f"Looking for alternative labels for {label}")
-        q = f"""
-        SELECT ?altlabel WHERE {{
-            ?entity rdfs:label ?l .
-            FILTER (lcase(str(?l)) = lcase("{label}"))
-            OPTIONAL {{ ?entity <{self.altlabel_iri}> ?altlabel . }}
-        }}
-        """
-        results = list(self.kg.query(q))
-
-        if not results:
-            logging.debug(f"No entity found for label: {label}")
+        # Resolve rdfs:label -> IRI -> altLabels; include the input label itself; dedup via set.
+        iri = self.label_to_iri.get(label.lower())
+        if not iri:
             return [label]
-        altlabels = list({str(r["altlabel"]) for r in results if r["altlabel"]})
-        altlabels.append(label)
-        print(altlabels)
-        return altlabels
+        return list(self.altlabels.get(iri, set()) | {label})
 
     def get_entities_by_label(self, label):
-        logging.debug(f'...Getting entities by label: {label}')
-        q = f"""
-        SELECT ?entity WHERE {{
-            ?entity rdfs:label ?l .
-            FILTER (lcase(str(?l)) = lcase("{label}"))
-        }}
-        """
-        results = list(self.kg.query(q))
-        entities = [str(row["entity"]) for row in results]
-        logging.debug(f'...Found entities: {entities}')
-        return entities
-
-    def get_synset(self, entity_name):
-
-        # Normalize entity name (WordNet is case-sensitive and expects underscores)
-        query = entity_name.strip().replace(" ", "_").lower()
-        synsets = wn.synsets(query)
-        if not synsets:
-            logging.debug(f"No synsets found for entity: {entity_name}")
-            return []
-        logging.debug(f"Found {len(synsets)} synsets for '{entity_name}': {[s.name() for s in synsets]}")
-        return synsets
-
-    def get_names(self, synset):
-        if not synset:
-            return []
-        names = synset.lemma_names()
-        logging.debug(f"Lemmas for {synset.name()}: {names}")
-        return names
-
-
-    def get_synset_similarity(self, synsets_A, synset_B):
-        if not synsets_A or not synset_B:
-            return 0.0
-
-        target_name = synset_B.name().split(".")[0].replace("_", " ").lower()
-        max_score = 0.0
-
-        for sA in synsets_A:
-            nameA = sA.name().split(".")[0].replace("_", " ").lower()
-            # Levenshtein ratio gives normalized similarity (1 = identical)
-            score = Levenshtein.ratio(nameA, target_name)
-            max_score = max(max_score, score)
-        return max_score
+        # Resolve label directly to entity IRI if present; keep API compatibility (list).
+        iri = self.label_to_iri.get(label.lower())
+        return [iri] if iri else []
 
     def get_class(self, entity_iri):
-        q = f"""
-        SELECT ?class_label WHERE {{
-            <{entity_iri}> rdfs:subClassOf ?cls .
-            OPTIONAL {{ ?cls rdfs:label ?class_label . }}
-        }}
-        """
-        results = list(self.kg.query(q))
-
-        class_labels = []
-        for row in results:
-            if row.get("class_label"):
-                class_labels.append(str(row["class_label"]))
-            else:
-                # fallback to the class IRI if label is missing
-                q2 = f"""
-                SELECT ?cls WHERE {{
-                    <{entity_iri}> rdf:type ?cls .
-                }}
-                """
-                class_labels.extend([str(r["cls"]) for r in self.kg.query(q2)])
-
-        return class_labels
+        # Return direct rdfs:subClassOf parents (as IRIs); empty list if none.
+        return list(self.subclasses.get(entity_iri, []))
 
     def candidate_selection(self, concept, k=5):
-        logging.debug(f"Selecting candidates for: {concept}")
-        self.target_concept = concept
+        # Build candidate entity IRIs via altLabels+lemmas; score by RapidFuzz and pick top-k.
         start = time.time()
-        # --- 1. Retrieve WordNet synsets for the observed entity ---
+        self.target_concept = concept
         synsets = self.get_synset(concept)
         if not synsets:
-            logging.debug("No synsets found, returning the entity itself.")
-            elapsed = round(time.time() - start, 2)
-            return [(concept, 1.0)], elapsed
+            return [(concept, 1.0)], round(time.time() - start, 2)
 
         candidates = []
-
-        # --- 2. Iterate over each synset ---
+        altlabels = self.get_altlabels_by_label(concept)
         for sn in synsets:
-            # Retrieve all names (lemmas) associated with the synset
-            raw_names = self.get_names(sn)            
-            # Add variations:
-            logging.debug(f"\t Raw names: {raw_names}")
-            altLabels = self.get_altlabels_by_label(concept)
-            logging.debug(f"\t Alternative labels for {concept}: {altLabels}")
-            names = set(altLabels + raw_names) if raw_names else altLabels
-            logging.debug(f"Synset {sn} → {names}")
-            # --- 3. Compute similarity between the perceived entity and each name ---
-            for name in names:
-                sim_score = Levenshtein.ratio(concept, name)
-                candidates.append((name, sim_score))
-                logging.debug(f"Similarity({concept}, {name}) = {sim_score:.3f}")
+            names = self.get_names(sn)
+            for name in set(names + altlabels):
+                sim = fuzz.ratio(concept, name) / 100.0  # normalize 0..1
+                candidates.append((name, sim))
 
-        # --- 4. Sort candidates by descending similarity score ---
         candidates.sort(key=lambda x: x[1], reverse=True)
-        logging.debug(f"Top candidate labels: {candidates[:k]}")
+        top_entities = []
+        for c, _ in candidates[:k]:
+            top_entities.extend(self.get_entities_by_label(c))
+        return top_entities[:k], round(time.time() - start, 2)
 
-        candidate_entities = []
-        for candidate, _ in candidates[:k]:
-            results = self.get_entities_by_label(candidate)
-            candidate_entities.extend(results)
-            logging.debug(f"Candidate entities found for {candidate} candidates: {results}")
-        elapsed = round(time.time() - start, 2)
-        return candidate_entities[:k], elapsed
+    def get_synset_similarity(self, synsets_A, synset_B):
+        # Max string similarity across lemma-names of synsets; cheap and robust baseline.
+        if not synsets_A or not synset_B:
+            return 0.0
+        target = synset_B.name().split(".")[0].replace("_", " ").lower()
+        return max(
+            fuzz.ratio(s.name().split(".")[0].replace("_", " ").lower(), target) / 100.0
+            for s in synsets_A
+        )
 
-    def disambiguate(self, candidates):
+    def disambiguate(self, candidates, target_concept=None):
+        # Make disambiguation independent of prior call order; allow explicit target.
+        if target_concept is not None:
+            self.target_concept = target_concept
+        if not self.target_concept:
+            raise ValueError("target_concept must be provided or set earlier via candidate_selection().")
 
-        logging.debug(f"Disambiguating entity: {self.target_concept}")
         start = time.time()
-        # --- 1. Get synsets of the observed entity (WordNet) ---
         target_ss = self.get_synset(self.target_concept)
         if not target_ss:
-            logging.debug(f"No synsets found for observed entity '{self.target_concept}', returning candidates as-is.")
             return candidates, 0.0
 
         scores = []
-
-        # --- 2. Iterate through each candidate ---
         for c in candidates:
-            logging.debug(f"Examining Candidate '{c}'")
             high_score = 0.0
-
-            # --- 3. Retrieve candidate's ontology classes from target KG ---
-            candidate_classes = self.get_class(c)
-            logging.debug(f"Candidate '{c}' has classes: {candidate_classes}")
-
-            # --- 4. Compare the synsets of each class to the observed entity synsets ---
-            for cls in candidate_classes:
-                class_ss = self.get_synset(cls)
-
-                for ss in class_ss:
-                    # Compute maximum pairwise similarity between the synsets
-                    sim_score = self.get_synset_similarity(target_ss, ss)
-
-                    if sim_score > high_score:
-                        high_score = sim_score
-
+            for cls in self.get_class(c):
+                for ss in self.get_synset(cls):
+                    sim = self.get_synset_similarity(target_ss, ss)
+                    high_score = max(high_score, sim)
             scores.append((c, high_score))
-            logging.debug(f"Candidate '{c}' → best synset similarity = {high_score:.3f}")
 
-        # --- 5. Sort candidates by descending similarity ---
-        scores.sort(key=lambda x: x[0], reverse=True)
-        logging.debug(f"Top disambiguation results: {scores[:5]}")
-        elapsed = round(time.time() - start, 2)
-        return scores, elapsed  
+        scores.sort(key=lambda x: x[1], reverse=True)
+        return scores, round(time.time() - start, 2)
+
 
 # ==================
 # EXPERIMENTS
@@ -664,10 +600,7 @@ def experiment_baseline(groundtruth, source_name):
             # print(closests_ordered)
             if closests_ordered:
                 closest = closests_ordered[0][0]
-                print(closest)
-                print(closests_ordered)
                 clean_result = closest.split('. Definition')[0].strip()
-                print(closest[0])
                 result_id = linker.iri_to_id.get(closest, 'N/A')
             else:
                 clean_result = 'N/A'
