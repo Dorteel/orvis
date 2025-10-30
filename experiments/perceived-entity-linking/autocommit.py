@@ -33,7 +33,7 @@ while True:
         try:
             run("git add -A")
             run(f'git commit -m "Auto: results update"')
-            run("git pull --rebase")
+            run("git pull --rebase --autostash")
             run("git push")
         except Exception:
             print("Git push failed, continuing...")
