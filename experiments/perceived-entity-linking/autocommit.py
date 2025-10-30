@@ -31,7 +31,7 @@ while True:
         json.dump(old_hash, open(STATE_FILE, "w"))
 
         try:
-            run("git add .")
+            run("git add -A")
             run(f'git commit -m "Auto: results update"')
             run("git pull --rebase")
             run("git push")

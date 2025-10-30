@@ -879,6 +879,7 @@ def main():
     for source in [IMGNET_SOURCE_PATH,VGENOME_SOURCE_PATH]:
         groundtruth = load_groundtruth(VGENOME_SOURCE_PATH)
         source_name = source.split('/')[-1].split('.')[0]
+        logging.info('Starting Experiments')
         experiment_orvis_linker(groundtruth, source_name)
         # experiment_orvis_linker_altlabel_context(groundtruth, source_name)
         #experiment_baseline(groundtruth, source_name)
