@@ -859,7 +859,7 @@ def experiment_orvis_linker_altlabel_context(groundtruth, source_name):
             rows.append({
                 "query": name,
                 "closest_label": clean_result,
-                "target_id": target_id,
+                "targalwayset_id": target_id,
                 "result_id": result_id,
                 "correct": correct,
                 "time_sec_candidate_selection": elapsed_cand,
@@ -877,10 +877,10 @@ def experiment_orvis_linker_altlabel_context(groundtruth, source_name):
 
 def main():
     for source in [IMGNET_SOURCE_PATH,VGENOME_SOURCE_PATH]:
-        groundtruth = load_groundtruth(source)
+        groundtruth = load_groundtruth(VGENOME_SOURCE_PATH)
         source_name = source.split('/')[-1].split('.')[0]
-        #experiment_orvis_linker(groundtruth, source_name)
-        experiment_orvis_linker_altlabel_context(groundtruth, source_name)
+        experiment_orvis_linker(groundtruth, source_name)
+        # experiment_orvis_linker_altlabel_context(groundtruth, source_name)
         #experiment_baseline(groundtruth, source_name)
         # experiment_orvis_linker_no_context(groundtruth, source_name)
         # experiment_orvis_linker_no_physical_filter(groundtruth, source_name)
