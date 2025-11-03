@@ -478,50 +478,65 @@ class BaseLinePerceivedEntityLinker:
 
 def run_experiment(linker, groundtruth, source_name, exp_name, skip_disamb=False):
     rows = []
+
     for i, target_id in enumerate(list(groundtruth.keys())):
         for name in groundtruth[target_id]:
+            # candidate selection
             closests, t_cand = linker.candidate_selection(name)
 
+            # disambiguation
             if skip_disamb:
                 closests_ordered, t_disamb = closests, 0.0
             else:
                 closests_ordered, t_disamb = linker.disambiguate(closests)
 
-            if closests_ordered:
-                top = closests_ordered[0][0]                 # composite "label. Definition: ..."
-                clean = top.split('. Definition')[0].strip() # pretty label for log
-                iri = linker.label_to_iri.get(top)           # composite -> IRI
-                result_id = None
-                if iri is not None and hasattr(linker, "iri_to_id"):
-                    result_id = linker.iri_to_id.get(iri)
-                if not result_id:
-                    # fallback to composite->id map if available
-                    result_id = linker.label_to_id.get(top, 'N/A')
-            else:
-                clean, iri, result_id = 'N/A', None, 'N/A'
+            # ranked KG IDs
+            ranked_ids = []
+            for label, _ in closests_ordered:
+                iri = linker.label_to_iri.get(label)
+                candidate_id = linker.iri_to_id.get(iri) if iri else None
+                ranked_ids.append(candidate_id)
 
-            is_correct = (target_id == result_id)
-            logging.debug(
-                f"[EXP] Query='{name}' → PredLabel='{clean}' PredIRI='{iri}' PredID='{result_id}' "
-                f"GTID='{target_id}' Correct={is_correct}"
-            )
+            # compute rank
+            rank = None
+            if target_id in ranked_ids:
+                rank = ranked_ids.index(target_id) + 1  # 1-based index
+            else:
+                rank = -1
+
+            # hits@k booleans
+            hit1 = (rank == 1)
+            hit3 = (rank != -1 and rank <= 3)
+            hit5 = (rank != -1 and rank <= 5)
+
+            # top prediction fields
+            if ranked_ids:
+                best_id = ranked_ids[0]
+                best_label = closests_ordered[0][0].split('. Definition')[0]
+            else:
+                best_id, best_label = 'N/A', 'N/A'
 
             rows.append({
                 "query": name,
-                "closest_label": clean,
+                "closest_label": best_label,
                 "target_id": target_id,
-                "result_id": result_id,
-                "correct": is_correct,
+                "result_id": best_id,
+                "correct": (best_id == target_id),
+                "rank": rank,
+                "hit@1": hit1,
+                "hit@3": hit3,
+                "hit@5": hit5,
                 "time_sec_candidate_selection": t_cand,
                 "time_sec_disambiguation": t_disamb
             })
 
-
+    # save CSV
     out = Path(f"experiments/perceived-entity-linking/results/{exp_name}-{source_name}.csv")
     out.parent.mkdir(parents=True, exist_ok=True)
     with open(out, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=rows[0].keys())
         writer.writeheader(); writer.writerows(rows)
+
     logging.info(f"Results saved → {out}")
 
 
@@ -537,7 +552,7 @@ EXPERIMENTS = {
 
 
 def main():
-    for source in [IMGNET_SOURCE_PATH, VGENOME_SOURCE_PATH]:
+    for source in [ VGENOME_SOURCE_PATH]:
         groundtruth = load_groundtruth(source)
         source_name = Path(source).stem
 
