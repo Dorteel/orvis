@@ -8,6 +8,9 @@ from nltk.corpus import wordnet as wn
 import Levenshtein
 from rapidfuzz import process, fuzz
 from functools import lru_cache
+import faiss
+
+
 logging.basicConfig(level=logging.DEBUG, format='[%(levelname)s] %(message)s')
 kg_path = Path('linking/wn_full.owl')
 definition_iri = "http://example.org/wordnet.owl#definition"
@@ -111,6 +114,27 @@ class BaseLinker:
             self.save_embedded_kg()
         logging.debug(f"[INIT] Loaded {len(self.embedded_kg)} KG embeddings.")
 
+        # Build FAISS index (L2 normalized embeddings for cosine search)
+        logging.debug("[FAISS] Preparing embedding matrix for FAISS...")
+        vecs = [v.cpu().numpy().astype("float32") for v in self.embedded_kg.values()]
+        self.kg_matrix = np.vstack(vecs)
+
+        # Normalize for cosine similarity -> L2 distance equivalence
+        faiss.normalize_L2(self.kg_matrix)
+
+        dim = self.kg_matrix.shape[1]  # embedding dimension
+
+        logging.debug(f"[FAISS] Building index of size {len(self.kg_matrix)} x {dim}")
+        self.faiss_index = faiss.IndexFlatIP(dim)  # inner product ≡ cosine for normalized vectors
+
+        # add vectors to index
+        self.faiss_index.add(self.kg_matrix)
+
+        # maintain mapping from FAISS row → concept string
+        self.faiss_keys = list(self.embedded_kg.keys())
+
+        logging.info(f"[FAISS] Index built with {self.faiss_index.ntotal} vectors.")
+
         logging.info(f"{self.__class__.__name__} initialized")
 
     def get_descendants(self, root):
@@ -211,13 +235,23 @@ class BaseLinker:
         return self.embed_cached(text)
 
     def knn(self, q_emb, k=5):
-        logging.debug(f"[KNN] Searching top-{k}")
-        res = sorted(
-            ((c, util.cos_sim(q_emb, v).item()) for c, v in self.embedded_kg.items()),
-            key=lambda x: x[1], reverse=True
-        )[:k]
-        logging.debug(f"[KNN] Top match: {res[0] if res else 'None'}")
-        return res
+        # encode query → numpy float32
+        q = q_emb.cpu().numpy().astype("float32")
+        q = q.reshape(1, -1)
+
+        # normalize for cosine similarity
+        faiss.normalize_L2(q)
+
+        # FAISS search (returns scores and indices)
+        scores, idxs = self.faiss_index.search(q, k)
+
+        results = []
+        for score, idx in zip(scores[0], idxs[0]):
+            key = self.faiss_keys[idx]          # concept label string
+            results.append((key, float(score))) # consistent return format
+        
+        logging.debug(f"[FAISS-KNN] Query top: {results[0] if results else None}")
+        return results
 
 # =================================
 #  PEL
@@ -492,7 +526,7 @@ def run_experiment(linker, groundtruth, source_name, exp_name, skip_disamb=False
 
 
 EXPERIMENTS = {
-    "baseline":          (lambda: BaseLinePerceivedEntityLinker(), False),
+    #"baseline":          (lambda: BaseLinePerceivedEntityLinker(), False),
     "complete":          (lambda: PerceivedEntityLinker(), False),
     "no-context":        (lambda: AblatedPerceivedEntityLinker("no-context"), False),
     "no-physical":       (lambda: AblatedPerceivedEntityLinker("no-physical"), False),

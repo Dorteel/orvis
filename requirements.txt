@@ -298,3 +298,4 @@ zipp==3.20.1
 sentence_transformers
 python-Levenshtein
 pandas
+faiss-cpu
