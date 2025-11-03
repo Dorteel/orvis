@@ -28,4 +28,4 @@ for file in results_dir.glob("results-*-*.csv"):
 # --- Build DataFrame ---
 table = pd.DataFrame(data).T.sort_index()  # conditions as rows
 print("\n=== Accuracy Table (% correct per condition) ===")
-print(table.round(2).to_string())
+print(table.round(4).to_string())
