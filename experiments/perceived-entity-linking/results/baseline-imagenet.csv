@@ -1,0 +1,1861 @@
+query,closest_label,target_id,result_id,correct,rank,hit@1,hit@3,hit@5,time_sec_candidate_selection,time_sec_disambiguation
+tench,tench,01440764-n,01440764-n,True,1,True,True,True,1.8361,0.0
+Tinca tinca,tench,01440764-n,01440764-n,True,1,True,True,True,0.0001,0.0
+goldfish,goldfish,01443537-n,01443537-n,True,1,True,True,True,0.0001,0.0
+Carassius auratus,goldfish,01443537-n,01443537-n,True,1,True,True,True,0.0001,0.0
+great white shark,great white shark,01484850-n,01484850-n,True,1,True,True,True,0.0002,0.0
+white shark,great white shark,01484850-n,01484850-n,True,1,True,True,True,0.0001,0.0
+man-eater,great white shark,01484850-n,01484850-n,True,1,True,True,True,0.0001,0.0
+man-eating shark,great white shark,01484850-n,01484850-n,True,1,True,True,True,0.0001,0.0
+Carcharodon carcharias,great white shark,01484850-n,01484850-n,True,1,True,True,True,0.0001,0.0
+tiger shark,tiger shark,01491361-n,01491361-n,True,1,True,True,True,0.0001,0.0
+Galeocerdo cuvieri,tiger shark,01491361-n,01491361-n,True,1,True,True,True,0.0001,0.0
+hammerhead,hammerhead,01494475-n,01494475-n,True,1,True,True,True,0.0002,0.0001
+hammerhead shark,hammerhead,01494475-n,01494475-n,True,1,True,True,True,0.0001,0.0
+electric ray,electric ray,01496331-n,01496331-n,True,1,True,True,True,0.0001,0.0001
+crampfish,electric ray,01496331-n,01496331-n,True,1,True,True,True,0.0001,0.0
+numbfish,electric ray,01496331-n,01496331-n,True,1,True,True,True,0.0001,0.0
+torpedo,torpedo,01496331-n,04456734-n,False,-1,False,False,False,0.0155,0.0
+stingray,stingray,01498041-n,01498041-n,True,1,True,True,True,0.0001,0.0
+cock,cock,01514668-n,01514668-n,True,1,True,True,True,0.0004,0.0
+hen,hen,01514859-n,01792640-n,False,-1,False,False,False,0.0003,0.0
+ostrich,ostrich,01518878-n,01518878-n,True,1,True,True,True,0.0001,0.0001
+Struthio camelus,ostrich,01518878-n,01518878-n,True,1,True,True,True,0.0001,0.0
+brambling,brambling,01530575-n,01530575-n,True,1,True,True,True,0.0001,0.0
+Fringilla montifringilla,brambling,01530575-n,01530575-n,True,1,True,True,True,0.0001,0.0
+goldfinch,goldfinch,01531178-n,01531178-n,True,1,True,True,True,0.0002,0.0001
+Carduelis carduelis,goldfinch,01531178-n,01531178-n,True,1,True,True,True,0.0001,0.0
+house finch,house finch,01532829-n,01532829-n,True,1,True,True,True,0.0001,0.0
+linnet,linnet,01532829-n,01531344-n,False,-1,False,False,False,0.0001,0.0
+Carpodacus mexicanus,house finch,01532829-n,01532829-n,True,1,True,True,True,0.0001,0.0
+junco,junco,01534433-n,01534433-n,True,1,True,True,True,0.0001,0.0
+snowbird,snow bunting,01534433-n,01538630-n,False,-1,False,False,False,0.0002,0.0001
+indigo bunting,indigo bunting,01537544-n,01537544-n,True,1,True,True,True,0.0002,0.0001
+indigo finch,indigo bunting,01537544-n,01537544-n,True,1,True,True,True,0.0001,0.0
+indigo bird,indigo bunting,01537544-n,01537544-n,True,1,True,True,True,0.0001,0.0
+Passerina cyanea,indigo bunting,01537544-n,01537544-n,True,1,True,True,True,0.0001,0.0
+robin,robin,01558993-n,01562265-n,False,-1,False,False,False,0.0002,0.0001
+American robin,robin,01558993-n,01562265-n,False,-1,False,False,False,0.0001,0.0
+Turdus migratorius,robin,01558993-n,01562265-n,False,-1,False,False,False,0.0001,0.0
+bulbul,bulbul,01560419-n,01560419-n,True,1,True,True,True,0.0001,0.0
+jay,jay,01580077-n,11081111-n,False,-1,False,False,False,0.0002,0.0001
+magpie,magpie,01582220-n,01582220-n,True,1,True,True,True,0.0002,0.0001
+chickadee,chickadee,01592084-n,01592084-n,True,1,True,True,True,0.0001,0.0
+water ouzel,water ouzel,01601694-n,01601694-n,True,1,True,True,True,0.0001,0.0001
+dipper,dipper,01601694-n,03204306-n,False,-1,False,False,False,0.0003,0.0
+kite,kite,01608432-n,13382306-n,False,-1,False,False,False,0.0003,0.0
+bald eagle,bald eagle,01614925-n,01614925-n,True,1,True,True,True,0.0001,0.0001
+American eagle,bald eagle,01614925-n,01614925-n,True,1,True,True,True,0.0001,0.0
+Haliaeetus leucocephalus,bald eagle,01614925-n,01614925-n,True,1,True,True,True,0.0001,0.0
+vulture,vulture,01616318-n,01616318-n,True,1,True,True,True,0.0002,0.0001
+great grey owl,great grey owl,01622779-n,01622779-n,True,1,True,True,True,0.0001,0.0001
+great gray owl,great grey owl,01622779-n,01622779-n,True,1,True,True,True,0.0001,0.0
+Strix nebulosa,great grey owl,01622779-n,01622779-n,True,1,True,True,True,0.0001,0.0
+European fire salamander,european fire salamander,01629819-n,01629819-n,True,1,True,True,True,0.0001,0.0001
+Salamandra salamandra,european fire salamander,01629819-n,01629819-n,True,1,True,True,True,0.0001,0.0
+common newt,common newt,01630670-n,01630670-n,True,1,True,True,True,0.0001,0.0001
+Triturus vulgaris,common newt,01630670-n,01630670-n,True,1,True,True,True,0.0001,0.0
+eft,eft,01631663-n,01631663-n,True,1,True,True,True,0.0001,0.0
+spotted salamander,spotted salamander,01632458-n,01632458-n,True,1,True,True,True,0.0002,0.0001
+Ambystoma maculatum,spotted salamander,01632458-n,01632458-n,True,1,True,True,True,0.0001,0.0
+axolotl,axolotl,01632777-n,01632777-n,True,1,True,True,True,0.0001,0.0001
+mud puppy,mud puppy,01632777-n,01634522-n,False,-1,False,False,False,0.0002,0.0
+Ambystoma mexicanum,mud puppy,01632777-n,01634522-n,False,2,False,True,True,0.0001,0.0
+bullfrog,bullfrog,01641577-n,01641577-n,True,1,True,True,True,0.0001,0.0001
+Rana catesbeiana,bullfrog,01641577-n,01641577-n,True,1,True,True,True,0.0001,0.0
+tree frog,tree frog,01644373-n,01644373-n,True,1,True,True,True,0.0002,0.0001
+tree-frog,tree frog,01644373-n,01644373-n,True,1,True,True,True,0.0001,0.0001
+tailed frog,tailed frog,01644900-n,01644900-n,True,1,True,True,True,0.0002,0.0001
+bell toad,tailed frog,01644900-n,01644900-n,True,1,True,True,True,0.0001,0.0
+ribbed toad,tailed frog,01644900-n,01644900-n,True,1,True,True,True,0.0001,0.0
+tailed toad,tailed frog,01644900-n,01644900-n,True,1,True,True,True,0.0001,0.0
+Ascaphus trui,tailed frog,01644900-n,01644900-n,True,1,True,True,True,0.0001,0.0
+loggerhead,loggerhead,01664065-n,01664065-n,True,1,True,True,True,0.0003,0.0001
+loggerhead turtle,loggerhead,01664065-n,01664065-n,True,1,True,True,True,0.0001,0.0
+Caretta caretta,loggerhead,01664065-n,01664065-n,True,1,True,True,True,0.0001,0.0
+leatherback turtle,leatherback turtle,01665541-n,01665541-n,True,1,True,True,True,0.0002,0.0001
+leatherback,leatherback turtle,01665541-n,01665541-n,True,1,True,True,True,0.0001,0.0
+leathery turtle,leatherback turtle,01665541-n,01665541-n,True,1,True,True,True,0.0001,0.0
+Dermochelys coriacea,leatherback turtle,01665541-n,01665541-n,True,1,True,True,True,0.0001,0.0
+mud turtle,mud turtle,01667114-n,01667114-n,True,1,True,True,True,0.0001,0.0001
+terrapin,terrapin,01667778-n,01667778-n,True,1,True,True,True,0.0001,0.0
+box turtle,box turtle,01669191-n,01669191-n,True,1,True,True,True,0.0001,0.0001
+box tortoise,box turtle,01669191-n,01669191-n,True,1,True,True,True,0.0001,0.0
+banded gecko,banded gecko,01675722-n,01675722-n,True,1,True,True,True,0.0001,0.0001
+common iguana,common iguana,01677366-n,01677366-n,True,1,True,True,True,0.0002,0.0001
+iguana,common iguana,01677366-n,01677366-n,True,1,True,True,True,0.0001,0.0
+Iguana iguana,common iguana,01677366-n,01677366-n,True,1,True,True,True,0.0001,0.0
+American chameleon,american chameleon,01682714-n,01682714-n,True,1,True,True,True,0.0002,0.0001
+anole,american chameleon,01682714-n,01682714-n,True,1,True,True,True,0.0001,0.0
+Anolis carolinensis,american chameleon,01682714-n,01682714-n,True,1,True,True,True,0.0001,0.0
+whiptail,whiptail,01685808-n,01685808-n,True,1,True,True,True,0.0002,0.0001
+whiptail lizard,whiptail,01685808-n,01685808-n,True,1,True,True,True,0.0001,0.0
+agama,agama,01687978-n,01687978-n,True,1,True,True,True,0.0001,0.0001
+frilled lizard,frilled lizard,01688243-n,01688243-n,True,1,True,True,True,0.0002,0.0001
+Chlamydosaurus kingi,frilled lizard,01688243-n,01688243-n,True,1,True,True,True,0.0001,0.0
+alligator lizard,alligator lizard,01689811-n,01689811-n,True,1,True,True,True,0.0001,0.0001
+Gila monster,gila monster,01692333-n,01692333-n,True,1,True,True,True,0.0001,0.0001
+Heloderma suspectum,gila monster,01692333-n,01692333-n,True,1,True,True,True,0.0001,0.0
+green lizard,green lizard,01693334-n,01693334-n,True,1,True,True,True,0.0001,0.0001
+Lacerta viridis,green lizard,01693334-n,01693334-n,True,1,True,True,True,0.0001,0.0
+African chameleon,african chameleon,01694178-n,01694178-n,True,1,True,True,True,0.0002,0.0001
+Chamaeleo chamaeleon,african chameleon,01694178-n,01694178-n,True,1,True,True,True,0.0001,0.0
+Komodo dragon,komodo dragon,01695060-n,01695060-n,True,1,True,True,True,0.0002,0.0
+Komodo lizard,komodo dragon,01695060-n,01695060-n,True,1,True,True,True,0.0001,0.0
+dragon lizard,komodo dragon,01695060-n,01695060-n,True,1,True,True,True,0.0001,0.0
+giant lizard,N/A,01695060-n,N/A,False,-1,False,False,False,0.0001,0.0
+Varanus komodoensis,komodo dragon,01695060-n,01695060-n,True,1,True,True,True,0.0001,0.0
+African crocodile,african crocodile,01697457-n,01697457-n,True,1,True,True,True,0.0002,0.0001
+Nile crocodile,african crocodile,01697457-n,01697457-n,True,1,True,True,True,0.0001,0.0
+Crocodylus niloticus,african crocodile,01697457-n,01697457-n,True,1,True,True,True,0.0001,0.0
+American alligator,american alligator,01698640-n,01698640-n,True,1,True,True,True,0.0001,0.0001
+Alligator mississipiensis,american alligator,01698640-n,01698640-n,True,1,True,True,True,0.0001,0.0
+triceratops,triceratops,01704323-n,01704323-n,True,1,True,True,True,0.0001,0.0001
+thunder snake,thunder snake,01728572-n,01728572-n,True,1,True,True,True,0.0002,0.0001
+worm snake,thunder snake,01728572-n,01728572-n,True,1,True,True,True,0.0001,0.0
+Carphophis amoenus,thunder snake,01728572-n,01728572-n,True,1,True,True,True,0.0001,0.0
+ringneck snake,ringneck snake,01728920-n,01728920-n,True,1,True,True,True,0.0002,0.0001
+ring-necked snake,ringneck snake,01728920-n,01728920-n,True,1,True,True,True,0.0001,0.0
+ring snake,N/A,01728920-n,N/A,False,-1,False,False,False,0.0001,0.0
+hognose snake,hognose snake,01729322-n,01729322-n,True,1,True,True,True,0.0002,0.0001
+puff adder,puff adder,01729322-n,01753032-n,False,-1,False,False,False,0.0001,0.0
+sand viper,horned viper,01729322-n,01753488-n,False,-1,False,False,False,0.0002,0.0
+green snake,green snake,01729977-n,01730563-n,False,-1,False,False,False,0.0001,0.0001
+grass snake,grass snake,01729977-n,01737875-n,False,-1,False,False,False,0.0002,0.0
+king snake,king snake,01734418-n,01734418-n,True,1,True,True,True,0.0001,0.0001
+kingsnake,king snake,01734418-n,01734418-n,True,1,True,True,True,0.0001,0.0
+garter snake,garter snake,01735189-n,01735189-n,True,1,True,True,True,0.0001,0.0001
+grass snake,grass snake,01735189-n,01737875-n,False,-1,False,False,False,0.0001,0.0
+water snake,water snake,01737021-n,01737021-n,True,1,True,True,True,0.0001,0.0
+vine snake,vine snake,01739381-n,01739381-n,True,1,True,True,True,0.0001,0.0
+night snake,night snake,01740131-n,01740131-n,True,1,True,True,True,0.0001,0.0
+Hypsiglena torquata,night snake,01740131-n,01740131-n,True,1,True,True,True,0.0001,0.0
+boa constrictor,boa constrictor,01742172-n,01742172-n,True,1,True,True,True,0.0001,0.0
+Constrictor constrictor,boa constrictor,01742172-n,01742172-n,True,1,True,True,True,0.0001,0.0
+rock python,rock python,01744401-n,01744401-n,True,1,True,True,True,0.0001,0.0001
+rock snake,rock python,01744401-n,01744401-n,True,1,True,True,True,0.0001,0.0
+Python sebae,rock python,01744401-n,01744401-n,True,1,True,True,True,0.0001,0.0
+Indian cobra,indian cobra,01748264-n,01748264-n,True,1,True,True,True,0.0001,0.0001
+Naja naja,indian cobra,01748264-n,01748264-n,True,1,True,True,True,0.0001,0.0
+green mamba,green mamba,01749939-n,01749939-n,True,1,True,True,True,0.0001,0.0
+sea snake,sea snake,01751748-n,01751748-n,True,1,True,True,True,0.0001,0.0001
+horned viper,horned viper,01753488-n,01753488-n,True,1,True,True,True,0.0001,0.0
+cerastes,horned viper,01753488-n,01753488-n,True,1,True,True,True,0.0001,0.0
+sand viper,horned viper,01753488-n,01753488-n,True,1,True,True,True,0.0001,0.0
+horned asp,horned viper,01753488-n,01753488-n,True,1,True,True,True,0.0001,0.0
+Cerastes cornutus,horned viper,01753488-n,01753488-n,True,1,True,True,True,0.0001,0.0
+diamondback,diamondback,01755581-n,01755581-n,True,1,True,True,True,0.0001,0.0
+diamondback rattlesnake,diamondback,01755581-n,01755581-n,True,1,True,True,True,0.0001,0.0
+Crotalus adamanteus,diamondback,01755581-n,01755581-n,True,1,True,True,True,0.0001,0.0
+sidewinder,sidewinder,01756291-n,04215910-n,False,-1,False,False,False,0.0002,0.0
+horned rattlesnake,sidewinder,01756291-n,04215910-n,False,-1,False,False,False,0.0001,0.0
+Crotalus cerastes,sidewinder,01756291-n,04215910-n,False,-1,False,False,False,0.0001,0.0
+trilobite,trilobite,01768244-n,01768244-n,True,1,True,True,True,0.0001,0.0
+harvestman,harvestman,01770081-n,01770081-n,True,1,True,True,True,0.0002,0.0001
+daddy longlegs,N/A,01770081-n,N/A,False,-1,False,False,False,0.0001,0.0
+Phalangium opilio,harvestman,01770081-n,01770081-n,True,1,True,True,True,0.0001,0.0
+scorpion,scorpion,01770393-n,01770393-n,True,1,True,True,True,0.0002,0.0001
+black and gold garden spider,black and gold garden spider,01773157-n,01773157-n,True,1,True,True,True,0.0001,0.0001
+Argiope aurantia,black and gold garden spider,01773157-n,01773157-n,True,1,True,True,True,0.0001,0.0
+barn spider,barn spider,01773549-n,01773549-n,True,1,True,True,True,0.0001,0.0001
+Araneus cavaticus,barn spider,01773549-n,01773549-n,True,1,True,True,True,0.0001,0.0
+garden spider,garden spider,01773797-n,01773797-n,True,1,True,True,True,0.0002,0.0001
+Aranea diademata,garden spider,01773797-n,01773797-n,True,1,True,True,True,0.0001,0.0
+black widow,black widow,01774384-n,01774384-n,True,1,True,True,True,0.0002,0.0001
+Latrodectus mactans,black widow,01774384-n,01774384-n,True,1,True,True,True,0.0001,0.0
+tarantula,tarantula,01774750-n,01774750-n,True,1,True,True,True,0.0002,0.0001
+wolf spider,wolf spider,01775062-n,01775062-n,True,1,True,True,True,0.0001,0.0001
+hunting spider,wolf spider,01775062-n,01775062-n,True,1,True,True,True,0.0001,0.0
+tick,tick,01776313-n,04432308-n,False,-1,False,False,False,0.0005,0.0001
+centipede,centipede,01784675-n,01784675-n,True,1,True,True,True,0.0001,0.0001
+black grouse,black grouse,01795545-n,01795545-n,True,1,True,True,True,0.0001,0.0001
+ptarmigan,ptarmigan,01796340-n,01796340-n,True,1,True,True,True,0.0001,0.0
+ruffed grouse,ruffed grouse,01797886-n,01797886-n,True,1,True,True,True,0.0002,0.0001
+partridge,partridge,01797886-n,01807496-n,False,-1,False,False,False,0.0003,0.0001
+Bonasa umbellus,ruffed grouse,01797886-n,01797886-n,True,1,True,True,True,0.0001,0.0
+prairie chicken,prairie chicken,01798484-n,01798484-n,True,1,True,True,True,0.0002,0.0001
+prairie grouse,prairie chicken,01798484-n,01798484-n,True,1,True,True,True,0.0001,0.0
+prairie fowl,prairie chicken,01798484-n,01798484-n,True,1,True,True,True,0.0001,0.0
+peacock,peacock,01806143-n,01806143-n,True,1,True,True,True,0.0002,0.0
+quail,quail,01806567-n,07647321-n,False,-1,False,False,False,0.0003,0.0001
+partridge,partridge,01807496-n,01807496-n,True,1,True,True,True,0.0001,0.0
+African grey,african grey,01817953-n,01817953-n,True,1,True,True,True,0.0002,0.0001
+African gray,african grey,01817953-n,01817953-n,True,1,True,True,True,0.0001,0.0
+Psittacus erithacus,african grey,01817953-n,01817953-n,True,1,True,True,True,0.0001,0.0
+macaw,macaw,01818515-n,01818515-n,True,1,True,True,True,0.0001,0.0001
+sulphur-crested cockatoo,sulphur-crested cockatoo,01819313-n,01819313-n,True,1,True,True,True,0.0002,0.0
+Kakatoe galerita,sulphur-crested cockatoo,01819313-n,01819313-n,True,1,True,True,True,0.0001,0.0
+Cacatua galerita,sulphur-crested cockatoo,01819313-n,01819313-n,True,1,True,True,True,0.0001,0.0
+lorikeet,lorikeet,01820546-n,01820546-n,True,1,True,True,True,0.0001,0.0
+coucal,coucal,01824575-n,01824575-n,True,1,True,True,True,0.0001,0.0001
+bee eater,bee eater,01828970-n,01828970-n,True,1,True,True,True,0.0001,0.0001
+hornbill,hornbill,01829413-n,01829413-n,True,1,True,True,True,0.0001,0.0001
+hummingbird,hummingbird,01833805-n,01833805-n,True,1,True,True,True,0.0002,0.0001
+jacamar,jacamar,01843065-n,01843065-n,True,1,True,True,True,0.0001,0.0001
+toucan,toucan,01843383-n,01843383-n,True,1,True,True,True,0.0001,0.0
+drake,drake,01847000-n,10942866-n,False,-1,False,False,False,0.0002,0.0
+red-breasted merganser,red-breasted merganser,01855032-n,01855032-n,True,1,True,True,True,0.0001,0.0001
+Mergus serrator,red-breasted merganser,01855032-n,01855032-n,True,1,True,True,True,0.0001,0.0
+goose,goose,01855672-n,01231061-v,False,-1,False,False,False,0.0003,0.0001
+black swan,black swan,01860187-n,01860187-n,True,1,True,True,True,0.0001,0.0001
+Cygnus atratus,black swan,01860187-n,01860187-n,True,1,True,True,True,0.0001,0.0
+tusker,tusker,01871265-n,01871265-n,True,1,True,True,True,0.0001,0.0001
+echidna,echidna,01872401-n,01872401-n,True,1,True,True,True,0.0002,0.0001
+spiny anteater,anteater,01872401-n,02460009-n,False,-1,False,False,False,0.0001,0.0001
+anteater,anteater,01872401-n,02460009-n,False,-1,False,False,False,0.0004,0.0
+platypus,platypus,01873310-n,01873310-n,True,1,True,True,True,0.0002,0.0
+duckbill,duckbill,01873310-n,00206900-s,False,-1,False,False,False,0.0002,0.0
+duckbilled platypus,platypus,01873310-n,01873310-n,True,1,True,True,True,0.0001,0.0
+duck-billed platypus,platypus,01873310-n,01873310-n,True,1,True,True,True,0.0001,0.0
+Ornithorhynchus anatinus,platypus,01873310-n,01873310-n,True,1,True,True,True,0.0001,0.0
+wallaby,wallaby,01877812-n,01877812-n,True,1,True,True,True,0.0001,0.0
+brush kangaroo,wallaby,01877812-n,01877812-n,True,1,True,True,True,0.0001,0.0
+koala,koala,01882714-n,01882714-n,True,1,True,True,True,0.0002,0.0
+koala bear,koala,01882714-n,01882714-n,True,1,True,True,True,0.0001,0.0
+kangaroo bear,N/A,01882714-n,N/A,False,-1,False,False,False,0.0001,0.0
+native bear,N/A,01882714-n,N/A,False,-1,False,False,False,0.0001,0.0
+Phascolarctos cinereus,N/A,01882714-n,N/A,False,-1,False,False,False,0.0001,0.0
+wombat,wombat,01883070-n,01883070-n,True,1,True,True,True,0.0001,0.0001
+jellyfish,jellyfish,01910747-n,01910747-n,True,1,True,True,True,0.0002,0.0001
+sea anemone,sea anemone,01914609-n,01914609-n,True,1,True,True,True,0.0001,0.0001
+anemone,anemone,01914609-n,11725015-n,False,3,False,True,True,0.0001,0.0
+brain coral,brain coral,01917289-n,01917289-n,True,1,True,True,True,0.0001,0.0001
+flatworm,flatworm,01924916-n,01924916-n,True,1,True,True,True,0.0001,0.0001
+platyhelminth,flatworm,01924916-n,01924916-n,True,1,True,True,True,0.0001,0.0
+nematode,nematode,01930112-n,01930112-n,True,1,True,True,True,0.0001,0.0
+nematode worm,nematode,01930112-n,01930112-n,True,1,True,True,True,0.0001,0.0
+roundworm,nematode,01930112-n,01930112-n,True,1,True,True,True,0.0002,0.0
+conch,conch,01943899-n,01943899-n,True,1,True,True,True,0.0001,0.0001
+snail,snail,01944390-n,01382917-v,False,-1,False,False,False,0.0002,0.0001
+slug,slug,01945685-n,13390788-n,False,-1,False,False,False,0.0006,0.0001
+sea slug,sea slug,01950731-n,01950731-n,True,1,True,True,True,0.0001,0.0001
+nudibranch,sea slug,01950731-n,01950731-n,True,1,True,True,True,0.0001,0.0
+chiton,chiton,01955084-n,01955084-n,True,1,True,True,True,0.0002,0.0001
+coat-of-mail shell,chiton,01955084-n,01955084-n,True,1,True,True,True,0.0001,0.0
+sea cradle,chiton,01955084-n,01955084-n,True,1,True,True,True,0.0001,0.0
+polyplacophore,chiton,01955084-n,01955084-n,True,1,True,True,True,0.0001,0.0
+chambered nautilus,chambered nautilus,01968897-n,01968897-n,True,1,True,True,True,0.0001,0.0001
+pearly nautilus,nautilus,01968897-n,03811295-n,False,2,False,True,True,0.0001,0.0
+nautilus,nautilus,01968897-n,03811295-n,False,-1,False,False,False,0.0002,0.0001
+Dungeness crab,dungeness crab,01978287-n,01978287-n,True,1,True,True,True,0.0002,0.0001
+Cancer magister,dungeness crab,01978287-n,01978287-n,True,1,True,True,True,0.0001,0.0
+rock crab,rock crab,01978455-n,01978455-n,True,1,True,True,True,0.0001,0.0001
+Cancer irroratus,rock crab,01978455-n,01978455-n,True,1,True,True,True,0.0001,0.0
+fiddler crab,fiddler crab,01980166-n,01980166-n,True,1,True,True,True,0.0001,0.0001
+king crab,king crab,01981276-n,01981276-n,True,1,True,True,True,0.0004,0.0001
+Alaska crab,alaska king crab,01981276-n,07788435-n,False,-1,False,False,False,0.0001,0.0001
+Alaskan king crab,alaska king crab,01981276-n,07788435-n,False,-1,False,False,False,0.0001,0.0
+Alaska king crab,alaska king crab,01981276-n,07788435-n,False,-1,False,False,False,0.0001,0.0001
+Paralithodes camtschatica,alaska king crab,01981276-n,07788435-n,False,-1,False,False,False,0.0001,0.0
+American lobster,american lobster,01983481-n,01983481-n,True,1,True,True,True,0.0003,0.0001
+Northern lobster,american lobster,01983481-n,01983481-n,True,1,True,True,True,0.0001,0.0
+Maine lobster,american lobster,01983481-n,01983481-n,True,1,True,True,True,0.0001,0.0
+Homarus americanus,american lobster,01983481-n,01983481-n,True,1,True,True,True,0.0001,0.0
+spiny lobster,spiny lobster,01984695-n,01984695-n,True,1,True,True,True,0.0003,0.0001
+langouste,spiny lobster,01984695-n,01984695-n,True,1,True,True,True,0.0001,0.0
+rock lobster,spiny lobster,01984695-n,01984695-n,True,1,True,True,True,0.0001,0.0
+crawfish,crayfish,01984695-n,01985128-n,False,-1,False,False,False,0.0003,0.0001
+crayfish,crayfish,01984695-n,01985128-n,False,-1,False,False,False,0.0001,0.0
+sea crawfish,crayfish,01984695-n,01985128-n,False,-1,False,False,False,0.0001,0.0
+crayfish,crayfish,01985128-n,01985128-n,True,1,True,True,True,0.0001,0.0
+crawfish,crayfish,01985128-n,01985128-n,True,1,True,True,True,0.0001,0.0
+crawdad,N/A,01985128-n,N/A,False,-1,False,False,False,0.0001,0.0
+crawdaddy,crayfish,01985128-n,01985128-n,True,1,True,True,True,0.0001,0.0
+hermit crab,hermit crab,01986214-n,01986214-n,True,1,True,True,True,0.0001,0.0001
+isopod,isopod,01990800-n,01990800-n,True,1,True,True,True,0.0001,0.0001
+white stork,white stork,02002556-n,02002556-n,True,1,True,True,True,0.0001,0.0001
+Ciconia ciconia,white stork,02002556-n,02002556-n,True,1,True,True,True,0.0001,0.0
+black stork,black stork,02002724-n,02002724-n,True,1,True,True,True,0.0001,0.0001
+Ciconia nigra,black stork,02002724-n,02002724-n,True,1,True,True,True,0.0001,0.0
+spoonbill,spoonbill,02006656-n,02006656-n,True,1,True,True,True,0.0001,0.0001
+flamingo,flamingo,02007558-n,02007558-n,True,1,True,True,True,0.0001,0.0001
+little blue heron,little blue heron,02009229-n,02009229-n,True,1,True,True,True,0.0002,0.0001
+Egretta caerulea,little blue heron,02009229-n,02009229-n,True,1,True,True,True,0.0001,0.0
+American egret,american egret,02009912-n,02009912-n,True,1,True,True,True,0.0002,0.0001
+great white heron,great white heron,02009912-n,02009750-n,False,-1,False,False,False,0.0002,0.0001
+Egretta albus,great white heron,02009912-n,02009750-n,False,2,False,True,True,0.0001,0.0
+bittern,bittern,02011460-n,02011460-n,True,1,True,True,True,0.0001,0.0
+crane,crane,02012849-n,10914331-n,False,-1,False,False,False,0.0004,0.0
+limpkin,limpkin,02013706-n,02013706-n,True,1,True,True,True,0.0001,0.0001
+Aramus pictus,limpkin,02013706-n,02013706-n,True,1,True,True,True,0.0001,0.0
+European gallinule,european gallinule,02017213-n,02017213-n,True,1,True,True,True,0.0002,0.0001
+Porphyrio porphyrio,european gallinule,02017213-n,02017213-n,True,1,True,True,True,0.0001,0.0
+American coot,american coot,02018207-n,02018207-n,True,1,True,True,True,0.0002,0.0001
+marsh hen,N/A,02018207-n,N/A,False,-1,False,False,False,0.0002,0.0
+mud hen,N/A,02018207-n,N/A,False,-1,False,False,False,0.0001,0.0
+water hen,N/A,02018207-n,N/A,False,-1,False,False,False,0.0001,0.0
+Fulica americana,american coot,02018207-n,02018207-n,True,1,True,True,True,0.0001,0.0
+bustard,bustard,02018795-n,02018795-n,True,1,True,True,True,0.0002,0.0
+ruddy turnstone,ruddy turnstone,02025239-n,02025239-n,True,1,True,True,True,0.0001,0.0
+Arenaria interpres,ruddy turnstone,02025239-n,02025239-n,True,1,True,True,True,0.0001,0.0
+red-backed sandpiper,red-backed sandpiper,02027492-n,02027492-n,True,1,True,True,True,0.0002,0.0001
+dunlin,red-backed sandpiper,02027492-n,02027492-n,True,1,True,True,True,0.0001,0.0
+Erolia alpina,red-backed sandpiper,02027492-n,02027492-n,True,1,True,True,True,0.0001,0.0
+redshank,redshank,02028035-n,02028035-n,True,1,True,True,True,0.0001,0.0
+Tringa totanus,redshank,02028035-n,02028035-n,True,1,True,True,True,0.0001,0.0
+dowitcher,dowitcher,02033041-n,02033041-n,True,1,True,True,True,0.0001,0.0001
+oystercatcher,oystercatcher,02037110-n,02037110-n,True,1,True,True,True,0.0001,0.0001
+oyster catcher,oystercatcher,02037110-n,02037110-n,True,1,True,True,True,0.0001,0.0
+pelican,pelican,02051845-n,02051845-n,True,1,True,True,True,0.0001,0.0001
+king penguin,king penguin,02056570-n,02056570-n,True,1,True,True,True,0.0001,0.0001
+Aptenodytes patagonica,king penguin,02056570-n,02056570-n,True,1,True,True,True,0.0001,0.0
+albatross,albatross,02058221-n,05689645-n,False,-1,False,False,False,0.0002,0.0001
+mollymawk,albatross,02058221-n,05689645-n,False,-1,False,False,False,0.0001,0.0
+grey whale,grey whale,02066245-n,02066245-n,True,1,True,True,True,0.0002,0.0001
+gray whale,grey whale,02066245-n,02066245-n,True,1,True,True,True,0.0001,0.0
+devilfish,N/A,02066245-n,N/A,False,-1,False,False,False,0.0002,0.0
+Eschrichtius gibbosus,grey whale,02066245-n,02066245-n,True,1,True,True,True,0.0001,0.0
+Eschrichtius robustus,grey whale,02066245-n,02066245-n,True,1,True,True,True,0.0001,0.0
+killer whale,killer whale,02071294-n,02071294-n,True,1,True,True,True,0.0002,0.0001
+killer,killer,02071294-n,05688630-n,False,5,False,False,True,0.0002,0.0
+orca,grampus,02071294-n,02071028-n,False,2,False,True,True,0.0001,0.0001
+grampus,grampus,02071294-n,02071028-n,False,-1,False,False,False,0.0002,0.0
+sea wolf,killer whale,02071294-n,02071294-n,True,1,True,True,True,0.0001,0.0
+Orcinus orca,grampus,02071294-n,02071028-n,False,-1,False,False,False,0.0001,0.0
+dugong,dugong,02074367-n,02074367-n,True,1,True,True,True,0.0001,0.0001
+Dugong dugon,dugong,02074367-n,02074367-n,True,1,True,True,True,0.0001,0.0
+sea lion,sea lion,02077923-n,02077923-n,True,1,True,True,True,0.0001,0.0
+Chihuahua,chihuahua,02085620-n,08742578-n,False,-1,False,False,False,0.0002,0.0001
+Japanese spaniel,japanese spaniel,02085782-n,02085782-n,True,1,True,True,True,0.0001,0.0001
+Maltese dog,maltese dog,02085936-n,02085936-n,True,1,True,True,True,0.0002,0.0
+Maltese terrier,maltese,02085936-n,03083842-a,False,2,False,True,True,0.0001,0.0
+Maltese,maltese,02085936-n,03083842-a,False,-1,False,False,False,0.001,0.0
+Pekinese,pekinese,02086079-n,02086079-n,True,1,True,True,True,0.0001,0.0
+Pekingese,pekinese,02086079-n,02086079-n,True,1,True,True,True,0.0001,0.0
+Peke,pekinese,02086079-n,02086079-n,True,1,True,True,True,0.0001,0.0
+Shih-Tzu,shih-tzu,02086240-n,02086240-n,True,1,True,True,True,0.0001,0.0
+Blenheim spaniel,blenheim spaniel,02086646-n,02086646-n,True,1,True,True,True,0.0001,0.0
+papillon,papillon,02086910-n,02086910-n,True,1,True,True,True,0.0001,0.0
+toy terrier,toy terrier,02087046-n,02087046-n,True,1,True,True,True,0.0001,0.0
+Rhodesian ridgeback,rhodesian ridgeback,02087394-n,02087394-n,True,1,True,True,True,0.0001,0.0001
+Afghan hound,afghan hound,02088094-n,02088094-n,True,1,True,True,True,0.0001,0.0001
+Afghan,afghan,02088094-n,02683323-n,False,-1,False,False,False,0.0003,0.0
+basset,basset,02088238-n,02088238-n,True,1,True,True,True,0.0002,0.0
+basset hound,basset,02088238-n,02088238-n,True,1,True,True,True,0.0001,0.0
+beagle,beagle,02088364-n,02088364-n,True,1,True,True,True,0.0001,0.0
+bloodhound,bloodhound,02088466-n,02088466-n,True,1,True,True,True,0.0001,0.0
+sleuthhound,sleuth,02088466-n,10611613-n,False,2,False,True,True,0.0001,0.0
+bluetick,bluetick,02088632-n,02088632-n,True,1,True,True,True,0.0001,0.0
+black-and-tan coonhound,black-and-tan coonhound,02089078-n,02089078-n,True,1,True,True,True,0.0001,0.0
+Walker hound,walker hound,02089867-n,02089867-n,True,1,True,True,True,0.0001,0.0
+Walker foxhound,walker hound,02089867-n,02089867-n,True,1,True,True,True,0.0001,0.0
+English foxhound,english foxhound,02089973-n,02089973-n,True,1,True,True,True,0.0001,0.0
+redbone,redbone,02090379-n,02090379-n,True,1,True,True,True,0.0001,0.0
+borzoi,borzoi,02090622-n,02090622-n,True,1,True,True,True,0.0001,0.0
+Russian wolfhound,borzoi,02090622-n,02090622-n,True,1,True,True,True,0.0001,0.0
+Irish wolfhound,irish wolfhound,02090721-n,02090721-n,True,1,True,True,True,0.0001,0.0
+Italian greyhound,italian greyhound,02091032-n,02091032-n,True,1,True,True,True,0.0001,0.0
+whippet,whippet,02091134-n,02091134-n,True,1,True,True,True,0.0001,0.0
+Ibizan hound,ibizan hound,02091244-n,02091244-n,True,1,True,True,True,0.0001,0.0
+Ibizan Podenco,ibizan hound,02091244-n,02091244-n,True,1,True,True,True,0.0001,0.0
+Norwegian elkhound,norwegian elkhound,02091467-n,02091467-n,True,1,True,True,True,0.0001,0.0
+elkhound,norwegian elkhound,02091467-n,02091467-n,True,1,True,True,True,0.0001,0.0
+otterhound,otterhound,02091635-n,02091635-n,True,1,True,True,True,0.0001,0.0
+otter hound,otterhound,02091635-n,02091635-n,True,1,True,True,True,0.0001,0.0
+Saluki,saluki,02091831-n,02091831-n,True,1,True,True,True,0.0001,0.0
+gazelle hound,saluki,02091831-n,02091831-n,True,1,True,True,True,0.0001,0.0
+Scottish deerhound,scottish deerhound,02092002-n,02092002-n,True,1,True,True,True,0.0002,0.0
+deerhound,scottish deerhound,02092002-n,02092002-n,True,1,True,True,True,0.0001,0.0
+Weimaraner,weimaraner,02092339-n,02092339-n,True,1,True,True,True,0.0001,0.0
+Staffordshire bullterrier,staffordshire bullterrier,02093256-n,02093256-n,True,1,True,True,True,0.0001,0.0001
+Staffordshire bull terrier,staffordshire bullterrier,02093256-n,02093256-n,True,1,True,True,True,0.0001,0.0
+American Staffordshire terrier,american staffordshire terrier,02093428-n,02093428-n,True,1,True,True,True,0.0002,0.0
+Staffordshire terrier,american staffordshire terrier,02093428-n,02093428-n,True,1,True,True,True,0.0001,0.0
+American pit bull terrier,american staffordshire terrier,02093428-n,02093428-n,True,1,True,True,True,0.0001,0.0
+pit bull terrier,american staffordshire terrier,02093428-n,02093428-n,True,1,True,True,True,0.0001,0.0
+Bedlington terrier,bedlington terrier,02093647-n,02093647-n,True,1,True,True,True,0.0001,0.0
+Border terrier,border terrier,02093754-n,02093754-n,True,1,True,True,True,0.0001,0.0
+Kerry blue terrier,kerry blue terrier,02093859-n,02093859-n,True,1,True,True,True,0.0001,0.0
+Irish terrier,irish terrier,02093991-n,02093991-n,True,1,True,True,True,0.0001,0.0
+Norfolk terrier,norfolk terrier,02094114-n,02094114-n,True,1,True,True,True,0.0001,0.0
+Norwich terrier,norwich terrier,02094258-n,02094258-n,True,1,True,True,True,0.0001,0.0
+Yorkshire terrier,yorkshire terrier,02094433-n,02094433-n,True,1,True,True,True,0.0001,0.0
+wire-haired fox terrier,wire-haired fox terrier,02095314-n,02095314-n,True,1,True,True,True,0.0001,0.0
+Lakeland terrier,lakeland terrier,02095570-n,02095570-n,True,1,True,True,True,0.0001,0.0
+Sealyham terrier,sealyham terrier,02095889-n,02095889-n,True,1,True,True,True,0.0001,0.0001
+Sealyham,sealyham,02095889-n,08895623-n,False,5,False,False,True,0.0001,0.0
+Airedale,airedale,02096051-n,02096051-n,True,1,True,True,True,0.0001,0.0
+Airedale terrier,airedale,02096051-n,02096051-n,True,1,True,True,True,0.0001,0.0
+cairn,cairn,02096177-n,02096177-n,True,1,True,True,True,0.0002,0.0
+cairn terrier,cairn,02096177-n,02096177-n,True,1,True,True,True,0.0001,0.0
+Australian terrier,australian terrier,02096294-n,02096294-n,True,1,True,True,True,0.0001,0.0
+Dandie Dinmont,dandie dinmont,02096437-n,02096437-n,True,1,True,True,True,0.0002,0.0
+Dandie Dinmont terrier,dandie dinmont,02096437-n,02096437-n,True,1,True,True,True,0.0001,0.0
+Boston bull,boston bull,02096585-n,02096585-n,True,1,True,True,True,0.0001,0.0
+Boston terrier,boston bull,02096585-n,02096585-n,True,1,True,True,True,0.0001,0.0
+miniature schnauzer,miniature schnauzer,02097047-n,02097047-n,True,1,True,True,True,0.0001,0.0
+giant schnauzer,giant schnauzer,02097130-n,02097130-n,True,1,True,True,True,0.0001,0.0
+standard schnauzer,standard schnauzer,02097209-n,02097209-n,True,1,True,True,True,0.0001,0.0
+Scotch terrier,scotch terrier,02097298-n,02097298-n,True,1,True,True,True,0.0002,0.0
+Scottish terrier,scotch terrier,02097298-n,02097298-n,True,1,True,True,True,0.0001,0.0
+Scottie,scotch terrier,02097298-n,02097298-n,True,1,True,True,True,0.0001,0.0
+Tibetan terrier,tibetan terrier,02097474-n,02097474-n,True,1,True,True,True,0.0001,0.0
+chrysanthemum dog,tibetan terrier,02097474-n,02097474-n,True,1,True,True,True,0.0001,0.0
+silky terrier,silky terrier,02097658-n,02097658-n,True,1,True,True,True,0.0002,0.0
+Sydney silky,silky terrier,02097658-n,02097658-n,True,1,True,True,True,0.0001,0.0
+soft-coated wheaten terrier,soft-coated wheaten terrier,02098105-n,02098105-n,True,1,True,True,True,0.0001,0.0
+West Highland white terrier,west highland white terrier,02098286-n,02098286-n,True,1,True,True,True,0.0001,0.0
+Lhasa,lhasa,02098413-n,08907377-n,False,-1,False,False,False,0.0002,0.0001
+Lhasa apso,lhasa,02098413-n,08907377-n,False,-1,False,False,False,0.0001,0.0
+flat-coated retriever,flat-coated retriever,02099267-n,02099267-n,True,1,True,True,True,0.0001,0.0
+curly-coated retriever,curly-coated retriever,02099429-n,02099429-n,True,1,True,True,True,0.0001,0.0
+golden retriever,golden retriever,02099601-n,02099601-n,True,1,True,True,True,0.0001,0.0
+Labrador retriever,labrador retriever,02099712-n,02099712-n,True,1,True,True,True,0.0001,0.0
+Chesapeake Bay retriever,chesapeake bay retriever,02099849-n,02099849-n,True,1,True,True,True,0.0001,0.0
+German short-haired pointer,german short-haired pointer,02100236-n,02100236-n,True,1,True,True,True,0.0001,0.0
+vizsla,vizsla,02100583-n,02100583-n,True,1,True,True,True,0.0001,0.0
+Hungarian pointer,vizsla,02100583-n,02100583-n,True,1,True,True,True,0.0001,0.0
+English setter,english setter,02100735-n,02100735-n,True,1,True,True,True,0.0001,0.0
+Irish setter,irish setter,02100877-n,02100877-n,True,1,True,True,True,0.0001,0.0
+red setter,irish setter,02100877-n,02100877-n,True,1,True,True,True,0.0001,0.0
+Gordon setter,gordon setter,02101006-n,02101006-n,True,1,True,True,True,0.0001,0.0
+Brittany spaniel,brittany spaniel,02101388-n,02101388-n,True,1,True,True,True,0.0001,0.0
+clumber,clumber,02101556-n,02101556-n,True,1,True,True,True,0.0001,0.0
+clumber spaniel,clumber,02101556-n,02101556-n,True,1,True,True,True,0.0001,0.0
+English springer,english springer,02102040-n,02102040-n,True,1,True,True,True,0.0001,0.0
+English springer spaniel,english springer,02102040-n,02102040-n,True,1,True,True,True,0.0001,0.0
+Welsh springer spaniel,welsh springer spaniel,02102177-n,02102177-n,True,1,True,True,True,0.0001,0.0
+cocker spaniel,cocker spaniel,02102318-n,02102318-n,True,1,True,True,True,0.0001,0.0
+English cocker spaniel,cocker spaniel,02102318-n,02102318-n,True,1,True,True,True,0.0001,0.0
+cocker,cocker spaniel,02102318-n,02102318-n,True,1,True,True,True,0.0002,0.0
+Sussex spaniel,sussex spaniel,02102480-n,02102480-n,True,1,True,True,True,0.0001,0.0
+Irish water spaniel,irish water spaniel,02102973-n,02102973-n,True,1,True,True,True,0.0001,0.0001
+kuvasz,kuvasz,02104029-n,02104029-n,True,1,True,True,True,0.0001,0.0
+schipperke,schipperke,02104365-n,02104365-n,True,1,True,True,True,0.0001,0.0
+groenendael,groenendael,02105056-n,02105056-n,True,1,True,True,True,0.0001,0.0
+malinois,malinois,02105162-n,02105162-n,True,1,True,True,True,0.0001,0.0
+briard,briard,02105251-n,02105251-n,True,1,True,True,True,0.0001,0.0
+kelpie,kelpie,02105412-n,02105412-n,True,1,True,True,True,0.0001,0.0
+komondor,komondor,02105505-n,02105505-n,True,1,True,True,True,0.0001,0.0
+Old English sheepdog,old english sheepdog,02105641-n,02105641-n,True,1,True,True,True,0.0001,0.0
+bobtail,bobtail,02105641-n,00319851-s,False,-1,False,False,False,0.0002,0.0
+Shetland sheepdog,shetland sheepdog,02105855-n,02105855-n,True,1,True,True,True,0.0002,0.0
+Shetland sheep dog,shetland sheepdog,02105855-n,02105855-n,True,1,True,True,True,0.0001,0.0001
+Shetland,shetland,02105855-n,08954057-n,False,-1,False,False,False,0.0002,0.0
+collie,collie,02106030-n,02106030-n,True,1,True,True,True,0.0001,0.0
+Border collie,border collie,02106166-n,02106166-n,True,1,True,True,True,0.0002,0.0
+Bouvier des Flandres,bouvier des flandres,02106382-n,02106382-n,True,1,True,True,True,0.0002,0.0
+Bouviers des Flandres,bouvier des flandres,02106382-n,02106382-n,True,1,True,True,True,0.0001,0.0
+Rottweiler,rottweiler,02106550-n,02106550-n,True,1,True,True,True,0.0001,0.0
+German shepherd,german shepherd,02106662-n,02106662-n,True,1,True,True,True,0.0002,0.0
+German shepherd dog,german shepherd,02106662-n,02106662-n,True,1,True,True,True,0.0001,0.0
+German police dog,german shepherd,02106662-n,02106662-n,True,1,True,True,True,0.0001,0.0
+alsatian,alsatian,02106662-n,02972344-a,False,-1,False,False,False,0.0002,0.0
+Doberman,doberman,02107142-n,02107142-n,True,1,True,True,True,0.0001,0.0
+Doberman pinscher,doberman,02107142-n,02107142-n,True,1,True,True,True,0.0001,0.0
+miniature pinscher,miniature pinscher,02107312-n,02107312-n,True,1,True,True,True,0.0001,0.0
+Greater Swiss Mountain dog,greater swiss mountain dog,02107574-n,02107574-n,True,1,True,True,True,0.0001,0.0001
+Bernese mountain dog,bernese mountain dog,02107683-n,02107683-n,True,1,True,True,True,0.0001,0.0
+Appenzeller,appenzeller,02107908-n,02107908-n,True,1,True,True,True,0.0001,0.0
+EntleBucher,entlebucher,02108000-n,02108000-n,True,1,True,True,True,0.0001,0.0
+boxer,boxer,02108089-n,09870208-n,False,-1,False,False,False,0.0003,0.0001
+bull mastiff,bull mastiff,02108422-n,02108422-n,True,1,True,True,True,0.0001,0.0
+Tibetan mastiff,tibetan mastiff,02108551-n,02108551-n,True,1,True,True,True,0.0001,0.0
+French bulldog,french bulldog,02108915-n,02108915-n,True,1,True,True,True,0.0001,0.0001
+Great Dane,great dane,02109047-n,02109047-n,True,1,True,True,True,0.0001,0.0
+Saint Bernard,saint bernard,02109525-n,02109525-n,True,1,True,True,True,0.0001,0.0
+St Bernard,saint bernard,02109525-n,02109525-n,True,1,True,True,True,0.0001,0.0
+Eskimo dog,eskimo dog,02109961-n,02109961-n,True,1,True,True,True,0.0001,0.0
+husky,N/A,02109961-n,N/A,False,-1,False,False,False,0.0003,0.0
+malamute,malamute,02110063-n,02110063-n,True,1,True,True,True,0.0001,0.0
+malemute,malamute,02110063-n,02110063-n,True,1,True,True,True,0.0001,0.0
+Alaskan malamute,malamute,02110063-n,02110063-n,True,1,True,True,True,0.0001,0.0
+Siberian husky,siberian husky,02110185-n,02110185-n,True,1,True,True,True,0.0001,0.0
+dalmatian,dalmatian,02110341-n,09988918-n,False,-1,False,False,False,0.0003,0.0001
+coach dog,dalmatian,02110341-n,09988918-n,False,-1,False,False,False,0.0001,0.0
+carriage dog,dalmatian,02110341-n,09988918-n,False,-1,False,False,False,0.0001,0.0
+affenpinscher,affenpinscher,02110627-n,02110627-n,True,1,True,True,True,0.0002,0.0
+monkey pinscher,affenpinscher,02110627-n,02110627-n,True,1,True,True,True,0.0001,0.0
+monkey dog,affenpinscher,02110627-n,02110627-n,True,1,True,True,True,0.0001,0.0
+basenji,basenji,02110806-n,02110806-n,True,1,True,True,True,0.0001,0.0
+pug,pug,02110958-n,02110958-n,True,1,True,True,True,0.0001,0.0
+pug-dog,pug,02110958-n,02110958-n,True,1,True,True,True,0.0001,0.0
+Leonberg,leonberg,02111129-n,02111129-n,True,1,True,True,True,0.0001,0.0
+Newfoundland,newfoundland,02111277-n,02111277-n,True,1,True,True,True,0.0002,0.0
+Newfoundland dog,newfoundland,02111277-n,02111277-n,True,1,True,True,True,0.0001,0.0
+Great Pyrenees,great pyrenees,02111500-n,02111500-n,True,1,True,True,True,0.0001,0.0
+Samoyed,samoyed,02111889-n,02111889-n,True,1,True,True,True,0.0002,0.0001
+Samoyede,samoyed,02111889-n,02111889-n,True,1,True,True,True,0.0001,0.0
+Pomeranian,pomeranian,02112018-n,02112018-n,True,1,True,True,True,0.0001,0.0
+chow,chow,02112137-n,02112137-n,True,1,True,True,True,0.0002,0.0
+chow chow,chow,02112137-n,02112137-n,True,1,True,True,True,0.0001,0.0
+keeshond,keeshond,02112350-n,02112350-n,True,1,True,True,True,0.0001,0.0
+Brabancon griffon,brabancon griffon,02112706-n,02112706-n,True,1,True,True,True,0.0001,0.0
+Pembroke,pembroke,02113023-n,02113023-n,True,1,True,True,True,0.0001,0.0
+Pembroke Welsh corgi,pembroke,02113023-n,02113023-n,True,1,True,True,True,0.0001,0.0
+Cardigan,cardigan,02113186-n,02113186-n,True,1,True,True,True,0.0001,0.0
+Cardigan Welsh corgi,cardigan,02113186-n,02113186-n,True,1,True,True,True,0.0001,0.0
+toy poodle,toy poodle,02113624-n,02113624-n,True,1,True,True,True,0.0001,0.0
+miniature poodle,miniature poodle,02113712-n,02113712-n,True,1,True,True,True,0.0001,0.0
+standard poodle,standard poodle,02113799-n,02113799-n,True,1,True,True,True,0.0001,0.0
+Mexican hairless,mexican hairless,02113978-n,02113978-n,True,1,True,True,True,0.0001,0.0
+timber wolf,timber wolf,02114367-n,02114367-n,True,1,True,True,True,0.0002,0.0
+grey wolf,timber wolf,02114367-n,02114367-n,True,1,True,True,True,0.0001,0.0
+gray wolf,timber wolf,02114367-n,02114367-n,True,1,True,True,True,0.0001,0.0
+Canis lupus,timber wolf,02114367-n,02114367-n,True,1,True,True,True,0.0001,0.0
+white wolf,white wolf,02114548-n,02114548-n,True,1,True,True,True,0.0002,0.0
+Arctic wolf,white wolf,02114548-n,02114548-n,True,1,True,True,True,0.0001,0.0
+Canis lupus tundrarum,white wolf,02114548-n,02114548-n,True,1,True,True,True,0.0001,0.0
+red wolf,red wolf,02114712-n,02114712-n,True,1,True,True,True,0.0001,0.0
+maned wolf,red wolf,02114712-n,02114712-n,True,1,True,True,True,0.0001,0.0
+Canis rufus,red wolf,02114712-n,02114712-n,True,1,True,True,True,0.0001,0.0
+Canis niger,red wolf,02114712-n,02114712-n,True,1,True,True,True,0.0001,0.0
+coyote,coyote,02114855-n,09973903-n,False,-1,False,False,False,0.0002,0.0
+prairie wolf,coyote,02114855-n,09973903-n,False,-1,False,False,False,0.0001,0.0
+brush wolf,coyote,02114855-n,09973903-n,False,-1,False,False,False,0.0001,0.0
+Canis latrans,coyote,02114855-n,09973903-n,False,-1,False,False,False,0.0001,0.0
+dingo,dingo,02115641-n,02115641-n,True,1,True,True,True,0.0001,0.0001
+warrigal,warrigal,02115641-n,02381744-n,False,-1,False,False,False,0.0001,0.0
+warragal,warrigal,02115641-n,02381744-n,False,-1,False,False,False,0.0001,0.0
+Canis dingo,dingo,02115641-n,02115641-n,True,1,True,True,True,0.0001,0.0
+dhole,dhole,02115913-n,02115913-n,True,1,True,True,True,0.0001,0.0001
+Cuon alpinus,dhole,02115913-n,02115913-n,True,1,True,True,True,0.0001,0.0
+African hunting dog,african hunting dog,02116738-n,02116738-n,True,1,True,True,True,0.0002,0.0
+hyena dog,african hunting dog,02116738-n,02116738-n,True,1,True,True,True,0.0001,0.0
+Cape hunting dog,african hunting dog,02116738-n,02116738-n,True,1,True,True,True,0.0001,0.0
+Lycaon pictus,african hunting dog,02116738-n,02116738-n,True,1,True,True,True,0.0001,0.0
+hyena,hyena,02117135-n,02117135-n,True,1,True,True,True,0.0001,0.0001
+hyaena,hyena,02117135-n,02117135-n,True,1,True,True,True,0.0001,0.0
+red fox,red fox,02119022-n,02119022-n,True,1,True,True,True,0.0002,0.0001
+Vulpes vulpes,red fox,02119022-n,02119022-n,True,1,True,True,True,0.0001,0.0
+kit fox,kit fox,02119789-n,02119789-n,True,1,True,True,True,0.0002,0.0001
+Vulpes macrotis,kit fox,02119789-n,02119789-n,True,1,True,True,True,0.0001,0.0
+Arctic fox,arctic fox,02120079-n,02120079-n,True,1,True,True,True,0.0002,0.0001
+white fox,arctic fox,02120079-n,02120079-n,True,1,True,True,True,0.0001,0.0
+Alopex lagopus,arctic fox,02120079-n,02120079-n,True,1,True,True,True,0.0001,0.0
+grey fox,grey fox,02120505-n,02120505-n,True,1,True,True,True,0.0001,0.0001
+gray fox,grey fox,02120505-n,02120505-n,True,1,True,True,True,0.0001,0.0
+Urocyon cinereoargenteus,grey fox,02120505-n,02120505-n,True,1,True,True,True,0.0001,0.0
+tabby,tabby,02123045-n,02122878-n,False,-1,False,False,False,0.0003,0.0001
+tabby cat,tabby,02123045-n,02122878-n,False,-1,False,False,False,0.0001,0.0
+tiger cat,tiger cat,02123159-n,02126465-n,False,-1,False,False,False,0.0002,0.0001
+Persian cat,persian cat,02123394-n,02123394-n,True,1,True,True,True,0.0001,0.0
+Siamese cat,siamese cat,02123597-n,02123597-n,True,1,True,True,True,0.0001,0.0001
+Siamese,siamese,02123597-n,04212573-n,False,-1,False,False,False,0.0005,0.0001
+Egyptian cat,egyptian cat,02124075-n,02124075-n,True,1,True,True,True,0.0001,0.0
+cougar,cougar,02125311-n,02125311-n,True,1,True,True,True,0.0002,0.0001
+puma,cougar,02125311-n,02125311-n,True,1,True,True,True,0.0001,0.0001
+catamount,cougar,02125311-n,02125311-n,True,1,True,True,True,0.0001,0.0
+mountain lion,cougar,02125311-n,02125311-n,True,1,True,True,True,0.0001,0.0
+painter,painter,02125311-n,03876352-n,False,-1,False,False,False,0.0004,0.0001
+panther,panther,02125311-n,02128669-n,False,-1,False,False,False,0.0002,0.0001
+Felis concolor,cougar,02125311-n,02125311-n,True,1,True,True,True,0.0001,0.0
+lynx,lynx,02127052-n,02127052-n,True,1,True,True,True,0.0001,0.0001
+catamount,cougar,02127052-n,02125311-n,False,-1,False,False,False,0.0001,0.0
+leopard,leopard,02128385-n,02128385-n,True,1,True,True,True,0.0002,0.0001
+Panthera pardus,leopard,02128385-n,02128385-n,True,1,True,True,True,0.0001,0.0
+snow leopard,snow leopard,02128757-n,02128757-n,True,1,True,True,True,0.0002,0.0001
+ounce,ounce,02128757-n,13722522-n,False,-1,False,False,False,0.0002,0.0
+Panthera uncia,ounce,02128757-n,13722522-n,False,2,False,True,True,0.0001,0.0
+jaguar,jaguar,02128925-n,02128925-n,True,1,True,True,True,0.0001,0.0001
+panther,panther,02128925-n,02128669-n,False,-1,False,False,False,0.0001,0.0
+Panthera onca,panther,02128925-n,02128669-n,False,2,False,True,True,0.0001,0.0
+Felis onca,jaguar,02128925-n,02128925-n,True,1,True,True,True,0.0001,0.0
+lion,lion,02129165-n,02129165-n,True,1,True,True,True,0.0002,0.0001
+king of beasts,lion,02129165-n,02129165-n,True,1,True,True,True,0.0001,0.0
+Panthera leo,lion,02129165-n,02129165-n,True,1,True,True,True,0.0001,0.0
+tiger,tiger,02129604-n,10710632-n,False,-1,False,False,False,0.0002,0.0
+Panthera tigris,tiger,02129604-n,10710632-n,False,-1,False,False,False,0.0001,0.0
+cheetah,cheetah,02130308-n,02130308-n,True,1,True,True,True,0.0001,0.0
+chetah,cheetah,02130308-n,02130308-n,True,1,True,True,True,0.0001,0.0
+Acinonyx jubatus,cheetah,02130308-n,02130308-n,True,1,True,True,True,0.0001,0.0
+brown bear,brown bear,02132136-n,02132136-n,True,1,True,True,True,0.0001,0.0001
+bruin,bruin,02132136-n,02132320-n,False,3,False,True,True,0.0001,0.0
+Ursus arctos,brown bear,02132136-n,02132136-n,True,1,True,True,True,0.0001,0.0
+American black bear,american black bear,02133161-n,02133161-n,True,1,True,True,True,0.0002,0.0001
+black bear,asiatic black bear,02133161-n,02133704-n,False,-1,False,False,False,0.0001,0.0
+Ursus americanus,american black bear,02133161-n,02133161-n,True,1,True,True,True,0.0001,0.0
+Euarctos americanus,american black bear,02133161-n,02133161-n,True,1,True,True,True,0.0001,0.0
+ice bear,ice bear,02134084-n,02134084-n,True,1,True,True,True,0.0001,0.0
+polar bear,ice bear,02134084-n,02134084-n,True,1,True,True,True,0.0001,0.0
+Ursus Maritimus,ice bear,02134084-n,02134084-n,True,1,True,True,True,0.0001,0.0
+Thalarctos maritimus,ice bear,02134084-n,02134084-n,True,1,True,True,True,0.0001,0.0
+sloth bear,sloth bear,02134418-n,02134418-n,True,1,True,True,True,0.0001,0.0
+Melursus ursinus,sloth bear,02134418-n,02134418-n,True,1,True,True,True,0.0001,0.0
+Ursus ursinus,sloth bear,02134418-n,02134418-n,True,1,True,True,True,0.0001,0.0
+mongoose,mongoose,02137549-n,02137549-n,True,1,True,True,True,0.0001,0.0001
+meerkat,meerkat,02138441-n,02138441-n,True,1,True,True,True,0.0001,0.0
+mierkat,meerkat,02138441-n,02138441-n,True,1,True,True,True,0.0001,0.0
+tiger beetle,tiger beetle,02165105-n,02165105-n,True,1,True,True,True,0.0001,0.0
+ladybug,ladybug,02165456-n,02165456-n,True,1,True,True,True,0.0001,0.0
+ladybeetle,ladybug,02165456-n,02165456-n,True,1,True,True,True,0.0001,0.0
+lady beetle,ladybug,02165456-n,02165456-n,True,1,True,True,True,0.0001,0.0
+ladybird,ladybug,02165456-n,02165456-n,True,1,True,True,True,0.0001,0.0
+ladybird beetle,N/A,02165456-n,N/A,False,-1,False,False,False,0.0001,0.0
+ground beetle,ground beetle,02167151-n,02167151-n,True,1,True,True,True,0.0001,0.0
+carabid beetle,ground beetle,02167151-n,02167151-n,True,1,True,True,True,0.0001,0.0
+long-horned beetle,long-horned beetle,02168699-n,02168699-n,True,1,True,True,True,0.0001,0.0
+longicorn,long-horned beetle,02168699-n,02168699-n,True,1,True,True,True,0.0001,0.0
+longicorn beetle,long-horned beetle,02168699-n,02168699-n,True,1,True,True,True,0.0001,0.0
+leaf beetle,leaf beetle,02169497-n,02169497-n,True,1,True,True,True,0.0001,0.0
+chrysomelid,leaf beetle,02169497-n,02169497-n,True,1,True,True,True,0.0001,0.0
+dung beetle,dung beetle,02172182-n,02172182-n,True,1,True,True,True,0.0001,0.0
+rhinoceros beetle,rhinoceros beetle,02174001-n,02174001-n,True,1,True,True,True,0.0001,0.0
+weevil,weevil,02177972-n,02177972-n,True,1,True,True,True,0.0001,0.0
+fly,fly,02190166-n,01402765-v,False,-1,False,False,False,0.001,0.0001
+bee,bee,02206856-n,07975909-n,False,-1,False,False,False,0.0002,0.0
+ant,ant,02219486-n,02219486-n,True,1,True,True,True,0.0001,0.0001
+emmet,ant,02219486-n,02219486-n,True,1,True,True,True,0.0001,0.0
+pismire,ant,02219486-n,02219486-n,True,1,True,True,True,0.0001,0.0
+grasshopper,grasshopper,02226429-n,02226429-n,True,1,True,True,True,0.0002,0.0001
+hopper,hopper,02226429-n,10185327-n,False,-1,False,False,False,0.0003,0.0
+cricket,cricket,02229544-n,01076017-v,False,-1,False,False,False,0.0002,0.0001
+walking stick,walking stick,02231487-n,04546194-n,False,-1,False,False,False,0.0002,0.0001
+walkingstick,walking stick,02231487-n,04546194-n,False,-1,False,False,False,0.0001,0.0
+stick insect,walking stick,02231487-n,04546194-n,False,-1,False,False,False,0.0001,0.0
+cockroach,cockroach,02233338-n,02233338-n,True,1,True,True,True,0.0001,0.0001
+roach,roach,02233338-n,05261088-n,False,-1,False,False,False,0.0005,0.0
+mantis,mantis,02236044-n,02236044-n,True,1,True,True,True,0.0001,0.0
+mantid,mantis,02236044-n,02236044-n,True,1,True,True,True,0.0001,0.0
+cicada,cicada,02256656-n,02256656-n,True,1,True,True,True,0.0001,0.0001
+cicala,cicada,02256656-n,02256656-n,True,1,True,True,True,0.0001,0.0
+leafhopper,leafhopper,02259212-n,02259212-n,True,1,True,True,True,0.0001,0.0001
+lacewing,lacewing,02264363-n,02264363-n,True,1,True,True,True,0.0001,0.0
+lacewing fly,lacewing,02264363-n,02264363-n,True,1,True,True,True,0.0001,0.0
+dragonfly,dragonfly,02268443-n,02268443-n,True,1,True,True,True,0.0002,0.0001
+darning needle,darning needle,02268443-n,03162556-n,False,-1,False,False,False,0.0002,0.0
+devil's darning needle,darning needle,02268443-n,03162556-n,False,-1,False,False,False,0.0002,0.0
+sewing needle,sewing needle,02268443-n,04180063-n,False,-1,False,False,False,0.0002,0.0001
+snake feeder,sewing needle,02268443-n,04180063-n,False,-1,False,False,False,0.0001,0.0
+snake doctor,sewing needle,02268443-n,04180063-n,False,-1,False,False,False,0.0001,0.0
+mosquito hawk,N/A,02268443-n,N/A,False,-1,False,False,False,0.0002,0.0
+skeeter hawk,N/A,02268443-n,N/A,False,-1,False,False,False,0.0001,0.0
+damselfly,damselfly,02268853-n,02268853-n,True,1,True,True,True,0.0001,0.0
+admiral,admiral,02276258-n,02276258-n,True,1,True,True,True,0.0002,0.0
+ringlet,ringlet,02277742-n,02277742-n,True,1,True,True,True,0.0003,0.0001
+ringlet butterfly,ringlet,02277742-n,02277742-n,True,1,True,True,True,0.0001,0.0
+monarch,monarch,02279972-n,02279972-n,True,1,True,True,True,0.0002,0.0001
+monarch butterfly,monarch,02279972-n,02279972-n,True,1,True,True,True,0.0001,0.0
+milkweed butterfly,monarch,02279972-n,02279972-n,True,1,True,True,True,0.0001,0.0
+Danaus plexippus,monarch,02279972-n,02279972-n,True,1,True,True,True,0.0001,0.0
+cabbage butterfly,cabbage butterfly,02280649-n,02280649-n,True,1,True,True,True,0.0001,0.0001
+sulphur butterfly,sulphur butterfly,02281406-n,02281406-n,True,1,True,True,True,0.0001,0.0
+sulfur butterfly,sulphur butterfly,02281406-n,02281406-n,True,1,True,True,True,0.0001,0.0
+lycaenid,lycaenid,02281787-n,02281787-n,True,1,True,True,True,0.0002,0.0
+lycaenid butterfly,lycaenid,02281787-n,02281787-n,True,1,True,True,True,0.0001,0.0
+starfish,starfish,02317335-n,02317335-n,True,1,True,True,True,0.0001,0.0
+sea star,starfish,02317335-n,02317335-n,True,1,True,True,True,0.0001,0.0
+sea urchin,sea urchin,02319095-n,02319095-n,True,1,True,True,True,0.0001,0.0
+sea cucumber,sea cucumber,02321529-n,02321529-n,True,1,True,True,True,0.0001,0.0
+holothurian,sea cucumber,02321529-n,02321529-n,True,1,True,True,True,0.0001,0.0
+wood rabbit,wood rabbit,02325366-n,02325366-n,True,1,True,True,True,0.0001,0.0001
+cottontail,wood rabbit,02325366-n,02325366-n,True,1,True,True,True,0.0001,0.0
+cottontail rabbit,wood rabbit,02325366-n,02325366-n,True,1,True,True,True,0.0001,0.0
+hare,hare,02326432-n,02085004-v,False,-1,False,False,False,0.0002,0.0001
+Angora,angora,02328150-n,02417387-n,False,-1,False,False,False,0.0003,0.0001
+Angora rabbit,angora,02328150-n,02417387-n,False,-1,False,False,False,0.0001,0.0
+hamster,hamster,02342885-n,02342885-n,True,1,True,True,True,0.0001,0.0
+porcupine,porcupine,02346627-n,02346627-n,True,1,True,True,True,0.0001,0.0001
+hedgehog,hedgehog,02346627-n,01893825-n,False,-1,False,False,False,0.0001,0.0
+fox squirrel,fox squirrel,02356798-n,02356798-n,True,1,True,True,True,0.0001,0.0001
+eastern fox squirrel,fox squirrel,02356798-n,02356798-n,True,1,True,True,True,0.0001,0.0
+Sciurus niger,fox squirrel,02356798-n,02356798-n,True,1,True,True,True,0.0001,0.0
+marmot,marmot,02361337-n,02361337-n,True,1,True,True,True,0.0001,0.0
+beaver,beaver,02363005-n,02818254-n,False,-1,False,False,False,0.0003,0.0001
+guinea pig,guinea pig,02364673-n,02364673-n,True,1,True,True,True,0.0002,0.0
+Cavia cobaya,guinea pig,02364673-n,02364673-n,True,1,True,True,True,0.0001,0.0
+sorrel,sorrel,02389026-n,02389026-n,True,1,True,True,True,0.0005,0.0001
+zebra,zebra,02391049-n,02391049-n,True,1,True,True,True,0.0001,0.0001
+hog,hog,02395406-n,02395406-n,True,1,True,True,True,0.0003,0.0001
+pig,pig,02395406-n,03934998-n,False,-1,False,False,False,0.0004,0.0001
+grunter,grunter,02395406-n,10149436-n,False,-1,False,False,False,0.0001,0.0
+squealer,grunter,02395406-n,10149436-n,False,-1,False,False,False,0.0009,0.0
+Sus scrofa,wild boar,02395406-n,02396427-n,False,-1,False,False,False,0.0002,0.0001
+wild boar,wild boar,02396427-n,02396427-n,True,1,True,True,True,0.0001,0.0
+boar,boar,02396427-n,02396014-n,False,3,False,True,True,0.0001,0.0
+Sus scrofa,wild boar,02396427-n,02396427-n,True,1,True,True,True,0.0001,0.0
+warthog,warthog,02397096-n,02397096-n,True,1,True,True,True,0.0001,0.0
+hippopotamus,hippopotamus,02398521-n,02398521-n,True,1,True,True,True,0.0002,0.0001
+hippo,hippo,02398521-n,08707145-n,False,-1,False,False,False,0.0002,0.0
+river horse,hippopotamus,02398521-n,02398521-n,True,1,True,True,True,0.0001,0.0
+Hippopotamus amphibius,hippopotamus,02398521-n,02398521-n,True,1,True,True,True,0.0001,0.0
+ox,ox,02403003-n,02402175-n,False,-1,False,False,False,0.0002,0.0001
+water buffalo,water buffalo,02408429-n,02408429-n,True,1,True,True,True,0.0002,0.0001
+water ox,water buffalo,02408429-n,02408429-n,True,1,True,True,True,0.0001,0.0
+Asiatic buffalo,water buffalo,02408429-n,02408429-n,True,1,True,True,True,0.0001,0.0
+Bubalus bubalis,water buffalo,02408429-n,02408429-n,True,1,True,True,True,0.0001,0.0
+bison,bison,02410509-n,02410509-n,True,1,True,True,True,0.0001,0.0001
+ram,ram,02412080-n,01575146-v,False,-1,False,False,False,0.0006,0.0001
+tup,ram,02412080-n,01575146-v,False,-1,False,False,False,0.0001,0.0
+bighorn,bighorn,02415577-n,02415577-n,True,1,True,True,True,0.0002,0.0001
+bighorn sheep,bighorn,02415577-n,02415577-n,True,1,True,True,True,0.0001,0.0
+cimarron,cimarron,02415577-n,09244972-n,False,-1,False,False,False,0.0002,0.0001
+Rocky Mountain bighorn,bighorn,02415577-n,02415577-n,True,1,True,True,True,0.0001,0.0
+Rocky Mountain sheep,N/A,02415577-n,N/A,False,-1,False,False,False,0.0001,0.0
+Ovis canadensis,cimarron,02415577-n,09244972-n,False,-1,False,False,False,0.0001,0.0
+ibex,ibex,02417914-n,02417914-n,True,1,True,True,True,0.0002,0.0
+Capra ibex,ibex,02417914-n,02417914-n,True,1,True,True,True,0.0001,0.0
+hartebeest,hartebeest,02422106-n,02422106-n,True,1,True,True,True,0.0002,0.0001
+impala,impala,02422699-n,02422699-n,True,1,True,True,True,0.0001,0.0001
+Aepyceros melampus,impala,02422699-n,02422699-n,True,1,True,True,True,0.0001,0.0
+gazelle,gazelle,02423022-n,02423022-n,True,1,True,True,True,0.0001,0.0001
+Arabian camel,arabian camel,02437312-n,02437312-n,True,1,True,True,True,0.0002,0.0001
+dromedary,arabian camel,02437312-n,02437312-n,True,1,True,True,True,0.0001,0.0
+Camelus dromedarius,arabian camel,02437312-n,02437312-n,True,1,True,True,True,0.0001,0.0
+llama,llama,02437616-n,02437616-n,True,1,True,True,True,0.0001,0.0
+weasel,weasel,02441942-n,02441942-n,True,1,True,True,True,0.0002,0.0001
+mink,mink,02442845-n,14765497-n,False,-1,False,False,False,0.0002,0.0001
+polecat,polecat,02443114-n,02443114-n,True,1,True,True,True,0.0002,0.0001
+fitch,polecat,02443114-n,02443114-n,True,1,True,True,True,0.0001,0.0
+foulmart,polecat,02443114-n,02443114-n,True,1,True,True,True,0.0001,0.0
+foumart,polecat,02443114-n,02443114-n,True,1,True,True,True,0.0001,0.0
+Mustela putorius,polecat,02443114-n,02443114-n,True,1,True,True,True,0.0001,0.0
+black-footed ferret,black-footed ferret,02443484-n,02443484-n,True,1,True,True,True,0.0002,0.0001
+ferret,ferret,02443484-n,01144550-v,False,-1,False,False,False,0.0003,0.0001
+Mustela nigripes,black-footed ferret,02443484-n,02443484-n,True,1,True,True,True,0.0001,0.0
+otter,otter,02444819-n,14765785-n,False,-1,False,False,False,0.0002,0.0
+skunk,skunk,02445715-n,02445715-n,True,1,True,True,True,0.0005,0.0
+polecat,polecat,02445715-n,02443114-n,False,-1,False,False,False,0.0001,0.0
+wood pussy,skunk,02445715-n,02445715-n,True,1,True,True,True,0.0001,0.0
+badger,badger,02447366-n,00767530-v,False,-1,False,False,False,0.0003,0.0001
+armadillo,armadillo,02454379-n,02454379-n,True,1,True,True,True,0.0001,0.0001
+three-toed sloth,three-toed sloth,02457408-n,02457408-n,True,1,True,True,True,0.0002,0.0001
+ai,N/A,02457408-n,N/A,False,-1,False,False,False,0.0002,0.0
+Bradypus tridactylus,three-toed sloth,02457408-n,02457408-n,True,1,True,True,True,0.0001,0.0
+orangutan,orangutan,02480495-n,02480495-n,True,1,True,True,True,0.0001,0.0001
+orang,orangutan,02480495-n,02480495-n,True,1,True,True,True,0.0001,0.0
+orangutang,orangutan,02480495-n,02480495-n,True,1,True,True,True,0.0001,0.0
+Pongo pygmaeus,orangutan,02480495-n,02480495-n,True,1,True,True,True,0.0001,0.0
+gorilla,gorilla,02480855-n,02480855-n,True,1,True,True,True,0.0001,0.0
+Gorilla gorilla,gorilla,02480855-n,02480855-n,True,1,True,True,True,0.0001,0.0
+chimpanzee,chimpanzee,02481823-n,02481823-n,True,1,True,True,True,0.0001,0.0
+chimp,chimpanzee,02481823-n,02481823-n,True,1,True,True,True,0.0001,0.0
+Pan troglodytes,chimpanzee,02481823-n,02481823-n,True,1,True,True,True,0.0001,0.0
+gibbon,gibbon,02483362-n,02483362-n,True,1,True,True,True,0.0002,0.0001
+Hylobates lar,gibbon,02483362-n,02483362-n,True,1,True,True,True,0.0001,0.0
+siamang,siamang,02483708-n,02483708-n,True,1,True,True,True,0.0001,0.0001
+Hylobates syndactylus,siamang,02483708-n,02483708-n,True,1,True,True,True,0.0001,0.0
+Symphalangus syndactylus,siamang,02483708-n,02483708-n,True,1,True,True,True,0.0001,0.0
+guenon,guenon,02484975-n,02484975-n,True,1,True,True,True,0.0001,0.0001
+guenon monkey,guenon,02484975-n,02484975-n,True,1,True,True,True,0.0001,0.0
+patas,patas,02486261-n,02486261-n,True,1,True,True,True,0.0001,0.0
+hussar monkey,patas,02486261-n,02486261-n,True,1,True,True,True,0.0001,0.0
+Erythrocebus patas,patas,02486261-n,02486261-n,True,1,True,True,True,0.0001,0.0
+baboon,baboon,02486410-n,02486410-n,True,1,True,True,True,0.0001,0.0
+macaque,macaque,02487347-n,02487347-n,True,1,True,True,True,0.0001,0.0
+langur,langur,02488291-n,02488291-n,True,1,True,True,True,0.0001,0.0
+colobus,colobus,02488702-n,02488702-n,True,1,True,True,True,0.0001,0.0
+colobus monkey,colobus,02488702-n,02488702-n,True,1,True,True,True,0.0001,0.0
+proboscis monkey,proboscis monkey,02489166-n,02489166-n,True,1,True,True,True,0.0001,0.0
+Nasalis larvatus,proboscis monkey,02489166-n,02489166-n,True,1,True,True,True,0.0001,0.0
+marmoset,marmoset,02490219-n,02490219-n,True,1,True,True,True,0.0001,0.0001
+capuchin,capuchin,02492035-n,02492035-n,True,1,True,True,True,0.0002,0.0001
+ringtail,ringtail,02492035-n,01614690-n,False,-1,False,False,False,0.0003,0.0
+Cebus capucinus,capuchin,02492035-n,02492035-n,True,1,True,True,True,0.0001,0.0
+howler monkey,howler monkey,02492660-n,02492660-n,True,1,True,True,True,0.0002,0.0001
+howler,howler,02492660-n,00076323-n,False,4,False,False,True,0.0002,0.0001
+titi,titi,02493509-n,02493509-n,True,1,True,True,True,0.0003,0.0001
+titi monkey,titi,02493509-n,02493509-n,True,1,True,True,True,0.0001,0.0
+spider monkey,spider monkey,02493793-n,02493793-n,True,1,True,True,True,0.0001,0.0001
+Ateles geoffroyi,spider monkey,02493793-n,02493793-n,True,1,True,True,True,0.0001,0.0
+squirrel monkey,squirrel monkey,02494079-n,02494079-n,True,1,True,True,True,0.0001,0.0
+Saimiri sciureus,squirrel monkey,02494079-n,02494079-n,True,1,True,True,True,0.0001,0.0
+Madagascar cat,madagascar cat,02497673-n,02497673-n,True,1,True,True,True,0.0002,0.0001
+ring-tailed lemur,madagascar cat,02497673-n,02497673-n,True,1,True,True,True,0.0001,0.0
+Lemur catta,madagascar cat,02497673-n,02497673-n,True,1,True,True,True,0.0001,0.0
+indri,indri,02500267-n,02500267-n,True,1,True,True,True,0.0002,0.0001
+indris,indri,02500267-n,02500267-n,True,1,True,True,True,0.0001,0.0
+Indri indri,indri,02500267-n,02500267-n,True,1,True,True,True,0.0001,0.0
+Indri brevicaudatus,indri,02500267-n,02500267-n,True,1,True,True,True,0.0001,0.0
+Indian elephant,indian elephant,02504013-n,02504013-n,True,1,True,True,True,0.0002,0.0001
+Elephas maximus,indian elephant,02504013-n,02504013-n,True,1,True,True,True,0.0001,0.0
+African elephant,african elephant,02504458-n,02504458-n,True,1,True,True,True,0.0002,0.0001
+Loxodonta africana,african elephant,02504458-n,02504458-n,True,1,True,True,True,0.0001,0.0
+lesser panda,lesser panda,02509815-n,02509815-n,True,1,True,True,True,0.0002,0.0001
+red panda,lesser panda,02509815-n,02509815-n,True,1,True,True,True,0.0001,0.0
+panda,giant panda,02509815-n,02510455-n,False,-1,False,False,False,0.0002,0.0
+bear cat,lesser panda,02509815-n,02509815-n,True,1,True,True,True,0.0001,0.0
+cat bear,N/A,02509815-n,N/A,False,-1,False,False,False,0.0001,0.0
+Ailurus fulgens,lesser panda,02509815-n,02509815-n,True,1,True,True,True,0.0001,0.0
+giant panda,giant panda,02510455-n,02510455-n,True,1,True,True,True,0.0001,0.0
+panda,giant panda,02510455-n,02510455-n,True,1,True,True,True,0.0001,0.0
+panda bear,giant panda,02510455-n,02510455-n,True,1,True,True,True,0.0001,0.0
+coon bear,giant panda,02510455-n,02510455-n,True,1,True,True,True,0.0001,0.0
+Ailuropoda melanoleuca,giant panda,02510455-n,02510455-n,True,1,True,True,True,0.0001,0.0
+barracouta,barracouta,02514041-n,02514041-n,True,1,True,True,True,0.0001,0.0
+snoek,barracouta,02514041-n,02514041-n,True,1,True,True,True,0.0001,0.0
+eel,eel,02526121-n,07783967-n,False,-1,False,False,False,0.0002,0.0001
+coho,coho,02536864-n,02536864-n,True,1,True,True,True,0.0003,0.0001
+cohoe,coho,02536864-n,02536864-n,True,1,True,True,True,0.0001,0.0
+coho salmon,silver salmon,02536864-n,07796468-n,False,-1,False,False,False,0.0001,0.0001
+blue jack,silver salmon,02536864-n,07796468-n,False,-1,False,False,False,0.0001,0.0
+silver salmon,silver salmon,02536864-n,07796468-n,False,-1,False,False,False,0.0001,0.0
+Oncorhynchus kisutch,coho,02536864-n,02536864-n,True,1,True,True,True,0.0001,0.0
+rock beauty,rock beauty,02606052-n,02606052-n,True,1,True,True,True,0.0001,0.0
+Holocanthus tricolor,rock beauty,02606052-n,02606052-n,True,1,True,True,True,0.0001,0.0
+anemone fish,anemone fish,02607072-n,02607072-n,True,1,True,True,True,0.0001,0.0001
+sturgeon,sturgeon,02640242-n,02640242-n,True,1,True,True,True,0.0001,0.0001
+gar,gar,02641379-n,02641379-n,True,1,True,True,True,0.0003,0.0
+garfish,gar,02641379-n,02641379-n,True,1,True,True,True,0.0001,0.0001
+garpike,gar,02641379-n,02641379-n,True,1,True,True,True,0.0001,0.0
+billfish,billfish,02641379-n,02630739-n,False,-1,False,False,False,0.0002,0.0001
+Lepisosteus osseus,billfish,02641379-n,02630739-n,False,-1,False,False,False,0.0001,0.0
+lionfish,lionfish,02643566-n,02643566-n,True,1,True,True,True,0.0001,0.0
+puffer,puffer,02655020-n,02655020-n,True,1,True,True,True,0.0002,0.0001
+pufferfish,puffer,02655020-n,02655020-n,True,1,True,True,True,0.0001,0.0
+blowfish,blowfish,02655020-n,07781972-n,False,-1,False,False,False,0.0001,0.0
+globefish,blowfish,02655020-n,07781972-n,False,2,False,True,True,0.0001,0.0
+abacus,abacus,02666196-n,02666196-n,True,1,True,True,True,0.0001,0.0
+abaya,abaya,02667093-n,02667093-n,True,1,True,True,True,0.0001,0.0
+academic gown,academic gown,02669723-n,02669723-n,True,1,True,True,True,0.0001,0.0001
+academic robe,academic gown,02669723-n,02669723-n,True,1,True,True,True,0.0001,0.0
+judge's robe,academic gown,02669723-n,02669723-n,True,1,True,True,True,0.0001,0.0
+accordion,accordion,02672831-n,02672831-n,True,1,True,True,True,0.0001,0.0001
+piano accordion,accordion,02672831-n,02672831-n,True,1,True,True,True,0.0001,0.0
+squeeze box,accordion,02672831-n,02672831-n,True,1,True,True,True,0.0001,0.0
+acoustic guitar,acoustic guitar,02676566-n,02676566-n,True,1,True,True,True,0.0001,0.0
+aircraft carrier,aircraft carrier,02687172-n,02687172-n,True,1,True,True,True,0.0002,0.0001
+carrier,carrier,02687172-n,09897696-n,False,-1,False,False,False,0.0005,0.0
+flattop,aircraft carrier,02687172-n,02687172-n,True,1,True,True,True,0.0001,0.0
+attack aircraft carrier,aircraft carrier,02687172-n,02687172-n,True,1,True,True,True,0.0001,0.0
+airliner,airliner,02690373-n,02690373-n,True,1,True,True,True,0.0002,0.0001
+airship,airship,02692877-n,02692877-n,True,1,True,True,True,0.0001,0.0001
+dirigible,steerable,02692877-n,01475160-s,False,2,False,True,True,0.0002,0.0
+altar,altar,02699494-n,02699629-n,False,-1,False,False,False,0.0002,0.0
+ambulance,ambulance,02701002-n,02701002-n,True,1,True,True,True,0.0001,0.0
+amphibian,amphibian,02704792-n,02704645-n,False,-1,False,False,False,0.0003,0.0001
+amphibious vehicle,amphibian,02704792-n,02704645-n,False,-1,False,False,False,0.0001,0.0
+analog clock,analog clock,02708093-n,02708093-n,True,1,True,True,True,0.0001,0.0
+apiary,apiary,02727426-n,02727426-n,True,1,True,True,True,0.0001,0.0001
+bee house,apiary,02727426-n,02727426-n,True,1,True,True,True,0.0001,0.0
+apron,apron,02730930-n,02730930-n,True,1,True,True,True,0.0002,0.0001
+ashcan,ashcan,02747177-n,02747177-n,True,1,True,True,True,0.0002,0.0
+trash can,ashcan,02747177-n,02747177-n,True,1,True,True,True,0.0001,0.0
+garbage can,ashcan,02747177-n,02747177-n,True,1,True,True,True,0.0001,0.0
+wastebin,N/A,02747177-n,N/A,False,-1,False,False,False,0.0001,0.0
+ash bin,N/A,02747177-n,N/A,False,-1,False,False,False,0.0001,0.0
+ash-bin,N/A,02747177-n,N/A,False,-1,False,False,False,0.0001,0.0
+ashbin,N/A,02747177-n,N/A,False,-1,False,False,False,0.0001,0.0
+dustbin,N/A,02747177-n,N/A,False,-1,False,False,False,0.0001,0.0
+trash barrel,N/A,02747177-n,N/A,False,-1,False,False,False,0.0001,0.0
+trash bin,N/A,02747177-n,N/A,False,-1,False,False,False,0.0001,0.0
+assault rifle,assault rifle,02749479-n,02749479-n,True,1,True,True,True,0.0001,0.0001
+assault gun,assault gun,02749479-n,02749292-n,False,5,False,False,True,0.0001,0.0
+backpack,backpack,02769748-n,02769748-n,True,1,True,True,True,0.0002,0.0
+back pack,backpack,02769748-n,02769748-n,True,1,True,True,True,0.0001,0.0
+knapsack,backpack,02769748-n,02769748-n,True,1,True,True,True,0.0001,0.0
+packsack,backpack,02769748-n,02769748-n,True,1,True,True,True,0.0001,0.0
+rucksack,backpack,02769748-n,02769748-n,True,1,True,True,True,0.0001,0.0
+haversack,backpack,02769748-n,02769748-n,True,1,True,True,True,0.0001,0.0
+bakery,bakery,02776631-n,02776631-n,True,1,True,True,True,0.0001,0.0001
+bakeshop,bakery,02776631-n,02776631-n,True,1,True,True,True,0.0001,0.0
+bakehouse,bakery,02776631-n,02776631-n,True,1,True,True,True,0.0001,0.0
+balance beam,balance beam,02777292-n,02777292-n,True,1,True,True,True,0.0001,0.0001
+beam,beam,02777292-n,05136546-n,False,-1,False,False,False,0.0007,0.0001
+balloon,balloon,02782093-n,01948659-v,False,-1,False,False,False,0.0002,0.0001
+ballpoint,ballpoint,02783161-n,02783161-n,True,1,True,True,True,0.0001,0.0
+ballpoint pen,ballpoint,02783161-n,02783161-n,True,1,True,True,True,0.0001,0.0
+ballpen,ballpoint,02783161-n,02783161-n,True,1,True,True,True,0.0001,0.0
+Biro,ballpoint,02783161-n,02783161-n,True,1,True,True,True,0.0001,0.0
+Band Aid,band aid,02786058-n,02786058-n,True,1,True,True,True,0.0002,0.0001
+banjo,banjo,02787622-n,02787622-n,True,1,True,True,True,0.0001,0.0001
+bannister,bannister,02788148-n,02788148-n,True,1,True,True,True,0.0002,0.0001
+banister,bannister,02788148-n,02788148-n,True,1,True,True,True,0.0001,0.0
+balustrade,bannister,02788148-n,02788148-n,True,1,True,True,True,0.0001,0.0
+balusters,baluster,02788148-n,02783994-n,False,-1,False,False,False,0.0001,0.0001
+handrail,bannister,02788148-n,02788148-n,True,1,True,True,True,0.0001,0.0
+barbell,barbell,02790996-n,02790996-n,True,1,True,True,True,0.0001,0.0
+barber chair,barber chair,02791124-n,02791124-n,True,1,True,True,True,0.0001,0.0001
+barbershop,barbershop,02791270-n,02791270-n,True,1,True,True,True,0.0001,0.0
+barn,barn,02793495-n,02793495-n,True,1,True,True,True,0.0002,0.0002
+barometer,barometer,02794156-n,02794156-n,True,1,True,True,True,0.0001,0.0
+barrel,barrel,02795169-n,13901211-n,False,-1,False,False,False,0.0003,0.0001
+cask,cask,02795169-n,13766547-n,False,-1,False,False,False,0.0002,0.0001
+barrow,barrow,02797295-n,02797295-n,True,1,True,True,True,0.0003,0.0001
+garden cart,barrow,02797295-n,02797295-n,True,1,True,True,True,0.0001,0.0
+lawn cart,wheelbarrow,02797295-n,01949579-v,False,2,False,True,True,0.0001,0.0
+wheelbarrow,wheelbarrow,02797295-n,01949579-v,False,3,False,True,True,0.0001,0.0
+baseball,baseball,02799071-n,00471613-n,False,-1,False,False,False,0.0003,0.0
+basketball,basketball,02802426-n,02802426-n,True,1,True,True,True,0.0002,0.0001
+bassinet,bassinet,02804414-n,02804515-n,False,-1,False,False,False,0.0001,0.0
+bassoon,bassoon,02804610-n,02804610-n,True,1,True,True,True,0.0001,0.0
+bathing cap,bathing cap,02807133-n,02807133-n,True,1,True,True,True,0.0001,0.0
+swimming cap,bathing cap,02807133-n,02807133-n,True,1,True,True,True,0.0001,0.0
+bath towel,bath towel,02808304-n,02808304-n,True,1,True,True,True,0.0001,0.0001
+bathtub,bathtub,02808440-n,02808440-n,True,1,True,True,True,0.0002,0.0002
+bathing tub,bathtub,02808440-n,02808440-n,True,1,True,True,True,0.0001,0.0
+bath,bath,02808440-n,13616560-n,False,-1,False,False,False,0.0003,0.0
+tub,tub,02808440-n,13770926-n,False,-1,False,False,False,0.0002,0.0
+beach wagon,beach wagon,02814533-n,02814533-n,True,1,True,True,True,0.0002,0.0001
+station wagon,beach wagon,02814533-n,02814533-n,True,1,True,True,True,0.0001,0.0
+wagon,wagon,02814533-n,04543158-n,False,-1,False,False,False,0.0003,0.0
+estate car,beach wagon,02814533-n,02814533-n,True,1,True,True,True,0.0001,0.0
+beach waggon,beach wagon,02814533-n,02814533-n,True,1,True,True,True,0.0001,0.0
+station waggon,N/A,02814533-n,N/A,False,-1,False,False,False,0.0001,0.0
+waggon,wagon,02814533-n,04543158-n,False,-1,False,False,False,0.0001,0.0
+beacon,beacon,02814860-n,02160433-v,False,-1,False,False,False,0.0003,0.0001
+lighthouse,beacon,02814860-n,02160433-v,False,-1,False,False,False,0.0001,0.0
+beacon light,beacon,02814860-n,02160433-v,False,-1,False,False,False,0.0001,0.0
+pharos,beacon,02814860-n,02160433-v,False,-1,False,False,False,0.0001,0.0
+beaker,beaker,02815834-n,02815749-n,False,-1,False,False,False,0.0001,0.0
+bearskin,bearskin,02817516-n,02817516-n,True,1,True,True,True,0.0002,0.0
+busby,bearskin,02817516-n,02817516-n,True,1,True,True,True,0.0001,0.0
+shako,bearskin,02817516-n,02817516-n,True,1,True,True,True,0.0001,0.0
+beer bottle,beer bottle,02823428-n,02823428-n,True,1,True,True,True,0.0001,0.0
+beer glass,beer glass,02823750-n,02823750-n,True,1,True,True,True,0.0001,0.0
+bell cote,bell cote,02825657-n,02825657-n,True,1,True,True,True,0.0001,0.0
+bell cot,bell cote,02825657-n,02825657-n,True,1,True,True,True,0.0001,0.0
+bib,bib,02834397-n,02834397-n,True,1,True,True,True,0.0002,0.0001
+bicycle-built-for-two,bicycle-built-for-two,02835271-n,02835271-n,True,1,True,True,True,0.0001,0.0001
+tandem bicycle,tandem,02835271-n,05083567-n,False,2,False,True,True,0.0001,0.0
+tandem,tandem,02835271-n,05083567-n,False,-1,False,False,False,0.0042,0.0
+bikini,bikini,02837789-n,02837789-n,True,1,True,True,True,0.0002,0.0001
+two-piece,two-piece,02837789-n,01650037-a,False,-1,False,False,False,0.0002,0.0
+binder,binder,02840245-n,02840245-n,True,1,True,True,True,0.0003,0.0001
+ring-binder,binder,02840245-n,02840245-n,True,1,True,True,True,0.0001,0.0
+binoculars,binoculars,02841315-n,02841315-n,True,1,True,True,True,0.0001,0.0001
+field glasses,field glass,02841315-n,03333129-n,False,-1,False,False,False,0.0001,0.0
+opera glasses,binoculars,02841315-n,02841315-n,True,1,True,True,True,0.0001,0.0
+birdhouse,birdhouse,02843684-n,02843684-n,True,1,True,True,True,0.0001,0.0
+boathouse,boathouse,02859443-n,02859443-n,True,1,True,True,True,0.0001,0.0
+bobsled,bobsled,02860847-n,02861022-n,False,-1,False,False,False,0.0003,0.0
+bobsleigh,bobsled,02860847-n,02861022-n,False,-1,False,False,False,0.0001,0.0001
+bob,bob,02860847-n,02860239-n,False,-1,False,False,False,0.0005,0.0
+bolo tie,bolo tie,02865351-n,02865351-n,True,1,True,True,True,0.0001,0.0001
+bolo,bolo,02865351-n,02864987-n,False,4,False,False,True,0.0001,0.0
+bola tie,bolo tie,02865351-n,02865351-n,True,1,True,True,True,0.0001,0.0
+bola,bola,02865351-n,02864342-n,False,4,False,False,True,0.0001,0.0
+bonnet,bonnet,02869837-n,00047511-v,False,-1,False,False,False,0.0003,0.0
+poke bonnet,bonnet,02869837-n,00047511-v,False,-1,False,False,False,0.0001,0.0
+bookcase,bookcase,02870880-n,02870880-n,True,1,True,True,True,0.0001,0.0001
+bookshop,bookshop,02871525-n,02871525-n,True,1,True,True,True,0.0001,0.0
+bookstore,bookshop,02871525-n,02871525-n,True,1,True,True,True,0.0001,0.0
+bookstall,bookshop,02871525-n,02871525-n,True,1,True,True,True,0.0001,0.0
+bottlecap,bottlecap,02877765-n,02877765-n,True,1,True,True,True,0.0001,0.0001
+bow,bow,02879718-n,01729295-v,False,-1,False,False,False,0.0007,0.0001
+bow tie,bow tie,02883205-n,02883205-n,True,1,True,True,True,0.0001,0.0
+bow-tie,bow tie,02883205-n,02883205-n,True,1,True,True,True,0.0001,0.0
+bowtie,bow tie,02883205-n,02883205-n,True,1,True,True,True,0.0001,0.0
+brass,brass,02892201-n,14716997-n,False,-1,False,False,False,0.0005,0.0001
+memorial tablet,plaque,02892201-n,05244239-n,False,-1,False,False,False,0.0001,0.0
+plaque,plaque,02892201-n,05244239-n,False,-1,False,False,False,0.0001,0.0
+brassiere,brassiere,02892767-n,02892767-n,True,1,True,True,True,0.0002,0.0001
+bra,brassiere,02892767-n,02892767-n,True,1,True,True,True,0.0001,0.0
+bandeau,brassiere,02892767-n,02892767-n,True,1,True,True,True,0.0001,0.0
+breakwater,breakwater,02894605-n,02894605-n,True,1,True,True,True,0.0002,0.0
+groin,groin,02894605-n,01656107-v,False,-1,False,False,False,0.0002,0.0
+groyne,groin,02894605-n,01656107-v,False,3,False,True,True,0.0001,0.0001
+mole,mole,02894605-n,07838551-n,False,-1,False,False,False,0.0003,0.0
+bulwark,bulwark,02894605-n,01128071-v,False,5,False,False,True,0.0002,0.0
+seawall,breakwater,02894605-n,02894605-n,True,1,True,True,True,0.0001,0.0
+jetty,breakwater,02894605-n,02894605-n,True,1,True,True,True,0.0001,0.0
+breastplate,breastplate,02895154-n,02895154-n,True,1,True,True,True,0.0002,0.0
+aegis,auspices,02895154-n,01214863-n,False,-1,False,False,False,0.0001,0.0001
+egis,breastplate,02895154-n,02895154-n,True,1,True,True,True,0.0001,0.0
+broom,broom,02906734-n,01266375-v,False,-1,False,False,False,0.0004,0.0001
+bucket,bucket,02909870-n,13765749-n,False,-1,False,False,False,0.0003,0.0
+pail,pail,02909870-n,13768537-n,False,-1,False,False,False,0.0001,0.0
+buckle,buckle,02910353-n,01548290-v,False,-1,False,False,False,0.0011,0.0001
+bulletproof vest,bulletproof vest,02916936-n,02916936-n,True,1,True,True,True,0.0001,0.0001
+bullet train,bullet train,02917067-n,02917067-n,True,1,True,True,True,0.0001,0.0001
+bullet,bullet,02917067-n,02916350-n,False,4,False,False,True,0.0002,0.0001
+butcher shop,butcher shop,02927161-n,02927161-n,True,1,True,True,True,0.0002,0.0
+meat market,butcher shop,02927161-n,02927161-n,True,1,True,True,True,0.0001,0.0
+cab,cab,02930766-n,02931013-n,False,-1,False,False,False,0.0002,0.0001
+hack,hack,02930766-n,00006100-v,False,-1,False,False,False,0.0007,0.0001
+taxi,taxi,02930766-n,01948872-v,False,-1,False,False,False,0.0002,0.0001
+taxicab,taxi,02930766-n,01948872-v,False,-1,False,False,False,0.0001,0.0
+caldron,caldron,02939185-n,02939185-n,True,1,True,True,True,0.0002,0.0
+cauldron,caldron,02939185-n,02939185-n,True,1,True,True,True,0.0001,0.0
+candle,candle,02948072-n,13641534-n,False,-1,False,False,False,0.0004,0.0001
+taper,taper,02948072-n,05071368-n,False,-1,False,False,False,0.0003,0.0001
+wax light,candle,02948072-n,13641534-n,False,-1,False,False,False,0.0001,0.0
+cannon,cannon,02950826-n,02950632-n,False,-1,False,False,False,0.0004,0.0001
+canoe,canoe,02951358-n,01947543-v,False,-1,False,False,False,0.0002,0.0
+can opener,can opener,02951585-n,02951585-n,True,1,True,True,True,0.0001,0.0
+tin opener,can opener,02951585-n,02951585-n,True,1,True,True,True,0.0001,0.0
+cardigan,cardigan,02963159-n,02113186-n,False,-1,False,False,False,0.0001,0.0
+car mirror,car mirror,02965783-n,02965783-n,True,1,True,True,True,0.0001,0.0001
+carousel,carousel,02966193-n,02966193-n,True,1,True,True,True,0.0002,0.0
+carrousel,carousel,02966193-n,02966193-n,True,1,True,True,True,0.0001,0.0
+merry-go-round,merry-go-round,02966193-n,07342772-n,False,3,False,True,True,0.0001,0.0
+roundabout,merry-go-round,02966193-n,07342772-n,False,-1,False,False,False,0.0003,0.0
+whirligig,whirligig,02966193-n,02047148-v,False,4,False,False,True,0.0002,0.0001
+carpenter's kit,carpenter's kit,02966687-n,02966687-n,True,1,True,True,True,0.0001,0.0
+tool kit,carpenter's kit,02966687-n,02966687-n,True,1,True,True,True,0.0001,0.0
+carton,carton,02971356-n,02971356-n,True,1,True,True,True,0.0002,0.0
+car wheel,car wheel,02974003-n,02974003-n,True,1,True,True,True,0.0001,0.0001
+cash machine,cash machine,02977058-n,02977058-n,True,1,True,True,True,0.0002,0.0
+cash dispenser,cash machine,02977058-n,02977058-n,True,1,True,True,True,0.0001,0.0
+automated teller machine,N/A,02977058-n,N/A,False,-1,False,False,False,0.0001,0.0
+automatic teller machine,N/A,02977058-n,N/A,False,-1,False,False,False,0.0001,0.0
+automated teller,N/A,02977058-n,N/A,False,-1,False,False,False,0.0001,0.0
+automatic teller,N/A,02977058-n,N/A,False,-1,False,False,False,0.0001,0.0
+ATM,atmosphere,02977058-n,08499057-n,False,-1,False,False,False,0.0002,0.0001
+cassette,cassette,02978881-n,02978881-n,True,1,True,True,True,0.0001,0.0001
+cassette player,cassette player,02979186-n,02979186-n,True,1,True,True,True,0.0001,0.0
+castle,castle,02980441-n,02980441-n,True,1,True,True,True,0.0003,0.0001
+catamaran,catamaran,02981792-n,02981792-n,True,1,True,True,True,0.0001,0.0
+CD player,cd player,02988304-n,02988304-n,True,1,True,True,True,0.0001,0.0001
+cello,cello,02992211-n,02992211-n,True,1,True,True,True,0.0001,0.0
+violoncello,cello,02992211-n,02992211-n,True,1,True,True,True,0.0001,0.0
+cellular telephone,cellular telephone,02992529-n,02992529-n,True,1,True,True,True,0.0002,0.0
+cellular phone,cellular telephone,02992529-n,02992529-n,True,1,True,True,True,0.0001,0.0
+cellphone,cellular telephone,02992529-n,02992529-n,True,1,True,True,True,0.0001,0.0
+cell,cell,02992529-n,02991048-n,False,-1,False,False,False,0.0004,0.0
+mobile phone,cellular telephone,02992529-n,02992529-n,True,1,True,True,True,0.0001,0.0
+chain,chain,02999410-n,08057816-n,False,-1,False,False,False,0.0007,0.0001
+chainlink fence,chainlink fence,03000134-n,03000134-n,True,1,True,True,True,0.0001,0.0
+chain mail,chain mail,03000247-n,03000247-n,True,1,True,True,True,0.0002,0.0
+ring mail,chain mail,03000247-n,03000247-n,True,1,True,True,True,0.0001,0.0
+mail,mail,03000247-n,08463063-n,False,-1,False,False,False,0.0004,0.0
+chain armor,N/A,03000247-n,N/A,False,-1,False,False,False,0.0001,0.0
+chain armour,N/A,03000247-n,N/A,False,-1,False,False,False,0.0001,0.0
+ring armor,N/A,03000247-n,N/A,False,-1,False,False,False,0.0001,0.0
+ring armour,N/A,03000247-n,N/A,False,-1,False,False,False,0.0001,0.0
+chain saw,chain saw,03000684-n,03000684-n,True,1,True,True,True,0.0001,0.0
+chainsaw,chain saw,03000684-n,03000684-n,True,1,True,True,True,0.0001,0.0
+chest,chest,03014705-n,03014705-n,True,1,True,True,True,0.0003,0.0001
+chiffonier,chiffonier,03016953-n,03016953-n,True,1,True,True,True,0.0001,0.0001
+commode,chiffonier,03016953-n,03016953-n,True,1,True,True,True,0.0002,0.0001
+chime,chime,03017168-n,03017168-n,True,1,True,True,True,0.0002,0.0001
+bell,bell,03017168-n,07377244-n,False,-1,False,False,False,0.0005,0.0
+gong,gong,03017168-n,02180152-v,False,4,False,False,True,0.0002,0.0
+china cabinet,china cabinet,03018349-n,03018349-n,True,1,True,True,True,0.0001,0.0
+china closet,china cabinet,03018349-n,03018349-n,True,1,True,True,True,0.0001,0.0
+Christmas stocking,christmas stocking,03026506-n,03026506-n,True,1,True,True,True,0.0001,0.0001
+church,church,03028079-n,08082602-n,False,-1,False,False,False,0.0004,0.0001
+church building,church,03028079-n,08082602-n,False,-1,False,False,False,0.0001,0.0
+cinema,cinema,03032252-n,03032252-n,True,1,True,True,True,0.0003,0.0001
+movie theater,N/A,03032252-n,N/A,False,-1,False,False,False,0.0001,0.0
+movie theatre,N/A,03032252-n,N/A,False,-1,False,False,False,0.0001,0.0
+movie house,N/A,03032252-n,N/A,False,-1,False,False,False,0.0001,0.0
+picture palace,N/A,03032252-n,N/A,False,-1,False,False,False,0.0001,0.0
+cleaver,cleaver,03041632-n,03041632-n,True,1,True,True,True,0.0001,0.0
+meat cleaver,cleaver,03041632-n,03041632-n,True,1,True,True,True,0.0001,0.0
+chopper,chopper,03041632-n,05283498-n,False,-1,False,False,False,0.0002,0.0001
+cliff dwelling,cliff dwelling,03042490-n,03042490-n,True,1,True,True,True,0.0001,0.0
+cloak,cloak,03045698-n,03045337-n,False,-1,False,False,False,0.0003,0.0001
+clog,clog,03047690-n,03047690-n,True,1,True,True,True,0.0005,0.0001
+geta,clog,03047690-n,03047690-n,True,1,True,True,True,0.0001,0.0
+patten,sabot,03047690-n,04122578-n,False,2,False,True,True,0.0001,0.0
+sabot,sabot,03047690-n,04122578-n,False,-1,False,False,False,0.0001,0.0
+cocktail shaker,cocktail shaker,03062245-n,03062245-n,True,1,True,True,True,0.0001,0.0
+coffee mug,coffee mug,03063599-n,03063599-n,True,1,True,True,True,0.0001,0.0
+coffeepot,coffeepot,03063689-n,03063689-n,True,1,True,True,True,0.0001,0.0001
+coil,coil,03065424-n,01523986-v,False,-1,False,False,False,0.0005,0.0001
+spiral,spiral,03065424-n,00343606-n,False,-1,False,False,False,0.0005,0.0
+volute,N/A,03065424-n,N/A,False,-1,False,False,False,0.0001,0.0
+whorl,roll,03065424-n,00289659-n,False,-1,False,False,False,0.0001,0.0001
+helix,helix,03065424-n,13876561-n,False,-1,False,False,False,0.0002,0.0
+combination lock,combination lock,03075370-n,03075370-n,True,1,True,True,True,0.0001,0.0
+computer keyboard,computer keyboard,03085013-n,03085013-n,True,1,True,True,True,0.0001,0.0
+keypad,computer keyboard,03085013-n,03085013-n,True,1,True,True,True,0.0001,0.0
+confectionery,confectionery,03089624-n,03089624-n,True,1,True,True,True,0.0002,0.0
+confectionary,confectionery,03089624-n,03089624-n,True,1,True,True,True,0.0001,0.0
+candy store,confectionery,03089624-n,03089624-n,True,1,True,True,True,0.0001,0.0
+container ship,container ship,03095699-n,03095699-n,True,1,True,True,True,0.0001,0.0
+containership,container ship,03095699-n,03095699-n,True,1,True,True,True,0.0001,0.0
+container vessel,container ship,03095699-n,03095699-n,True,1,True,True,True,0.0001,0.0
+convertible,convertible,03100240-n,13419325-n,False,-1,False,False,False,0.0004,0.0001
+corkscrew,corkscrew,03109150-n,02049561-v,False,-1,False,False,False,0.0001,0.0
+bottle screw,corkscrew,03109150-n,02049561-v,False,-1,False,False,False,0.0001,0.0
+cornet,cornet,03110669-n,03110669-n,True,1,True,True,True,0.0002,0.0001
+horn,horn,03110669-n,03536931-n,False,-1,False,False,False,0.0004,0.0
+trumpet,trumpet,03110669-n,00977871-v,False,-1,False,False,False,0.0002,0.0
+trump,trump,03110669-n,00975202-v,False,-1,False,False,False,0.0004,0.0
+cowboy boot,cowboy boot,03124043-n,03124043-n,True,1,True,True,True,0.0001,0.0
+cowboy hat,cowboy hat,03124170-n,03124170-n,True,1,True,True,True,0.0001,0.0
+ten-gallon hat,cowboy hat,03124170-n,03124170-n,True,1,True,True,True,0.0001,0.0
+cradle,cradle,03125729-n,03125729-n,True,1,True,True,True,0.0004,0.0001
+crane,crane,03126707-n,10914331-n,False,-1,False,False,False,0.0002,0.0
+crash helmet,crash helmet,03127747-n,03127747-n,True,1,True,True,True,0.0001,0.0
+crate,crate,03127925-n,03127925-n,True,1,True,True,True,0.0002,0.0
+crib,crib,03131574-n,02278470-v,False,-1,False,False,False,0.0003,0.0001
+cot,cot,03131574-n,03114504-n,False,-1,False,False,False,0.0002,0.0001
+Crock Pot,crock pot,03133878-n,03133878-n,True,1,True,True,True,0.0001,0.0
+croquet ball,croquet ball,03134739-n,03134739-n,True,1,True,True,True,0.0001,0.0
+crutch,crutch,03141823-n,03141823-n,True,1,True,True,True,0.0001,0.0
+cuirass,cuirass,03146219-n,03146219-n,True,1,True,True,True,0.0001,0.0
+dam,dam,03160309-n,01477224-v,False,-1,False,False,False,0.0003,0.0001
+dike,dike,03160309-n,01587818-v,False,-1,False,False,False,0.0002,0.0
+dyke,dike,03160309-n,01587818-v,False,-1,False,False,False,0.0001,0.0
+desk,desk,03179701-n,03179701-n,True,1,True,True,True,0.0001,0.0
+desktop computer,desktop computer,03180011-n,03180011-n,True,1,True,True,True,0.0001,0.0
+dial telephone,dial telephone,03187595-n,03187595-n,True,1,True,True,True,0.0001,0.0001
+dial phone,dial telephone,03187595-n,03187595-n,True,1,True,True,True,0.0001,0.0
+diaper,diaper,03188531-n,03188531-n,True,1,True,True,True,0.0002,0.0001
+nappy,napkin,03188531-n,03807537-n,False,3,False,True,True,0.0002,0.0
+napkin,napkin,03188531-n,03807537-n,False,-1,False,False,False,0.0002,0.0
+digital clock,digital clock,03196217-n,03196217-n,True,1,True,True,True,0.0001,0.0
+digital watch,digital watch,03197337-n,03197337-n,True,1,True,True,True,0.0001,0.0001
+dining table,dining table,03201208-n,03201208-n,True,1,True,True,True,0.0002,0.0001
+board,board,03201208-n,01176897-v,False,-1,False,False,False,0.0006,0.0
+dishrag,dishrag,03207743-n,03207743-n,True,1,True,True,True,0.0001,0.0
+dishcloth,dishrag,03207743-n,03207743-n,True,1,True,True,True,0.0001,0.0
+dishwasher,dishwasher,03207941-n,10017190-n,False,-1,False,False,False,0.0002,0.0
+dish washer,dishwasher,03207941-n,10017190-n,False,-1,False,False,False,0.0001,0.0
+dishwashing machine,dishwasher,03207941-n,10017190-n,False,-1,False,False,False,0.0001,0.0
+disk brake,disk brake,03208938-n,03208938-n,True,1,True,True,True,0.0002,0.0001
+disc brake,disk brake,03208938-n,03208938-n,True,1,True,True,True,0.0001,0.0
+dock,dock,03216828-n,03217191-n,False,-1,False,False,False,0.0006,0.0001
+dockage,dockage,03216828-n,13321230-n,False,-1,False,False,False,0.0002,0.0001
+docking facility,dockage,03216828-n,13321230-n,False,-1,False,False,False,0.0001,0.0
+dogsled,dogsled,03218198-n,01939406-v,False,-1,False,False,False,0.0002,0.0001
+dog sled,dogsled,03218198-n,01939406-v,False,-1,False,False,False,0.0001,0.0
+dog sleigh,dogsled,03218198-n,01939406-v,False,-1,False,False,False,0.0001,0.0
+dome,dome,03220513-n,03220692-n,False,-1,False,False,False,0.0003,0.0001
+doormat,doormat,03223299-n,03223299-n,True,1,True,True,True,0.0002,0.0001
+welcome mat,doormat,03223299-n,03223299-n,True,1,True,True,True,0.0001,0.0
+drilling platform,drilling platform,03240683-n,03240683-n,True,1,True,True,True,0.0001,0.0
+offshore rig,drilling platform,03240683-n,03240683-n,True,1,True,True,True,0.0001,0.0
+drum,drum,03249569-n,02594552-n,False,-1,False,False,False,0.0005,0.0001
+membranophone,drum,03249569-n,02594552-n,False,-1,False,False,False,0.0001,0.0
+tympan,drum,03249569-n,02594552-n,False,-1,False,False,False,0.0001,0.0
+drumstick,drumstick,03250847-n,03250847-n,True,1,True,True,True,0.0001,0.0
+dumbbell,dumbbell,03255030-n,03255030-n,True,1,True,True,True,0.0002,0.0001
+Dutch oven,dutch oven,03259280-n,03259280-n,True,1,True,True,True,0.0001,0.0001
+electric fan,electric fan,03271574-n,03271574-n,True,1,True,True,True,0.0002,0.0001
+blower,blower,03271574-n,02855089-n,False,4,False,False,True,0.0002,0.0
+electric guitar,electric guitar,03272010-n,03272010-n,True,1,True,True,True,0.0001,0.0
+electric locomotive,electric locomotive,03272562-n,03272562-n,True,1,True,True,True,0.0001,0.0001
+entertainment center,entertainment center,03290653-n,03290653-n,True,1,True,True,True,0.0001,0.0
+envelope,envelope,03291819-n,09273776-n,False,-1,False,False,False,0.0002,0.0001
+espresso maker,espresso maker,03297495-n,03297495-n,True,1,True,True,True,0.0001,0.0
+face powder,face powder,03314780-n,03314780-n,True,1,True,True,True,0.0001,0.0001
+feather boa,feather boa,03325584-n,03325584-n,True,1,True,True,True,0.0001,0.0001
+boa,boa,03325584-n,01741943-n,False,3,False,True,True,0.0001,0.0
+file,file,03337140-n,03337140-n,True,1,True,True,True,0.0005,0.0001
+file cabinet,file,03337140-n,03337140-n,True,1,True,True,True,0.0001,0.0
+filing cabinet,file,03337140-n,03337140-n,True,1,True,True,True,0.0001,0.0
+fireboat,fireboat,03344393-n,03344393-n,True,1,True,True,True,0.0001,0.0
+fire engine,fire engine,03345487-n,03345487-n,True,1,True,True,True,0.0001,0.0
+fire truck,fire engine,03345487-n,03345487-n,True,1,True,True,True,0.0001,0.0
+fire screen,fire screen,03347037-n,03347037-n,True,1,True,True,True,0.0001,0.0
+fireguard,firebreak,03347037-n,08571642-n,False,2,False,True,True,0.0007,0.0
+flagpole,flagpole,03355925-n,03355925-n,True,1,True,True,True,0.0002,0.0001
+flagstaff,flagstaff,03355925-n,09057930-n,False,4,False,False,True,0.0001,0.0
+flute,flute,03372029-n,01457376-v,False,-1,False,False,False,0.0002,0.0
+transverse flute,flute,03372029-n,01457376-v,False,-1,False,False,False,0.0001,0.0
+folding chair,folding chair,03376595-n,03376595-n,True,1,True,True,True,0.0001,0.0001
+football helmet,football helmet,03379051-n,03379051-n,True,1,True,True,True,0.0001,0.0001
+forklift,forklift,03384352-n,03384352-n,True,1,True,True,True,0.0001,0.0
+fountain,fountain,03388043-n,03388043-n,True,1,True,True,True,0.0002,0.0001
+fountain pen,fountain pen,03388183-n,03388183-n,True,1,True,True,True,0.0001,0.0001
+four-poster,four-poster,03388549-n,03388549-n,True,1,True,True,True,0.0001,0.0
+freight car,freight car,03393912-n,03393912-n,True,1,True,True,True,0.0001,0.0001
+French horn,french horn,03394916-n,03394916-n,True,1,True,True,True,0.0001,0.0
+horn,horn,03394916-n,03536931-n,False,-1,False,False,False,0.0002,0.0
+frying pan,frying pan,03400231-n,03400231-n,True,1,True,True,True,0.0002,0.0001
+frypan,frying pan,03400231-n,03400231-n,True,1,True,True,True,0.0001,0.0
+skillet,frying pan,03400231-n,03400231-n,True,1,True,True,True,0.0001,0.0
+fur coat,fur coat,03404251-n,03404251-n,True,1,True,True,True,0.0001,0.0
+garbage truck,garbage truck,03417042-n,03417042-n,True,1,True,True,True,0.0001,0.0
+dustcart,garbage truck,03417042-n,03417042-n,True,1,True,True,True,0.0001,0.0
+gasmask,gasmask,03424325-n,03424325-n,True,1,True,True,True,0.0001,0.0001
+respirator,respirator,03424325-n,04080833-n,False,3,False,True,True,0.0001,0.0
+gas helmet,gasmask,03424325-n,03424325-n,True,1,True,True,True,0.0001,0.0
+gas pump,gas pump,03425413-n,03425413-n,True,1,True,True,True,0.0002,0.0
+gasoline pump,gas pump,03425413-n,03425413-n,True,1,True,True,True,0.0001,0.0
+petrol pump,gas pump,03425413-n,03425413-n,True,1,True,True,True,0.0001,0.0
+island dispenser,gas pump,03425413-n,03425413-n,True,1,True,True,True,0.0001,0.0
+goblet,goblet,03443371-n,03443371-n,True,1,True,True,True,0.0002,0.0
+go-kart,go-kart,03444034-n,03444034-n,True,1,True,True,True,0.0001,0.0
+golf ball,golf ball,03445777-n,03445777-n,True,1,True,True,True,0.0001,0.0
+golfcart,golfcart,03445924-n,03445924-n,True,1,True,True,True,0.0001,0.0
+golf cart,golfcart,03445924-n,03445924-n,True,1,True,True,True,0.0001,0.0
+gondola,gondola,03447447-n,03447447-n,True,1,True,True,True,0.0003,0.0001
+gong,gong,03447721-n,02180152-v,False,-1,False,False,False,0.0001,0.0
+tam-tam,gong,03447721-n,02180152-v,False,-1,False,False,False,0.0001,0.0
+gown,gown,03450230-n,03450734-n,False,-1,False,False,False,0.0004,0.0
+grand piano,grand piano,03452741-n,03452741-n,True,1,True,True,True,0.0001,0.0001
+grand,grand,03452741-n,01387149-s,False,-1,False,False,False,0.0012,0.0001
+greenhouse,greenhouse,03457902-n,03070101-a,False,-1,False,False,False,0.0002,0.0001
+nursery,nursery,03457902-n,03836062-n,False,-1,False,False,False,0.0001,0.0
+glasshouse,greenhouse,03457902-n,03070101-a,False,-1,False,False,False,0.0001,0.0
+grille,grille,03459775-n,03459775-n,True,1,True,True,True,0.0002,0.0001
+radiator grille,grille,03459775-n,03459775-n,True,1,True,True,True,0.0001,0.0
+grocery store,grocery store,03461385-n,03461385-n,True,1,True,True,True,0.0002,0.0001
+grocery,grocery,03461385-n,03461119-n,False,3,False,True,True,0.0001,0.0001
+food market,market,03461385-n,02298471-v,False,2,False,True,True,0.0001,0.0
+market,market,03461385-n,02298471-v,False,-1,False,False,False,0.0005,0.0
+guillotine,guillotine,03467068-n,01571538-v,False,-1,False,False,False,0.0002,0.0001
+hair slide,hair slide,03476684-n,03476684-n,True,1,True,True,True,0.0001,0.0
+hair spray,hair spray,03476991-n,03476991-n,True,1,True,True,True,0.0001,0.0
+half track,half track,03478589-n,03478491-n,False,-1,False,False,False,0.0001,0.0001
+hammer,hammer,03481172-n,03481521-n,False,-1,False,False,False,0.0004,0.0
+hamper,hamper,03482405-n,03482405-n,True,1,True,True,True,0.0003,0.0001
+hand blower,hand blower,03483316-n,03483316-n,True,1,True,True,True,0.0001,0.0
+blow dryer,hand blower,03483316-n,03483316-n,True,1,True,True,True,0.0001,0.0
+blow drier,hand blower,03483316-n,03483316-n,True,1,True,True,True,0.0001,0.0
+hair dryer,N/A,03483316-n,N/A,False,-1,False,False,False,0.0001,0.0
+hair drier,N/A,03483316-n,N/A,False,-1,False,False,False,0.0001,0.0
+hand-held computer,hand-held computer,03485407-n,03485407-n,True,1,True,True,True,0.0001,0.0
+hand-held microcomputer,hand-held computer,03485407-n,03485407-n,True,1,True,True,True,0.0001,0.0
+handkerchief,handkerchief,03485794-n,03485794-n,True,1,True,True,True,0.0001,0.0
+hankie,handkerchief,03485794-n,03485794-n,True,1,True,True,True,0.0001,0.0
+hanky,handkerchief,03485794-n,03485794-n,True,1,True,True,True,0.0001,0.0
+hankey,handkerchief,03485794-n,03485794-n,True,1,True,True,True,0.0001,0.0
+hard disc,hard disc,03492542-n,03492542-n,True,1,True,True,True,0.0001,0.0001
+hard disk,hard disc,03492542-n,03492542-n,True,1,True,True,True,0.0001,0.0
+fixed disk,hard disc,03492542-n,03492542-n,True,1,True,True,True,0.0001,0.0
+harmonica,harmonica,03494278-n,03494278-n,True,1,True,True,True,0.0001,0.0
+mouth organ,harmonica,03494278-n,03494278-n,True,1,True,True,True,0.0001,0.0
+harp,harp,03494278-n,01732713-v,False,-1,False,False,False,0.0003,0.0
+mouth harp,harp,03494278-n,01732713-v,False,2,False,True,True,0.0001,0.0
+harp,harp,03495258-n,01732713-v,False,-1,False,False,False,0.0001,0.0
+harvester,harvester,03496892-n,10161363-n,False,-1,False,False,False,0.0002,0.0001
+reaper,grim reaper,03496892-n,09488584-n,False,-1,False,False,False,0.0002,0.0
+hatchet,hatchet,03498962-n,03498962-n,True,1,True,True,True,0.0003,0.0001
+holster,holster,03527444-n,03527444-n,True,1,True,True,True,0.0002,0.0
+home theater,home theater,03529860-n,03529860-n,True,1,True,True,True,0.0002,0.0
+home theatre,home theater,03529860-n,03529860-n,True,1,True,True,True,0.0001,0.0
+honeycomb,honeycomb,03530642-n,00533773-v,False,-1,False,False,False,0.0003,0.0001
+hook,hook,03532672-n,01080883-v,False,-1,False,False,False,0.0011,0.0001
+claw,claw,03532672-n,02156140-n,False,-1,False,False,False,0.0004,0.0001
+hoopskirt,hoopskirt,03534580-n,03534580-n,True,1,True,True,True,0.0001,0.0001
+crinoline,crinoline,03534580-n,03132666-n,False,4,False,False,True,0.0002,0.0
+horizontal bar,horizontal bar,03535780-n,03535780-n,True,1,True,True,True,0.0001,0.0001
+high bar,horizontal bar,03535780-n,03535780-n,True,1,True,True,True,0.0001,0.0
+horse cart,horse cart,03538406-n,03538406-n,True,1,True,True,True,0.0001,0.0
+horse-cart,horse cart,03538406-n,03538406-n,True,1,True,True,True,0.0001,0.0
+hourglass,hourglass,03544143-n,03544143-n,True,1,True,True,True,0.0001,0.0
+iPod,ipod,03584254-n,03584254-n,True,1,True,True,True,0.0001,0.0
+iron,iron,03584829-n,01390833-v,False,-1,False,False,False,0.0004,0.0001
+smoothing iron,iron,03584829-n,01390833-v,False,-1,False,False,False,0.0001,0.0
+jack-o'-lantern,jack-o'-lantern,03590841-n,03590841-n,True,1,True,True,True,0.0002,0.0001
+jean,jean,03594734-n,03594734-n,True,1,True,True,True,0.0002,0.0001
+blue jean,jean,03594734-n,03594734-n,True,1,True,True,True,0.0001,0.0
+denim,denim,03594734-n,03175189-n,False,3,False,True,True,0.0001,0.0
+jeep,jeep,03594945-n,03594945-n,True,1,True,True,True,0.0001,0.0
+landrover,jeep,03594945-n,03594945-n,True,1,True,True,True,0.0001,0.0
+jersey,jersey,03595614-n,02406749-n,False,-1,False,False,False,0.0003,0.0001
+T-shirt,jersey,03595614-n,02406749-n,False,-1,False,False,False,0.0001,0.0
+tee shirt,jersey,03595614-n,02406749-n,False,-1,False,False,False,0.0001,0.0
+jigsaw puzzle,jigsaw puzzle,03598930-n,03598930-n,True,1,True,True,True,0.0001,0.0
+jinrikisha,jinrikisha,03599486-n,03599486-n,True,1,True,True,True,0.0001,0.0
+ricksha,jinrikisha,03599486-n,03599486-n,True,1,True,True,True,0.0001,0.0
+rickshaw,jinrikisha,03599486-n,03599486-n,True,1,True,True,True,0.0001,0.0
+joystick,joystick,03602883-n,03602883-n,True,1,True,True,True,0.0002,0.0001
+kimono,kimono,03617480-n,03617480-n,True,1,True,True,True,0.0001,0.0
+knee pad,knee pad,03623198-n,03623198-n,True,1,True,True,True,0.0001,0.0
+knot,knot,03627232-n,03627232-n,True,1,True,True,True,0.0006,0.0001
+lab coat,lab coat,03630383-n,03630383-n,True,1,True,True,True,0.0002,0.0
+laboratory coat,lab coat,03630383-n,03630383-n,True,1,True,True,True,0.0001,0.0
+ladle,ladle,03633091-n,01578993-v,False,-1,False,False,False,0.0002,0.0
+lampshade,lampshade,03637318-n,03637318-n,True,1,True,True,True,0.0001,0.0
+lamp shade,lampshade,03637318-n,03637318-n,True,1,True,True,True,0.0001,0.0
+laptop,laptop,03642806-n,03642806-n,True,1,True,True,True,0.0001,0.0
+laptop computer,laptop,03642806-n,03642806-n,True,1,True,True,True,0.0001,0.0
+lawn mower,lawn mower,03649909-n,03649909-n,True,1,True,True,True,0.0001,0.0001
+mower,lawn mower,03649909-n,03649909-n,True,1,True,True,True,0.0001,0.0
+lens cap,lens cap,03657121-n,03657121-n,True,1,True,True,True,0.0001,0.0
+lens cover,lens cap,03657121-n,03657121-n,True,1,True,True,True,0.0001,0.0
+letter opener,letter opener,03658185-n,03658185-n,True,1,True,True,True,0.0001,0.0
+paper knife,letter opener,03658185-n,03658185-n,True,1,True,True,True,0.0001,0.0
+paperknife,letter opener,03658185-n,03658185-n,True,1,True,True,True,0.0001,0.0
+library,library,03661043-n,03660664-n,False,-1,False,False,False,0.0003,0.0001
+lifeboat,lifeboat,03662601-n,03662601-n,True,1,True,True,True,0.0001,0.0
+lighter,lighter,03666591-n,01954852-v,False,-1,False,False,False,0.0016,0.0
+light,light,03666591-n,00712186-s,False,-1,False,False,False,0.0011,0.0
+igniter,igniter,03666591-n,15101361-n,False,-1,False,False,False,0.0001,0.0
+ignitor,igniter,03666591-n,15101361-n,False,-1,False,False,False,0.0001,0.0
+limousine,limousine,03670208-n,03670208-n,True,1,True,True,True,0.0001,0.0
+limo,limousine,03670208-n,03670208-n,True,1,True,True,True,0.0001,0.0
+liner,liner,03673027-n,03673270-n,False,-1,False,False,False,0.0003,0.0001
+ocean liner,liner,03673027-n,03673270-n,False,-1,False,False,False,0.0001,0.0
+lipstick,lipstick,03676483-n,03676483-n,True,1,True,True,True,0.0002,0.0
+lip rouge,lipstick,03676483-n,03676483-n,True,1,True,True,True,0.0001,0.0
+Loafer,loafer,03680355-n,03680355-n,True,1,True,True,True,0.0002,0.0001
+lotion,lotion,03690938-n,03691128-n,False,-1,False,False,False,0.0002,0.0001
+loudspeaker,loudspeaker,03691459-n,03691459-n,True,1,True,True,True,0.0002,0.0001
+speaker,speaker,03691459-n,10630188-n,False,5,False,False,True,0.0003,0.0001
+speaker unit,speaker,03691459-n,10630188-n,False,2,False,True,True,0.0001,0.0
+loudspeaker system,loudspeaker,03691459-n,03691459-n,True,1,True,True,True,0.0001,0.0
+speaker system,speaker,03691459-n,10630188-n,False,-1,False,False,False,0.0001,0.0
+loupe,loupe,03692522-n,03692522-n,True,1,True,True,True,0.0001,0.0
+jeweler's loupe,loupe,03692522-n,03692522-n,True,1,True,True,True,0.0001,0.0
+lumbermill,lumbermill,03697007-n,03697007-n,True,1,True,True,True,0.0002,0.0001
+sawmill,sawmill,03697007-n,04140777-n,False,3,False,True,True,0.0002,0.0001
+magnetic compass,magnetic compass,03706229-n,03706229-n,True,1,True,True,True,0.0002,0.0001
+mailbag,mailbag,03709823-n,03709823-n,True,1,True,True,True,0.0002,0.0
+postbag,mailbag,03709823-n,03709823-n,True,1,True,True,True,0.0001,0.0
+mailbox,mailbox,03710193-n,03710193-n,True,1,True,True,True,0.0002,0.0
+letter box,N/A,03710193-n,N/A,False,-1,False,False,False,0.0002,0.0
+maillot,maillot,03710637-n,03710637-n,True,1,True,True,True,0.0002,0.0
+maillot,maillot,03710721-n,03710637-n,False,-1,False,False,False,0.0001,0.0
+tank suit,maillot,03710721-n,03710637-n,False,-1,False,False,False,0.0001,0.0
+manhole cover,manhole cover,03717622-n,03717622-n,True,1,True,True,True,0.0001,0.0001
+maraca,maraca,03720891-n,03720891-n,True,1,True,True,True,0.0001,0.0
+marimba,marimba,03721384-n,03721384-n,True,1,True,True,True,0.0001,0.0
+xylophone,marimba,03721384-n,03721384-n,True,1,True,True,True,0.0001,0.0
+mask,mask,03724870-n,01358855-v,False,-1,False,False,False,0.0005,0.0001
+matchstick,matchstick,03729826-n,03729826-n,True,1,True,True,True,0.0001,0.0001
+maypole,maypole,03733131-n,03733131-n,True,1,True,True,True,0.0001,0.0
+maze,maze,03733281-n,03733281-n,True,1,True,True,True,0.0003,0.0001
+labyrinth,inner ear,03733281-n,05321307-n,False,2,False,True,True,0.0002,0.0002
+measuring cup,measuring cup,03733805-n,03733805-n,True,1,True,True,True,0.0001,0.0001
+medicine chest,medicine chest,03742115-n,03742115-n,True,1,True,True,True,0.0001,0.0
+medicine cabinet,medicine chest,03742115-n,03742115-n,True,1,True,True,True,0.0001,0.0
+megalith,megalith,03743016-n,03743016-n,True,1,True,True,True,0.0001,0.0
+megalithic structure,megalith,03743016-n,03743016-n,True,1,True,True,True,0.0001,0.0
+microphone,microphone,03759954-n,03759954-n,True,1,True,True,True,0.0001,0.0
+mike,microphone,03759954-n,03759954-n,True,1,True,True,True,0.0001,0.0
+microwave,microwave,03761084-n,03761084-n,True,1,True,True,True,0.0002,0.0
+microwave oven,microwave,03761084-n,03761084-n,True,1,True,True,True,0.0001,0.0
+military uniform,military uniform,03763968-n,03763968-n,True,1,True,True,True,0.0001,0.0001
+milk can,milk can,03764736-n,03764736-n,True,1,True,True,True,0.0001,0.0
+minibus,minibus,03769881-n,03769881-n,True,1,True,True,True,0.0001,0.0
+miniskirt,miniskirt,03770439-n,03770439-n,True,1,True,True,True,0.0001,0.0
+mini,mini,03770439-n,01432712-a,False,3,False,True,True,0.0001,0.0
+minivan,minivan,03770679-n,03770679-n,True,1,True,True,True,0.0001,0.0
+missile,missile,03773504-n,03773504-n,True,1,True,True,True,0.0002,0.0001
+mitten,mitten,03775071-n,03775071-n,True,1,True,True,True,0.0001,0.0
+mixing bowl,mixing bowl,03775546-n,03775546-n,True,1,True,True,True,0.0001,0.0
+mobile home,mobile home,03776460-n,03776460-n,True,1,True,True,True,0.0001,0.0
+manufactured home,mobile home,03776460-n,03776460-n,True,1,True,True,True,0.0001,0.0
+Model T,model t,03777568-n,03777568-n,True,1,True,True,True,0.0001,0.0
+modem,modem,03777754-n,03777754-n,True,1,True,True,True,0.0001,0.0
+monastery,monastery,03781244-n,03781244-n,True,1,True,True,True,0.0001,0.0001
+monitor,monitor,03782006-n,03782006-n,True,1,True,True,True,0.0011,0.0001
+moped,moped,03785016-n,03785016-n,True,1,True,True,True,0.0003,0.0001
+mortar,mortar,03786901-n,14955889-n,False,-1,False,False,False,0.0002,0.0001
+mortarboard,mortarboard,03787032-n,03787164-n,False,-1,False,False,False,0.0001,0.0001
+mosque,mosque,03788195-n,03788195-n,True,1,True,True,True,0.0001,0.0001
+mosquito net,mosquito net,03788365-n,03788365-n,True,1,True,True,True,0.0001,0.0
+motor scooter,motor scooter,03791053-n,03791053-n,True,1,True,True,True,0.0002,0.0
+scooter,scooter,03791053-n,04149374-n,False,-1,False,False,False,0.0002,0.0
+mountain bike,mountain bike,03792782-n,03792782-n,True,1,True,True,True,0.0001,0.0
+all-terrain bike,mountain bike,03792782-n,03792782-n,True,1,True,True,True,0.0001,0.0
+off-roader,mountain bike,03792782-n,03792782-n,True,1,True,True,True,0.0001,0.0
+mountain tent,mountain tent,03792972-n,03792972-n,True,1,True,True,True,0.0001,0.0001
+mouse,mouse,03793489-n,01212115-v,False,-1,False,False,False,0.0004,0.0001
+computer mouse,mouse,03793489-n,01212115-v,False,-1,False,False,False,0.0001,0.0
+mousetrap,mousetrap,03794056-n,00976270-n,False,-1,False,False,False,0.0002,0.0
+moving van,moving van,03796401-n,03796401-n,True,1,True,True,True,0.0001,0.0
+muzzle,muzzle,03803284-n,02340897-v,False,-1,False,False,False,0.0004,0.0001
+nail,nail,03804744-n,01357831-v,False,-1,False,False,False,0.0006,0.0001
+neck brace,neck brace,03814639-n,03814639-n,True,1,True,True,True,0.0001,0.0
+necklace,necklace,03814906-n,03814906-n,True,1,True,True,True,0.0001,0.0
+nipple,nipple,03825788-n,03825788-n,True,1,True,True,True,0.0002,0.0001
+notebook,notebook,03832673-n,03832673-n,True,1,True,True,True,0.0002,0.0
+notebook computer,notebook,03832673-n,03832673-n,True,1,True,True,True,0.0001,0.0
+obelisk,obelisk,03837869-n,03837869-n,True,1,True,True,True,0.0001,0.0001
+oboe,oboe,03838899-n,03838899-n,True,1,True,True,True,0.0002,0.0
+hautboy,oboe,03838899-n,03838899-n,True,1,True,True,True,0.0001,0.0
+hautbois,oboe,03838899-n,03838899-n,True,1,True,True,True,0.0001,0.0
+ocarina,ocarina,03840681-n,03840681-n,True,1,True,True,True,0.0001,0.0001
+sweet potato,sweet potato,03840681-n,07712063-n,False,-1,False,False,False,0.0002,0.0
+odometer,odometer,03841143-n,03841143-n,True,1,True,True,True,0.0002,0.0001
+hodometer,odometer,03841143-n,03841143-n,True,1,True,True,True,0.0001,0.0
+mileometer,odometer,03841143-n,03841143-n,True,1,True,True,True,0.0001,0.0
+milometer,odometer,03841143-n,03841143-n,True,1,True,True,True,0.0001,0.0
+oil filter,oil filter,03843555-n,03843555-n,True,1,True,True,True,0.0001,0.0001
+organ,organ,03854065-n,05297523-n,False,-1,False,False,False,0.0004,0.0001
+pipe organ,organ,03854065-n,05297523-n,False,-1,False,False,False,0.0001,0.0
+oscilloscope,oscilloscope,03857828-n,03857828-n,True,1,True,True,True,0.0001,0.0001
+scope,scope,03857828-n,05125377-n,False,-1,False,False,False,0.0004,0.0001
+cathode-ray oscilloscope,oscilloscope,03857828-n,03857828-n,True,1,True,True,True,0.0001,0.0
+CRO,oscilloscope,03857828-n,03857828-n,True,1,True,True,True,0.0001,0.0
+overskirt,overskirt,03866082-n,03866082-n,True,1,True,True,True,0.0001,0.0
+oxcart,oxcart,03868242-n,03868242-n,True,1,True,True,True,0.0001,0.0
+oxygen mask,oxygen mask,03868863-n,03868863-n,True,1,True,True,True,0.0001,0.0001
+packet,packet,03871628-n,07281099-n,False,-1,False,False,False,0.0002,0.0001
+paddle,paddle,03873416-n,03873416-n,True,1,True,True,True,0.0005,0.0001
+boat paddle,paddle,03873416-n,03873416-n,True,1,True,True,True,0.0001,0.0
+paddlewheel,paddlewheel,03874293-n,03874293-n,True,1,True,True,True,0.0001,0.0001
+paddle wheel,paddlewheel,03874293-n,03874293-n,True,1,True,True,True,0.0001,0.0
+padlock,padlock,03874599-n,01342012-v,False,-1,False,False,False,0.0001,0.0
+paintbrush,paintbrush,03876231-n,03876231-n,True,1,True,True,True,0.0001,0.0
+pajama,pajama,03877472-n,03877472-n,True,1,True,True,True,0.0002,0.0
+pyjama,pajama,03877472-n,03877472-n,True,1,True,True,True,0.0001,0.0
+pj's,pajama,03877472-n,03877472-n,True,1,True,True,True,0.0001,0.0
+jammies,pajama,03877472-n,03877472-n,True,1,True,True,True,0.0001,0.0
+palace,palace,03877845-n,03877845-n,True,1,True,True,True,0.0002,0.0001
+panpipe,panpipe,03884397-n,03884397-n,True,1,True,True,True,0.0001,0.0001
+pandean pipe,panpipe,03884397-n,03884397-n,True,1,True,True,True,0.0001,0.0
+syrinx,syrinx,03884397-n,02511633-n,False,3,False,True,True,0.0001,0.0
+paper towel,paper towel,03887697-n,03887697-n,True,1,True,True,True,0.0001,0.0
+parachute,parachute,03888257-n,03888257-n,True,1,True,True,True,0.0002,0.0002
+chute,chute,03888257-n,01968275-v,False,4,False,False,True,0.0001,0.0
+parallel bars,parallel bars,03888605-n,03888605-n,True,1,True,True,True,0.0001,0.0
+bars,N/A,03888605-n,N/A,False,-1,False,False,False,0.0008,0.0
+park bench,park bench,03891251-n,03891251-n,True,1,True,True,True,0.0001,0.0
+parking meter,parking meter,03891332-n,03891332-n,True,1,True,True,True,0.0001,0.0
+passenger car,passenger car,03895866-n,03895866-n,True,1,True,True,True,0.0001,0.0001
+coach,coach,03895866-n,09931640-n,False,-1,False,False,False,0.0004,0.0
+carriage,carriage,03895866-n,02968473-n,False,-1,False,False,False,0.0003,0.0
+patio,patio,03899768-n,03899768-n,True,1,True,True,True,0.0001,0.0001
+terrace,terrace,03899768-n,08431721-n,False,-1,False,False,False,0.0002,0.0
+pay-phone,pay-phone,03902125-n,03902125-n,True,1,True,True,True,0.0001,0.0
+pay-station,pay-phone,03902125-n,03902125-n,True,1,True,True,True,0.0001,0.0
+pedestal,pedestal,03903868-n,03903868-n,True,1,True,True,True,0.0002,0.0001
+plinth,pedestal,03903868-n,03903868-n,True,1,True,True,True,0.0001,0.0
+footstall,pedestal,03903868-n,03903868-n,True,1,True,True,True,0.0001,0.0
+pencil box,pencil box,03908618-n,03908618-n,True,1,True,True,True,0.0001,0.0
+pencil case,pencil box,03908618-n,03908618-n,True,1,True,True,True,0.0001,0.0
+pencil sharpener,pencil sharpener,03908714-n,03908714-n,True,1,True,True,True,0.0001,0.0
+perfume,perfume,03916031-n,03916031-n,True,1,True,True,True,0.0003,0.0
+essence,essence,03916031-n,15110096-n,False,-1,False,False,False,0.0004,0.0001
+Petri dish,petri dish,03920288-n,03920288-n,True,1,True,True,True,0.0001,0.0001
+photocopier,photocopier,03924679-n,03924679-n,True,1,True,True,True,0.0001,0.0
+pick,pick,03929660-n,03929202-n,False,-1,False,False,False,0.001,0.0001
+plectrum,pick,03929660-n,03929202-n,False,-1,False,False,False,0.0001,0.0
+plectron,pick,03929660-n,03929202-n,False,-1,False,False,False,0.0001,0.0
+pickelhaube,pickelhaube,03929855-n,03929855-n,True,1,True,True,True,0.0001,0.0
+picket fence,picket fence,03930313-n,03930313-n,True,1,True,True,True,0.0001,0.0001
+paling,pal,03930313-n,02588871-v,False,-1,False,False,False,0.0002,0.0001
+pickup,pickup,03930630-n,10432053-n,False,-1,False,False,False,0.0004,0.0001
+pickup truck,pickup,03930630-n,10432053-n,False,-1,False,False,False,0.0001,0.0
+pier,pier,03933933-n,03934042-n,False,-1,False,False,False,0.0002,0.0001
+piggy bank,piggy bank,03935335-n,03935335-n,True,1,True,True,True,0.0001,0.0
+penny bank,piggy bank,03935335-n,03935335-n,True,1,True,True,True,0.0001,0.0
+pill bottle,pill bottle,03937543-n,03937543-n,True,1,True,True,True,0.0001,0.0
+pillow,pillow,03938244-n,03938244-n,True,1,True,True,True,0.0002,0.0001
+ping-pong ball,ping-pong ball,03942813-n,03942813-n,True,1,True,True,True,0.0001,0.0
+pinwheel,pinwheel,03944341-n,03944138-n,False,-1,False,False,False,0.0002,0.0001
+pirate,pirate,03947888-n,02277897-v,False,-1,False,False,False,0.0004,0.0001
+pirate ship,pirate,03947888-n,02277897-v,False,-1,False,False,False,0.0001,0.0
+pitcher,pitcher,03950228-n,10435988-n,False,-1,False,False,False,0.0003,0.0001
+ewer,pitcher,03950228-n,10435988-n,False,-1,False,False,False,0.0001,0.0
+plane,plane,03954731-n,13941806-n,False,-1,False,False,False,0.0007,0.0001
+carpenter's plane,plane,03954731-n,13941806-n,False,-1,False,False,False,0.0001,0.0
+woodworking plane,plane,03954731-n,13941806-n,False,-1,False,False,False,0.0001,0.0
+planetarium,planetarium,03956157-n,03956157-n,True,1,True,True,True,0.0002,0.0001
+plastic bag,plastic bag,03958227-n,03958227-n,True,1,True,True,True,0.0001,0.0
+plate rack,plate rack,03961711-n,03961711-n,True,1,True,True,True,0.0001,0.0
+plow,plow,03967562-n,03967562-n,True,1,True,True,True,0.0003,0.0001
+plough,N/A,03967562-n,N/A,False,-1,False,False,False,0.0001,0.0
+plunger,plunger,03970156-n,03970156-n,True,1,True,True,True,0.0003,0.0001
+plumber's helper,plunger,03970156-n,03970156-n,True,1,True,True,True,0.0001,0.0
+Polaroid camera,polaroid camera,03976467-n,03976467-n,True,1,True,True,True,0.0002,0.0001
+Polaroid Land camera,polaroid camera,03976467-n,03976467-n,True,1,True,True,True,0.0001,0.0
+pole,pole,03976657-n,08621099-n,False,-1,False,False,False,0.0006,0.0001
+police van,police van,03977966-n,03977966-n,True,1,True,True,True,0.0001,0.0
+police wagon,police van,03977966-n,03977966-n,True,1,True,True,True,0.0001,0.0
+paddy wagon,wagon,03977966-n,04543158-n,False,-1,False,False,False,0.0001,0.0
+patrol wagon,wagon,03977966-n,04543158-n,False,-1,False,False,False,0.0001,0.0
+wagon,wagon,03977966-n,04543158-n,False,-1,False,False,False,0.0001,0.0
+black Maria,police van,03977966-n,03977966-n,True,1,True,True,True,0.0001,0.0
+poncho,poncho,03980874-n,03980874-n,True,1,True,True,True,0.0001,0.0
+pool table,pool table,03982430-n,03982430-n,True,1,True,True,True,0.0001,0.0001
+billiard table,pool table,03982430-n,03982430-n,True,1,True,True,True,0.0001,0.0
+snooker table,pool table,03982430-n,03982430-n,True,1,True,True,True,0.0001,0.0
+pop bottle,pop bottle,03983396-n,03983396-n,True,1,True,True,True,0.0001,0.0
+soda bottle,pop bottle,03983396-n,03983396-n,True,1,True,True,True,0.0001,0.0
+pot,pot,03991062-n,05556071-n,False,-1,False,False,False,0.0005,0.0
+flowerpot,pot,03991062-n,05556071-n,False,-1,False,False,False,0.0001,0.0
+potter's wheel,potter's wheel,03992509-n,03992509-n,True,1,True,True,True,0.0001,0.0
+power drill,power drill,03995372-n,03995372-n,True,1,True,True,True,0.0002,0.0
+prayer rug,prayer rug,03998194-n,03998194-n,True,1,True,True,True,0.0001,0.0001
+prayer mat,prayer rug,03998194-n,03998194-n,True,1,True,True,True,0.0001,0.0
+printer,printer,04004767-n,04004475-n,False,-1,False,False,False,0.0002,0.0
+prison,prison,04005630-n,13937284-n,False,-1,False,False,False,0.0002,0.0001
+prison house,prison,04005630-n,13937284-n,False,-1,False,False,False,0.0001,0.0
+projectile,projectile,04008634-n,04008634-n,True,1,True,True,True,0.0002,0.0001
+missile,missile,04008634-n,03773504-n,False,3,False,True,True,0.0001,0.0
+projector,projector,04009552-n,04009552-n,True,1,True,True,True,0.0001,0.0
+puck,puck,04019541-n,09541809-n,False,-1,False,False,False,0.0002,0.0
+hockey puck,puck,04019541-n,09541809-n,False,-1,False,False,False,0.0001,0.0
+punching bag,punching bag,04023962-n,10492727-n,False,-1,False,False,False,0.0002,0.0001
+punch bag,punching bag,04023962-n,10492727-n,False,-1,False,False,False,0.0001,0.0
+punching ball,punching bag,04023962-n,10492727-n,False,-1,False,False,False,0.0001,0.0
+punchball,punching bag,04023962-n,10492727-n,False,-1,False,False,False,0.0001,0.0
+purse,purse,04026417-n,00145902-v,False,-1,False,False,False,0.0003,0.0001
+quill,quill,04033901-n,04033901-n,True,1,True,True,True,0.0002,0.0
+quill pen,quill,04033901-n,04033901-n,True,1,True,True,True,0.0001,0.0
+quilt,quilt,04033995-n,04033995-n,True,1,True,True,True,0.0002,0.0001
+comforter,comforter,04033995-n,03075768-n,False,-1,False,False,False,0.0003,0.0001
+comfort,comfort,04033995-n,14445379-n,False,-1,False,False,False,0.0004,0.0
+puff,puff,04033995-n,00797303-v,False,-1,False,False,False,0.0008,0.0
+racer,racer,04037443-n,02384858-n,False,-1,False,False,False,0.001,0.0
+race car,racer,04037443-n,02384858-n,False,-1,False,False,False,0.0001,0.0
+racing car,racer,04037443-n,02384858-n,False,-1,False,False,False,0.0001,0.0
+racket,racket,04039381-n,00775943-n,False,-1,False,False,False,0.0004,0.0001
+racquet,racket,04039381-n,00775943-n,False,-1,False,False,False,0.0001,0.0
+radiator,radiator,04040759-n,04040759-n,True,1,True,True,True,0.0002,0.0001
+radio,radio,04041544-n,02953847-a,False,-1,False,False,False,0.0003,0.0
+wireless,wireless,04041544-n,06275353-n,False,-1,False,False,False,0.0002,0.0001
+radio telescope,radio telescope,04044716-n,04044716-n,True,1,True,True,True,0.0001,0.0001
+radio reflector,radio telescope,04044716-n,04044716-n,True,1,True,True,True,0.0001,0.0
+rain barrel,rain barrel,04049303-n,04049303-n,True,1,True,True,True,0.0001,0.0
+recreational vehicle,recreational vehicle,04065272-n,04065272-n,True,1,True,True,True,0.0001,0.0
+RV,recreational vehicle,04065272-n,04065272-n,True,1,True,True,True,0.0001,0.0
+R.V.,recreational vehicle,04065272-n,04065272-n,True,1,True,True,True,0.0001,0.0
+reel,reel,04067472-n,04067472-n,True,1,True,True,True,0.0006,0.0001
+reflex camera,reflex camera,04069434-n,04069434-n,True,1,True,True,True,0.0001,0.0
+refrigerator,refrigerator,04070727-n,04070727-n,True,1,True,True,True,0.0002,0.0001
+icebox,refrigerator,04070727-n,04070727-n,True,1,True,True,True,0.0001,0.0
+remote control,remote control,04074963-n,04074963-n,True,1,True,True,True,0.0001,0.0001
+remote,N/A,04074963-n,N/A,False,-1,False,False,False,0.0005,0.0
+restaurant,restaurant,04081281-n,04081281-n,True,1,True,True,True,0.0002,0.0001
+eating house,restaurant,04081281-n,04081281-n,True,1,True,True,True,0.0001,0.0
+eating place,restaurant,04081281-n,04081281-n,True,1,True,True,True,0.0001,0.0
+eatery,restaurant,04081281-n,04081281-n,True,1,True,True,True,0.0001,0.0
+revolver,revolver,04086273-n,04086273-n,True,1,True,True,True,0.0002,0.0001
+six-gun,revolver,04086273-n,04086273-n,True,1,True,True,True,0.0001,0.0
+six-shooter,revolver,04086273-n,04086273-n,True,1,True,True,True,0.0001,0.0
+rifle,rifle,04090263-n,01318849-v,False,-1,False,False,False,0.0002,0.0001
+rocking chair,rocking chair,04099969-n,04099969-n,True,1,True,True,True,0.0001,0.0001
+rocker,rocker,04099969-n,04098513-n,False,-1,False,False,False,0.0003,0.0
+rotisserie,rotisserie,04111531-n,04111531-n,True,1,True,True,True,0.0002,0.0
+rubber eraser,rubber eraser,04116512-n,04116512-n,True,1,True,True,True,0.0001,0.0001
+rubber,rubber,04116512-n,15006789-n,False,-1,False,False,False,0.0004,0.0
+pencil eraser,rubber eraser,04116512-n,04116512-n,True,1,True,True,True,0.0001,0.0
+rugby ball,rugby ball,04118538-n,04118538-n,True,1,True,True,True,0.0001,0.0
+rule,rule,04118776-n,00234857-v,False,-1,False,False,False,0.0009,0.0001
+ruler,ruler,04118776-n,10541229-n,False,-1,False,False,False,0.0002,0.0
+running shoe,running shoe,04120489-n,04120489-n,True,1,True,True,True,0.0001,0.0
+safe,safe,04125021-n,00066933-s,False,-1,False,False,False,0.0004,0.0
+safety pin,safety pin,04127249-n,04127249-n,True,1,True,True,True,0.0001,0.0
+saltshaker,saltshaker,04131690-n,04131690-n,True,1,True,True,True,0.0001,0.0
+salt shaker,saltshaker,04131690-n,04131690-n,True,1,True,True,True,0.0001,0.0
+sandal,sandal,04133789-n,04133789-n,True,1,True,True,True,0.0001,0.0
+sarong,sarong,04136333-n,04136333-n,True,1,True,True,True,0.0001,0.0
+sax,sax,04141076-n,04141076-n,True,1,True,True,True,0.0002,0.0
+saxophone,sax,04141076-n,04141076-n,True,1,True,True,True,0.0001,0.0
+scabbard,scabbard,04141327-n,04141327-n,True,1,True,True,True,0.0001,0.0
+scale,scale,04141975-n,09425607-n,False,-1,False,False,False,0.0008,0.0001
+weighing machine,scale,04141975-n,09425607-n,False,-1,False,False,False,0.0001,0.0
+school bus,school bus,04146614-n,04146614-n,True,1,True,True,True,0.0001,0.0
+schooner,schooner,04147183-n,04147291-n,False,-1,False,False,False,0.0001,0.0
+scoreboard,scoreboard,04149813-n,04149813-n,True,1,True,True,True,0.0001,0.0
+screen,screen,04152593-n,02400378-v,False,-1,False,False,False,0.0009,0.0001
+CRT screen,screen,04152593-n,02400378-v,False,-1,False,False,False,0.0001,0.0
+screw,screw,04153751-n,01352806-v,False,-1,False,False,False,0.0007,0.0001
+screwdriver,screwdriver,04154565-n,07917272-n,False,-1,False,False,False,0.0002,0.0001
+seat belt,seat belt,04162706-n,04162706-n,True,1,True,True,True,0.0001,0.0001
+seatbelt,seat belt,04162706-n,04162706-n,True,1,True,True,True,0.0001,0.0
+sewing machine,sewing machine,04179913-n,04179913-n,True,1,True,True,True,0.0001,0.0001
+shield,shield,04192698-n,04192858-n,False,-1,False,False,False,0.0003,0.0
+buckler,shield,04192698-n,04192858-n,False,-1,False,False,False,0.0001,0.0
+shoe shop,shoe shop,04200800-n,04200800-n,True,1,True,True,True,0.0002,0.0
+shoe-shop,shoe shop,04200800-n,04200800-n,True,1,True,True,True,0.0001,0.0
+shoe store,shoe shop,04200800-n,04200800-n,True,1,True,True,True,0.0001,0.0
+shoji,shoji,04201297-n,04201297-n,True,1,True,True,True,0.0001,0.0
+shopping basket,shopping basket,04204238-n,04204238-n,True,1,True,True,True,0.0001,0.0
+shopping cart,shopping cart,04204347-n,04204347-n,True,1,True,True,True,0.0001,0.0
+shovel,shovel,04208210-n,13769870-n,False,-1,False,False,False,0.0004,0.0
+shower cap,shower cap,04209133-n,04209133-n,True,1,True,True,True,0.0001,0.0
+shower curtain,shower curtain,04209239-n,04209239-n,True,1,True,True,True,0.0001,0.0001
+ski,ski,04228054-n,04228054-n,True,1,True,True,True,0.0002,0.0
+ski mask,ski mask,04229816-n,04229816-n,True,1,True,True,True,0.0001,0.0001
+sleeping bag,sleeping bag,04235860-n,04235860-n,True,1,True,True,True,0.0001,0.0
+slide rule,slide rule,04238763-n,04238763-n,True,1,True,True,True,0.0001,0.0
+slipstick,slide rule,04238763-n,04238763-n,True,1,True,True,True,0.0001,0.0
+sliding door,sliding door,04239074-n,04239074-n,True,1,True,True,True,0.0001,0.0001
+slot,slot,04243546-n,04243727-n,False,-1,False,False,False,0.0004,0.0001
+one-armed bandit,slot,04243546-n,04243727-n,False,-1,False,False,False,0.0001,0.0
+snorkel,snorkel,04251144-n,04251144-n,True,1,True,True,True,0.0002,0.0
+snowmobile,snowmobile,04252077-n,04252077-n,True,1,True,True,True,0.0002,0.0
+snowplow,snowplow,04252225-n,04252225-n,True,1,True,True,True,0.0001,0.0
+snowplough,snowplow,04252225-n,04252225-n,True,1,True,True,True,0.0001,0.0
+soap dispenser,soap dispenser,04254120-n,04254120-n,True,1,True,True,True,0.0001,0.0
+soccer ball,soccer ball,04254680-n,04254680-n,True,1,True,True,True,0.0001,0.0
+sock,sock,04254777-n,04254777-n,True,1,True,True,True,0.0003,0.0001
+solar dish,solar dish,04258138-n,04258138-n,True,1,True,True,True,0.0001,0.0001
+solar collector,solar dish,04258138-n,04258138-n,True,1,True,True,True,0.0001,0.0
+solar furnace,solar dish,04258138-n,04258138-n,True,1,True,True,True,0.0001,0.0
+sombrero,sombrero,04259630-n,04259630-n,True,1,True,True,True,0.0002,0.0
+soup bowl,soup bowl,04263257-n,04263257-n,True,1,True,True,True,0.0001,0.0
+space bar,space bar,04264628-n,04264628-n,True,1,True,True,True,0.0001,0.0001
+space heater,space heater,04265275-n,04265275-n,True,1,True,True,True,0.0001,0.0
+space shuttle,space shuttle,04266014-n,04266014-n,True,1,True,True,True,0.0001,0.0
+spatula,spatula,04270147-n,04269944-n,False,-1,False,False,False,0.0001,0.0001
+speedboat,speedboat,04273569-n,04273569-n,True,1,True,True,True,0.0001,0.0
+spider web,spider web,04275548-n,04275548-n,True,1,True,True,True,0.0002,0.0
+spider's web,spider web,04275548-n,04275548-n,True,1,True,True,True,0.0001,0.0
+spindle,spindle,04277352-n,04277669-n,False,-1,False,False,False,0.0002,0.0001
+sports car,sports car,04285008-n,04285008-n,True,1,True,True,True,0.0001,0.0
+sport car,sports car,04285008-n,04285008-n,True,1,True,True,True,0.0001,0.0
+spotlight,spotlight,04286575-n,04286575-n,True,1,True,True,True,0.0003,0.0001
+spot,spot,04286575-n,00509958-v,False,-1,False,False,False,0.0009,0.0
+stage,stage,04296562-n,01648126-v,False,-1,False,False,False,0.0005,0.0
+steam locomotive,steam locomotive,04310018-n,04310018-n,True,1,True,True,True,0.0001,0.0001
+steel arch bridge,steel arch bridge,04311004-n,04311004-n,True,1,True,True,True,0.0001,0.0
+steel drum,steel drum,04311174-n,04311174-n,True,1,True,True,True,0.0001,0.0
+stethoscope,stethoscope,04317175-n,04317175-n,True,1,True,True,True,0.0001,0.0
+stole,stole,04325704-n,04325704-n,True,1,True,True,True,0.0003,0.0001
+stone wall,stone wall,04326547-n,04326547-n,True,1,True,True,True,0.0001,0.0
+stopwatch,stopwatch,04328186-n,04328186-n,True,1,True,True,True,0.0001,0.0
+stop watch,stopwatch,04328186-n,04328186-n,True,1,True,True,True,0.0001,0.0
+stove,stove,04330267-n,04330267-n,True,1,True,True,True,0.0003,0.0
+strainer,strainer,04332243-n,04332243-n,True,1,True,True,True,0.0001,0.0
+streetcar,streetcar,04335435-n,04335435-n,True,1,True,True,True,0.0002,0.0001
+tram,tram,04335435-n,01945183-v,False,-1,False,False,False,0.0003,0.0001
+tramcar,tramcar,04335435-n,04468847-n,False,5,False,False,True,0.0001,0.0
+trolley,streetcar,04335435-n,04335435-n,True,1,True,True,True,0.0001,0.0
+trolley car,streetcar,04335435-n,04335435-n,True,1,True,True,True,0.0001,0.0
+stretcher,stretcher,04336792-n,04336792-n,True,1,True,True,True,0.0003,0.0001
+studio couch,studio couch,04344873-n,04344873-n,True,1,True,True,True,0.0001,0.0
+day bed,studio couch,04344873-n,04344873-n,True,1,True,True,True,0.0001,0.0
+stupa,stupa,04346328-n,04346328-n,True,1,True,True,True,0.0001,0.0
+tope,stupa,04346328-n,04346328-n,True,1,True,True,True,0.0001,0.0
+submarine,submarine,04347754-n,01512921-v,False,-1,False,False,False,0.0005,0.0001
+pigboat,submarine,04347754-n,01512921-v,False,-1,False,False,False,0.0001,0.0
+sub,submarine,04347754-n,01512921-v,False,-1,False,False,False,0.0002,0.0
+U-boat,submarine,04347754-n,01512921-v,False,-1,False,False,False,0.0001,0.0
+suit,suit,04350905-n,04351233-n,False,-1,False,False,False,0.0006,0.0001
+suit of clothes,suit,04350905-n,04351233-n,False,-1,False,False,False,0.0001,0.0
+sundial,sundial,04355338-n,04355338-n,True,1,True,True,True,0.0001,0.0001
+sunglass,sunglass,04355933-n,04355933-n,True,1,True,True,True,0.0001,0.0
+sunglasses,sunglasses,04356056-n,04356056-n,True,1,True,True,True,0.0002,0.0001
+dark glasses,sunglasses,04356056-n,04356056-n,True,1,True,True,True,0.0001,0.0
+shades,N/A,04356056-n,N/A,False,-1,False,False,False,0.0007,0.0
+sunscreen,sunscreen,04357314-n,04357314-n,True,1,True,True,True,0.0002,0.0001
+sunblock,sunscreen,04357314-n,04357314-n,True,1,True,True,True,0.0001,0.0
+sun blocker,sunscreen,04357314-n,04357314-n,True,1,True,True,True,0.0001,0.0
+suspension bridge,suspension bridge,04366367-n,04366367-n,True,1,True,True,True,0.0001,0.0001
+swab,swab,04367480-n,04367480-n,True,1,True,True,True,0.0003,0.0001
+swob,swab,04367480-n,04367480-n,True,1,True,True,True,0.0001,0.0
+mop,mow,04367480-n,01319562-v,False,-1,False,False,False,0.0001,0.0
+sweatshirt,sweatshirt,04370456-n,04370456-n,True,1,True,True,True,0.0001,0.0001
+swimming trunks,swimming trunks,04371430-n,04371430-n,True,1,True,True,True,0.0001,0.0
+bathing trunks,swimming trunks,04371430-n,04371430-n,True,1,True,True,True,0.0001,0.0
+swing,swing,04371774-n,00541178-n,False,-1,False,False,False,0.0015,0.0001
+switch,switch,04372370-n,00196084-n,False,-1,False,False,False,0.0007,0.0001
+electric switch,switch,04372370-n,00196084-n,False,-1,False,False,False,0.0001,0.0
+electrical switch,switch,04372370-n,00196084-n,False,-1,False,False,False,0.0001,0.0
+syringe,syringe,04376876-n,01373422-v,False,-1,False,False,False,0.0002,0.0
+table lamp,table lamp,04380533-n,04380533-n,True,1,True,True,True,0.0001,0.0
+tank,tank,04389033-n,02282082-v,False,-1,False,False,False,0.0004,0.0001
+army tank,tank,04389033-n,02282082-v,False,-1,False,False,False,0.0001,0.0
+armored combat vehicle,tank,04389033-n,02282082-v,False,-1,False,False,False,0.0001,0.0
+armoured combat vehicle,tank,04389033-n,02282082-v,False,-1,False,False,False,0.0001,0.0
+tape player,tape player,04392985-n,04392985-n,True,1,True,True,True,0.0001,0.0
+teapot,teapot,04398044-n,04398044-n,True,1,True,True,True,0.0001,0.0
+teddy,teddy,04399382-n,04399382-n,True,1,True,True,True,0.0002,0.0
+teddy bear,teddy,04399382-n,04399382-n,True,1,True,True,True,0.0001,0.0
+television,television,04404412-n,06277280-n,False,-1,False,False,False,0.0003,0.0001
+television system,television,04404412-n,06277280-n,False,-1,False,False,False,0.0001,0.0
+tennis ball,tennis ball,04409515-n,04409515-n,True,1,True,True,True,0.0001,0.0
+thatch,thatch,04417672-n,15069712-n,False,-1,False,False,False,0.0002,0.0
+thatched roof,thatch,04417672-n,15069712-n,False,-1,False,False,False,0.0001,0.0
+theater curtain,theater curtain,04418357-n,04418357-n,True,1,True,True,True,0.0001,0.0001
+theatre curtain,theater curtain,04418357-n,04418357-n,True,1,True,True,True,0.0001,0.0
+thimble,thimble,04423845-n,04423845-n,True,1,True,True,True,0.0001,0.0
+thresher,thresher,04428191-n,04428191-n,True,1,True,True,True,0.0002,0.0001
+thrasher,thrasher,04428191-n,01587834-n,False,4,False,False,True,0.0002,0.0
+threshing machine,thresher,04428191-n,04428191-n,True,1,True,True,True,0.0001,0.0
+throne,throne,04429376-n,02564546-v,False,-1,False,False,False,0.0003,0.0001
+tile roof,tile roof,04435653-n,04435653-n,True,1,True,True,True,0.0001,0.0001
+toaster,toaster,04442312-n,04442312-n,True,1,True,True,True,0.0002,0.0001
+tobacco shop,tobacco shop,04443257-n,04443257-n,True,1,True,True,True,0.0002,0.0002
+tobacconist shop,tobacco shop,04443257-n,04443257-n,True,1,True,True,True,0.0001,0.0
+tobacconist,tobacconist,04443257-n,10713923-n,False,3,False,True,True,0.0002,0.0
+toilet seat,toilet seat,04447861-n,04447861-n,True,1,True,True,True,0.0001,0.0001
+torch,torch,04456115-n,04456115-n,True,1,True,True,True,0.0004,0.0001
+totem pole,totem pole,04458633-n,04458633-n,True,1,True,True,True,0.0001,0.0001
+tow truck,tow truck,04461696-n,04461696-n,True,1,True,True,True,0.0002,0.0
+tow car,tow truck,04461696-n,04461696-n,True,1,True,True,True,0.0001,0.0
+wrecker,wrecker,04461696-n,10792856-n,False,4,False,False,True,0.0002,0.0
+toyshop,toyshop,04462240-n,04462240-n,True,1,True,True,True,0.0001,0.0
+tractor,tractor,04465501-n,04465666-n,False,-1,False,False,False,0.0002,0.0
+trailer truck,trailer truck,04467665-n,04467665-n,True,1,True,True,True,0.0002,0.0001
+tractor trailer,trailer truck,04467665-n,04467665-n,True,1,True,True,True,0.0001,0.0
+trucking rig,trailer truck,04467665-n,04467665-n,True,1,True,True,True,0.0001,0.0001
+rig,rig,04467665-n,04091097-n,False,-1,False,False,False,0.0006,0.0
+articulated lorry,trailer truck,04467665-n,04467665-n,True,1,True,True,True,0.0001,0.0
+semi,semifinal,04467665-n,07467393-n,False,-1,False,False,False,0.0002,0.0002
+tray,tray,04476259-n,04476259-n,True,1,True,True,True,0.0001,0.0
+trench coat,trench coat,04479046-n,04479046-n,True,1,True,True,True,0.0001,0.0
+tricycle,tricycle,04482393-n,04482393-n,True,1,True,True,True,0.0001,0.0
+trike,tricycle,04482393-n,04482393-n,True,1,True,True,True,0.0001,0.0
+velocipede,velocipede,04482393-n,04524716-n,False,3,False,True,True,0.0001,0.0
+trimaran,trimaran,04483307-n,04483307-n,True,1,True,True,True,0.0001,0.0
+tripod,tripod,04485082-n,04485082-n,True,1,True,True,True,0.0001,0.0001
+triumphal arch,triumphal arch,04486054-n,04486054-n,True,1,True,True,True,0.0001,0.0
+trolleybus,trolleybus,04487081-n,04487081-n,True,1,True,True,True,0.0001,0.0
+trolley coach,trolleybus,04487081-n,04487081-n,True,1,True,True,True,0.0001,0.0
+trackless trolley,trolleybus,04487081-n,04487081-n,True,1,True,True,True,0.0001,0.0
+trombone,trombone,04487394-n,04487394-n,True,1,True,True,True,0.0001,0.0
+tub,tub,04493381-n,13770926-n,False,-1,False,False,False,0.0001,0.0
+vat,vat,04493381-n,13316722-n,False,-1,False,False,False,0.0002,0.0001
+turnstile,turnstile,04501370-n,04501370-n,True,1,True,True,True,0.0001,0.0
+typewriter keyboard,typewriter keyboard,04505470-n,04505470-n,True,1,True,True,True,0.0001,0.0001
+umbrella,umbrella,04507155-n,04507155-n,True,1,True,True,True,0.0003,0.0001
+unicycle,unicycle,04509417-n,04509417-n,True,1,True,True,True,0.0002,0.0
+monocycle,unicycle,04509417-n,04509417-n,True,1,True,True,True,0.0001,0.0
+upright,upright,04515003-n,04515003-n,True,1,True,True,True,0.0004,0.0
+upright piano,upright,04515003-n,04515003-n,True,1,True,True,True,0.0001,0.0
+vacuum,vacuum,04517823-n,08653474-n,False,-1,False,False,False,0.0003,0.0
+vacuum cleaner,vacuum,04517823-n,08653474-n,False,-1,False,False,False,0.0001,0.0
+vase,vase,04522168-n,04522168-n,True,1,True,True,True,0.0001,0.0
+vault,vault,04523525-n,00120515-n,False,-1,False,False,False,0.0003,0.0001
+velvet,velvet,04525038-n,01155206-s,False,-1,False,False,False,0.0003,0.0
+vending machine,vending machine,04525305-n,04525305-n,True,1,True,True,True,0.0001,0.0
+vestment,vestment,04532106-n,04532106-n,True,1,True,True,True,0.0001,0.0
+viaduct,viaduct,04532670-n,04532670-n,True,1,True,True,True,0.0001,0.0
+violin,violin,04536866-n,04536866-n,True,1,True,True,True,0.0001,0.0001
+fiddle,fiddle,04536866-n,02292989-v,False,-1,False,False,False,0.0004,0.0
+volleyball,volleyball,04540053-n,00480211-n,False,-1,False,False,False,0.0002,0.0
+waffle iron,waffle iron,04542943-n,04542943-n,True,1,True,True,True,0.0001,0.0
+wall clock,wall clock,04548280-n,04548280-n,True,1,True,True,True,0.0001,0.0
+wallet,wallet,04548362-n,04548362-n,True,1,True,True,True,0.0001,0.0
+billfold,wallet,04548362-n,04548362-n,True,1,True,True,True,0.0001,0.0
+notecase,pocketbook,04548362-n,13354021-n,False,2,False,True,True,0.0001,0.0
+pocketbook,pocketbook,04548362-n,13354021-n,False,-1,False,False,False,0.0002,0.0
+wardrobe,wardrobe,04550184-n,04550546-n,False,-1,False,False,False,0.0002,0.0001
+closet,closet,04550184-n,03049457-n,False,-1,False,False,False,0.0002,0.0
+press,press,04550184-n,02722782-v,False,-1,False,False,False,0.001,0.0
+warplane,warplane,04552348-n,04552348-n,True,1,True,True,True,0.0001,0.0
+military plane,warplane,04552348-n,04552348-n,True,1,True,True,True,0.0001,0.0
+washbasin,washbasin,04553703-n,04553703-n,True,1,True,True,True,0.0002,0.0001
+handbasin,washbasin,04553703-n,04553703-n,True,1,True,True,True,0.0001,0.0
+washbowl,washbasin,04553703-n,04553703-n,True,1,True,True,True,0.0001,0.0
+lavabo,washbasin,04553703-n,04553703-n,True,1,True,True,True,0.0001,0.0
+wash-hand basin,washbasin,04553703-n,04553703-n,True,1,True,True,True,0.0001,0.0
+washer,washer,04554684-n,04554684-n,True,1,True,True,True,0.0002,0.0
+automatic washer,washer,04554684-n,04554684-n,True,1,True,True,True,0.0001,0.0
+washing machine,washer,04554684-n,04554684-n,True,1,True,True,True,0.0001,0.0
+water bottle,water bottle,04557648-n,04557648-n,True,1,True,True,True,0.0001,0.0
+water jug,water jug,04560804-n,04560804-n,True,1,True,True,True,0.0001,0.0
+water tower,water tower,04562935-n,04562935-n,True,1,True,True,True,0.0001,0.0001
+whiskey jug,whiskey jug,04579145-n,04579145-n,True,1,True,True,True,0.0001,0.0
+whistle,whistle,04579432-n,02093234-v,False,-1,False,False,False,0.0004,0.0001
+wig,wig,04584207-n,06713099-n,False,-1,False,False,False,0.0001,0.0
+window screen,window screen,04589890-n,04589890-n,True,1,True,True,True,0.0001,0.0
+window shade,window shade,04590129-n,04590129-n,True,1,True,True,True,0.0002,0.0
+Windsor tie,windsor tie,04591157-n,04591157-n,True,1,True,True,True,0.0001,0.0
+wine bottle,wine bottle,04591713-n,04591713-n,True,1,True,True,True,0.0001,0.0
+wing,wing,04592741-n,07648549-n,False,-1,False,False,False,0.0005,0.0001
+wok,wok,04596742-n,04596742-n,True,1,True,True,True,0.0001,0.0
+wooden spoon,wooden spoon,04597913-n,04598010-n,False,-1,False,False,False,0.0002,0.0
+wool,wool,04599235-n,01899593-n,False,-1,False,False,False,0.0002,0.0001
+woolen,woolen,04599235-n,03130689-a,False,-1,False,False,False,0.0001,0.0
+woollen,woolen,04599235-n,03130689-a,False,-1,False,False,False,0.0001,0.0
+worm fence,worm fence,04604644-n,04604644-n,True,1,True,True,True,0.0001,0.0
+snake fence,worm fence,04604644-n,04604644-n,True,1,True,True,True,0.0001,0.0
+snake-rail fence,worm fence,04604644-n,04604644-n,True,1,True,True,True,0.0001,0.0
+Virginia fence,worm fence,04604644-n,04604644-n,True,1,True,True,True,0.0001,0.0
+wreck,wreck,04606251-n,14423870-n,False,-1,False,False,False,0.0003,0.0001
+yawl,yawl,04612504-n,04612373-n,False,-1,False,False,False,0.0003,0.0001
+yurt,yurt,04613696-n,04613696-n,True,1,True,True,True,0.0001,0.0
+web site,web site,06359193-n,06359193-n,True,1,True,True,True,0.0002,0.0001
+website,web site,06359193-n,06359193-n,True,1,True,True,True,0.0001,0.0
+internet site,web site,06359193-n,06359193-n,True,1,True,True,True,0.0001,0.0
+site,site,06359193-n,08651247-n,False,-1,False,False,False,0.0003,0.0
+comic book,comic book,06596364-n,06596364-n,True,1,True,True,True,0.0001,0.0001
+crossword puzzle,crossword puzzle,06785654-n,06785654-n,True,1,True,True,True,0.0001,0.0
+crossword,crossword puzzle,06785654-n,06785654-n,True,1,True,True,True,0.0001,0.0
+street sign,street sign,06794110-n,06794110-n,True,1,True,True,True,0.0001,0.0
+traffic light,traffic light,06874185-n,06874185-n,True,1,True,True,True,0.0001,0.0001
+traffic signal,traffic light,06874185-n,06874185-n,True,1,True,True,True,0.0001,0.0
+stoplight,stoplight,06874185-n,07265990-n,False,3,False,True,True,0.0001,0.0
+book jacket,book jacket,07248320-n,07248320-n,True,1,True,True,True,0.0001,0.0
+dust cover,dust cover,07248320-n,03258577-n,False,-1,False,False,False,0.0002,0.0
+dust jacket,dust cover,07248320-n,03258577-n,False,2,False,True,True,0.0001,0.0
+dust wrapper,dust cover,07248320-n,03258577-n,False,2,False,True,True,0.0001,0.0
+menu,menu,07565083-n,07565083-n,True,1,True,True,True,0.0002,0.0
+plate,plate,07579787-n,03959936-n,False,-1,False,False,False,0.0005,0.0001
+guacamole,guacamole,07583066-n,07583066-n,True,1,True,True,True,0.0001,0.0
+consomme,consomme,07584110-n,07584110-n,True,1,True,True,True,0.0001,0.0
+hot pot,hot pot,07590611-n,07590611-n,True,1,True,True,True,0.0001,0.0
+hotpot,hot pot,07590611-n,07590611-n,True,1,True,True,True,0.0001,0.0
+trifle,trifle,07613480-n,07613480-n,True,1,True,True,True,0.0003,0.0001
+ice cream,ice cream,07614500-n,07614500-n,True,1,True,True,True,0.0001,0.0
+icecream,ice cream,07614500-n,07614500-n,True,1,True,True,True,0.0001,0.0
+ice lolly,ice lolly,07615774-n,07615774-n,True,1,True,True,True,0.0001,0.0
+lolly,ice lolly,07615774-n,07615774-n,True,1,True,True,True,0.0002,0.0001
+lollipop,lollipop,07615774-n,07607605-n,False,3,False,True,True,0.0001,0.0
+popsicle,lollipop,07615774-n,07607605-n,False,2,False,True,True,0.0001,0.0
+French loaf,french loaf,07684084-n,07684084-n,True,1,True,True,True,0.0001,0.0
+bagel,bagel,07693725-n,07693725-n,True,1,True,True,True,0.0001,0.0
+beigel,bagel,07693725-n,07693725-n,True,1,True,True,True,0.0001,0.0
+pretzel,pretzel,07695742-n,07695742-n,True,1,True,True,True,0.0001,0.0
+cheeseburger,cheeseburger,07697313-n,07697313-n,True,1,True,True,True,0.0001,0.0
+hotdog,hotdog,07697537-n,10187710-n,False,-1,False,False,False,0.0002,0.0
+hot dog,N/A,07697537-n,N/A,False,-1,False,False,False,0.0001,0.0
+red hot,hotdog,07697537-n,10187710-n,False,-1,False,False,False,0.0001,0.0
+mashed potato,mashed potato,07711569-n,07711569-n,True,1,True,True,True,0.0001,0.0
+head cabbage,head cabbage,07714571-n,11875938-n,False,-1,False,False,False,0.0002,0.0
+broccoli,broccoli,07714990-n,11876803-n,False,-1,False,False,False,0.0002,0.0001
+cauliflower,cauliflower,07715103-n,11876634-n,False,-1,False,False,False,0.0002,0.0001
+zucchini,zucchini,07716358-n,12159804-n,False,-1,False,False,False,0.0002,0.0001
+courgette,zucchini,07716358-n,12159804-n,False,-1,False,False,False,0.0001,0.0
+spaghetti squash,spaghetti squash,07716906-n,07716906-n,True,1,True,True,True,0.0002,0.0001
+acorn squash,acorn squash,07717410-n,07717410-n,True,1,True,True,True,0.0002,0.0001
+butternut squash,butternut squash,07717556-n,07717556-n,True,1,True,True,True,0.0002,0.0001
+cucumber,cucumber,07718472-n,07718472-n,True,1,True,True,True,0.0002,0.0001
+cuke,cucumber,07718472-n,07718472-n,True,1,True,True,True,0.0001,0.0
+artichoke,artichoke,07718747-n,07718747-n,True,1,True,True,True,0.0002,0.0001
+globe artichoke,artichoke,07718747-n,07718747-n,True,1,True,True,True,0.0001,0.0
+bell pepper,bell pepper,07720875-n,07720875-n,True,1,True,True,True,0.0002,0.0001
+cardoon,cardoon,07730033-n,11959862-n,False,-1,False,False,False,0.0002,0.0001
+mushroom,mushroom,07734744-n,12997919-n,False,-1,False,False,False,0.0003,0.0001
+Granny Smith,granny smith,07742313-n,07742313-n,True,1,True,True,True,0.0001,0.0
+strawberry,strawberry,07745940-n,12630144-n,False,-1,False,False,False,0.0003,0.0001
+orange,orange,07747607-n,04965179-n,False,-1,False,False,False,0.0003,0.0001
+lemon,lemon,07749582-n,12711596-n,False,-1,False,False,False,0.0003,0.0001
+fig,fig,07753113-n,07753113-n,True,1,True,True,True,0.0003,0.0001
+pineapple,pineapple,07753275-n,07753275-n,True,1,True,True,True,0.0002,0.0001
+ananas,ananas,07753275-n,12607198-n,False,-1,False,False,False,0.0002,0.0
+banana,banana,07753592-n,12352287-n,False,-1,False,False,False,0.0002,0.0001
+jackfruit,jackfruit,07754684-n,07754684-n,True,1,True,True,True,0.0002,0.0001
+jak,jack,07754684-n,03589513-n,False,2,False,True,True,0.0001,0.0
+jack,jack,07754684-n,03589513-n,False,-1,False,False,False,0.0014,0.0
+custard apple,custard apple,07760859-n,11693981-n,False,-1,False,False,False,0.0002,0.0001
+pomegranate,pomegranate,07768694-n,07768694-n,True,1,True,True,True,0.0002,0.0001
+hay,hay,07802026-n,00585405-v,False,-1,False,False,False,0.0002,0.0
+carbonara,carbonara,07831146-n,07831146-n,True,1,True,True,True,0.0001,0.0
+chocolate sauce,chocolate sauce,07836838-n,07836838-n,True,1,True,True,True,0.0001,0.0
+chocolate syrup,chocolate sauce,07836838-n,07836838-n,True,1,True,True,True,0.0001,0.0
+dough,dough,07860988-n,07860988-n,True,1,True,True,True,0.0002,0.0001
+meat loaf,meat loaf,07871810-n,07871810-n,True,1,True,True,True,0.0001,0.0
+meatloaf,meat loaf,07871810-n,07871810-n,True,1,True,True,True,0.0001,0.0
+pizza,pizza,07873807-n,07873807-n,True,1,True,True,True,0.0001,0.0
+pizza pie,pizza,07873807-n,07873807-n,True,1,True,True,True,0.0001,0.0
+potpie,potpie,07875152-n,07875152-n,True,1,True,True,True,0.0001,0.0
+burrito,burrito,07880968-n,07880968-n,True,1,True,True,True,0.0001,0.0
+red wine,red wine,07892512-n,07892512-n,True,1,True,True,True,0.0002,0.0001
+espresso,espresso,07920052-n,07920052-n,True,1,True,True,True,0.0001,0.0
+cup,cup,07930864-n,00087290-v,False,-1,False,False,False,0.0006,0.0001
+eggnog,eggnog,07932039-n,07932039-n,True,1,True,True,True,0.0001,0.0
+alp,alp,09193705-n,09193705-n,True,1,True,True,True,0.0001,0.0
+bubble,bubble,09229709-n,09229709-n,True,1,True,True,True,0.0004,0.0
+cliff,cliff,09246464-n,09246464-n,True,1,True,True,True,0.0001,0.0001
+drop,drop,09246464-n,05111835-n,False,-1,False,False,False,0.0014,0.0
+drop-off,drop,09246464-n,05111835-n,False,-1,False,False,False,0.0002,0.0
+coral reef,coral reef,09256479-n,09256479-n,True,1,True,True,True,0.0002,0.0
+geyser,geyser,09288635-n,02072394-v,False,-1,False,False,False,0.0002,0.0001
+lakeside,lakeside,09332890-n,09332890-n,True,1,True,True,True,0.0001,0.0
+lakeshore,lakeside,09332890-n,09332890-n,True,1,True,True,True,0.0001,0.0
+promontory,promontory,09399592-n,09399592-n,True,1,True,True,True,0.0002,0.0001
+headland,head,09399592-n,03501811-n,False,3,False,True,True,0.0001,0.0
+head,head,09399592-n,03501811-n,False,-1,False,False,False,0.0014,0.0
+foreland,foreland,09399592-n,09283767-n,False,4,False,False,True,0.0001,0.0
+sandbar,sandbar,09421951-n,09421951-n,True,1,True,True,True,0.0001,0.0001
+sand bar,sandbar,09421951-n,09421951-n,True,1,True,True,True,0.0001,0.0
+seashore,seashore,09428293-n,09428293-n,True,1,True,True,True,0.0002,0.0001
+coast,coast,09428293-n,09248153-n,False,-1,False,False,False,0.0003,0.0
+seacoast,coast,09428293-n,09248153-n,False,2,False,True,True,0.0001,0.0
+sea-coast,coast,09428293-n,09248153-n,False,2,False,True,True,0.0001,0.0
+valley,valley,09468604-n,09468604-n,True,1,True,True,True,0.0002,0.0
+vale,valley,09468604-n,09468604-n,True,1,True,True,True,0.0001,0.0
+volcano,volcano,09472597-n,09472597-n,True,1,True,True,True,0.0002,0.0001
+ballplayer,ballplayer,09835506-n,09835506-n,True,1,True,True,True,0.0002,0.0001
+baseball player,ballplayer,09835506-n,09835506-n,True,1,True,True,True,0.0001,0.0
+groom,groom,10148035-n,10148035-n,True,1,True,True,True,0.0006,0.0001
+bridegroom,groom,10148035-n,10148035-n,True,1,True,True,True,0.0001,0.0
+scuba diver,scuba diver,10565667-n,10565667-n,True,1,True,True,True,0.0001,0.0
+rapeseed,rapeseed,11879895-n,11879895-n,True,1,True,True,True,0.0001,0.0001
+daisy,daisy,11939491-n,11939491-n,True,1,True,True,True,0.0001,0.0001
+yellow lady's slipper,yellow lady's slipper,12057211-n,12057211-n,True,1,True,True,True,0.0002,0.0
+yellow lady-slipper,yellow lady's slipper,12057211-n,12057211-n,True,1,True,True,True,0.0001,0.0
+Cypripedium calceolus,yellow lady's slipper,12057211-n,12057211-n,True,1,True,True,True,0.0001,0.0
+Cypripedium parviflorum,yellow lady's slipper,12057211-n,12057211-n,True,1,True,True,True,0.0001,0.0
+corn,corn,12144580-n,14364802-n,False,-1,False,False,False,0.0004,0.0001
+acorn,acorn,12267677-n,12267677-n,True,1,True,True,True,0.0001,0.0001
+hip,hip,12620546-n,05596004-n,False,-1,False,False,False,0.0004,0.0001
+rose hip,hip,12620546-n,05596004-n,False,-1,False,False,False,0.0001,0.0
+rosehip,hip,12620546-n,05596004-n,False,-1,False,False,False,0.0001,0.0
+buckeye,buckeye,12768682-n,12768682-n,True,1,True,True,True,0.0002,0.0001
+horse chestnut,horse chestnut,12768682-n,12768369-n,False,-1,False,False,False,0.0001,0.0001
+conker,buckeye,12768682-n,12768682-n,True,1,True,True,True,0.0001,0.0
+coral fungus,coral fungus,12985857-n,12985857-n,True,1,True,True,True,0.0001,0.0001
+agaric,agaric,12998815-n,13054073-n,False,-1,False,False,False,0.0003,0.0001
+gyromitra,gyromitra,13037406-n,13037406-n,True,1,True,True,True,0.0001,0.0
+stinkhorn,stinkhorn,13040303-n,13040303-n,True,1,True,True,True,0.0001,0.0001
+carrion fungus,stinkhorn,13040303-n,13040303-n,True,1,True,True,True,0.0001,0.0
+earthstar,earthstar,13044778-n,13044778-n,True,1,True,True,True,0.0001,0.0
+hen-of-the-woods,hen-of-the-woods,13052670-n,13052670-n,True,1,True,True,True,0.0002,0.0
+hen of the woods,hen-of-the-woods,13052670-n,13052670-n,True,1,True,True,True,0.0001,0.0
+Polyporus frondosus,hen-of-the-woods,13052670-n,13052670-n,True,1,True,True,True,0.0001,0.0
+Grifola frondosa,hen-of-the-woods,13052670-n,13052670-n,True,1,True,True,True,0.0001,0.0
+bolete,bolete,13054560-n,13054560-n,True,1,True,True,True,0.0001,0.0
+ear,ear,13133613-n,05657999-n,False,-1,False,False,False,0.0003,0.0001
+spike,spike,13133613-n,04276531-n,False,-1,False,False,False,0.0005,0.0
+capitulum,capitulum,13133613-n,13133786-n,False,-1,False,False,False,0.0001,0.0001
+toilet tissue,toilet tissue,15075141-n,15075141-n,True,1,True,True,True,0.0002,0.0
+toilet paper,toilet tissue,15075141-n,15075141-n,True,1,True,True,True,0.0001,0.0
+bathroom tissue,toilet tissue,15075141-n,15075141-n,True,1,True,True,True,0.0001,0.0

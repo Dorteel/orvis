@@ -9,9 +9,10 @@ import Levenshtein
 from rapidfuzz import process, fuzz
 from functools import lru_cache
 import faiss
+import torch
+import numpy as np
 
-
-logging.basicConfig(level=logging.DEBUG, format='[%(levelname)s] %(message)s')
+logging.basicConfig(level=logging.INFO, format='[%(levelname)s] %(message)s')
 kg_path = Path('linking/wn_full.owl')
 definition_iri = "http://example.org/wordnet.owl#definition"
 identifier_iri = "http://example.org/wordnet.owl#identifier"
@@ -144,6 +145,13 @@ class BaseLinker:
         logging.debug(f"[DESC] {len(res)} descendants found")
         return res
     
+    def set_embedder(self, model_name):
+        """
+        Dynamically load a new embedding model for comparison.
+        """
+        logging.info(f"[EMB] Switching model to '{model_name}'")
+        self.embedder = SentenceTransformer(model_name)
+
     # --- KG Load ---
     def load_knowledgegraph(self):
         logging.debug(f"[KG] Parsing KG from {self.kg_path}")
@@ -226,6 +234,34 @@ class BaseLinker:
         json.dump(keys, open(meta, "w"))
         logging.debug("[EMB] Saved cached embeddings.")
 
+    @lru_cache(maxsize=4096)
+    def embed_with_altlabels(self, label: str):
+        # --- 1. Collect label + altLabels ---
+        altlabels = self.get_altlabels(label)
+        all_labels = list(set([label] + altlabels))
+        if not all_labels:
+            logging.warning(f"[EMB-ALT] No labels found for '{label}'")
+            return None
+
+        # --- 2. Embed all variants individually ---
+        embeddings = []
+        for lbl in all_labels:
+            try:
+                emb = self.embedder.encode(lbl, convert_to_tensor=True)
+                embeddings.append(emb)
+            except Exception as e:
+                logging.warning(f"[EMB-ALT] Failed to embed '{lbl}': {e}")
+
+        if not embeddings:
+            logging.warning(f"[EMB-ALT] No embeddings computed for '{label}'")
+            return None
+
+        # --- 3. Average embeddings ---
+        vec = torch.stack(embeddings, dim=0).mean(dim=0)
+
+        logging.debug(f"[EMB-ALT] Averaged embedding for '{label}' using {len(embeddings)} labels.")
+        return vec
+
     @lru_cache(maxsize=None)
     def embed_cached(self, text: str):
         logging.debug(f"[EMB-Q] Encoding text: '{text[:80]}'")
@@ -275,8 +311,12 @@ class PerceivedEntityLinker(BaseLinker):
             noun = self.label_to_id.get(label, '').endswith('n')
             phys = iri in self.physical_descendants
             mask = int(noun and phys)
-            ctx = f"{label} {self.get_hierarchy(iri, depth)}"
-            score = util.cos_sim(self.target_emb, self.embed(ctx)).item()
+            # ctx = f"{label} {self.get_hierarchy(iri, depth)}"
+            # score = util.cos_sim(self.target_emb, self.embed(ctx)).item()
+            # with alternative labels
+            vec = self.embed_with_altlabels(label)
+            score = util.cos_sim(self.target_emb, vec).item()
+            
             logging.debug(f"[DISAMB] Evaluating {label}, mask={mask}, score={score:.4f}")
             results.append((label, score * mask))
         return sorted(results, key=lambda x: x[1], reverse=True), round(time.time() - start, 4)
@@ -327,118 +367,151 @@ class AblatedPerceivedEntityLinker(BaseLinker):
 
 class BaseLinePerceivedEntityLinker:
     def __init__(self, kg_path="linking/wn_full.owl"):
-        # --- config + well-typed URIs (use URIRef; string equality fails for rdflib terms) ---
+        logging.info("[BL INIT] Loading baseline linker...")
+
         self.kg_path = Path(kg_path)
         self.definition_iri  = "http://example.org/wordnet.owl#definition"
         self.identifier_iri  = "http://example.org/wordnet.owl#identifier"
         self.altlabel_iri    = "http://example.org/wordnet.owl#altLabel"
         self.target_concept  = None
+        # --- precompute graph structures ---
+        self.ALT   = URIRef(self.altlabel_iri)
+        self.IDENT = URIRef(self.identifier_iri)
 
-        self.ALT   = URIRef(self.altlabel_iri)          # altLabel predicate
-        self.IDENT = URIRef(self.identifier_iri)        # identifier predicate
-
-        # --- load KG once ---
+        # --- Load KG ---
         self.kg = Graph()
+        logging.info(f"[BL INIT] Parsing KG from {self.kg_path}")
         self.kg.parse(str(self.kg_path))
 
-        # --- precompute in-memory indices for O(1) lookups ---
-        # Note: use IRIs (stringified) as canonical keys to avoid term-type surprises.
-        self.label_to_iri : dict[str,str] = {}          # "apple" -> "http://.../Apple_iri"
-        self.iri_to_label : dict[str,str] = {}          # "http://.../Apple_iri" -> "Apple"
-        self.altlabels    : dict[str,set] = {}          # "http://.../Apple_iri" -> {"pome", "malus domestica", ...}
-        self.subclasses   : dict[str,set] = {}          # "child_iri" -> {"parent_iri1", "parent_iri2", ...}
-        self.iri_to_id    : dict[str,str] = {}          # "http://.../Apple_iri" -> "wn:01234567-n"
-        self.id_to_label  : dict[str,str] = {}          # "wn:01234567-n" -> "Apple"
+        self.label_to_iri = {}
+        self.iri_to_label = {}
+        self.altlabels    = {}
+        self.subclasses   = {}
+        self.iri_to_id    = {}
+        self.id_to_label  = {}
 
-        # --- single pass over triples; compare predicates to RDFS/URIRef (not str) ---
+        logging.info("[BL INIT] Scanning triples...")
         for s, p, o in self.kg.triples((None, None, None)):
             s_str = str(s)
 
-            # rdfs:label
             if p == RDFS.label:
                 lbl = str(o)
-                self.iri_to_label[s_str] = lbl
-                self.label_to_iri[lbl.lower()] = s_str
+                clean = lbl.split(". Definition")[0].strip().lower()
 
-            # altLabel
+                logging.debug(f"[BL KG] Label found: '{lbl}' → clean='{clean}' → IRI={s_str}")
+
+                self.iri_to_label[s_str] = clean
+                self.label_to_iri[clean] = s_str
+
             elif p == self.ALT:
-                self.altlabels.setdefault(s_str, set()).add(str(o))
+                logging.debug(f"[BL KG] AltLabel: subject={s_str}, alt='{o}'")
+                self.altlabels.setdefault(s_str, set()).add(str(o).lower())
 
-            # rdfs:subClassOf
             elif p == RDFS.subClassOf:
+                logging.debug(f"[BL KG] SubClassOf: child={s_str}, parent={o}")
                 self.subclasses.setdefault(s_str, set()).add(str(o))
 
-            # identifier
             elif p == self.IDENT:
                 self.iri_to_id[s_str] = str(o)
+                logging.debug(f"[BL KG] Identifier: {s_str} -> {o}")
 
-        # --- backfill id -> label once labels are known (2nd pass to avoid order dependency) ---
-        for iri, _id in self.iri_to_id.items():
+        # Build id→label map
+        for iri, ident in self.iri_to_id.items():
             lbl = self.iri_to_label.get(iri)
-            if lbl is not None:
-                self.id_to_label[_id] = lbl
+            if lbl:
+                self.id_to_label[ident] = lbl
 
-        # --- optional convenience map (label -> id); safe only when both exist ---
-        self.label_to_id = {}
-        for _id, lbl in self.id_to_label.items():
-            self.label_to_id[lbl] = _id
+        # Build label→id map
+        self.label_to_id = {lbl: ident for ident, lbl in self.id_to_label.items()}
 
-        logging.info(f"Preloaded {len(self.label_to_iri)} labels, "
-                     f"{sum(len(v) for v in self.altlabels.values())} altlabels, "
-                     f"{sum(len(v) for v in self.subclasses.values())} subclass links, "
-                     f"{len(self.iri_to_id)} identifiers")
+        logging.info(f"[BL INIT DONE] Labels={len(self.label_to_iri)}, AltLabels={sum(len(v) for v in self.altlabels.values())}, IDs={len(self.iri_to_id)}")
 
-    # --- caching + fast helpers (unchanged logic; comments explain intent) ---
+    @staticmethod
+    def normalize_label(label: str):
+        label = label.lower().replace("_", " ").strip()
+        return label
+
     @lru_cache(maxsize=None)
     def get_synset(self, name):
-        # Normalize for WN lookup; cache to avoid repeated I/O-bound calls.
-        query = name.strip().replace(" ", "_").lower()
-        return wn.synsets(query)
+        q = name.strip().replace(" ", "_").lower()
+        return wn.synsets(q)
 
     @lru_cache(maxsize=None)
     def get_names(self, synset):
-        # Lemma names of a synset; cached because we may revisit same synsets.
         return synset.lemma_names() if synset else []
 
-    def get_entities_by_label(self, label):
-        # Resolve label directly to entity IRI if present; keep API compatibility (list).
-        iri = self.label_to_iri.get(label.lower())
-        return [iri] if iri else []
-
-    def get_class(self, entity_iri):
-        # Return direct rdfs:subClassOf parents (as IRIs); empty list if none.
-        return list(self.subclasses.get(entity_iri, []))
-    
     def get_altlabels(self, label: str):
-        iri = self.label_to_iri.get(label.lower())
+        label_norm = self.normalize_label(label)
+        iri = self.label_to_iri.get(label_norm)
         if not iri:
-            return [label]
-        return sorted(self.altlabels.get(iri, set()) | {label})
+            logging.debug(f"[BL ALT] No IRI match for label '{label_norm}'")
+            return [label_norm]
+
+        alts = {label_norm} | {a.lower() for a in self.altlabels.get(iri, set())}
+        logging.debug(f"[BL ALT] {label_norm} → alt labels {alts}")
+        return sorted(alts)
     
+
+    def get_entities_by_label(self, label: str):
+        label_norm = self.normalize_label(label)
+        iri = self.label_to_iri.get(label_norm)
+        if iri:
+            logging.debug(f"[BL MAP] Label '{label_norm}' → IRI {iri}")
+            return [iri]
+        else:
+            logging.debug(f"[BL MAP] Label '{label_norm}' NOT FOUND in KG")
+            return []
+
     def candidate_selection(self, concept, k=5):
-        # Build candidate entity IRIs via altLabels+lemmas; score by RapidFuzz and pick top-k.
+        logging.info(f"\n[BL CAND] Query='{concept}'")
         start = time.time()
         self.target_concept = concept
+
         synsets = self.get_synset(concept)
+        logging.debug(f"[BL CAND] WordNet synsets: {synsets}")
+
         if not synsets:
-            return [(concept, 1.0)], round(time.time() - start, 2)
+            logging.warning(f"[BL CAND] NO synsets found for '{concept}'")
+            return [(concept, 1.0)], round(time.time() - start, 4)
 
         candidates = []
         altlabels = self.get_altlabels(concept)
+        logging.debug(f"[BL CAND] Altlabels for '{concept}': {altlabels}")
+
         for sn in synsets:
             names = self.get_names(sn)
+            logging.debug(f"[BL CAND] Synset names for {sn}: {names}")
+
             for name in set(names + altlabels):
-                sim = fuzz.ratio(concept, name) / 100.0  # normalize 0..1
-                candidates.append((name, sim))
+                name_norm = self.normalize_label(name)
+                sim = fuzz.ratio(concept, name_norm) / 100.0
+
+                logging.debug(f"[BL CAND] Candidate lemma '{name_norm}' sim {sim:.3f}")
+
+                candidates.append((name_norm, sim))
 
         candidates.sort(key=lambda x: x[1], reverse=True)
-        top_entities = []
-        for c, _ in candidates[:k]:
-            top_entities.extend(self.get_entities_by_label(c))
-        return top_entities[:k], round(time.time() - start, 2)
+        top_labels = [c[0] for c in candidates[:k]]
+
+        logging.info(f"[BL CAND] Top lemma matches: {top_labels}")
+
+        top_results = []
+        for name, sim in candidates[:k]:
+            iris_list = self.get_entities_by_label(name)
+            for iri in iris_list:
+                lbl = self.iri_to_label.get(iri, name)
+                top_results.append((lbl, sim))
+
+        # Keep only k after mapping
+        top_results = top_results[:k]
+
+        logging.info(f"[BL CAND] Returning candidates: {top_results}")
+        return top_results, round(time.time() - start, 4)
+
+    def get_class(self, entity_iri):
+        return list(self.subclasses.get(entity_iri, []))
 
     def get_synset_similarity(self, synsets_A, synset_B):
-        # Max string similarity across lemma-names of synsets; cheap and robust baseline.
         if not synsets_A or not synset_B:
             return 0.0
         target = synset_B.name().split(".")[0].replace("_", " ").lower()
@@ -448,28 +521,46 @@ class BaseLinePerceivedEntityLinker:
         )
 
     def disambiguate(self, candidates, target_concept=None):
-        # Make disambiguation independent of prior call order; allow explicit target.
-        if target_concept is not None:
-            self.target_concept = target_concept
-        if not self.target_concept:
-            raise ValueError("target_concept must be provided or set earlier via candidate_selection().")
+        target = target_concept or self.target_concept
+        logging.info(f"[BL DISAMB] Target='{target}', Candidates={candidates}")
+
+        if not candidates:
+            logging.warning("[BL DISAMB] NO candidates provided")
+            return [], 0.0
 
         start = time.time()
-        target_ss = self.get_synset(self.target_concept)
+        target_ss = self.get_synset(target)
+
         if not target_ss:
-            return candidates, 0.0
+            logging.warning("[BL DISAMB] NO WordNet synset for target, returning raw candidates")
+
+            flat = []
+            for item in candidates:
+                label = item[0] if isinstance(item, tuple) else item
+                flat.append((label, 0.0))
+
+            return flat, 0.0
 
         scores = []
-        for c in candidates:
-            high_score = 0.0
-            for cls in self.get_class(c):
-                for ss in self.get_synset(cls):
+        for item in candidates:
+            # candidates come as (label, sim)
+            label = item[0] if isinstance(item, tuple) else item
+
+            iri = self.label_to_iri.get(label)
+            parents = self.get_class(iri) if iri else []
+            logging.debug(f"[BL DISAMB] IRI {item} parents: {parents}")
+
+            best = 0.0
+            for parent in parents:
+                for ss in self.get_synset(parent):
                     sim = self.get_synset_similarity(target_ss, ss)
-                    high_score = max(high_score, sim)
-            scores.append((c, high_score))
+                    best = max(best, sim)
+            scores.append((label, best))
+            logging.debug(f"[BL DISAMB] Score for {item} = {best:.3f}")
 
         scores.sort(key=lambda x: x[1], reverse=True)
-        return scores, round(time.time() - start, 2)
+        logging.info(f"[BL DISAMB] Ranked: {scores}")
+        return scores, round(time.time() - start, 4)
 
 
 # ========================================================================================
@@ -541,18 +632,28 @@ def run_experiment(linker, groundtruth, source_name, exp_name, skip_disamb=False
 
 
 EXPERIMENTS = {
-    #"baseline":          (lambda: BaseLinePerceivedEntityLinker(), False),
-    "complete":          (lambda: PerceivedEntityLinker(), False),
-    "no-context":        (lambda: AblatedPerceivedEntityLinker("no-context"), False),
-    "no-physical":       (lambda: AblatedPerceivedEntityLinker("no-physical"), False),
-    "no-noun":           (lambda: AblatedPerceivedEntityLinker("no-noun"), False),
-    "no-disamb":         (lambda: PerceivedEntityLinker(), True),
-    "altlabel-context":  (lambda: AblatedPerceivedEntityLinker("altlabel-context"), False),
+    # "baseline":          (lambda: BaseLinePerceivedEntityLinker(), False),
+     "complete-altlabel":          (lambda: PerceivedEntityLinker(), False),
+    # "no-context":        (lambda: AblatedPerceivedEntityLinker("no-context"), False),
+    # "no-physical":       (lambda: AblatedPerceivedEntityLinker("no-physical"), False),
+    # "no-noun":           (lambda: AblatedPerceivedEntityLinker("no-noun"), False),
+    # "no-disamb":         (lambda: PerceivedEntityLinker(), True),
+    # "altlabel-context":  (lambda: AblatedPerceivedEntityLinker("altlabel-context"), False),
 }
 
 
 def main():
-    for source in [ VGENOME_SOURCE_PATH]:
+    #for source in [IMGNET_SOURCE_PATH, VGENOME_SOURCE_PATH]:
+
+
+    models = ["all-MiniLM-L6-v2",
+              "all-MiniLM-L12-v2",
+              "paraphrase-mpnet-base-v2",
+              "sentence-t5-base",
+              "multi-qa-MiniLM-L6-cos-v1",
+              ]
+    
+    for source in [VGENOME_SOURCE_PATH, VGENOME_SOURCE_PATH]:
         groundtruth = load_groundtruth(source)
         source_name = Path(source).stem
 
